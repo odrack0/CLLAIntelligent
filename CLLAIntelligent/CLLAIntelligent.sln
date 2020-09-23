@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLLAIntelligentModeloDatos"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLLAIntelligentLibreria", "CLLAIntelligentLibreria\CLLAIntelligentLibreria.csproj", "{7CECE244-436B-46C1-9089-2C3DE2283460}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLLAIntelligentSausage", "CLLAIntelligentSausage\CLLAIntelligentSausage.csproj", "{9C524EC6-54E6-4A31-8E92-83DA8BA22FE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7CECE244-436B-46C1-9089-2C3DE2283460}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CECE244-436B-46C1-9089-2C3DE2283460}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CECE244-436B-46C1-9089-2C3DE2283460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C524EC6-54E6-4A31-8E92-83DA8BA22FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C524EC6-54E6-4A31-8E92-83DA8BA22FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C524EC6-54E6-4A31-8E92-83DA8BA22FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C524EC6-54E6-4A31-8E92-83DA8BA22FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
