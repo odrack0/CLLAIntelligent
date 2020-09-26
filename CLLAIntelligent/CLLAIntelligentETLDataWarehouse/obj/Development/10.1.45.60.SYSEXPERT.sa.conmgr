@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="10.1.45.60.SYSEXPERT.sa"
+  DTS:DTSID="{D57A7A3E-5A90-452B-98D2-5EE9E4729EB8}"
+  DTS:CreationName="ADO">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=10.1.45.60;User ID=sa;Initial Catalog=SYSEXPERT;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAAAkywr+FwMGQbXz/YGiBqSOxmiHM8gJ5f5o56CPUMd0PwAAAAAOgAAAAAIAACAAAAB1Gvj89EKTux0MLBtawLz0OoeVALcBXQqf4c9rp1gZ2oAAAACnxRA19hvc2HMiLpDmuLIDbhF0vVoZHE7HDJO01rOcXoU0xTUWLprjg8UKcG7Wr5tc6NX9F0KefrBJtYU8H3vY8rzPeLLMtbJfD8x/OGzmZi/T3E25OwBWOxDrIPDc91twEb7jCr9OmJFlAyIvGqiI0Q0xwoPNH3n2pXF/RXVxlkAAAADr4bl0ePp/TMAK0rQcUt3Jj8lV4Yay2bQUo5wB0IgMDeEOXp4xqfMz8bEC7SAJ0T9QFNjk5iklzWeLmawRobmX</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

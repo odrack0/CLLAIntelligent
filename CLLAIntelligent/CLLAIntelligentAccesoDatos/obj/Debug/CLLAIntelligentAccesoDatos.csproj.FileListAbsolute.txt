@@ -1,0 +1,16 @@
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentAccesoDatos.dll.config
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentAccesoDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentAccesoDatos.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\EntityFramework.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\EntityFramework.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.csprojAssemblyReference.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.csproj.CopyComplete
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentModeloDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentModeloDatos.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.Migrations.DWH1.resources
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.csproj.GenerateResource.cache

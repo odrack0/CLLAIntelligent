@@ -1,0 +1,12 @@
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\CLLAIntelligentAccesoDatos.dll.config
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\CLLAIntelligentAccesoDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\CLLAIntelligentAccesoDatos.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\EntityFramework.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\EntityFramework.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Release\CLLAIntelligentAccesoDatos.csprojAssemblyReference.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Release\CLLAIntelligentAccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Release\CLLAIntelligentAccesoDatos.csproj.CopyComplete
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Release\CLLAIntelligentAccesoDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Release\CLLAIntelligentAccesoDatos.pdb

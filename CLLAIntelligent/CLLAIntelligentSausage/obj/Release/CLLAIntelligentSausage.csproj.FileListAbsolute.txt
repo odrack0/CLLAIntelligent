@@ -1,0 +1,6 @@
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Release\CLLAIntelligentSausage.exe.config
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Release\CLLAIntelligentSausage.exe
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Release\CLLAIntelligentSausage.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Release\CLLAIntelligentSausage.csproj.CoreCompileInputs.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Release\CLLAIntelligentSausage.exe
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Release\CLLAIntelligentSausage.pdb

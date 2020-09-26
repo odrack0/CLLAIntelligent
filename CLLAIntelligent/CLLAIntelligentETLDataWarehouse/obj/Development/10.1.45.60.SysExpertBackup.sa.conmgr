@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="10.1.45.60.SysExpertBackup.sa"
+  DTS:DTSID="{6E397F73-1728-42FA-A3FC-81D1CA0D0A24}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=10.1.45.60;User ID=sa;Initial Catalog=SysExpertBackup;Persist Security Info=True;Application Name=SSIS-CLLAIntelligentETLDataWarehouse-{6E397F73-1728-42FA-A3FC-81D1CA0D0A24}10.1.45.60.SysExpertBackup.sa;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAAC5hLTsmnUwngMK3ZErOc0vSoAHJAtuhk4uUqbu+PGAZwAAAAAOgAAAAAIAACAAAAAzLrP5MOE7O9EEizKEFcX7zQUD3A964sMoka8VTlEmMYAAAACqowoCgDb2xk9OijYCK123bWif9Ya8KT3LZXdbZl+PPX4aj3ehhcOd2eg+rcG96TxDX9TSPOl602Ri2EZeTThdh7BIA6/9HJ42VwNpA0dwmxfAM2MS/EP+CKBMzF4oH3W80mfU5ZxsU39uz+AEVY6NB2DDrbLvNUGnr3/jKPfQskAAAADPTqUwLq2iLkoh8jIBjmXo+YdNObu/NwlspuYeYFZIunWXppr8onSNu4+oEvWkpWxIpR5N6Xq34vjmr9uQdrlu</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

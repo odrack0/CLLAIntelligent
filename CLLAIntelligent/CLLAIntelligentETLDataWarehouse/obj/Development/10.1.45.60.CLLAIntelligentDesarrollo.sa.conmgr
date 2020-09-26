@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="10.1.45.60.CLLAIntelligentDesarrollo.sa"
+  DTS:DTSID="{ED95D242-222E-4A94-B2E2-8CC0A7BCA349}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=10.1.45.60;User ID=sa;Initial Catalog=CLLAIntelligentDesarrollo;Persist Security Info=True;Application Name=SSIS-CLLAIntelligentETLDataWarehouse-{ED95D242-222E-4A94-B2E2-8CC0A7BCA349}10.1.45.60.CLLAIntelligentDesarrollo.sa;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAACwqharPLMC3XBz5CxL4qBQ4/GFVRImSo/C7dP8HY0wQQAAAAAOgAAAAAIAACAAAABikx67wX/PCD5PyRZwYCEYNz5ohgGk7g9r1o7Q9Fdd/YAAAADjm/88gdaaj77H2PlDiN+DYRrIlvuSKOVEYIcw1a8496nqDKLlPM2I2ExOUutFZHBOZSegZ4DMBIdmLXvcjPAfuCOZPwlnW6D10P3Aekk4JKkqYPP5ePaUojs1kjn+mIhDNGU7+sF3/vIVohrzf9rDoLOcS4F3fZFowKkAiHrSxEAAAABNHqSPQFiB5+2G7SuEjRLLpPPV7jAy1ZwsdO7yFBxpW2YVHCftJab/n4cjGJA6FsZvMtWMTy5WtP29uGB2zU7k</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

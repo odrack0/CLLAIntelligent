@@ -1,0 +1,8 @@
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\bin\Debug\CLLAIntelligentModeloDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\bin\Debug\CLLAIntelligentModeloDatos.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\obj\Debug\CLLAIntelligentModeloDatos.csprojAssemblyReference.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\obj\Debug\CLLAIntelligentModeloDatos.csproj.CoreCompileInputs.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\obj\Debug\CLLAIntelligentModeloDatos.csproj.CopyComplete
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\obj\Debug\CLLAIntelligentModeloDatos.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentModeloDatos\obj\Debug\CLLAIntelligentModeloDatos.pdb
