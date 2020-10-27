@@ -1,0 +1,1595 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/24/2020 7:41:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{BD80E317-6CBF-45E2-A2C8-B347063130B9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{179CA5EC-3B67-4456-84CF-CD722A217F7D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{802AA39F-85E8-4693-BFB3-0329262FC9D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TraficoIdUltimoExtraido">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5BEFC2C5-46AD-4581-A546-884ACB0D1A14}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT T.idTrafico, T.idSituacion, T.idReferencia, T.NumeroReferencia, T.idRemesa, T.NumeroRemesa, T.idFactura, T.NumeroFactura, T.idGuia, T.GuiaMaster, T.GuiaHouse, ST.ClaveSituacion, ST.DescripcionSituacion, T.FechaMovimiento, T.HoraMovimiento ,&#x9;T.idUsuario, U.USU_NAME AS NombreEjecuto, T.Dato, T.Observaciones &quot; + &#xA;&quot; FROM Trafico T JOIN SituacionesTrafico ST ON (T.idSituacion = ST.idSituacion) LEFT JOIN USUARIOS U  ON (T.idUsuario = U.PK_USUARIO) &quot; +&#xA; &quot; WHERE ST.ClaveSituacion IN (1,2,3,8,9,12,13,14,85,86,88,91,92,93,94,105,107,108,136,144,169,170,177,178,179,180,300,305,306,307,307,308,308,309,310,310,311,315,317,320,320,325,400,405,410,410,430,460,490,500,505,506,800,801,1000,1001,1002,1003,6027,6103,6116,611)&#x9;AND idTrafico &gt;&quot; + (DT_WSTR, 11) @[User::TraficoIdUltimoExtraido]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TraficoSQLCommand">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT T.idTrafico, T.idSituacion, T.idReferencia, T.NumeroReferencia, T.idRemesa, T.NumeroRemesa, T.idFactura, T.NumeroFactura, T.idGuia, T.GuiaMaster, T.GuiaHouse, ST.ClaveSituacion, ST.DescripcionSituacion, T.FechaMovimiento, T.HoraMovimiento ,	T.idUsuario, U.USU_NAME AS NombreEjecuto, T.Dato, T.Observaciones  FROM Trafico T JOIN SituacionesTrafico ST ON (T.idSituacion = ST.idSituacion) LEFT JOIN USUARIOS U  ON (T.idUsuario = U.PK_USUARIO)  WHERE ST.ClaveSituacion IN (1,2,3,8,9,12,13,14,85,86,88,91,92,93,94,105,107,108,136,144,169,170,177,178,179,180,300,305,306,307,307,308,308,309,310,310,311,315,317,320,320,325,400,405,410,410,430,460,490,500,505,506,800,801,1000,1001,1002,1003,6027,6103,6116,611)	AND idTrafico &gt;0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Actualizar tabla extraccion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{02013F4E-FF95-4125-BD1C-D1DA881EC112}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Actualizar tabla extraccion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="UPDATE Extraccion&#xA;&#x9;SET IdUltimoExtraido = (SELECT MAX(idTrafico) FROM ExtraccionSysExpertTrafico)&#xA;WHERE&#xA;&#x9;ExtraccionID = 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion trafico"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{71AB47BD-D61B-4CD3-A0BD-CC8B097B1FB4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion trafico"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionSysExpertTrafico"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ExtraccionSysExpertTrafico]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idTrafico]"
+                      cachedDataType="i4"
+                      cachedName="idTrafico"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idTrafico]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idTrafico]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idSituacion]"
+                      cachedDataType="i4"
+                      cachedName="idSituacion"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idSituacion]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idSituacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[NumeroReferencia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="NumeroReferencia"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NumeroReferencia]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idRemesa]"
+                      cachedDataType="i4"
+                      cachedName="idRemesa"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idRemesa]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idRemesa]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[NumeroRemesa]"
+                      cachedDataType="i4"
+                      cachedName="NumeroRemesa"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NumeroRemesa]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroRemesa]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idFactura]"
+                      cachedDataType="i4"
+                      cachedName="idFactura"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idFactura]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idFactura]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[NumeroFactura]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NumeroFactura"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NumeroFactura]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroFactura]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idGuia]"
+                      cachedDataType="i4"
+                      cachedName="idGuia"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idGuia]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idGuia]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[GuiaMaster]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="GuiaMaster"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[GuiaMaster]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[GuiaMaster]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[GuiaHouse]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="GuiaHouse"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[GuiaHouse]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[GuiaHouse]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[ClaveSituacion]"
+                      cachedDataType="i4"
+                      cachedName="ClaveSituacion"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[ClaveSituacion]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[ClaveSituacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[DescripcionSituacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DescripcionSituacion"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionSituacion]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[DescripcionSituacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[FechaMovimiento]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaMovimiento"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[FechaMovimiento]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[FechaMovimiento]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[HoraMovimiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="HoraMovimiento"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[HoraMovimiento]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[HoraMovimiento]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[idUsuario]"
+                      cachedDataType="i4"
+                      cachedName="idUsuario"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idUsuario]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idUsuario]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[NombreEjecuto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NombreEjecuto"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NombreEjecuto]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NombreEjecuto]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[Dato]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Dato"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[Dato]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[Dato]" />
+                    <inputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].Columns[Observaciones]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Observaciones"
+                      externalMetadataColumnId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[Observaciones]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idTrafico]"
+                      dataType="i4"
+                      name="idTrafico" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idSituacion]"
+                      dataType="i4"
+                      name="idSituacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NumeroReferencia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="NumeroReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idRemesa]"
+                      dataType="i4"
+                      name="idRemesa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NumeroRemesa]"
+                      dataType="i4"
+                      name="NumeroRemesa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idFactura]"
+                      dataType="i4"
+                      name="idFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NumeroFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idGuia]"
+                      dataType="i4"
+                      name="idGuia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[GuiaMaster]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="GuiaMaster" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[GuiaHouse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="GuiaHouse" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[ClaveSituacion]"
+                      dataType="i4"
+                      name="ClaveSituacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionSituacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DescripcionSituacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      name="FechaMovimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="HoraMovimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[idUsuario]"
+                      dataType="i4"
+                      name="idUsuario" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NombreEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[Dato]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Dato" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Observaciones" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion trafico\Trafico"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Trafico"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::TraficoSQLCommand</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion trafico\Trafico.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idTrafico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idTrafico]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idTrafico]"
+                      name="idTrafico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idSituacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idSituacion]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idSituacion]"
+                      name="idSituacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroReferencia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NumeroReferencia]"
+                      length="30"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroReferencia]"
+                      name="NumeroReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idRemesa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idRemesa]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idRemesa]"
+                      name="idRemesa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroRemesa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NumeroRemesa]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroRemesa]"
+                      name="NumeroRemesa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idFactura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idFactura]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idFactura]"
+                      name="idFactura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NumeroFactura]"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NumeroFactura]"
+                      name="NumeroFactura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idGuia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idGuia]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idGuia]"
+                      name="idGuia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[GuiaMaster]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[GuiaMaster]"
+                      length="20"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[GuiaMaster]"
+                      name="GuiaMaster"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[GuiaHouse]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[GuiaHouse]"
+                      length="20"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[GuiaHouse]"
+                      name="GuiaHouse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[ClaveSituacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[ClaveSituacion]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[ClaveSituacion]"
+                      name="ClaveSituacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[DescripcionSituacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[DescripcionSituacion]"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[DescripcionSituacion]"
+                      name="DescripcionSituacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[FechaMovimiento]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[FechaMovimiento]"
+                      name="FechaMovimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[HoraMovimiento]"
+                      length="8"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idUsuario]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idUsuario]"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[idUsuario]"
+                      name="idUsuario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NombreEjecuto]"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[NombreEjecuto]"
+                      name="NombreEjecuto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[Dato]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[Dato]"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[Dato]"
+                      name="Dato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[Observaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[Observaciones]"
+                      length="250"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].Columns[Observaciones]"
+                      name="Observaciones"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idTrafico]"
+                      dataType="i4"
+                      name="idTrafico" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idSituacion]"
+                      dataType="i4"
+                      name="idSituacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NumeroReferencia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="NumeroReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idRemesa]"
+                      dataType="i4"
+                      name="idRemesa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NumeroRemesa]"
+                      dataType="i4"
+                      name="NumeroRemesa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idFactura]"
+                      dataType="i4"
+                      name="idFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NumeroFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idGuia]"
+                      dataType="i4"
+                      name="idGuia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[GuiaMaster]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="GuiaMaster" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[GuiaHouse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="GuiaHouse" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[ClaveSituacion]"
+                      dataType="i4"
+                      name="ClaveSituacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[DescripcionSituacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DescripcionSituacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      name="FechaMovimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="HoraMovimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[idUsuario]"
+                      dataType="i4"
+                      name="idUsuario" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NombreEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[Dato]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Dato" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output].ExternalColumns[Observaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Observaciones" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idTrafico]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idTrafico]"
+                      name="idTrafico" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idSituacion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idSituacion]"
+                      name="idSituacion" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NumeroReferencia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NumeroReferencia]"
+                      name="NumeroReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idRemesa]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idRemesa]"
+                      name="idRemesa" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NumeroRemesa]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NumeroRemesa]"
+                      name="NumeroRemesa" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idFactura]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idFactura]"
+                      name="idFactura" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NumeroFactura]"
+                      name="NumeroFactura" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idGuia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idGuia]"
+                      name="idGuia" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[GuiaMaster]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[GuiaMaster]"
+                      name="GuiaMaster" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[GuiaHouse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[GuiaHouse]"
+                      name="GuiaHouse" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[ClaveSituacion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[ClaveSituacion]"
+                      name="ClaveSituacion" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[DescripcionSituacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[DescripcionSituacion]"
+                      name="DescripcionSituacion" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[FechaMovimiento]"
+                      name="FechaMovimiento" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idUsuario]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[idUsuario]"
+                      name="idUsuario" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[NombreEjecuto]"
+                      name="NombreEjecuto" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[Dato]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[Dato]"
+                      name="Dato" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[Observaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[Observaciones]"
+                      name="Observaciones" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion trafico.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion trafico\ExtraccionSysExpertTrafico.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion trafico\Trafico.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtener Ultimo idTrafico Extraido"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{C0CECF80-E7CB-430F-B553-348BCACA0D30}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtener Ultimo idTrafico Extraido"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="SELECT&#xA;&#x9;IdUltimoExtraido&#xA;FROM Extraccion&#xA;WHERE&#xA;&#x9;ExtraccionID = 1"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="IdUltimoExtraido"
+            SQLTask:DtsVariableName="User::TraficoIdUltimoExtraido" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situacion - Facturas alta"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{49487CC2-CA41-4924-BB22-1E3DC9C4F9ED}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situacion - Facturas alta"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Transformacion y carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoFacturaAlta&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idFactura,&#xA;&#x9;&#x9;idGuia,&#xA;&#x9;&#x9;GuiaMaster,&#xA;&#x9;&#x9;GuiaHouse,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;&#x9;WHERE ClaveSituacion = 14&#xA;&#x9;ORDER BY &#xA;&#x9;&#x9;FechaMovimiento&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 14" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{7FE7563F-A324-49C2-9FF2-BB809583E2B6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situacion - Pedimentos desaduanizados"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 92 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @PedimentosDesaduanizados TABLE (idReferencia INT, Desaduanamiento VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @PedimentosDesaduanizados&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)),&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoDesaduanamiento&#xA;&#x9;SELECT * FROM @PedimentosDesaduanizados &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 92 &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento alta"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{0DF3ED06-E34F-452F-9DED-E207BDAE5278}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento alta"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Transformacion y carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoAlta&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN ClaveSituacion = 1 THEN&#xA;&#x9;&#x9;&#x9;&#x9;'PEDIMENTOS'&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;'REMESAS'&#xA;&#x9;&#x9;END&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE &#xA;&#x9;&#x9;ClaveSituacion = 1 OR ClaveSituacion = 2  &#xA;&#x9;ORDER BY &#xA;&#x9;&#x9;FechaMovimiento &#xA;&#xA;--Eliminacion de informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 1 OR ClaveSituacion = 2  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento firma"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{537AF64F-47A8-498E-94B2-F6C218FB38D6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento firma"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--SELECT * FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 86 ORDER BY FechaMovimiento 995,807&#xA;--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 86 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(MAX))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.NombreEjecuto&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;DECLARE @PedimentosFirmados TABLE (idReferencia INT,  FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Firma VARCHAR(50))&#xA;INSERT INTO @PedimentosFirmados&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato))&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoFirma&#xA;&#x9;SELECT * FROM @PedimentosFirmados &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 86&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento impresion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{E126C878-7B6E-4D6B-8BDA-0D2FCA3BFBEB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento impresion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 8 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto  VARCHAR(50))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#x9;&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.NombreEjecuto&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;--CargaInformacion&#xA;&#xA;INSERT INTO CargaSysExpertTraficoPedimentoImpresion&#xA;&#x9;SELECT * FROM @Situaciones &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 8&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento validacion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{34EF89B5-87C8-491B-851F-2AA183597D78}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento validacion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 12 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Observaciones VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Observaciones,&#xA;&#x9;&#x9;T.NombreEjecuto,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;----Transformacion de la informaion&#xA;DECLARE @ArchivosCreados TABLE (idReferencia INT, Archivo VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @ArchivosCreados&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones)),&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento&#xA;&#x9;FROM @Situaciones&#xA;&#xA;INSERT INTO CargaSysExpertTraficoPedimentoValidacion&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;Archivo&#xA;&#x9;FROM @ArchivosCreados&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 12 &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{242B7449-CB6B-4A59-83BA-E9AE44914365}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - PedimentoRemesa firma manual"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 93 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), Observaciones VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;T.Observaciones,&#xA;&#x9;&#x9;T.NombreEjecuto,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @Firmas TABLE (idReferencia INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecutvo VARCHAR(50), OrigenEjecucion VARCHAR(50), Firma VARCHAR(250))&#xA;INSERT INTO @Firmas&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN CHARINDEX('REMESA', Dato) &gt; 0 THEN&#xA;&#x9;&#x9;&#x9;&#x9;'REMESA'&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;'PEDIMENTO'&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN CHARINDEX('REMESA', Dato) &gt; 0 THEN&#xA;&#x9;&#x9;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato))&#xA;&#x9;&#x9;END&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoRemesaFirmaManual&#xA;&#x9;SELECT * FROM @Firmas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 93 &#x9;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Remesa alta"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{999D4237-E952-4AAA-9CB0-5396E95D9390}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Remesa alta"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion previa&#xA;DECLARE @AltaRemesasPrevia TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Dato VARCHAR(50))&#xA;&#xA;INSERT INTO @AltaRemesasPrevia&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;Dato&#xA;&#x9;FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 3 AND idReferencia IS NOT NULL&#xA;&#xA;--Limpieza de datos&#xA;DELETE @AltaRemesasPrevia WHERE idRemesa IS NULL AND DATO = 'SIN CONSECUTIVO DE REMESA' &#xA;&#xA;--Transformacion de datos&#xA;UPDATE @AltaRemesasPrevia&#xA;SET NumeroRemesa = &#xA;&#x9;CASE&#xA;&#x9;&#x9;WHEN NumeroRemesa IS NULL AND CHARINDEX(':', Dato) &gt; 0 THEN&#xA;&#x9;&#x9;&#x9;CAST(SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)) AS INT)&#xA;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;NumeroRemesa&#xA;&#x9;END&#xA;&#xA;DECLARE @AltaRemesas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50))&#xA;INSERT INTO @AltaRemesas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto&#xA;&#x9;FROM @AltaRemesasPrevia&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaAlta&#xA;&#x9;SELECT * FROM @AltaRemesas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 3 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3C314D6A-FDC0-434B-9270-7132D59D2183}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Remesa desaduanamiento"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--SELECT * FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 91 ORDER BY FechaMovimiento 1,260,487&#xA;&#xA;--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idTrafico INT, idReferencia INT, idRemesa INT, NumeroRemesa INT, Observaciones VARCHAR(50))&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;MAX(idTrafico),&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Observaciones&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 91 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Observaciones&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT,  FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), Dato VARCHAR(50), Observaciones VARCHAR(250))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;S.idReferencia,&#xA;&#x9;&#x9;S.idRemesa,&#xA;&#x9;&#x9;S.NumeroRemesa,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;S.Observaciones&#x9;&#x9;&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @RemesasDesaduanizadas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, Desaduanamiento VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @RemesasDesaduanizadas&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN NumeroRemesa IS NULL THEN&#xA;&#x9;&#x9;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;NumeroRemesa&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;--NumeroRemesa,&#xA;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)),&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaDesaduanamiento&#xA;&#x9;SELECT * FROM @RemesasDesaduanizadas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 91" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Remesa impresion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3499F0EF-27CF-4680-89C9-84EFAB090570}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Remesa impresion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idTrafico INT, idReferencia INT, idRemesa INT, NumeroRemesa INT, Dato VARCHAR(50))&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;MAX(idTrafico),&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Dato&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 9 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Dato&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Dato VARCHAR(50))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.idRemesa,&#xA;&#x9;&#x9;T.NumeroRemesa,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.NombreEjecuto,&#xA;&#x9;&#x9;T.Dato&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @RemesasImpresas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50))&#xA;INSERT INTO @RemesasImpresas&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN NumeroRemesa IS NULL THEN&#xA;&#x9;&#x9;&#x9;&#x9;CAST(SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)) AS INT)&#xA;&#x9;&#x9;&#x9;ELSE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;NumeroRemesa&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Cargar informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaImpresion&#xA;&#x9;SELECT * FROM @RemesasImpresas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 9&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AA39DDDA-BCC5-4AC2-8F99-59EB6910F5FC}"
+      DTS:From="Package\Obtener Ultimo idTrafico Extraido"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraccion trafico" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7BF1D2D-25EE-4965-9F01-F9AC686C20C0}"
+      DTS:From="Package\Extraccion trafico"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Actualizar tabla extraccion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{2594964D-4714-44A3-A774-D983BB84FB03}"
+      DTS:From="Package\Transformacion y carga situaciones - Remesa impresion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Transformacion y carga situaciones - Remesa desaduanamiento" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{9382167E-3B15-4AF8-B747-516294978A36}"
+      DTS:From="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Transformacion y carga situaciones - Pedimento firma" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{508EBDB8-47FD-48C9-A425-8D7D179BD4E2}"
+      DTS:From="Package\Actualizar tabla extraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Transformacion y carga situacion - Pedimentos desaduanizados" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{DD9D55B7-10CB-4DA9-9679-A0301B7BBE50}"
+      DTS:From="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Transformacion y carga situacion - Facturas alta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{00751FAF-86A5-4B38-91F5-9229E7B43E87}"
+      DTS:From="Package\Transformacion y carga situacion - Facturas alta"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Transformacion y carga situaciones - Pedimento alta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{66045D6F-29A5-49F7-870C-CFC2EA6CFFAD}"
+      DTS:From="Package\Transformacion y carga situaciones - Pedimento alta"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Transformacion y carga situaciones - Pedimento impresion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{4C423086-9197-4043-AD9F-C43FD1B35B9C}"
+      DTS:From="Package\Transformacion y carga situaciones - Pedimento impresion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Transformacion y carga situaciones - Pedimento validacion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{8D14E2D2-6CB2-4A7E-A203-EFEB7492DCF1}"
+      DTS:From="Package\Transformacion y carga situaciones - Pedimento validacion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{005C4B2C-2D7A-46CA-ABB9-90576C40B438}"
+      DTS:From="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Transformacion y carga situaciones - Remesa alta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{26106DC1-CD3D-4007-83B5-D36E99B85F35}"
+      DTS:From="Package\Transformacion y carga situaciones - Remesa alta"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Transformacion y carga situaciones - Remesa impresion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Actualizar tabla extraccion"
+          TopLeft="301,167" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Extraccion trafico"
+          TopLeft="321,90" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\Obtener Ultimo idTrafico Extraido"
+          TopLeft="284,9" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="401.5,51">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="401.5,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="377,42"
+          Id="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
+          TopLeft="215,257" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="402.75,209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="306,42"
+          Id="Package\Transformacion y carga situacion - Facturas alta"
+          TopLeft="252,334" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="404.25,299">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="326,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento alta"
+          TopLeft="249,403" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="408.5,376">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="354,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento impresion"
+          TopLeft="232,474" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="410.5,445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="355,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento validacion"
+          TopLeft="238,541" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="412.25,516">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="408,42"
+          Id="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
+          TopLeft="210,614" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="414.75,583">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="313,42"
+          Id="Package\Transformacion y carga situaciones - Remesa alta"
+          TopLeft="250,679" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="410.25,656">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="342,42"
+          Id="Package\Transformacion y carga situaciones - Remesa impresion"
+          TopLeft="233,757" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="405.25,721">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="379,42"
+          Id="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
+          TopLeft="222,829" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="407.75,799">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="333,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento firma"
+          TopLeft="248,904" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="413,871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion trafico">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Extraccion trafico\ExtraccionSysExpertTrafico"
+          TopLeft="165,136" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Extraccion trafico\Trafico"
+          TopLeft="204,44" />
+        <EdgeLayout
+          Id="Package\Extraccion trafico.Paths[OLE DB Source Output]"
+          TopLeft="259.5,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,50"
+              Start="0,0"
+              End="8.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="4.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,25"
+                    Point2="8.5,25"
+                    Point3="8.5,29" />
+                  <mssgle:LineSegment
+                    End="8.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion trafico\ExtraccionSysExpertTrafico">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion trafico\Trafico">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -45,13 +45,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataWarahouse\DataWarehousePedimentoDesaduanizado.cs" />
-    <Compile Include="DataWarahouse\DataWarehouseRemesaDesaduanizada.cs" />
+    <Compile Include="ModelosVistas\Seguridad\Usuario.cs" />
+    <Compile Include="ModelosVistas\Seguridad\UsuarioInicioSesion.cs" />
+    <Compile Include="Modelos\Catalogos\Sistema\EntidadFederativa.cs" />
+    <Compile Include="Modelos\Catalogos\Operativos\Cliente.cs" />
+    <Compile Include="Modelos\Catalogos\Operativos\Sucursal.cs" />
+    <Compile Include="Modelos\Datawarahouse\DataWarehousePedimentoDesaduanizado.cs" />
+    <Compile Include="Modelos\Datawarahouse\DataWarehouseRemesaDesaduanizada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modelos\Seguridad\Rol.cs" />
+    <Compile Include="Modelos\Seguridad\Usuario.cs" />
+    <Compile Include="Modelos\Seguridad\UsuarioCliente.cs" />
+    <Compile Include="Modelos\Seguridad\UsuarioRol.cs" />
+    <Compile Include="Modelos\Seguridad\UsuarioSucursal.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ExpedienteDigital\" />
-    <Folder Include="Seguridad\" />
+    <Folder Include="ModelosVistas\Catalogos\Operativos\" />
+    <Folder Include="ModelosVistas\Catalogos\Sistema\" />
+    <Folder Include="ModelosVistas\Datawarehouse\" />
+    <Folder Include="ModelosVistas\ExpedienteDigital\" />
+    <Folder Include="Modelos\ExpedienteDigital\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

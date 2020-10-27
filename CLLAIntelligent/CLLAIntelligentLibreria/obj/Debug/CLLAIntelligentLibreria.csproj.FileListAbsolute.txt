@@ -1,0 +1,6 @@
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentLibreria\bin\Debug\CLLAIntelligentLibreria.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentLibreria\bin\Debug\CLLAIntelligentLibreria.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentLibreria\obj\Debug\CLLAIntelligentLibreria.csprojAssemblyReference.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentLibreria\obj\Debug\CLLAIntelligentLibreria.csproj.CoreCompileInputs.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentLibreria\obj\Debug\CLLAIntelligentLibreria.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentLibreria\obj\Debug\CLLAIntelligentLibreria.pdb

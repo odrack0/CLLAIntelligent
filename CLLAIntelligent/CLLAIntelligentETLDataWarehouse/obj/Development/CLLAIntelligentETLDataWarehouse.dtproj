@@ -26,19 +26,19 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-M14V5SA</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAAAe7qq95tb2FpgshwN8O+qKzJHR6mDI4gziv9H8hQ6A4QAAAAAOgAAAAAIAACAAAAAcNssPsi+T2RByO2uF9C/s1F0SnFH6kJafI1IaZzv5jpAAAAAnMyAojceB3iBdO/LCQud0WHWW5kO+2JZfKN2u4JWCMjMmmo0UlNfUlvQ9NZEE4BzxlABzM/iX7tfNEDF/NcQN/9x29IQ9MZJ72jW/l6tbsYImifqfKsROAcT1TUpCYm/aWYTyMGlKWbhrDIbzqKErQF84npSKCBsOTZV5wGqXhF2LA2UfbNEVZ8CdDKHyxTxAAAAArEo29Z8M891PBw50QbVobO5lIuTVa0j9cIM8dlhgmMMIWssr3IMZn8tXIWL7fkqLdkrI6hqI74bjllXl+bzzMw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAABesFNnJLIW5iQ46HOX2apBablTgke4Vkypd7wMTsd7YQAAAAAOgAAAAAIAACAAAADfuuZyeONvZg0ptZ4khsIBpUhOaQdOjMUt/njZd77d9JAAAADM6X4FnYzf79ij+IymCmFaeHrNUtaC++8hN1GNLugEmKLoMD64BoitQi/Ydwjh3bR/m8jLm++O+u3r/uUlFEs1UWM1qPF9Mwz/RLaHMSNZtalOZv41RvVzKdirxql/ZFyQuz4E/41uLT6ANordACSYERq+QR6QUzRyHp0LoJPfoitibHUKKgLHP/Rn3/GUNF1AAAAApDofV3Dr2+p11X5rI+DW1es+HtPdfbp42apBgJgZT7D8WqQSA4NpU/mXC9zs5/eZD0rsYVIE4FfHxJgzzKmN0A==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="ObtenerPedimentosDesaduanizados.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="SysExpertTrafico.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
-          <SSIS:ConnectionManager SSIS:Name="10.1.45.60.SysExpertBackup.sa.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="10.1.45.60.CLLAIntelligentDesarrollo.sa.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="CLLA_DWH_SA.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="SysExpert.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -53,7 +53,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -64,11 +64,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=10.1.45.60;User ID=sa;Initial Catalog=SysExpertBackup;Persist Security Info=True;Application Name=SSIS-CLLAIntelligentETLDataWarehouse-{6E397F73-1728-42FA-A3FC-81D1CA0D0A24}10.1.45.60.SysExpertBackup.sa;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.\SQLDEV2017;User ID=sa;Initial Catalog=CLLA_DWH_SA;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -83,7 +83,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -94,11 +94,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">SysExpertBackup</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">CLLA_DWH_SA</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.Password">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -112,7 +112,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -127,7 +127,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -138,11 +138,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">10.1.45.60</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">.\SQLDEV2017</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.SysExpertBackup.sa.UserName">
+            <SSIS:Parameter SSIS:Name="CM.CLLA_DWH_SA.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -157,7 +157,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -172,7 +172,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -183,11 +183,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=10.1.45.60;User ID=sa;Initial Catalog=CLLAIntelligentDesarrollo;Persist Security Info=True;Application Name=SSIS-CLLAIntelligentETLDataWarehouse-{ED95D242-222E-4A94-B2E2-8CC0A7BCA349}10.1.45.60.CLLAIntelligentDesarrollo.sa;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.\SQLDEV2017;User ID=sa;Initial Catalog=SysExpertCabrera20201022;Provider=SQLNCLI11.1;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -202,7 +202,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -213,11 +213,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">CLLAIntelligentDesarrollo</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">SysExpertCabrera20201022</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.Password">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -231,7 +231,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -246,7 +246,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -257,11 +257,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">10.1.45.60</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">.\SQLDEV2017</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.10.1.45.60.CLLAIntelligentDesarrollo.sa.UserName">
+            <SSIS:Parameter SSIS:Name="CM.SysExpert.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -278,16 +278,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="ObtenerPedimentosDesaduanizados.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="SysExpertTrafico.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{58D27B01-7A83-47DA-AAB7-061C196BA194}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{BD80E317-6CBF-45E2-A2C8-B347063130B9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0D2F3670-46E1-40EE-86E6-704236416B0C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{179CA5EC-3B67-4456-84CF-CD722A217F7D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

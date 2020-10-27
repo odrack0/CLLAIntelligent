@@ -8,8 +8,8 @@
         <UseWinAuth>false</UseWinAuth>
         <WinAuthUserName />
         <WinAuthDomain />
-        <ServerName>10.1.45.60</ServerName>
-        <PathOnServer>/SSISDB/CLLAIntelligentDatawarehouse/CLLAIntelligentETLDataWarehouse</PathOnServer>
+        <ServerName>.\SQLDEV2017</ServerName>
+        <PathOnServer>/SSISDB/SSIS/CLLAIntelligentETLDataWarehouse</PathOnServer>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

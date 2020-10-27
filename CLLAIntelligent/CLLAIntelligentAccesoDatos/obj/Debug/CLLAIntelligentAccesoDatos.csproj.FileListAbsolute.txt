@@ -12,5 +12,11 @@ C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntellig
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.pdb
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentModeloDatos.dll
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentModeloDatos.pdb
-C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.Migrations.DWH1.resources
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.Migrations.TablasBaseSeguridad.resources
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.csproj.GenerateResource.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.Migrations.DatosTablaEntidadFederativa.resources
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentLibreria.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CLLAIntelligentLibreria.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.Migrations.FuncionesBaseSeguridad.resources
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\obj\Debug\CLLAIntelligentAccesoDatos.Migrations.DatosBaseSeguridad.resources
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentAccesoDatos\bin\Debug\CodeFirstStoreFunctions.dll

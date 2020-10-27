@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="10.1.45.60.SysExpertBackup.sa"
-  DTS:DTSID="{6E397F73-1728-42FA-A3FC-81D1CA0D0A24}"
-  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  DTS:ObjectName="SysExpert"
+  DTS:DTSID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}"
+  DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=10.1.45.60;User ID=sa;Initial Catalog=SYSEXPERT;Persist Security Info=True;Application Name=SSIS-CLLAIntelligentETLDataWarehouse-{6E397F73-1728-42FA-A3FC-81D1CA0D0A24}10.1.45.60.SysExpertBackup.sa;">
+      DTS:ConnectionString="Data Source=.\SQLDEV2017;User ID=sa;Initial Catalog=SysExpertCabrera20201022;Provider=SQLNCLI11.1;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAABTFwgm2vIN9MGMQTpCGhdOIz3z49ChatQDGnMGRnMu1wAAAAAOgAAAAAIAACAAAAAWO+wAFmKFxR8QXNXKYFiPgcU5ZvhqoLBO4V1X9JlBi4AAAACzFENjUsj+Puk4yw5GNI+6vJhgd7hdtq+LZ2s26Vnqx1tXYq6zAboc046j0Hejr4ZIOPEym8UYLeKxdREK1igdGuR9pfXscy08RR5+RHEpQ3i2iL76jEyt9kILqThApTOqhM7VoMQU4KUmLAWdxmynKbNRairFobPEMuo6ddXRu0AAAACwYVQRUU7WLIX3khcjv3nqIc5XgcpgcEQjkNs/YRi3nqzwi7k0v3PYrxBU5n3lPZ9V4J1XeWJgFsqwPA9oExWS</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAABdJbVmO33TLbJYvoX2WfsJPR3Lw/g6aXsl1fgws+lpgAAAAAAOgAAAAAIAACAAAACy8STiqBHz2LesbSKg3CVjZzoOZmIAoNHg92XIaxxWwIAAAADCu3Zg6+XNbhB8eUggfmMWnDq9ARRA26kYhty8MeVtLxFQIqC8GLP8H3M+x/KJR0iDN3PNK0Goe4HhY5dBNmGbSh2SQr8bx7B4vaMavrsayIm/bQVTp8Nn19qilKYDg8Rbawx3xt79DypruemGPmP1mTMU7f3TqQ7jnQ6UK0JgYkAAAABgqdPEsnl9WBwlO6xrFFeswYsro4jsmzZHVuAh1xaIzAScD7gadk31WtJ7kyWNnECBZh+0cOUYLzMNeo00gQ6J</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
