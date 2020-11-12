@@ -1,0 +1,615 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 12:52:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{55665D89-A6E2-4E45-ADCB-E6AAB4AA2122}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{14B042A2-44AF-4D59-81BD-53B9748C96EC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion digitalizacion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{151CD734-6C0E-4E3F-B2A3-12B6D3FB2770}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion digitalizacion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion digitalizacion\Digitalizacion"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Digitalizacion"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	D.idPed_Digitalizacion,
+	D.idReferencia,
+	D.Documento,
+	D.eDocument,
+	D.idTipoDocumentoVU,
+	D.VURfcConsulta,
+	D.VUNumeroOperacion
+FROM Ped_Digitalizacion  D</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion digitalizacion\Digitalizacion.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idPed_Digitalizacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[idPed_Digitalizacion]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idPed_Digitalizacion]"
+                      name="idPed_Digitalizacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[Documento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[Documento]"
+                      length="120"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[Documento]"
+                      name="Documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[eDocument]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[eDocument]"
+                      length="15"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[eDocument]"
+                      name="eDocument"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idTipoDocumentoVU]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[idTipoDocumentoVU]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idTipoDocumentoVU]"
+                      name="idTipoDocumentoVU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[VURfcConsulta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[VURfcConsulta]"
+                      length="250"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[VURfcConsulta]"
+                      name="VURfcConsulta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[VUNumeroOperacion]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[VUNumeroOperacion]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[VUNumeroOperacion]"
+                      name="VUNumeroOperacion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[idPed_Digitalizacion]"
+                      dataType="i4"
+                      name="idPed_Digitalizacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[Documento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="Documento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[eDocument]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="eDocument" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[idTipoDocumentoVU]"
+                      dataType="i4"
+                      name="idTipoDocumentoVU" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[VURfcConsulta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="VURfcConsulta" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].ExternalColumns[VUNumeroOperacion]"
+                      dataType="i8"
+                      name="VUNumeroOperacion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[idPed_Digitalizacion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[idPed_Digitalizacion]"
+                      name="idPed_Digitalizacion" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[Documento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[Documento]"
+                      name="Documento" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[eDocument]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[eDocument]"
+                      name="eDocument" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[idTipoDocumentoVU]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[idTipoDocumentoVU]"
+                      name="idTipoDocumentoVU" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[VURfcConsulta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[VURfcConsulta]"
+                      name="VURfcConsulta" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[VUNumeroOperacion]"
+                      dataType="i8"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[VUNumeroOperacion]"
+                      name="VUNumeroOperacion" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionPedimentoDigitalizacion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoDigitalizacion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[idPed_Digitalizacion]"
+                      cachedDataType="i4"
+                      cachedName="idPed_Digitalizacion"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[idPed_Digitalizacion]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idPed_Digitalizacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[Documento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="120"
+                      cachedName="Documento"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[Documento]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[Documento]" />
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[eDocument]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="eDocument"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[eDocument]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[eDocument]" />
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[idTipoDocumentoVU]"
+                      cachedDataType="i4"
+                      cachedName="idTipoDocumentoVU"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[idTipoDocumentoVU]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[idTipoDocumentoVU]" />
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[VURfcConsulta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="VURfcConsulta"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[VURfcConsulta]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[VURfcConsulta]" />
+                    <inputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].Columns[VUNumeroOperacion]"
+                      cachedDataType="i8"
+                      cachedName="VUNumeroOperacion"
+                      externalMetadataColumnId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[VUNumeroOperacion]"
+                      lineageId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output].Columns[VUNumeroOperacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[idPed_Digitalizacion]"
+                      dataType="i4"
+                      name="idPed_Digitalizacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[Documento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="Documento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[eDocument]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="eDocument" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[idTipoDocumentoVU]"
+                      dataType="i4"
+                      name="idTipoDocumentoVU" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[VURfcConsulta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="VURfcConsulta" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input].ExternalColumns[VUNumeroOperacion]"
+                      dataType="i8"
+                      name="VUNumeroOperacion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion digitalizacion.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion digitalizacion\Digitalizacion.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{765C70CD-3603-4534-AC60-619543BFFBD1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoDigitalizacion" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{04EC2174-45BD-4C92-9828-ECF610A7AC03}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraccion digitalizacion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="262,26" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Extraccion digitalizacion"
+          TopLeft="248,99" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="345.25,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion digitalizacion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Extraccion digitalizacion\Digitalizacion"
+          TopLeft="239,51" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion"
+          TopLeft="211,146" />
+        <EdgeLayout
+          Id="Package\Extraccion digitalizacion.Paths[OLE DB Source Output]"
+          TopLeft="309,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21,53"
+              Start="0,0"
+              End="21,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="17,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17,26.5"
+                    Point2="21,26.5"
+                    Point3="21,30.5" />
+                  <mssgle:LineSegment
+                    End="21,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion digitalizacion\Digitalizacion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion digitalizacion\ExtraccionPedimentoDigitalizacion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

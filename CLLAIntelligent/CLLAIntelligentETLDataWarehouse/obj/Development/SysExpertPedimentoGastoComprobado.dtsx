@@ -1,0 +1,769 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 5:28:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{601C7C61-0B3E-46AC-B104-EC7478746A7F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{D262588C-68FA-4A7B-BB4D-304F69BCEAD8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraer gasto comprobado"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{844609CB-CCCC-4F2C-987A-0B62ED0A48C8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraer gasto comprobado"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraer gasto comprobado\ExtraccionGasto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionGasto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoGastoComprobado]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer gasto comprobado\ExtraccionGasto.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[idGastoComprobado]"
+                      cachedDataType="i4"
+                      cachedName="idGastoComprobado"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idGastoComprobado]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGastoComprobado]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[idGasto]"
+                      cachedDataType="i4"
+                      cachedName="idGasto"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGasto]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[TipoGasto]"
+                      cachedDataType="i4"
+                      cachedName="TipoGasto"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[TipoGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[TipoGasto]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[DescGasto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="DescGasto"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[DescGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[DescGasto]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[idGuia]"
+                      cachedDataType="i4"
+                      cachedName="idGuia"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idGuia]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGuia]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[CONCEPTO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="90"
+                      cachedName="CONCEPTO"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[CONCEPTO]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[CONCEPTO]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[Folio]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Folio"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Folio]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Folio]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[Monto]"
+                      cachedDataType="r8"
+                      cachedName="Monto"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Monto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Monto]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[Cheque]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cheque"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Cheque]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Cheque]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[idReferenciaGasto]"
+                      cachedDataType="i4"
+                      cachedName="idReferenciaGasto"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idReferenciaGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idReferenciaGasto]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[FechaFolio]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaFolio"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[FechaFolio]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[FechaFolio]" />
+                    <inputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].Columns[Iva]"
+                      cachedDataType="numeric"
+                      cachedName="Iva"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Iva]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Iva]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idGastoComprobado]"
+                      dataType="i4"
+                      name="idGastoComprobado" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idGasto]"
+                      dataType="i4"
+                      name="idGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[TipoGasto]"
+                      dataType="i4"
+                      name="TipoGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[DescGasto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="DescGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idGuia]"
+                      dataType="i4"
+                      name="idGuia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[CONCEPTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="90"
+                      name="CONCEPTO" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Folio]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Folio" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Monto]"
+                      dataType="r8"
+                      name="Monto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Cheque]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cheque" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[idReferenciaGasto]"
+                      dataType="i4"
+                      name="idReferenciaGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[FechaFolio]"
+                      dataType="dbTimeStamp"
+                      name="FechaFolio" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input].ExternalColumns[Iva]"
+                      dataType="numeric"
+                      name="Iva"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraer gasto comprobado\ExtraccionGasto.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\ExtraccionGasto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\ExtraccionGasto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\ExtraccionGasto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraer gasto comprobado\Gasto"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Gasto"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PGC.idGastoComprobado,
+	PGC.idGasto,
+	GC.TipoGasto,
+	GC.DescGasto,
+	PGC.idGuia,
+	PGC.DescGasto AS CONCEPTO,
+	PGC.Folio,
+	PGC.Monto,
+	PGC.Cheque,
+	PGC.idReferenciaGasto,
+	PGC.FechaFolio,
+	PGC.Iva
+FROM Ped_GastosComprobados PGC
+	JOIN GastosComprobados GC ON (PGC.idGasto =  GC.idGasto)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer gasto comprobado\Gasto.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGastoComprobado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idGastoComprobado]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGastoComprobado]"
+                      name="idGastoComprobado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGasto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGasto]"
+                      name="idGasto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[TipoGasto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[TipoGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[TipoGasto]"
+                      name="TipoGasto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[DescGasto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[DescGasto]"
+                      length="40"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[DescGasto]"
+                      name="DescGasto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGuia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idGuia]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idGuia]"
+                      name="idGuia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[CONCEPTO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[CONCEPTO]"
+                      length="90"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[CONCEPTO]"
+                      name="CONCEPTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Folio]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Folio]"
+                      length="15"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Folio]"
+                      name="Folio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Monto]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Monto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Monto]"
+                      name="Monto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Cheque]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Cheque]"
+                      length="15"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Cheque]"
+                      name="Cheque"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idReferenciaGasto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idReferenciaGasto]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[idReferenciaGasto]"
+                      name="idReferenciaGasto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[FechaFolio]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[FechaFolio]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[FechaFolio]"
+                      name="FechaFolio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Iva]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Iva]"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].Columns[Iva]"
+                      name="Iva"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idGastoComprobado]"
+                      dataType="i4"
+                      name="idGastoComprobado" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idGasto]"
+                      dataType="i4"
+                      name="idGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[TipoGasto]"
+                      dataType="i4"
+                      name="TipoGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[DescGasto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="DescGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idGuia]"
+                      dataType="i4"
+                      name="idGuia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[CONCEPTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="90"
+                      name="CONCEPTO" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Folio]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Folio" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Monto]"
+                      dataType="r8"
+                      name="Monto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Cheque]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cheque" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[idReferenciaGasto]"
+                      dataType="i4"
+                      name="idReferenciaGasto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[FechaFolio]"
+                      dataType="dbTimeStamp"
+                      name="FechaFolio" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output].ExternalColumns[Iva]"
+                      dataType="numeric"
+                      name="Iva"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idGastoComprobado]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idGastoComprobado]"
+                      name="idGastoComprobado" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idGasto]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idGasto]"
+                      name="idGasto" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[TipoGasto]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[TipoGasto]"
+                      name="TipoGasto" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[DescGasto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[DescGasto]"
+                      name="DescGasto" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idGuia]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idGuia]"
+                      name="idGuia" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[CONCEPTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="90"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[CONCEPTO]"
+                      name="CONCEPTO" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Folio]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Folio]"
+                      name="Folio" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Monto]"
+                      dataType="r8"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Monto]"
+                      name="Monto" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Cheque]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Cheque]"
+                      name="Cheque" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idReferenciaGasto]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[idReferenciaGasto]"
+                      name="idReferenciaGasto" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[FechaFolio]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[FechaFolio]"
+                      name="FechaFolio" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Iva]"
+                      dataType="numeric"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[Iva]"
+                      name="Iva"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraer gasto comprobado.Paths[OLE DB Source Output]"
+              endId="Package\Extraer gasto comprobado\ExtraccionGasto.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraer gasto comprobado\Gasto.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla GastoComprobado"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{548E97A5-7D22-4B09-82BA-7AF129B28336}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla GastoComprobado"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoGastoComprobado" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9DFDC073-7EBF-4AA6-9DD4-D78B403455F6}"
+      DTS:From="Package\Truncar tabla GastoComprobado"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraer gasto comprobado" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Extraer gasto comprobado"
+          TopLeft="274,96" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Truncar tabla GastoComprobado"
+          TopLeft="267,22" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="379.25,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraer gasto comprobado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Extraer gasto comprobado\Gasto"
+          TopLeft="213,48" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Extraer gasto comprobado\ExtraccionGasto"
+          TopLeft="188,139" />
+        <EdgeLayout
+          Id="Package\Extraer gasto comprobado.Paths[OLE DB Source Output]"
+          TopLeft="265.5,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer gasto comprobado\Gasto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer gasto comprobado\ExtraccionGasto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,496 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 7:22:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{772DA9DE-C253-417F-97DE-9F1C7F0492DF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{39FD6AF5-51C2-415B-B36E-4F17BE47DA2E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraer ParteII"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E95F38D1-6404-4C1B-A002-7DF6F174928E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraer ParteII"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraer ParteII\ExtraccionParteII"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionParteII"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoParteII]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer ParteII\ExtraccionParteII.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].Columns[idPedParteII]"
+                      cachedDataType="i4"
+                      cachedName="idPedParteII"
+                      externalMetadataColumnId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[idPedParteII]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[idPedParteII]" />
+                    <inputColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].Columns[NoParteII]"
+                      cachedDataType="i2"
+                      cachedName="NoParteII"
+                      externalMetadataColumnId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[NoParteII]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[NoParteII]" />
+                    <inputColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].Columns[DatosVehiculo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="120"
+                      cachedName="DatosVehiculo"
+                      externalMetadataColumnId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[DatosVehiculo]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[DatosVehiculo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[idPedParteII]"
+                      dataType="i4"
+                      name="idPedParteII" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[NoParteII]"
+                      dataType="i2"
+                      name="NoParteII" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input].ExternalColumns[DatosVehiculo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="DatosVehiculo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraer ParteII\ExtraccionParteII.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer ParteII\ExtraccionParteII.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ExtraccionParteII.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer ParteII\ExtraccionParteII.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraer ParteII\ParteII"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ParteII"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	idPedParteII,
+	idReferencia,
+	NoParteII,
+	DatosVehiculo
+FROM Ped_PartesII</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer ParteII\ParteII.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[idPedParteII]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[idPedParteII]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[idPedParteII]"
+                      name="idPedParteII"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[NoParteII]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[NoParteII]"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[NoParteII]"
+                      name="NoParteII"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[DatosVehiculo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[DatosVehiculo]"
+                      length="120"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].Columns[DatosVehiculo]"
+                      name="DatosVehiculo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[idPedParteII]"
+                      dataType="i4"
+                      name="idPedParteII" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[NoParteII]"
+                      dataType="i2"
+                      name="NoParteII" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output].ExternalColumns[DatosVehiculo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="DatosVehiculo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[idPedParteII]"
+                      dataType="i4"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[idPedParteII]"
+                      name="idPedParteII" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[NoParteII]"
+                      dataType="i2"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[NoParteII]"
+                      name="NoParteII" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[DatosVehiculo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[DatosVehiculo]"
+                      name="DatosVehiculo" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraer ParteII.Paths[OLE DB Source Output]"
+              endId="Package\Extraer ParteII\ExtraccionParteII.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraer ParteII\ParteII.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla ParteII"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{56EFCC12-C0BA-462D-88DC-4C9007694583}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla ParteII"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoParteII" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4A74AF83-1742-461E-A3E5-794B8016CDD1}"
+      DTS:From="Package\Truncar tabla ParteII"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraer ParteII" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Truncar tabla ParteII"
+          TopLeft="241,37" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Extraer ParteII"
+          TopLeft="262,119" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="333.25,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraer ParteII">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Extraer ParteII\ParteII"
+          TopLeft="278,27" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Extraer ParteII\ExtraccionParteII"
+          TopLeft="252,104" />
+        <EdgeLayout
+          Id="Package\Extraer ParteII.Paths[OLE DB Source Output]"
+          TopLeft="332.75,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer ParteII\ParteII">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer ParteII\ExtraccionParteII">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

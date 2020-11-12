@@ -1,0 +1,1333 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/29/2020 12:43:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{69BB2A3B-10E9-4395-9D2F-EC803D1A9E26}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{A9A40913-4B60-4742-A747-EAEDA9A6969A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{5B442E34-26EE-4EB1-A200-74E3F2CD12AE}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::RutaArchivo]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\EDUARDO LOPEZ\Documents\TREND\OperacionDirectaFernando\A1\TREND TECHNOLOGIES MALAYSIA SDN BHD-September 3 2020 INV-06608-20.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=NO&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{91B53089-0507-47D4-96AC-5C192CF4827D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8">TREND TECHNOLOGIES MALAYSIA SDN BHD-September 3 2020 INV-06608-20.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F27138DB-536A-485F-A4B1-45E363B5C5B0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::RutaExtraccionClienteTRENDOperacionDirectaA1] + &quot;\\&quot; +   @[User::NombreArchivo]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RutaArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\EDUARDO LOPEZ\Documents\TREND\OperacionDirectaFernando\A1\TREND TECHNOLOGIES MALAYSIA SDN BHD-September 3 2020 INV-06608-20.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{998B9C2D-EF0E-47F8-8A2D-AAE4196298C3}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::RutaDirectorioProcesado] +&quot;\\&quot;+ @[User::NombreArchivo]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RutaArchivoProcesado">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\EDUARDO LOPEZ\Documents\TREND\OperacionDirectaFernando\A1\Procesado\TREND TECHNOLOGIES MALAYSIA SDN BHD-September 3 2020 INV-06608-20.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5D5FDE18-12FE-452A-A268-B4634FA9C0DA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::RutaExtraccionClienteTRENDOperacionDirectaA1]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RutaDirectorio">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\EDUARDO LOPEZ\Documents\TREND\OperacionDirectaFernando\A1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ABE76B6C-CE49-47E8-862E-97A271CE4347}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::RutaExtraccionClienteTRENDOperacionDirectaA1] +&quot;\\Procesado&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RutaDirectorioProcesado">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\EDUARDO LOPEZ\Documents\TREND\OperacionDirectaFernando\A1\Procesado</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Archivos pendientes en directorio"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{D9934F2E-A087-4C58-8B8D-5F9D394C4471}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archivos pendientes en directorio">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{38228EB5-9EC1-4B06-A3A1-A74B482C90D6}"
+        DTS:ObjectName="{38228EB5-9EC1-4B06-A3A1-A74B482C90D6}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[$Project::RutaExtraccionClienteTRENDOperacionDirectaA1]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\EDUARDO LOPEZ\Documents\TREND\OperacionDirectaFernando\A1" />
+            <FEFEProperty
+              FileSpec="*.xlsx" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Archivos pendientes en directorio\Extraer archivo"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E3063C42-7A27-41A2-B01A-D0CB2DB4C97D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Extraer archivo"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Agregar nombre de archivo y fecha"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output].Columns[NombreArchivo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="168"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output].Columns[NombreArchivo]"
+                          name="NombreArchivo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::NombreArchivo]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::NombreArchivo]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output].Columns[FechaExtraccion]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output].Columns[FechaExtraccion]"
+                          name="FechaExtraccion"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::StartTime]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::StartTime]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	F1 AS PO,
+	F2 AS BPSupplier,
+	F3 AS Material,
+	F4 AS SupplierDescription,
+	F5 AS SpanishDescription,
+	F6 AS QtyCOVE,
+	F7 AS UMCCOVE,
+	F8 AS QtyUMC,
+	F9 AS UMC,
+	F10 AS UnitPriceUSD,
+	F11 AS TotalValueUSD,
+	F12 AS TariffNumber,
+	F13 AS CoO,
+	F14 AS Regimen,
+	F15 AS BrandOrReference,
+	F16 AS ModelOrCustomerPN,
+	F17 AS SerieOrTrendPN,
+	F18 AS IDNumber,
+	F19 AS Complements
+ FROM [BD Facturas$] WHERE F9 &lt;&gt; '' AND F9 &lt;&gt; 'UMC'</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[PO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[PO]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[PO]"
+                          name="PO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[BPSupplier]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[BPSupplier]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[BPSupplier]"
+                          name="BPSupplier"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Material]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Material]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Material]"
+                          name="Material"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SupplierDescription]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[SupplierDescription]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SupplierDescription]"
+                          name="SupplierDescription"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SpanishDescription]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[SpanishDescription]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SpanishDescription]"
+                          name="SpanishDescription"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[QtyCOVE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[QtyCOVE]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[QtyCOVE]"
+                          name="QtyCOVE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UMCCOVE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMCCOVE]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UMCCOVE]"
+                          name="UMCCOVE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[QtyUMC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[QtyUMC]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[QtyUMC]"
+                          name="QtyUMC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UMC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMC]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UMC]"
+                          name="UMC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UnitPriceUSD]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[UnitPriceUSD]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UnitPriceUSD]"
+                          name="UnitPriceUSD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[TotalValueUSD]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[TotalValueUSD]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[TotalValueUSD]"
+                          name="TotalValueUSD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[TariffNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[TariffNumber]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[TariffNumber]"
+                          name="TariffNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[CoO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[CoO]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[CoO]"
+                          name="CoO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Regimen]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Regimen]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Regimen]"
+                          name="Regimen"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[BrandOrReference]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[BrandOrReference]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[BrandOrReference]"
+                          name="BrandOrReference"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[ModelOrCustomerPN]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[ModelOrCustomerPN]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[ModelOrCustomerPN]"
+                          name="ModelOrCustomerPN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SerieOrTrendPN]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[SerieOrTrendPN]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SerieOrTrendPN]"
+                          name="SerieOrTrendPN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[IDNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[IDNumber]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[IDNumber]"
+                          name="IDNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Complements]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Complements]"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Complements]"
+                          name="Complements"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[PO]"
+                          dataType="wstr"
+                          length="255"
+                          name="PO" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[BPSupplier]"
+                          dataType="wstr"
+                          length="255"
+                          name="BPSupplier" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Material]"
+                          dataType="wstr"
+                          length="255"
+                          name="Material" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[SupplierDescription]"
+                          dataType="wstr"
+                          length="255"
+                          name="SupplierDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[SpanishDescription]"
+                          dataType="wstr"
+                          length="255"
+                          name="SpanishDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[QtyCOVE]"
+                          dataType="wstr"
+                          length="255"
+                          name="QtyCOVE" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMCCOVE]"
+                          dataType="wstr"
+                          length="255"
+                          name="UMCCOVE" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[QtyUMC]"
+                          dataType="wstr"
+                          length="255"
+                          name="QtyUMC" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMC]"
+                          dataType="wstr"
+                          length="255"
+                          name="UMC" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[UnitPriceUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="UnitPriceUSD" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[TotalValueUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="TotalValueUSD" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[TariffNumber]"
+                          dataType="wstr"
+                          length="255"
+                          name="TariffNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[CoO]"
+                          dataType="wstr"
+                          length="255"
+                          name="CoO" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Regimen]"
+                          dataType="wstr"
+                          length="255"
+                          name="Regimen" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[BrandOrReference]"
+                          dataType="wstr"
+                          length="255"
+                          name="BrandOrReference" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[ModelOrCustomerPN]"
+                          dataType="wstr"
+                          length="255"
+                          name="ModelOrCustomerPN" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[SerieOrTrendPN]"
+                          dataType="wstr"
+                          length="255"
+                          name="SerieOrTrendPN" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[IDNumber]"
+                          dataType="wstr"
+                          length="255"
+                          name="IDNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Complements]"
+                          dataType="wstr"
+                          length="255"
+                          name="Complements" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[PO]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[PO]"
+                          name="PO" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[BPSupplier]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[BPSupplier]"
+                          name="BPSupplier" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[Material]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[Material]"
+                          name="Material" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[SupplierDescription]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[SupplierDescription]"
+                          name="SupplierDescription" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[SpanishDescription]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[SpanishDescription]"
+                          name="SpanishDescription" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[QtyCOVE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[QtyCOVE]"
+                          name="QtyCOVE" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[UMCCOVE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[UMCCOVE]"
+                          name="UMCCOVE" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[QtyUMC]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[QtyUMC]"
+                          name="QtyUMC" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[UMC]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[UMC]"
+                          name="UMC" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[UnitPriceUSD]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[UnitPriceUSD]"
+                          name="UnitPriceUSD" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[TotalValueUSD]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[TotalValueUSD]"
+                          name="TotalValueUSD" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[TariffNumber]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[TariffNumber]"
+                          name="TariffNumber" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[CoO]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[CoO]"
+                          name="CoO" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[Regimen]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[Regimen]"
+                          name="Regimen" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[BrandOrReference]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[BrandOrReference]"
+                          name="BrandOrReference" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[ModelOrCustomerPN]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[ModelOrCustomerPN]"
+                          name="ModelOrCustomerPN" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[SerieOrTrendPN]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[SerieOrTrendPN]"
+                          name="SerieOrTrendPN" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[IDNumber]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[IDNumber]"
+                          name="IDNumber" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[Complements]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[Complements]"
+                          name="Complements" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="ExtraccionOperacionDiaria"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ExtraccionClienteTrendOperacionDirecta]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Connections[OleDbConnection]"
+                      connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[PO]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="PO"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[PO]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[PO]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[BPSupplier]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="BPSupplier"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[BPSupplier]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[BPSupplier]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[Material]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Material"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[Material]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Material]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[SupplierDescription]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SupplierDescription"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[SupplierDescription]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SupplierDescription]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[SpanishDescription]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SpanishDescription"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[SpanishDescription]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SpanishDescription]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[QtyCOVE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="QtyCOVE"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[QtyCOVE]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[QtyCOVE]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[UMCCOVE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="UMCCOVE"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[UMCCOVE]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UMCCOVE]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[QtyUMC]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="QtyUMC"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[QtyUMC]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[QtyUMC]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[UMC]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="UMC"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UMC]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[UnitPriceUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="UnitPriceUSD"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceUSD]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[UnitPriceUSD]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[TotalValueUSD]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TotalValueUSD"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[TotalValueUSD]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[TotalValueUSD]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[TariffNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TariffNumber"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[TariffNumber]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[TariffNumber]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[CoO]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CoO"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[CoO]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[CoO]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[Regimen]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Regimen"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[Regimen]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Regimen]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[BrandOrReference]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="BrandOrReference"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[BrandOrReference]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[BrandOrReference]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[ModelOrCustomerPN]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ModelOrCustomerPN"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[ModelOrCustomerPN]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[ModelOrCustomerPN]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[SerieOrTrendPN]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SerieOrTrendPN"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[SerieOrTrendPN]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[SerieOrTrendPN]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[IDNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="IDNumber"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[IDNumber]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[IDNumber]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[Complements]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Complements"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[Complements]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output].Columns[Complements]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[NombreArchivo]"
+                          cachedDataType="wstr"
+                          cachedLength="168"
+                          cachedName="NombreArchivo"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[NombreArchivo]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output].Columns[NombreArchivo]" />
+                        <inputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].Columns[FechaExtraccion]"
+                          cachedDataType="date"
+                          cachedName="FechaExtraccion"
+                          externalMetadataColumnId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[FechaExtraccion]"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output].Columns[FechaExtraccion]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[ExtraccionClienteTrendOperacionDirectaID]"
+                          dataType="i4"
+                          name="ExtraccionClienteTrendOperacionDirectaID" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[PO]"
+                          dataType="wstr"
+                          length="255"
+                          name="PO" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[BPSupplier]"
+                          dataType="wstr"
+                          length="255"
+                          name="BPSupplier" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[Material]"
+                          dataType="wstr"
+                          length="255"
+                          name="Material" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[SupplierDescription]"
+                          dataType="wstr"
+                          length="255"
+                          name="SupplierDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[SpanishDescription]"
+                          dataType="wstr"
+                          length="255"
+                          name="SpanishDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[QtyCOVE]"
+                          dataType="wstr"
+                          length="255"
+                          name="QtyCOVE" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[UMCCOVE]"
+                          dataType="wstr"
+                          length="255"
+                          name="UMCCOVE" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[QtyUMC]"
+                          dataType="wstr"
+                          length="255"
+                          name="QtyUMC" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                          dataType="wstr"
+                          length="255"
+                          name="UMC" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[UnitPriceUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="UnitPriceUSD" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[TotalValueUSD]"
+                          dataType="wstr"
+                          length="255"
+                          name="TotalValueUSD" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[TariffNumber]"
+                          dataType="wstr"
+                          length="255"
+                          name="TariffNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[CoO]"
+                          dataType="wstr"
+                          length="255"
+                          name="CoO" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[Regimen]"
+                          dataType="wstr"
+                          length="255"
+                          name="Regimen" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[BrandOrReference]"
+                          dataType="wstr"
+                          length="255"
+                          name="BrandOrReference" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[ModelOrCustomerPN]"
+                          dataType="wstr"
+                          length="255"
+                          name="ModelOrCustomerPN" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[SerieOrTrendPN]"
+                          dataType="wstr"
+                          length="255"
+                          name="SerieOrTrendPN" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[IDNumber]"
+                          dataType="wstr"
+                          length="255"
+                          name="IDNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[Complements]"
+                          dataType="wstr"
+                          length="255"
+                          name="Complements" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[NombreArchivo]"
+                          dataType="wstr"
+                          length="255"
+                          name="NombreArchivo" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input].ExternalColumns[FechaExtraccion]"
+                          dataType="dbTimeStamp"
+                          name="FechaExtraccion" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Archivos pendientes en directorio\Extraer archivo.Paths[Derived Column Output]"
+                  endId="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Archivos pendientes en directorio\Extraer archivo.Paths[Excel Source Output]"
+                  endId="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha.Inputs[Derived Column Input]"
+                  name="Excel Source Output"
+                  startId="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archivos pendientes en directorio\Mover archivo procesado"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="Tarea Sistema de archivos"
+          DTS:DTSID="{B61D00EA-3C52-4680-890B-FBBF07255FD6}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Mover archivo procesado"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskSourcePath="User::RutaArchivo"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::RutaArchivoProcesado"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Archivos pendientes en directorio.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5F46C6BB-E185-47CD-8DAB-1C918C9416DB}"
+          DTS:From="Package\Archivos pendientes en directorio\Extraer archivo"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Archivos pendientes en directorio\Mover archivo procesado" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{87D6BA91-0910-473A-8E49-AAC30AD11E92}"
+          DTS:ObjectName="{87D6BA91-0910-473A-8E49-AAC30AD11E92}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::NombreArchivo" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Crear directorio procesado"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="Tarea Sistema de archivos"
+      DTS:DTSID="{382905E8-4D4B-4612-B744-E1B8B6502716}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Crear directorio procesado"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::RutaDirectorioProcesado"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{10B7098C-92D6-4D09-8F82-8EA9BA02BA56}"
+      DTS:From="Package\Crear directorio procesado"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Archivos pendientes en directorio" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Archivos pendientes en directorio\Extraer archivo"
+          TopLeft="91,27" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Archivos pendientes en directorio\Mover archivo procesado"
+          TopLeft="61,103" />
+        <EdgeLayout
+          Id="Package\Archivos pendientes en directorio.PrecedenceConstraints[Constraint]"
+          TopLeft="162.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="304,200"
+          Size="304,243"
+          Id="Package\Archivos pendientes en directorio"
+          TopLeft="227,121" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Crear directorio procesado"
+          TopLeft="280,27" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="380.25,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Archivos pendientes en directorio\Extraer archivo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="245,42"
+          Id="Package\Archivos pendientes en directorio\Extraer archivo\Agregar nombre de archivo y fecha"
+          TopLeft="153,126" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria"
+          TopLeft="174,227" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source"
+          TopLeft="206,32" />
+        <EdgeLayout
+          Id="Package\Archivos pendientes en directorio\Extraer archivo.Paths[Excel Source Output]"
+          TopLeft="275.5,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Archivos pendientes en directorio\Extraer archivo.Paths[Derived Column Output]"
+          TopLeft="275.25,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Archivos pendientes en directorio\Extraer archivo\ExtraccionOperacionDiaria">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Archivos pendientes en directorio\Extraer archivo\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

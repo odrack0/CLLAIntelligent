@@ -1,0 +1,180 @@
+SELECT 
+	 PEDGRALES.idReferencia [OrigenidReferencia]
+	,PEDGRALES.idAgencia [OrigenidAgencia]
+	,PEDGRALES.idCliente [OrigenidCliente]
+	,AGENCIAS.Patente [Patente]
+	,ADUANAS.ClaveAduana [AduanaClave]
+	,ADUANAS.NombreAduana [AduanaNombre]
+	,PEDGRALES.NumeroReferencia [NumeroReferencia]
+	,PEDGRALES.NumeroPedimento [NumeroPedimento]
+	,OPERACIONES.TipoOperacion [TipoOperacion]
+	,OPERACIONES.op_Clave [TipoOperacioClave]
+	,PEDGRALES.Rectificacion [Rectificacion]
+	,CVESDOCS.Clave [ClaveDocumento]
+	,REGIMENES.rg_Clave [ClaveDocumentoRegimenClave]
+	,REGIMENES.rg_Descripcion [ClaveDocumentoRegimenClaveDescripcion]				
+	,ADUANASENTSAL.ClaveAduana [AduanaEntSalClaveAduana]
+	,ADUANASENTSAL.NombreAduana [AduanaEntSalNombreAduana]			
+	,ADUANASDESPACHO.ClaveAduana [AduanaDespachoClave]
+	,ADUANASDESPACHO.NombreAduana [AduanaDespachoNombre]
+	,TIPOCAMBIO.Fecha [TipoCambioFecha]
+	,TIPOCAMBIO.Valor [TipoCambioValor]
+	,CLIENTES.ClaveCliente [ClienteClaveCliente]
+	,CLIENTES.RazonSocial [ClienteRazonSocial]
+	,CLIENTES.RFC [ClienteRFC]
+	,CLIENTES.Domicilio [ClienteDomicilio]
+	,CLIENTES.Calle [ClienteCalle]
+	,CLIENTES.NumeroExterior [ClienteNumeroExterior]
+	,CLIENTES.NumeroInterior [ClienteNumeroInterior]
+	,CLIENTES.Colonia [ClienteColonia]
+	,CLIENTES.CodigoPostal [ClienteCodigoPostal]
+	,CLIENTES.Ciudad [ClienteCiudad]
+	,CLIENTESEF.ClaveEntidad [ClienteClaveEntidad]
+	,CLIENTESEF.EntidadFederativa [ClienteEntidadFederativa]
+	,CLIENTESPAISES.ClaveM3 [ClientePaisClaveM3]
+	,CLIENTESPAISES.NombrePais [ClientePaisNombrePais]
+	,CLIENTESFACTURAR.ClaveCliente [ClienteFacturarClaveCliente]
+	,CLIENTESFACTURAR.RazonSocial [ClienteFacturarRazonSocial]
+	,CLIENTESFACTURAR.RFC [ClienteFacturarRFC]
+	,CLIENTESFACTURAR.Domicilio [ClienteFacturarDomicilio]
+	,CLIENTESFACTURAR.Calle [ClienteFacturarCalle]
+	,CLIENTESFACTURAR.NumeroExterior [ClienteFacturarNumeroExterior]
+	,CLIENTESFACTURAR.NumeroInterior [ClienteFacturarNumeroInterior]
+	,CLIENTESFACTURAR.Colonia [ClienteFacturarColonia]
+	,CLIENTESFACTURAR.CodigoPostal [ClienteFacturarCodigoPostal]
+	,CLIENTESFACTURAR.Ciudad [ClienteFacturarCiudad]
+	,CLIFACTEF.ClaveEntidad [ClienteFacturarClaveEntidad]
+	,CLIFACTEF.EntidadFederativa [ClienteFacturarEntidadFederativa]
+	,CLIFACTPAIS.ClaveM3 [ClienteFacturarPaisClaveM3]
+	,CLIFACTPAIS.NombrePais [ClienteFacturarPaisNombrePais]		
+	,MTENTRADA.ClaveTransporte [MedioTransporteEntradaClaveTransporte]
+	,MTENTRADA.Descripcion [MedioTransporteEntradaDescripcion]
+	,MTSALIDA.ClaveTransporte [MedioTransporteSalidaClaveTransporte]
+	,MTSALIDA.Descripcion [MedioTransporteSalidaDescripcion]
+	,MTARRIBO.ClaveTransporte [MedioTransporteArriboClaveTransporte]
+	,MTARRIBO.Descripcion [MedioTransporteArriboDescripcion]
+	,PEDGRALES.ValorSegurosMN [ValorSegurosMN]
+	,PEDGRALES.DescuentosAdmisiblesUSD [DescuentosAdmisiblesUSD]
+	,PEDGRALES.FactorActualizacion [FactorActualizacion]
+	,PEDGRALES.AfectaIncrementables [AfectaIncrementables]
+	,PEDGRALES.Bultos [Bultos]
+	,PEDGRALES.MarcasNumeros [MarcasNumeros]
+	,DESTINOS.Clave [DestinoClave]
+	,DESTINOS.Descripcion [DestinoDescripcion]
+	,TRAMITADORES.Clave [TramitadorClave]
+	,TRAMITADORES.Nombre [TramitadorNombre]
+	,TRAMITADORES.RFC [TramitadorRFC]
+	,TRAMITADORES.CURP [TramitadorCURP]
+	,PEDGRALES.Observaciones [Observaciones]
+	,PEDGRALES.Acuse [Acuse]
+	,PEDGRALES.ArchivoValidacion [ArchivoValidacion]
+	,PEDGRALES.Bacuse [Bacuse]
+	,PEDGRALES.BArchivoValidacion [BArchivoValidacion]
+	,PEDGRALES.BPagoFecha [BPagoFecha]
+	,PEDGRALES.BpagoHora [BpagoHora]
+	,PEDGRALES.Bcaja [Bcaja]
+	,PEDGRALES.BOperacionBancaria [BOperacionBancaria]
+	,BANCOS.Clave [BancosClave]
+	,BANCOS.Nombre [BancosNombre]
+	,PEDGRALES.Desaduanamiento [Desaduanamiento]
+	,PEDGRALES.DesaduanamientoFecha [DesaduanamientoFecha]
+	,USERS.USU_NAME [UsuarioDesaduanaUSU_NAME]
+	,PEDGRALES.Aleatorio [Aleatorio]			
+	,PEDGRALES.Anio [Anio]
+	,PEDGRALES.PedimentoUSACAN [PedimentoUSACAN]
+	,PEDGRALES.MV_Comisiones [MV_Comisiones]
+	,PEDGRALES.MV_FletesySeguros [MV_FletesySeguros]
+	,PEDGRALES.MV_CargayDescarga [MV_CargayDescarga]
+	,PEDGRALES.MV_MaterialesAportados [MV_MaterialesAportados]
+	,PEDGRALES.MV_TecnologiaAportada [MV_TecnologiaAportada]
+	,PEDGRALES.MV_Regalias [MV_Regalias]
+	,PEDGRALES.MV_Reversiones [MV_Reversiones]
+	,PEDGRALES.MV_GastosNoRelacionados [MV_GastosNoRelacionados]
+	,PEDGRALES.MV_FletesySegurosNI [MV_FletesySegurosNI]
+	,PEDGRALES.MV_GastosConstruccion [MV_GastosConstruccion]
+	,PEDGRALES.MV_InstalacionArmado [MV_InstalacionArmado]
+	,PEDGRALES.MV_Contribuciones [MV_Contribuciones]
+	,PEDGRALES.MV_Dividendos [MV_Dividendos]
+	,PEDGRALES.TotalVehiculos [TotalVehiculos]
+	,PEDGRALES.PesoBruto [PesoBruto]
+	,PREVALIDADOR.ClavePrevalidador [PrevalidadorClavePrevalidador]
+	,PREVALIDADOR.NombrePrevalidador [PrevalidadorNombrePrevalidador]
+	,PEDGRALES.FirmaCAAAREM [FirmaCAAAREM]
+	,SEMANAS.FechaInicial [SemanaFechaInicial]
+	,SEMANAS.FechaFinal [SemanaFechaFinal]
+	,SEMANAS.Semana [Semana]
+	,PEDGRALES.ContadorRemesas [ContadorRemesas]
+	,PEDGRALES.FletesUSD [FletesUSD]
+	,PEDGRALES.SegurosUSD [SegurosUSD]
+	,PEDGRALES.EmbalajeUSD [EmbalajeUSD]
+	,PEDGRALES.OtrosIncrementablesUSD [OtrosIncrementablesUSD]
+	,PEDGRALES.FactorIncrementables [FactorIncrementables]
+	,PEDGRALES.TipoActualizacion [TipoActualizacion]
+	,PEDGRALES.Producto [Producto]
+	,PEDGRALES.Planta [Planta]
+	,PEDGRALES.ClaveCuentaPago [ClaveCuentaPago]
+	,PEDGRALES.NuevasObservaciones [NuevasObservaciones]
+	,PEDGRALES.RFCFacturaServicios [RFCFacturaServicios]
+	,PEDGRALES.TipoDeCambio [TipoDeCambio]
+	,PEDGRALES.ClaveRegimen [ClaveRegimen]
+	,PEDGRALES.EstatusGF [EstatusGF]
+	,PEDGRALES.IncrementablesManual [IncrementablesManual]
+	,PEDGRALES.FletesME [FletesME]
+	,PEDGRALES.SegurosME [SegurosME]
+	,PEDGRALES.EmbalajeME [EmbalajeME]
+	,PEDGRALES.OtrosIncrementME [OtrosIncrementME]
+	,PAISMONFLETES.ClaveM3 [PaisMonFletesClaveM3]
+	,PAISMONFLETES.NombrePais [PaisMonFletesNombrePais]
+	,PAISMONFLETES.ClaveMoneda [PaisMonFletesClaveMoneda]
+	,PAISMONFLETES.NombreMoneda [PaisMonFletesNombreMoneda]
+	,PAISMONSEGUROS.ClaveM3 [PaisMonSegurosClaveM3]
+	,PAISMONSEGUROS.NombrePais [PaisMonSegurosNombrePais]
+	,PAISMONSEGUROS.ClaveMoneda [PaisMonSegurosClaveMoneda]
+	,PAISMONSEGUROS.NombreMoneda [PaisMonSegurosNombreMoneda]
+	,PAISMONEMBALAJE.ClaveM3 [PaisMonEmbalajeClaveM3]
+	,PAISMONEMBALAJE.NombrePais [PaisMonEmbalajeNombrePais]
+	,PAISMONEMBALAJE.ClaveMoneda [PaisMonEmbalajeClaveMoneda]
+	,PAISMONEMBALAJE.NombreMoneda [PaisMonEmbalajeNombreMoneda]
+	,PAISMONOTROSINC.ClaveM3 [PaisMonOtrosIncrementClaveM3]
+	,PAISMONOTROSINC.NombrePais [PaisMonOtrosIncrementNombrePais]
+	,PAISMONOTROSINC.ClaveMoneda [PaisMonOtrosIncrementClaveMoneda]
+	,PAISMONOTROSINC.NombreMoneda [PaisMonOtrosIncrementNombreMoneda]
+	,PEDGRALES.LineaCaptura [LineaCaptura]
+	,PEDGRALES.TotalImportePagar [TotalImportePagar]
+	,PEDGRALES.ArchivoConfimacionPago [ArchivoConfimacionPago]
+	,PEDGRALES.AcuseConfirmacionPago [AcuseConfirmacionPago]
+	,PEDGRALES.NumeroTransaccionSAT [NumeroTransaccionSAT]
+	FROM BitacoraExtraccionSysExpertPedimento  BEP            
+		JOIN Ped_Grales                        PEDGRALES        WITH(NOLOCK) ON (BEP.idReferencia = PEDGRALES.idReferencia)
+		LEFT JOIN Agencias                     AGENCIAS         WITH(NOLOCK) ON (PEDGRALES.idAgencia               = AGENCIAS.IdAgencia)
+		LEFT JOIN Aduanas                      ADUANAS          WITH(NOLOCK) ON (AGENCIAS.idAduana                 = ADUANAS.idAduana)
+		LEFT JOIN Operaciones                  OPERACIONES      WITH(NOLOCK) ON (PEDGRALES.idTipoOperacion         = OPERACIONES.idTipoOperacion)
+		LEFT JOIN CvesDocs                     CVESDOCS         WITH(NOLOCK) ON (PEDGRALES.idClave                 = CVESDOCS.idClave)
+		LEFT JOIN Aduanas                      ADUANASENTSAL    WITH(NOLOCK) ON (PEDGRALES.idAduanaEntSal          = ADUANASENTSAL.idAduana)
+		LEFT JOIN Aduanas                      ADUANASDESPACHO  WITH(NOLOCK) ON (PEDGRALES.idAduanaDespacho        = ADUANASDESPACHO.idAduana)
+		LEFT JOIN Regimenes                    REGIMENES        WITH(NOLOCK) ON (CVESDOCS.IdGrupo                  = REGIMENES.idGrupo)
+		LEFT JOIN TipoCambio                   TIPOCAMBIO       WITH(NOLOCK) ON (PEDGRALES.idTipoCambio            = TIPOCAMBIO.idTipoCambio)
+		LEFT JOIN Clientes                     CLIENTES         WITH(NOLOCK) ON (PEDGRALES.idCliente               = CLIENTES.idCliente)
+		LEFT JOIN EntidadesFederativas         CLIENTESEF       WITH(NOLOCK) ON (CLIENTES.idEntidad                = CLIENTESEF.idEntidad)
+		LEFT JOIN Paises                       CLIENTESPAISES   WITH(NOLOCK) ON (CLIENTES.idPais                   = CLIENTESPAISES.idPais)
+		LEFT JOIN Clientes                     CLIENTESFACTURAR WITH(NOLOCK) ON (PEDGRALES.idClienteFacturar       = CLIENTESFACTURAR.idCliente)		
+		LEFT JOIN EntidadesFederativas         CLIFACTEF        WITH(NOLOCK) ON (CLIENTESFACTURAR.idEntidad        = CLIFACTEF.idEntidad)
+		LEFT JOIN Paises                       CLIFACTPAIS      WITH(NOLOCK) ON (CLIENTESFACTURAR.idPais           = CLIFACTPAIS.idPais)
+		LEFT JOIN MediosTransporte             MTENTRADA        WITH(NOLOCK) ON (PEDGRALES.idMTEntrada             = MTENTRADA.idTransporte)				
+		LEFT JOIN MediosTransporte             MTSALIDA         WITH(NOLOCK) ON (PEDGRALES.idMTSalida              = MTSALIDA.idTransporte)					
+		LEFT JOIN MediosTransporte             MTARRIBO         WITH(NOLOCK) ON (PEDGRALES.idMTArribo              = MTARRIBO.idTransporte)					
+		LEFT JOIN Destinos                     DESTINOS         WITH(NOLOCK) ON (PEDGRALES.idDestino               = DESTINOS.idDestino)
+		LEFT JOIN Tramitadores                 TRAMITADORES     WITH(NOLOCK) ON (PEDGRALES.idTramitador            = TRAMITADORES.idTramitador)
+		LEFT JOIN Bancos                       BANCOS           WITH(NOLOCK) ON (PEDGRALES.idBancos                = BANCOS.idBanco)						
+		LEFT JOIN USUARIOS                     USERS            WITH(NOLOCK) ON (PEDGRALES.idUsuarioDesaduana      = USERS.PK_USUARIO)
+		LEFT JOIN Prevalidadores               PREVALIDADOR     WITH(NOLOCK) ON (PEDGRALES.idPrevalidador          = PREVALIDADOR.idPrevalidador)
+		LEFT JOIN Semanas                      SEMANAS          WITH(NOLOCK) ON (PEDGRALES.idSemana                = SEMANAS.idSemana)
+		LEFT JOIN CuentasConsolidadas		   CUECONS          WITH(NOLOCK) ON (PEDGRALES.idCuentaConsolidada     = CUECONS.idCuentaConsolidada)
+		LEFT JOIN Paises                       PAISMONFLETES    WITH(NOLOCK) ON (PEDGRALES.idPaisMonFletes         = PAISMONFLETES.idPais)					
+		LEFT JOIN Paises                       PAISMONSEGUROS   WITH(NOLOCK) ON (PEDGRALES.idPaisMonSeguros        = PAISMONSEGUROS.idPais)					
+		LEFT JOIN Paises                       PAISMONEMBALAJE  WITH(NOLOCK) ON (PEDGRALES.idPaisMonEmbalaje       = PAISMONEMBALAJE.idPais)				
+		LEFT JOIN Paises                       PAISMONOTROSINC  WITH(NOLOCK) ON (PEDGRALES.idPaisMonOtrosIncrement = PAISMONOTROSINC.idPais)
+WHERE
+	BEP.FechaExtraccionPedimento IS NULL
+ORDER BY
+	PEDGRALES.idReferencia

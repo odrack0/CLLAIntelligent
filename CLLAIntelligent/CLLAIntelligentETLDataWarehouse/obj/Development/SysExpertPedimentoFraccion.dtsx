@@ -1,0 +1,1517 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 1:30:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{CFA126E7-22F2-477A-91BB-19ADB9519321}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{21C5820F-07E1-4D15-83BD-98AEFC3519F4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion pedimento fraccion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BD34521E-4FCE-4F6F-A354-520C147B2061}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion pedimento fraccion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionFraccion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoFraccion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idFraccion]"
+                      cachedDataType="i4"
+                      cachedName="idFraccion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFraccion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idFraccion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[Fraccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Fraccion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Fraccion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[Marca]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="Marca"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Marca]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[CantidadComercial]"
+                      cachedDataType="numeric"
+                      cachedName="CantidadComercial"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[CantidadComercial]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idUMC]"
+                      cachedDataType="i4"
+                      cachedName="idUMC"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idUMC]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idUMC]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ClaveUnidad]"
+                      cachedDataType="i2"
+                      cachedName="ClaveUnidad"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidad]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ClaveUnidad]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[Abreviacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Abreviacion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Abreviacion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Abreviacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[DescripcionUMC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DescripcionUMC"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUMC]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[DescripcionUMC]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[CantidadTarifa]"
+                      cachedDataType="r8"
+                      cachedName="CantidadTarifa"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadTarifa]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[CantidadTarifa]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idPaisOrigen]"
+                      cachedDataType="i4"
+                      cachedName="idPaisOrigen"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisOrigen]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisOrigen]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisOrigenClave]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="PaisOrigenClave"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenClave]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisOrigenClave]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisOrigenNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="PaisOrigenNombre"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenNombre]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisOrigenNombre]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idPaisVendedor]"
+                      cachedDataType="i4"
+                      cachedName="idPaisVendedor"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisVendedor]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisVendedor]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisVendedorClave]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="PaisVendedorClave"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorClave]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisVendedorClave]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisVendedorNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="PaisVendedorNombre"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorNombre]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisVendedorNombre]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idPaisMoneda]"
+                      cachedDataType="i4"
+                      cachedName="idPaisMoneda"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisMoneda]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisMoneda]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisMonedaClave]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="PaisMonedaClave"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisMonedaClave]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaClave]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisMonedaNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="PaisMonedaNombre"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisMonedaNombre]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaNombre]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisMonedaMoneda]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="PaisMonedaMoneda"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisMonedaMoneda]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaMoneda]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ImporteME]"
+                      cachedDataType="cy"
+                      cachedName="ImporteME"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ImporteME]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ImporteME]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ValorAgregado]"
+                      cachedDataType="cy"
+                      cachedName="ValorAgregado"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorAgregado]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorAgregado]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idValoracion]"
+                      cachedDataType="i4"
+                      cachedName="idValoracion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idValoracion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idValoracion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idVinculacion]"
+                      cachedDataType="i4"
+                      cachedName="idVinculacion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idVinculacion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idVinculacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ValorFactura]"
+                      cachedDataType="i8"
+                      cachedName="ValorFactura"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorFactura]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorFactura]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ValorAduana]"
+                      cachedDataType="i8"
+                      cachedName="ValorAduana"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorAduana]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorAduana]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ValorDolares]"
+                      cachedDataType="cy"
+                      cachedName="ValorDolares"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorDolares]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorDolares]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[LongDescripcion]"
+                      cachedDataType="ui1"
+                      cachedName="LongDescripcion"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[LongDescripcion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[LongDescripcion]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[ORDEN]"
+                      cachedDataType="i4"
+                      cachedName="ORDEN"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ORDEN]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ORDEN]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[idPaisProcedencia]"
+                      cachedDataType="i4"
+                      cachedName="idPaisProcedencia"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisProcedencia]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisProcedencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisProcedenciaClave]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="PaisProcedenciaClave"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisProcedenciaClave]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisProcedenciaClave]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[PaisProcedenciaNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="PaisProcedenciaNombre"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisProcedenciaNombre]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisProcedenciaNombre]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].Columns[NuevasObservaciones]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="NuevasObservaciones"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[NuevasObservaciones]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[NuevasObservaciones]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFraccion]"
+                      dataType="i4"
+                      name="idFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      dataType="numeric"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idUMC]"
+                      dataType="i4"
+                      name="idUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidad]"
+                      dataType="i2"
+                      name="ClaveUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Abreviacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUMC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadTarifa]"
+                      dataType="r8"
+                      name="CantidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisOrigen]"
+                      dataType="i4"
+                      name="idPaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisOrigenClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisOrigenNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisVendedor]"
+                      dataType="i4"
+                      name="idPaisVendedor" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisVendedorClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisVendedorNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisMoneda]"
+                      dataType="i4"
+                      name="idPaisMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisMonedaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisMonedaClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisMonedaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisMonedaNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisMonedaMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisMonedaMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ImporteME]"
+                      dataType="cy"
+                      name="ImporteME" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorAgregado]"
+                      dataType="cy"
+                      name="ValorAgregado" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idValoracion]"
+                      dataType="i4"
+                      name="idValoracion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idVinculacion]"
+                      dataType="i4"
+                      name="idVinculacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorFactura]"
+                      dataType="i8"
+                      name="ValorFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorAduana]"
+                      dataType="i8"
+                      name="ValorAduana" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ValorDolares]"
+                      dataType="cy"
+                      name="ValorDolares" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[LongDescripcion]"
+                      dataType="ui1"
+                      name="LongDescripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ORDEN]"
+                      dataType="i4"
+                      name="ORDEN" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPaisProcedencia]"
+                      dataType="i4"
+                      name="idPaisProcedencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisProcedenciaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisProcedenciaClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisProcedenciaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisProcedenciaNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input].ExternalColumns[NuevasObservaciones]"
+                      codePage="1252"
+                      dataType="text"
+                      name="NuevasObservaciones" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion pedimento fraccion\Fraccion"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Fraccion"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PF.idReferencia,
+	PF.idFraccion,
+	TG.Fraccion,
+	PF.Descripcion,
+	PF.Marca,
+	PF.CantidadComercial,
+	PF.idUMC,
+	UMC.ClaveUnidad,
+	UMC.Abreviacion,
+	UMC.Descripcion AS DescripcionUMC,
+	PF.CantidadTarifa,
+	PF.idPaisOrigen,
+	PO.ClaveM3     AS PaisOrigenClave,
+	PO.NombrePais  AS PaisOrigenNombre,
+	PF.idPaisVendedor,
+	PV.ClaveM3     AS PaisVendedorClave,
+	PV.NombrePais  AS PaisVendedorNombre,
+	PF.idPaisMoneda,
+	PM.ClaveM3     AS PaisMonedaClave,
+	PM.NombrePais  AS PaisMonedaNombre,
+	PM.ClaveMoneda AS PaisMonedaMoneda,
+	PF.ImporteME,
+	PF.ValorAgregado,
+	PF.idValoracion,
+	PF.idVinculacion,
+	PF.ValorFactura,
+	PF.ValorAduana,
+	PF.ValorDolares,
+	PF.LongDescripcion,
+	PF.ORDEN,
+	PF.idPaisProcedencia,
+	PP.ClaveM3     AS PaisProcedenciaClave,
+	PP.NombrePais  AS PaisProcedenciaNombre,
+	PF.NuevasObservaciones 
+FROM Ped_Fraccion            PF
+	JOIN TIGIE               TG  ON (PF.idFraccion        =  TG.idFraccion)
+	JOIN UnidadesMedida      UMC ON (PF.idUMC                  =  UMC.idUnidad)
+	LEFT JOIN Paises         PO  ON (PF.idPaisOrigen      =  PO.idPais)
+	LEFT JOIN Paises         PV  ON (PF.idPaisVendedor    =  PV.idPais)
+	LEFT JOIN Paises         PM  ON (PF.idPaisMoneda      =  PM.idPais)
+	LEFT JOIN Paises         PP  ON (PF.idPaisProcedencia =  PP.idPais)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion pedimento fraccion\Fraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idFraccion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idFraccion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idFraccion]"
+                      name="idFraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Fraccion]"
+                      length="10"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Fraccion]"
+                      name="Fraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      length="250"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Marca]"
+                      length="80"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Marca]"
+                      name="Marca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idUMC]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idUMC]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idUMC]"
+                      name="idUMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ClaveUnidad]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidad]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ClaveUnidad]"
+                      name="ClaveUnidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Abreviacion]"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[Abreviacion]"
+                      name="Abreviacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[DescripcionUMC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUMC]"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[DescripcionUMC]"
+                      name="DescripcionUMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[CantidadTarifa]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[CantidadTarifa]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[CantidadTarifa]"
+                      name="CantidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisOrigen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisOrigen]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisOrigen]"
+                      name="idPaisOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisOrigenClave]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisOrigenClave]"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisOrigenClave]"
+                      name="PaisOrigenClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisOrigenNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisOrigenNombre]"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisOrigenNombre]"
+                      name="PaisOrigenNombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisVendedor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisVendedor]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisVendedor]"
+                      name="idPaisVendedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisVendedorClave]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisVendedorClave]"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisVendedorClave]"
+                      name="PaisVendedorClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisVendedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisVendedorNombre]"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisVendedorNombre]"
+                      name="PaisVendedorNombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisMoneda]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisMoneda]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisMoneda]"
+                      name="idPaisMoneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisMonedaClave]"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaClave]"
+                      name="PaisMonedaClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisMonedaNombre]"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaNombre]"
+                      name="PaisMonedaNombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisMonedaMoneda]"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisMonedaMoneda]"
+                      name="PaisMonedaMoneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ImporteME]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ImporteME]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ImporteME]"
+                      name="ImporteME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorAgregado]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorAgregado]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorAgregado]"
+                      name="ValorAgregado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idValoracion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idValoracion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idValoracion]"
+                      name="idValoracion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idVinculacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idVinculacion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idVinculacion]"
+                      name="idVinculacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorFactura]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorFactura]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorFactura]"
+                      name="ValorFactura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorAduana]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorAduana]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorAduana]"
+                      name="ValorAduana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorDolares]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorDolares]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ValorDolares]"
+                      name="ValorDolares"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[LongDescripcion]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[LongDescripcion]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[LongDescripcion]"
+                      name="LongDescripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ORDEN]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ORDEN]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[ORDEN]"
+                      name="ORDEN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisProcedencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisProcedencia]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[idPaisProcedencia]"
+                      name="idPaisProcedencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisProcedenciaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisProcedenciaClave]"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisProcedenciaClave]"
+                      name="PaisProcedenciaClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisProcedenciaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisProcedenciaNombre]"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[PaisProcedenciaNombre]"
+                      name="PaisProcedenciaNombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[NuevasObservaciones]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[NuevasObservaciones]"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].Columns[NuevasObservaciones]"
+                      name="NuevasObservaciones"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idFraccion]"
+                      dataType="i4"
+                      name="idFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      dataType="numeric"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idUMC]"
+                      dataType="i4"
+                      name="idUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidad]"
+                      dataType="i2"
+                      name="ClaveUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Abreviacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUMC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[CantidadTarifa]"
+                      dataType="r8"
+                      name="CantidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisOrigen]"
+                      dataType="i4"
+                      name="idPaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisOrigenClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisOrigenClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisOrigenNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisOrigenNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisVendedor]"
+                      dataType="i4"
+                      name="idPaisVendedor" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisVendedorClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisVendedorClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisVendedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisVendedorNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisMoneda]"
+                      dataType="i4"
+                      name="idPaisMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisMonedaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisMonedaClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisMonedaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisMonedaNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisMonedaMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisMonedaMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ImporteME]"
+                      dataType="cy"
+                      name="ImporteME" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorAgregado]"
+                      dataType="cy"
+                      name="ValorAgregado" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idValoracion]"
+                      dataType="i4"
+                      name="idValoracion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idVinculacion]"
+                      dataType="i4"
+                      name="idVinculacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorFactura]"
+                      dataType="i8"
+                      name="ValorFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorAduana]"
+                      dataType="i8"
+                      name="ValorAduana" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ValorDolares]"
+                      dataType="cy"
+                      name="ValorDolares" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[LongDescripcion]"
+                      dataType="ui1"
+                      name="LongDescripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[ORDEN]"
+                      dataType="i4"
+                      name="ORDEN" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[idPaisProcedencia]"
+                      dataType="i4"
+                      name="idPaisProcedencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisProcedenciaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="PaisProcedenciaClave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[PaisProcedenciaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="PaisProcedenciaNombre" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output].ExternalColumns[NuevasObservaciones]"
+                      codePage="1252"
+                      dataType="text"
+                      name="NuevasObservaciones" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idFraccion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idFraccion]"
+                      name="idFraccion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Fraccion]"
+                      name="Fraccion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Marca]"
+                      name="Marca" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      dataType="numeric"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idUMC]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idUMC]"
+                      name="idUMC" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ClaveUnidad]"
+                      dataType="i2"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ClaveUnidad]"
+                      name="ClaveUnidad" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[Abreviacion]"
+                      name="Abreviacion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[DescripcionUMC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[DescripcionUMC]"
+                      name="DescripcionUMC" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[CantidadTarifa]"
+                      dataType="r8"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[CantidadTarifa]"
+                      name="CantidadTarifa" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisOrigen]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisOrigen]"
+                      name="idPaisOrigen" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisOrigenClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisOrigenClave]"
+                      name="PaisOrigenClave" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisOrigenNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisOrigenNombre]"
+                      name="PaisOrigenNombre" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisVendedor]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisVendedor]"
+                      name="idPaisVendedor" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisVendedorClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisVendedorClave]"
+                      name="PaisVendedorClave" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisVendedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisVendedorNombre]"
+                      name="PaisVendedorNombre" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisMoneda]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisMoneda]"
+                      name="idPaisMoneda" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisMonedaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisMonedaClave]"
+                      name="PaisMonedaClave" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisMonedaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisMonedaNombre]"
+                      name="PaisMonedaNombre" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisMonedaMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisMonedaMoneda]"
+                      name="PaisMonedaMoneda" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ImporteME]"
+                      dataType="cy"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ImporteME]"
+                      name="ImporteME" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorAgregado]"
+                      dataType="cy"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorAgregado]"
+                      name="ValorAgregado" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idValoracion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idValoracion]"
+                      name="idValoracion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idVinculacion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idVinculacion]"
+                      name="idVinculacion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorFactura]"
+                      dataType="i8"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorFactura]"
+                      name="ValorFactura" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorAduana]"
+                      dataType="i8"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorAduana]"
+                      name="ValorAduana" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorDolares]"
+                      dataType="cy"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ValorDolares]"
+                      name="ValorDolares" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[LongDescripcion]"
+                      dataType="ui1"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[LongDescripcion]"
+                      name="LongDescripcion" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ORDEN]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ORDEN]"
+                      name="ORDEN" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisProcedencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[idPaisProcedencia]"
+                      name="idPaisProcedencia" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisProcedenciaClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisProcedenciaClave]"
+                      name="PaisProcedenciaClave" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisProcedenciaNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[PaisProcedenciaNombre]"
+                      name="PaisProcedenciaNombre" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[NuevasObservaciones]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[NuevasObservaciones]"
+                      name="NuevasObservaciones" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion pedimento fraccion.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion pedimento fraccion\ExtraccionFraccion.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion pedimento fraccion\Fraccion.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla fraccion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{57A6E8FA-F285-4DA0-B7C1-386EB9605CDA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla fraccion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoFraccion" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{ABA474B7-FE53-4FE8-BF05-ECDA7B19B3D2}"
+      DTS:From="Package\Truncar tabla fraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraccion pedimento fraccion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Truncar tabla fraccion"
+          TopLeft="263,23" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Extraccion pedimento fraccion"
+          TopLeft="236,98" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="350.25,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion pedimento fraccion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="118,42"
+          Id="Package\Extraccion pedimento fraccion\Fraccion"
+          TopLeft="212,46" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Extraccion pedimento fraccion\ExtraccionFraccion"
+          TopLeft="185,145" />
+        <EdgeLayout
+          Id="Package\Extraccion pedimento fraccion.Paths[OLE DB Source Output]"
+          TopLeft="269.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion pedimento fraccion\Fraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion pedimento fraccion\ExtraccionFraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

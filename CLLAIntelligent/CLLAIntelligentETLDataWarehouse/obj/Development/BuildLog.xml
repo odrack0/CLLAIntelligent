@@ -2,13 +2,58 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CLLAIntelligentETLDataWarehouse</Name>
-    <LastWriteTime>2020-10-26T17:18:24.0502546Z</LastWriteTime>
+    <LastWriteTime>2020-11-12T17:25:13.5143594Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>SysExpertTrafico.dtsx</Name>
       <LastWriteTime>2020-10-27T04:33:08.7038238Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ClienteTrendOperacionDirectaA1.dtsx</Name>
+      <LastWriteTime>2020-10-30T00:30:46.3261881Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ClienteTrendCatalogoMaterial.dtsx</Name>
+      <LastWriteTime>2020-10-30T00:42:33.7372481Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ClienteTrendCatalogoActivoFijo.dtsx</Name>
+      <LastWriteTime>2020-10-30T00:46:40.2406276Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SysExpertRemesa.dtsx</Name>
+      <LastWriteTime>2020-11-05T21:46:50.8893094Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SysExpertAvisoIdentificador.dtsx</Name>
+      <LastWriteTime>2020-11-05T21:48:03.1905656Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SysExpertAvisoMercancia.dtsx</Name>
+      <LastWriteTime>2020-11-05T21:48:03.1756059Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SysExpertAvisoMercanciaIdentificador.dtsx</Name>
+      <LastWriteTime>2020-11-05T21:48:03.1616424Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ExtraccionSysExpertPedimento.dtsx</Name>
+      <LastWriteTime>2020-11-11T00:36:21.3612316Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CargaSysExpertPedimento.dtsx</Name>
+      <LastWriteTime>2020-11-12T17:41:20.9458635Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

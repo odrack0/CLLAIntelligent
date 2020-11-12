@@ -1,0 +1,887 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 7:51:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{A6C62BE8-2650-4643-89CD-40141830B35F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{7083AEF6-63BE-492B-9D6E-D5BB2776E95A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ExtraccionParteIIMercancia"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CF0F3CF1-CF9D-4C5C-8782-EC72B9DF335C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExtraccionParteIIMercancia"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ExtraccionParteIIMercancia\Mercancia"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Mercancia"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	M.idPedPIIMercancia,
+	M.idPedParteII,
+	M.Mercancia,
+	M.CantidadComercial,
+	M.CantidadTarifa,
+	M.idUnidad,
+	UMC.ClaveUnidad AS ClaveUnidadComercial,
+	UMC.Abreviacion AS AbreviacionUnidadComercial,
+	UMC.Descripcion AS DescripcionUnidadComercial,
+	M.idUnidadTarifa,
+	UMT.ClaveUnidad AS ClaveUnidadTarifa,
+	UMT.Abreviacion AS AbreviacionUnidadTarifa,
+	UMT.Descripcion AS DescripcionUnidadTarifa,
+	M.Peso,
+	M.CantidadEnKg
+FROM Ped_PartesIIMercancias M
+	JOIN UnidadesMedida     UMC ON (M.idUnidad =  UMC.idUnidad)
+	JOIN UnidadesMedida     UMT ON (UMC.idUnidad = UMT.idUnidad)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ExtraccionParteIIMercancia\Mercancia.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPedPIIMercancia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idPedPIIMercancia]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPedPIIMercancia]"
+                      name="idPedPIIMercancia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPedParteII]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idPedParteII]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPedParteII]"
+                      name="idPedParteII"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Mercancia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Mercancia]"
+                      length="500"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Mercancia]"
+                      name="Mercancia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadTarifa]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadTarifa]"
+                      name="CantidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idUnidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idUnidad]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idUnidad]"
+                      name="idUnidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadComercial]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveUnidadComercial]"
+                      name="ClaveUnidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidadComercial]"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadComercial]"
+                      name="AbreviacionUnidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadComercial]"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[DescripcionUnidadComercial]"
+                      name="DescripcionUnidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idUnidadTarifa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idUnidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idUnidadTarifa]"
+                      name="idUnidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveUnidadTarifa]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveUnidadTarifa]"
+                      name="ClaveUnidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidadTarifa]"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadTarifa]"
+                      name="AbreviacionUnidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[DescripcionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadTarifa]"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[DescripcionUnidadTarifa]"
+                      name="DescripcionUnidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Peso]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Peso]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Peso]"
+                      name="Peso"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadEnKg]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadEnKg]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadEnKg]"
+                      name="CantidadEnKg"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idPedPIIMercancia]"
+                      dataType="i4"
+                      name="idPedPIIMercancia" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idPedParteII]"
+                      dataType="i4"
+                      name="idPedParteII" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Mercancia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="Mercancia" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      dataType="numeric"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadTarifa]"
+                      dataType="r8"
+                      name="CantidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idUnidad]"
+                      dataType="i4"
+                      name="idUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      name="ClaveUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idUnidadTarifa]"
+                      dataType="i4"
+                      name="idUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadTarifa]"
+                      dataType="i2"
+                      name="ClaveUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Peso]"
+                      dataType="numeric"
+                      name="Peso"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadEnKg]"
+                      dataType="numeric"
+                      name="CantidadEnKg"
+                      precision="18"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idPedPIIMercancia]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idPedPIIMercancia]"
+                      name="idPedPIIMercancia" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idPedParteII]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idPedParteII]"
+                      name="idPedParteII" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Mercancia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Mercancia]"
+                      name="Mercancia" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      dataType="numeric"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadTarifa]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadTarifa]"
+                      name="CantidadTarifa" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idUnidad]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idUnidad]"
+                      name="idUnidad" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadComercial]"
+                      name="ClaveUnidadComercial" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidadComercial]"
+                      name="AbreviacionUnidadComercial" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadComercial]"
+                      name="DescripcionUnidadComercial" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idUnidadTarifa]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idUnidadTarifa]"
+                      name="idUnidadTarifa" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadTarifa]"
+                      dataType="i2"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadTarifa]"
+                      name="ClaveUnidadTarifa" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidadTarifa]"
+                      name="AbreviacionUnidadTarifa" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadTarifa]"
+                      name="DescripcionUnidadTarifa" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Peso]"
+                      dataType="numeric"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Peso]"
+                      name="Peso"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadEnKg]"
+                      dataType="numeric"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadEnKg]"
+                      name="CantidadEnKg"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MercanciaExtraccion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ExtraccionSysExpertPedimentoParteIIMercancia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[idPedPIIMercancia]"
+                      cachedDataType="i4"
+                      cachedName="idPedPIIMercancia"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPedPIIMercancia]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPedPIIMercancia]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[idPedParteII]"
+                      cachedDataType="i4"
+                      cachedName="idPedParteII"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPedParteII]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPedParteII]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[Mercancia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="500"
+                      cachedName="Mercancia"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[Mercancia]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Mercancia]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[CantidadComercial]"
+                      cachedDataType="numeric"
+                      cachedName="CantidadComercial"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadComercial]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[CantidadTarifa]"
+                      cachedDataType="r8"
+                      cachedName="CantidadTarifa"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadTarifa]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[idUnidad]"
+                      cachedDataType="i4"
+                      cachedName="idUnidad"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idUnidad]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idUnidad]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[ClaveUnidadComercial]"
+                      cachedDataType="i2"
+                      cachedName="ClaveUnidadComercial"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadComercial]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveUnidadComercial]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[AbreviacionUnidadComercial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="AbreviacionUnidadComercial"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidadComercial]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadComercial]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[DescripcionUnidadComercial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DescripcionUnidadComercial"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadComercial]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[DescripcionUnidadComercial]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[idUnidadTarifa]"
+                      cachedDataType="i4"
+                      cachedName="idUnidadTarifa"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idUnidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idUnidadTarifa]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[ClaveUnidadTarifa]"
+                      cachedDataType="i2"
+                      cachedName="ClaveUnidadTarifa"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveUnidadTarifa]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[AbreviacionUnidadTarifa]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="AbreviacionUnidadTarifa"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadTarifa]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[DescripcionUnidadTarifa]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DescripcionUnidadTarifa"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadTarifa]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[DescripcionUnidadTarifa]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[Peso]"
+                      cachedDataType="numeric"
+                      cachedName="Peso"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[Peso]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Peso]" />
+                    <inputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].Columns[CantidadEnKg]"
+                      cachedDataType="numeric"
+                      cachedName="CantidadEnKg"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadEnKg]"
+                      lineageId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadEnKg]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPedPIIMercancia]"
+                      dataType="i4"
+                      name="idPedPIIMercancia" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idPedParteII]"
+                      dataType="i4"
+                      name="idPedParteII" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[Mercancia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="Mercancia" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      dataType="numeric"
+                      name="CantidadComercial"
+                      precision="15"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadTarifa]"
+                      dataType="r8"
+                      name="CantidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idUnidad]"
+                      dataType="i4"
+                      name="idUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      name="ClaveUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[idUnidadTarifa]"
+                      dataType="i4"
+                      name="idUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadTarifa]"
+                      dataType="i2"
+                      name="ClaveUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadTarifa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[Peso]"
+                      dataType="numeric"
+                      name="Peso"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input].ExternalColumns[CantidadEnKg]"
+                      dataType="numeric"
+                      name="CantidadEnKg"
+                      precision="18"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ExtraccionParteIIMercancia.Paths[OLE DB Source Output]"
+              endId="Package\ExtraccionParteIIMercancia\MercanciaExtraccion.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\ExtraccionParteIIMercancia\Mercancia.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncarte tabla ParteIIMercancia"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{B25F9551-8AAB-4044-AFB4-2D8E66669B88}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncarte tabla ParteIIMercancia"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoParteIIMercancia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{92C28A74-DEEE-44DE-AE42-B8B876DD0B96}"
+      DTS:From="Package\Truncarte tabla ParteIIMercancia"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ExtraccionParteIIMercancia" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Truncarte tabla ParteIIMercancia"
+          TopLeft="234,44" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\ExtraccionParteIIMercancia"
+          TopLeft="254,130" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="354.25,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ExtraccionParteIIMercancia">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="126,42"
+          Id="Package\ExtraccionParteIIMercancia\Mercancia"
+          TopLeft="254.5,10.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\ExtraccionParteIIMercancia\MercanciaExtraccion"
+          TopLeft="236,89" />
+        <EdgeLayout
+          Id="Package\ExtraccionParteIIMercancia.Paths[OLE DB Source Output]"
+          TopLeft="320.25,52.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.5"
+              Start="0,0"
+              End="0,29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExtraccionParteIIMercancia\Mercancia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExtraccionParteIIMercancia\MercanciaExtraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

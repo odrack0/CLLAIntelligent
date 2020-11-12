@@ -1,0 +1,887 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 7:15:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{1C1699D3-70F3-4BB0-8E42-B1A4FD0776FD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="SysExpertAvisoMercancia"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{170468BD-D42C-4D73-8B33-49159A13DBDA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraer Aviso mercancia"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{916428D7-5884-48BB-9F86-9E977922DFCC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraer Aviso mercancia"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraer Aviso mercancia\ExtraccionMercancia"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionMercancia"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoAvisoMercancia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[idMercAvisos]"
+                      cachedDataType="i4"
+                      cachedName="idMercAvisos"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idMercAvisos]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idMercAvisos]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[idRemesa]"
+                      cachedDataType="i4"
+                      cachedName="idRemesa"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idRemesa]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idRemesa]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[Orden]"
+                      cachedDataType="i4"
+                      cachedName="Orden"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[Orden]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Orden]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[ValorME]"
+                      cachedDataType="numeric"
+                      cachedName="ValorME"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ValorME]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ValorME]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[ValorDolares]"
+                      cachedDataType="numeric"
+                      cachedName="ValorDolares"
+                      cachedPrecision="18"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ValorDolares]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ValorDolares]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[idEquivalencia]"
+                      cachedDataType="i4"
+                      cachedName="idEquivalencia"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idEquivalencia]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idEquivalencia]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[Equivalencia]"
+                      cachedDataType="r8"
+                      cachedName="Equivalencia"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[Equivalencia]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Equivalencia]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[NumeroBultos]"
+                      cachedDataType="i4"
+                      cachedName="NumeroBultos"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[NumeroBultos]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NumeroBultos]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[idPaisMoneda]"
+                      cachedDataType="i4"
+                      cachedName="idPaisMoneda"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idPaisMoneda]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPaisMoneda]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[ClaveMoneda]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="ClaveMoneda"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ClaveMoneda]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveMoneda]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[ClavePais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="ClavePais"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ClavePais]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClavePais]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[NombrePais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="NombrePais"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[NombrePais]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NombrePais]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[NumeroFactura]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NumeroFactura"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[NumeroFactura]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NumeroFactura]" />
+                    <inputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].Columns[CantidadComercial]"
+                      cachedDataType="numeric"
+                      cachedName="CantidadComercial"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadComercial]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idMercAvisos]"
+                      dataType="i4"
+                      name="idMercAvisos" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idRemesa]"
+                      dataType="i4"
+                      name="idRemesa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[Orden]"
+                      dataType="i4"
+                      name="Orden" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ValorME]"
+                      dataType="numeric"
+                      name="ValorME"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ValorDolares]"
+                      dataType="numeric"
+                      name="ValorDolares"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idEquivalencia]"
+                      dataType="i4"
+                      name="idEquivalencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[Equivalencia]"
+                      dataType="r8"
+                      name="Equivalencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[NumeroBultos]"
+                      dataType="i4"
+                      name="NumeroBultos" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[idPaisMoneda]"
+                      dataType="i4"
+                      name="idPaisMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ClaveMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClaveMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[ClavePais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClavePais" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[NombrePais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="NombrePais" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NumeroFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      dataType="numeric"
+                      name="CantidadComercial"
+                      precision="18"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraer Aviso mercancia\Mercancia"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Mercancia"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PMA.idMercAvisos,
+	PMA.idRemesa,
+	PMA.Orden,
+	PMA.Descripcion,
+	PMA.ValorME,
+	PMA.ValorDolares,
+	PMA.idEquivalencia,
+	E.Equivalencia,
+	PMA.NumeroBultos,
+	PMA.idPaisMoneda,
+	PM.ClaveMoneda,
+	PM.ClaveM3 AS ClavePais,
+	PM.NombrePais,
+	PMA.NumeroFactura,
+	PMA.CantidadComercial
+FROM Ped_MercanciasAvisos   PMA
+	JOIN Monedas_Equivalencias  E ON (PMA.idEquivalencia =  E.idEquivalencia)
+	JOIN Paises                 PM ON (PMA.idPaisMoneda = PM.idPais)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer Aviso mercancia\Mercancia.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idMercAvisos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idMercAvisos]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idMercAvisos]"
+                      name="idMercAvisos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idRemesa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idRemesa]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idRemesa]"
+                      name="idRemesa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Orden]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Orden]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Orden]"
+                      name="Orden"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      length="250"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ValorME]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ValorME]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ValorME]"
+                      name="ValorME"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ValorDolares]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ValorDolares]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ValorDolares]"
+                      name="ValorDolares"
+                      precision="18"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idEquivalencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idEquivalencia]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idEquivalencia]"
+                      name="idEquivalencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Equivalencia]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Equivalencia]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[Equivalencia]"
+                      name="Equivalencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NumeroBultos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[NumeroBultos]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NumeroBultos]"
+                      name="NumeroBultos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPaisMoneda]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idPaisMoneda]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[idPaisMoneda]"
+                      name="idPaisMoneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClaveMoneda]"
+                      length="3"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClaveMoneda]"
+                      name="ClaveMoneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClavePais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClavePais]"
+                      length="3"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[ClavePais]"
+                      name="ClavePais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NombrePais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[NombrePais]"
+                      length="60"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NombrePais]"
+                      name="NombrePais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[NumeroFactura]"
+                      length="50"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[NumeroFactura]"
+                      name="NumeroFactura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idMercAvisos]"
+                      dataType="i4"
+                      name="idMercAvisos" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idRemesa]"
+                      dataType="i4"
+                      name="idRemesa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Orden]"
+                      dataType="i4"
+                      name="Orden" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ValorME]"
+                      dataType="numeric"
+                      name="ValorME"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ValorDolares]"
+                      dataType="numeric"
+                      name="ValorDolares"
+                      precision="18"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idEquivalencia]"
+                      dataType="i4"
+                      name="idEquivalencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[Equivalencia]"
+                      dataType="r8"
+                      name="Equivalencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[NumeroBultos]"
+                      dataType="i4"
+                      name="NumeroBultos" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[idPaisMoneda]"
+                      dataType="i4"
+                      name="idPaisMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClaveMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClaveMoneda" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[ClavePais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClavePais" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[NombrePais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="NombrePais" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NumeroFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      dataType="numeric"
+                      name="CantidadComercial"
+                      precision="18"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idMercAvisos]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idMercAvisos]"
+                      name="idMercAvisos" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idRemesa]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idRemesa]"
+                      name="idRemesa" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Orden]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Orden]"
+                      name="Orden" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ValorME]"
+                      dataType="numeric"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ValorME]"
+                      name="ValorME"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ValorDolares]"
+                      dataType="numeric"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ValorDolares]"
+                      name="ValorDolares"
+                      precision="18"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idEquivalencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idEquivalencia]"
+                      name="idEquivalencia" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Equivalencia]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[Equivalencia]"
+                      name="Equivalencia" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[NumeroBultos]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[NumeroBultos]"
+                      name="NumeroBultos" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idPaisMoneda]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[idPaisMoneda]"
+                      name="idPaisMoneda" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClaveMoneda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClaveMoneda]"
+                      name="ClaveMoneda" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClavePais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ClavePais]"
+                      name="ClavePais" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[NombrePais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[NombrePais]"
+                      name="NombrePais" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[NumeroFactura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[NumeroFactura]"
+                      name="NumeroFactura" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      dataType="numeric"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraer Aviso mercancia.Paths[OLE DB Source Output]"
+              endId="Package\Extraer Aviso mercancia\ExtraccionMercancia.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraer Aviso mercancia\Mercancia.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla AvisoMercancia"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{90FADF48-4BEB-49C7-A3F5-314851FBBAB6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla AvisoMercancia"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoAvisoMercancia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{635F389A-84E2-47B9-8AF3-79522A207FC9}"
+      DTS:From="Package\Truncar tabla AvisoMercancia"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraer Aviso mercancia" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Extraer Aviso mercancia"
+          TopLeft="271,117" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Truncar tabla AvisoMercancia"
+          TopLeft="264,35" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="369.75,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraer Aviso mercancia">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Extraer Aviso mercancia\Mercancia"
+          TopLeft="310,74" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Extraer Aviso mercancia\ExtraccionMercancia"
+          TopLeft="285,168" />
+        <EdgeLayout
+          Id="Package\Extraer Aviso mercancia.Paths[OLE DB Source Output]"
+          TopLeft="372.5,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer Aviso mercancia\ExtraccionMercancia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer Aviso mercancia\Mercancia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

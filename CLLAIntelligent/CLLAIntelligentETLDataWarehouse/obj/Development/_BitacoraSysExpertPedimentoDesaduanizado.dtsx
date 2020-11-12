@@ -1,0 +1,1251 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/28/2020 8:18:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{D17084E3-DC9E-4258-A71B-6C5AC69AB203}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="SysExpertBitacoraPedimentoDesaduanizado"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{2B97E397-C1D3-4C12-BE54-24397944BD41}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1971E980-DBBC-4DA8-9F32-CB8CD9A41A03}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion bitacora pedimentos desaduanizados de trafico"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="BitacoraPedimentoDesaduanizado"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT idReferencia FROM BitacoraSysExpertPedimentoDesaduanizado</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ExtraccionTraficoPedimentoDesaduanizado"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CargaSysExpertTraficoPedimentoDesaduanamiento]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM CargaSysExpertTraficoPedimentoDesaduanamiento WHERE IdReferencia IS NOT NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[Desaduanamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[Desaduanamiento]"
+                      length="50"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[Desaduanamiento]"
+                      name="Desaduanamiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[FechaMovimento]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[FechaMovimento]"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[FechaMovimento]"
+                      name="FechaMovimento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[HoraMovimiento]"
+                      length="8"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[Desaduanamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Desaduanamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[FechaMovimento]"
+                      dataType="dbTimeStamp"
+                      name="FechaMovimento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].ExternalColumns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="HoraMovimiento" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[Desaduanamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[Desaduanamiento]"
+                      name="Desaduanamiento" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[FechaMovimento]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[FechaMovimento]"
+                      name="FechaMovimento" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Mezcla"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[Desaduanamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Desaduanamiento"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[Desaduanamiento]" />
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[FechaMovimento]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaMovimento"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[FechaMovimento]" />
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[HoraMovimiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="HoraMovimiento"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[HoraMovimiento]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Right Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Outputs[Sort Output].Columns[idReferencia]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[idReferencia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[Desaduanamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[Desaduanamiento]"
+                      name="Desaduanamiento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[Desaduanamiento]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[FechaMovimento]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[FechaMovimento]"
+                      name="FechaMovimento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[FechaMovimento]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input].Columns[HoraMovimiento]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferenciaBitacora]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferenciaBitacora]"
+                      name="idReferenciaBitacora">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Right Input].Columns[idReferencia]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordanamiento I"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Inputs[Sort Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Inputs[Sort Input].Columns[Desaduanamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Desaduanamiento"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[Desaduanamiento]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Inputs[Sort Input].Columns[FechaMovimento]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaMovimento"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[FechaMovimento]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Inputs[Sort Input].Columns[HoraMovimiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="HoraMovimiento"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[HoraMovimiento]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[Desaduanamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[Desaduanamiento]"
+                      name="Desaduanamiento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[Desaduanamiento]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[FechaMovimento]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[FechaMovimento]"
+                      name="FechaMovimento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[FechaMovimento]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[HoraMovimiento]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordenamiento II"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Inputs[Sort Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Outputs[Sort Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Outputs[Sort Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output].Columns[idReferencia]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Pedimento no existente en bitacora"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Inputs[Conditional Split Input].Columns[idReferenciaBitacora]"
+                      cachedDataType="i4"
+                      cachedName="idReferenciaBitacora"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferenciaBitacora]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Agregar referencias]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Agregar referencias"
+                  synchronousInputId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferenciaBitacora]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(idReferenciaBitacora)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SysExpertPedimentoDesaduanizado"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BitacoraSysExpertPedimentoDesaduanizado]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].Columns[Desaduanamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Desaduanamiento"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[Desaduanamiento]"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[Desaduanamiento]" />
+                    <inputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].Columns[FechaMovimento]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaMovimento"
+                      externalMetadataColumnId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[DesaduanamientoFecha]"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output].Columns[FechaMovimento]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[Desaduanamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Desaduanamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[DesaduanamientoFecha]"
+                      dataType="dbTimeStamp"
+                      name="DesaduanamientoFecha" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input].ExternalColumns[ExtraccionFecha]"
+                      dataType="dbTimeStamp"
+                      name="ExtraccionFecha" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Agregar referencias]"
+              endId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado.Inputs[OLE DB Destination Input]"
+              name="Agregar referencias"
+              startId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Outputs[Agregar referencias]" />
+            <path
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Merge Join Output]"
+              endId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[OLE DB Source Output1]"
+              endId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Sort Output]"
+              endId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II.Outputs[Sort Output]" />
+            <path
+              refId="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Sort Output1]"
+              endId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="352,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico"
+          TopLeft="224,37" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion bitacora pedimentos desaduanizados de trafico">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado"
+          TopLeft="156,401" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado"
+          TopLeft="366,20" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordenamiento II"
+          TopLeft="316,117" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Mezcla"
+          TopLeft="231,201" />
+        <NodeLayout
+          Size="280,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado"
+          TopLeft="47,14" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Ordanamiento I"
+          TopLeft="118,79" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico\Pedimento no existente en bitacora"
+          TopLeft="174,290" />
+        <EdgeLayout
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Sort Output1]"
+          TopLeft="194.5,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.8333333333333,80"
+              Start="0,0"
+              End="74.8333333333333,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.3179396092362" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.3179396092362"
+                    Point2="0,47.3179396092362"
+                    Point3="4,47.3179396092362" />
+                  <mssgle:LineSegment
+                    End="70.8333333333333,47.3179396092362" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.8333333333333,47.3179396092362"
+                    Point2="74.8333333333333,47.3179396092362"
+                    Point3="74.8333333333333,51.3179396092362" />
+                  <mssgle:LineSegment
+                    End="74.8333333333333,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Sort Output]"
+          TopLeft="394.5,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.8333333333334,42"
+              Start="0,0"
+              End="-90.8333333333334,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.841918294849" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.841918294849"
+                    Point2="0,24.841918294849"
+                    Point3="-4,24.841918294849" />
+                  <mssgle:LineSegment
+                    End="-86.8333333333334,24.841918294849" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.8333333333334,24.841918294849"
+                    Point2="-90.8333333333334,24.841918294849"
+                    Point3="-90.8333333333334,28.841918294849" />
+                  <mssgle:LineSegment
+                    End="-90.8333333333334,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[OLE DB Source Output1]"
+          TopLeft="190.75,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[OLE DB Source Output]"
+          TopLeft="485,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.5,55"
+              Start="0,0"
+              End="-90.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="-4,27.5" />
+                  <mssgle:LineSegment
+                    End="-86.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.5,27.5"
+                    Point2="-90.5,27.5"
+                    Point3="-90.5,31.5" />
+                  <mssgle:LineSegment
+                    End="-90.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Merge Join Output]"
+          TopLeft="286.5,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,47"
+              Start="0,0"
+              End="10,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="6,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,23.5"
+                    Point2="10,23.5"
+                    Point3="10,27.5" />
+                  <mssgle:LineSegment
+                    End="10,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extraccion bitacora pedimentos desaduanizados de trafico.Paths[Agregar referencias]"
+          TopLeft="296.5,332">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.5,69"
+              Start="0,0"
+              End="-17.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="-4,34.5" />
+                  <mssgle:LineSegment
+                    End="-13.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.5,34.5"
+                    Point2="-17.5,34.5"
+                    Point3="-17.5,38.5" />
+                  <mssgle:LineSegment
+                    End="-17.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-52.80564453125,39.5,88.1112890625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion bitacora pedimentos desaduanizados de trafico\SysExpertPedimentoDesaduanizado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion bitacora pedimentos desaduanizados de trafico\BitacoraPedimentoDesaduanizado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion bitacora pedimentos desaduanizados de trafico\ExtraccionTraficoPedimentoDesaduanizado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

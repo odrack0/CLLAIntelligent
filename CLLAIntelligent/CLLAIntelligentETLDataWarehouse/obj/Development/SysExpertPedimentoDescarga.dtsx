@@ -1,0 +1,918 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 12:27:37 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{0B87F100-8808-44B3-87D5-1C7DF58CA0F3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{0E4DE719-208B-43BD-8212-B1BC8DBE12EC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion pedimento descarga"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{11A4E500-A9D7-4B6B-98DF-90A10B137DC7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion pedimento descarga"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion pedimento descarga\Descarga"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Descarga"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PD.idDescargasPed,
+	PD.idReferencia,
+	PD.PatenteOriginal,
+	PD.PedimentoOriginal,
+	PD.idAduanaOriginal,
+	A.ClaveAduana,
+	A.NombreAduana,
+	PD.FechaOriginal,
+	PD.FechaDescarga,
+	PD.FraccionOriginal,
+	PD.CantidadUMC,
+	PD.idUMC,
+	UM.ClaveUnidad,
+	UM.Descripcion AS DescripcionUnidad,
+	UM.Abreviacion AS AbreviacionUnidad,
+	PD.FechaPago
+FROM Ped_Descargas      PD
+	JOIN Aduanas        A  ON (PD.idAduanaOriginal = A.idAduana)
+	JOIN UnidadesMedida UM ON (PD.idUMC = UM.idUnidad)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion pedimento descarga\Descarga.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idDescargasPed]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idDescargasPed]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idDescargasPed]"
+                      name="idDescargasPed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[PatenteOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[PatenteOriginal]"
+                      length="4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[PatenteOriginal]"
+                      name="PatenteOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[PedimentoOriginal]"
+                      length="7"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[PedimentoOriginal]"
+                      name="PedimentoOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idAduanaOriginal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idAduanaOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idAduanaOriginal]"
+                      name="idAduanaOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[ClaveAduana]"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[ClaveAduana]"
+                      name="ClaveAduana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[NombreAduana]"
+                      length="130"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[NombreAduana]"
+                      name="NombreAduana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaOriginal]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FechaOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaOriginal]"
+                      name="FechaOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaDescarga]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FechaDescarga]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaDescarga]"
+                      name="FechaDescarga"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FraccionOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FraccionOriginal]"
+                      length="10"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FraccionOriginal]"
+                      name="FraccionOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[CantidadUMC]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[CantidadUMC]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[CantidadUMC]"
+                      name="CantidadUMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idUMC]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idUMC]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idUMC]"
+                      name="idUMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[ClaveUnidad]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidad]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[ClaveUnidad]"
+                      name="ClaveUnidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[DescripcionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidad]"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[DescripcionUnidad]"
+                      name="DescripcionUnidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[AbreviacionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidad]"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[AbreviacionUnidad]"
+                      name="AbreviacionUnidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaPago]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FechaPago]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaPago]"
+                      name="FechaPago"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idDescargasPed]"
+                      dataType="i4"
+                      name="idDescargasPed" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[PatenteOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="PatenteOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="PedimentoOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idAduanaOriginal]"
+                      dataType="i4"
+                      name="idAduanaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClaveAduana" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="130"
+                      name="NombreAduana" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FechaOriginal]"
+                      dataType="dbTimeStamp"
+                      name="FechaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FechaDescarga]"
+                      dataType="dbTimeStamp"
+                      name="FechaDescarga" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FraccionOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="FraccionOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[CantidadUMC]"
+                      dataType="r8"
+                      name="CantidadUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[idUMC]"
+                      dataType="i4"
+                      name="idUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidad]"
+                      dataType="i2"
+                      name="ClaveUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].ExternalColumns[FechaPago]"
+                      dataType="dbTimeStamp"
+                      name="FechaPago" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idDescargasPed]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idDescargasPed]"
+                      name="idDescargasPed" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[PatenteOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[PatenteOriginal]"
+                      name="PatenteOriginal" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[PedimentoOriginal]"
+                      name="PedimentoOriginal" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idAduanaOriginal]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idAduanaOriginal]"
+                      name="idAduanaOriginal" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ClaveAduana]"
+                      name="ClaveAduana" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="130"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[NombreAduana]"
+                      name="NombreAduana" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FechaOriginal]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FechaOriginal]"
+                      name="FechaOriginal" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FechaDescarga]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FechaDescarga]"
+                      name="FechaDescarga" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FraccionOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FraccionOriginal]"
+                      name="FraccionOriginal" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[CantidadUMC]"
+                      dataType="r8"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[CantidadUMC]"
+                      name="CantidadUMC" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idUMC]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[idUMC]"
+                      name="idUMC" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ClaveUnidad]"
+                      dataType="i2"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ClaveUnidad]"
+                      name="ClaveUnidad" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidad]"
+                      name="DescripcionUnidad" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidad]"
+                      name="AbreviacionUnidad" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FechaPago]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[FechaPago]"
+                      name="FechaPago" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion pedimento descarga\ExtraccionDescarga"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionDescarga"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoDescarga]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[idDescargasPed]"
+                      cachedDataType="i4"
+                      cachedName="idDescargasPed"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idDescargasPed]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idDescargasPed]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[PatenteOriginal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="PatenteOriginal"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[PatenteOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[PatenteOriginal]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[PedimentoOriginal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="PedimentoOriginal"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[PedimentoOriginal]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[idAduanaOriginal]"
+                      cachedDataType="i4"
+                      cachedName="idAduanaOriginal"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idAduanaOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idAduanaOriginal]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[ClaveAduana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="ClaveAduana"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[ClaveAduana]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[ClaveAduana]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[NombreAduana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="130"
+                      cachedName="NombreAduana"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[NombreAduana]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[NombreAduana]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[FechaOriginal]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaOriginal"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FechaOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaOriginal]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[FechaDescarga]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaDescarga"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FechaDescarga]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaDescarga]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[FraccionOriginal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="FraccionOriginal"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FraccionOriginal]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FraccionOriginal]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[CantidadUMC]"
+                      cachedDataType="r8"
+                      cachedName="CantidadUMC"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[CantidadUMC]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[CantidadUMC]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[idUMC]"
+                      cachedDataType="i4"
+                      cachedName="idUMC"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idUMC]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[idUMC]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[ClaveUnidad]"
+                      cachedDataType="i2"
+                      cachedName="ClaveUnidad"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidad]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[ClaveUnidad]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[DescripcionUnidad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DescripcionUnidad"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidad]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[DescripcionUnidad]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[AbreviacionUnidad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="AbreviacionUnidad"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidad]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[AbreviacionUnidad]" />
+                    <inputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].Columns[FechaPago]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaPago"
+                      externalMetadataColumnId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FechaPago]"
+                      lineageId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output].Columns[FechaPago]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idDescargasPed]"
+                      dataType="i4"
+                      name="idDescargasPed" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[PatenteOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="PatenteOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="PedimentoOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idAduanaOriginal]"
+                      dataType="i4"
+                      name="idAduanaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClaveAduana" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="130"
+                      name="NombreAduana" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FechaOriginal]"
+                      dataType="dbTimeStamp"
+                      name="FechaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FechaDescarga]"
+                      dataType="dbTimeStamp"
+                      name="FechaDescarga" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FraccionOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="FraccionOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[CantidadUMC]"
+                      dataType="r8"
+                      name="CantidadUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[idUMC]"
+                      dataType="i4"
+                      name="idUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidad]"
+                      dataType="i2"
+                      name="ClaveUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidad" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input].ExternalColumns[FechaPago]"
+                      dataType="dbTimeStamp"
+                      name="FechaPago" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion pedimento descarga.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion pedimento descarga\ExtraccionDescarga.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion pedimento descarga\Descarga.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar PedimentoDescarga"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{7ECF8335-8764-4337-9D65-595D43C50C31}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar PedimentoDescarga"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoDescarga" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{26DC58C9-0103-47D5-A99F-916B70461435}"
+      DTS:From="Package\Truncar PedimentoDescarga"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraccion pedimento descarga" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Extraccion pedimento descarga"
+          TopLeft="203,110" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Truncar PedimentoDescarga"
+          TopLeft="224,29" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="330,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14,39"
+              Start="0,0"
+              End="-14,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
+                  <mssgle:LineSegment
+                    End="-10,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10,19.5"
+                    Point2="-14,19.5"
+                    Point3="-14,23.5" />
+                  <mssgle:LineSegment
+                    End="-14,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion pedimento descarga">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Extraccion pedimento descarga\Descarga"
+          TopLeft="225,24" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extraccion pedimento descarga\ExtraccionDescarga"
+          TopLeft="203,133" />
+        <EdgeLayout
+          Id="Package\Extraccion pedimento descarga.Paths[OLE DB Source Output]"
+          TopLeft="287.25,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion pedimento descarga\Descarga">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion pedimento descarga\ExtraccionDescarga">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

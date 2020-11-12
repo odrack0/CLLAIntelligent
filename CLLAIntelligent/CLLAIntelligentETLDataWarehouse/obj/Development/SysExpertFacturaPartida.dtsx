@@ -1,0 +1,2470 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/28/2020 7:40:05 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{9CE38355-2075-4DE1-88F4-6EC4B017126C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{EB31769B-4490-48A9-A284-BDF1468A790E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraer Partida"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2C662317-F31C-4E2D-A723-932B3D82A2B1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraer Partida"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraer Partida\ExtraccionPartida"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionPartida"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertFacturaPartida]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer Partida\ExtraccionPartida.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idPartida]"
+                      cachedDataType="i4"
+                      cachedName="idPartida"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idPartida]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPartida]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idFactura]"
+                      cachedDataType="i4"
+                      cachedName="idFactura"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idFactura]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idFactura]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idParte]"
+                      cachedDataType="i4"
+                      cachedName="idParte"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idParte]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idParte]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ClaveParte]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ClaveParte"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveParte]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveParte]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[DescripcionTipoParte]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="DescripcionTipoParte"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionTipoParte]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionTipoParte]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Marca]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="Marca"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Marca]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Modelo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="Modelo"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Modelo]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Modelo]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NoSerie]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="NoSerie"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NoSerie]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NoSerie]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[CantidadComercial]"
+                      cachedDataType="r8"
+                      cachedName="CantidadComercial"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadComercial]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idUMC]"
+                      cachedDataType="i4"
+                      cachedName="idUMC"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idUMC]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idUMC]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ClaveUnidadComercial]"
+                      cachedDataType="i2"
+                      cachedName="ClaveUnidadComercial"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadComercial]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveUnidadComercial]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[AbreviacionUnidadComercial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="AbreviacionUnidadComercial"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidadComercial]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadComercial]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[DescripcionUnidadComercial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DescripcionUnidadComercial"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadComercial]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionUnidadComercial]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ImporteME]"
+                      cachedDataType="r8"
+                      cachedName="ImporteME"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ImporteME]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ImporteME]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ImporteUSD]"
+                      cachedDataType="r8"
+                      cachedName="ImporteUSD"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ImporteUSD]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ImporteUSD]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ValorMciaME]"
+                      cachedDataType="r8"
+                      cachedName="ValorMciaME"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorMciaME]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorMciaME]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ValorMciaUSD]"
+                      cachedDataType="r8"
+                      cachedName="ValorMciaUSD"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorMciaUSD]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorMciaUSD]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ValorAgregadoUSD]"
+                      cachedDataType="r8"
+                      cachedName="ValorAgregadoUSD"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorAgregadoUSD]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorAgregadoUSD]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[PesoBruto]"
+                      cachedDataType="r8"
+                      cachedName="PesoBruto"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[PesoBruto]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PesoBruto]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idPaisOrigen]"
+                      cachedDataType="i4"
+                      cachedName="idPaisOrigen"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idPaisOrigen]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPaisOrigen]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ClavePaisOrigen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="ClavePaisOrigen"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClavePaisOrigen]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClavePaisOrigen]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NombrePaisOrigen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="NombrePaisOrigen"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NombrePaisOrigen]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NombrePaisOrigen]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idFraccion]"
+                      cachedDataType="i4"
+                      cachedName="idFraccion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idFraccion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idFraccion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Fraccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Fraccion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Fraccion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[CantidadTarifa]"
+                      cachedDataType="r8"
+                      cachedName="CantidadTarifa"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[CantidadTarifa]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadTarifa]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idIdentificador]"
+                      cachedDataType="i4"
+                      cachedName="idIdentificador"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="Identificador"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Identificador]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Complemento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Complemento"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idOrdenFraccion]"
+                      cachedDataType="i4"
+                      cachedName="idOrdenFraccion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idOrdenFraccion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idOrdenFraccion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NOTA_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOTA_1"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_1]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_1]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NOTA_2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOTA_2"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_2]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_2]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NOTA_3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOTA_3"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_3]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_3]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NOTA_4]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOTA_4"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_4]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_4]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[NOTA_5]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOTA_5"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_5]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_5]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[PrecioUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUnitario"
+                      cachedPrecision="20"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PrecioUnitario]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Commodity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Commodity"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Commodity]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Commodity]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Bultos]"
+                      cachedDataType="i4"
+                      cachedName="Bultos"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Bultos]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Bultos]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idPartidaOriginal]"
+                      cachedDataType="i4"
+                      cachedName="idPartidaOriginal"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idPartidaOriginal]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPartidaOriginal]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[OrdenCompra]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="OrdenCompra"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[OrdenCompra]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[OrdenCompra]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idIdentificador2]"
+                      cachedDataType="i4"
+                      cachedName="idIdentificador2"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador2]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador2]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Identificador2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="Identificador2"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Identificador2]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador2]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Complemento2_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Complemento2_1"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2_1]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento2_1]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Complemento2_2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Complemento2_2"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2_2]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento2_2]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Comlpemento2_3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Comlpemento2_3"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Comlpemento2_3]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Comlpemento2_3]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idIdentificador3]"
+                      cachedDataType="i4"
+                      cachedName="idIdentificador3"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador3]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador3]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Identificador3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="Identificador3"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Identificador3]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador3]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Complemento3_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Complemento3_1"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3_1]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_1]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Complemento3_2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Complemento3_2"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3_2]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_2]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[Complemento3_3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Complemento3_3"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3_3]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_3]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idUnidadCOVE]"
+                      cachedDataType="i4"
+                      cachedName="idUnidadCOVE"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idUnidadCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idUnidadCOVE]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ClaveUnidadMedidaCOVE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ClaveUnidadMedidaCOVE"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadMedidaCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveUnidadMedidaCOVE]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[DescripcionUnidadMedidaCOVE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="DescripcionUnidadMedidaCOVE"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadMedidaCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionUnidadMedidaCOVE]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[CantidadCOVE]"
+                      cachedDataType="r8"
+                      cachedName="CantidadCOVE"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[CantidadCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadCOVE]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[DescripcionCOVE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="DescripcionCOVE"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionCOVE]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[idValoracion]"
+                      cachedDataType="i4"
+                      cachedName="idValoracion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idValoracion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idValoracion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ClaveValoracion]"
+                      cachedDataType="i2"
+                      cachedName="ClaveValoracion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveValoracion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveValoracion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[mv_Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="mv_Descripcion"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[mv_Descripcion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[mv_Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[ValorCOVE]"
+                      cachedDataType="numeric"
+                      cachedName="ValorCOVE"
+                      cachedPrecision="20"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorCOVE]" />
+                    <inputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].Columns[PartePreCaptura]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="PartePreCaptura"
+                      externalMetadataColumnId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[PartePreCaptura]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PartePreCaptura]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idPartida]"
+                      dataType="i4"
+                      name="idPartida" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idFactura]"
+                      dataType="i4"
+                      name="idFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idParte]"
+                      dataType="i4"
+                      name="idParte" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveParte]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ClaveParte" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionTipoParte]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="DescripcionTipoParte" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Modelo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Modelo" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NoSerie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="NoSerie" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[CantidadComercial]"
+                      dataType="r8"
+                      name="CantidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idUMC]"
+                      dataType="i4"
+                      name="idUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      name="ClaveUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ImporteME]"
+                      dataType="r8"
+                      name="ImporteME" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ImporteUSD]"
+                      dataType="r8"
+                      name="ImporteUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorMciaME]"
+                      dataType="r8"
+                      name="ValorMciaME" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorMciaUSD]"
+                      dataType="r8"
+                      name="ValorMciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorAgregadoUSD]"
+                      dataType="r8"
+                      name="ValorAgregadoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[PesoBruto]"
+                      dataType="r8"
+                      name="PesoBruto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idPaisOrigen]"
+                      dataType="i4"
+                      name="idPaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClavePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClavePaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NombrePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="NombrePaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idFraccion]"
+                      dataType="i4"
+                      name="idFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[CantidadTarifa]"
+                      dataType="r8"
+                      name="CantidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador]"
+                      dataType="i4"
+                      name="idIdentificador" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Identificador" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Complemento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idOrdenFraccion]"
+                      dataType="i4"
+                      name="idOrdenFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_1" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_4" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[NOTA_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_5" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      dataType="numeric"
+                      name="PrecioUnitario"
+                      precision="20"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Commodity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Commodity" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Bultos]"
+                      dataType="i4"
+                      name="Bultos" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idPartidaOriginal]"
+                      dataType="i4"
+                      name="idPartidaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[OrdenCompra]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="OrdenCompra" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador2]"
+                      dataType="i4"
+                      name="idIdentificador2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Identificador2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Identificador2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Complemento2_1" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento2_2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Comlpemento2_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Comlpemento2_3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador3]"
+                      dataType="i4"
+                      name="idIdentificador3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Identificador3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Identificador3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Complemento3_1" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento3_2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Complemento3_3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idUnidadCOVE]"
+                      dataType="i4"
+                      name="idUnidadCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ClaveUnidadMedidaCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DescripcionUnidadMedidaCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[CantidadCOVE]"
+                      dataType="r8"
+                      name="CantidadCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="DescripcionCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[idValoracion]"
+                      dataType="i4"
+                      name="idValoracion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ClaveValoracion]"
+                      dataType="i2"
+                      name="ClaveValoracion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[mv_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="mv_Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[ValorCOVE]"
+                      dataType="numeric"
+                      name="ValorCOVE"
+                      precision="20"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input].ExternalColumns[PartePreCaptura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PartePreCaptura" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraer Partida\ExtraccionPartida.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\ExtraccionPartida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\ExtraccionPartida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\ExtraccionPartida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraer Partida\Partida"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Partida"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PP.idPartida,
+	PP.idFactura,
+	PP.idParte,
+	P.Clave AS ClaveParte,
+	PC.ptc_Descripcion AS DescripcionTipoParte,
+	PP.Descripcion,
+	PP.Marca,
+	PP.Modelo,
+	PP.NoSerie,
+	PP.CantidadComercial,
+	PP.idUMC,
+	UMC.ClaveUnidad AS ClaveUnidadComercial,
+	UMC.Abreviacion AS AbreviacionUnidadComercial,
+	UMC.Descripcion AS DescripcionUnidadComercial,
+	PP.ImporteME,
+	PP.ImporteUSD,
+	PP.ValorMciaME,
+	PP.ValorMciaUSD,
+	PP.ValorAgregadoUSD,
+	PP.PesoBruto,
+	PP.idPaisOrigen,
+	PO.ClaveM3 AS ClavePaisOrigen,
+	PO.NombrePais AS NombrePaisOrigen,
+	PP.idFraccion,
+	TG.Fraccion,
+	PP.CantidadTarifa,
+	PP.idIdentificador,
+	IDEI.Identificador,
+	PP.Complemento,
+	PP.idOrdenFraccion,
+	PP.NOTA_1,
+	PP.NOTA_2,
+	PP.NOTA_3,
+	PP.NOTA_4,
+	PP.NOTA_5,
+	PP.PrecioUnitario,
+	PP.Commodity,
+	PP.Bultos,
+	PP.idPartidaOriginal,
+	PP.OrdenCompra,
+	PP.idIdentificador2,
+	IDEII.Identificador AS Identificador2,
+	PP.Complemento2_1,
+	PP.Complemento2_2,
+	PP.Comlpemento2_3,
+	idIdentificador3,
+	IDEIII.Identificador AS Identificador3,
+	PP.Complemento3_1,
+	PP.Complemento3_2,
+	PP.Complemento3_3,
+	PP.idUnidadCOVE,
+	UMCOVE.Clave       AS ClaveUnidadMedidaCOVE,
+	UMCOVE.Descripcion AS DescripcionUnidadMedidaCOVE,
+	PP.CantidadCOVE,
+	PP.DescripcionCOVE,	
+	PP.idValoracion,
+	VAL.ClaveValoracion,
+	VAL.mv_Descripcion,
+	PP.ValorCOVE,
+	PP.PartePreCaptura
+  FROM Ped_Partidas                PP
+	LEFT JOIN UnidadesMedida       UMC    ON (PP.idUMC            = UMC.idUnidad)
+	LEFT JOIN Partes               P      ON (PP.idParte          = P.idParte)
+	LEFT JOIN Partes_Clasificacion PC     ON (P.idTipo            = PC.idTipo)
+	LEFT JOIN Paises               PO     ON (PP.idPaisOrigen     = PO.idPais)
+	LEFT JOIN TIGIE                TG     ON (PP.idFraccion       = TG.idFraccion)
+	LEFT JOIN Identificadores      IDEI   ON (PP.idIdentificador  = IDEI.idIdentificador)
+	LEFT JOIN Identificadores      IDEII  ON (PP.idIdentificador2 = IDEII.idIdentificador)
+	LEFT JOIN Identificadores      IDEIII ON (PP.idIdentificador3 = IDEIII.idIdentificador)
+	LEFT JOIN UnidadesMedidaCOVE   UMCOVE ON (PP.idUnidadCOVE     = UMCOVE.idUnidadCOVE) 
+	LEFT JOIN MetodosValoracion    VAL    ON (PP.idValoracion     = VAL.IdValoracion)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraer Partida\Partida.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPartida]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idPartida]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPartida]"
+                      name="idPartida"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idFactura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idFactura]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idFactura]"
+                      name="idFactura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idParte]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idParte]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idParte]"
+                      name="idParte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveParte]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveParte]"
+                      length="50"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveParte]"
+                      name="ClaveParte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionTipoParte]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionTipoParte]"
+                      length="20"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionTipoParte]"
+                      name="DescripcionTipoParte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      length="250"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Marca]"
+                      length="80"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Marca]"
+                      name="Marca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Modelo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Modelo]"
+                      length="80"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Modelo]"
+                      name="Modelo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NoSerie]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NoSerie]"
+                      length="25"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NoSerie]"
+                      name="NoSerie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadComercial]"
+                      name="CantidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idUMC]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idUMC]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idUMC]"
+                      name="idUMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadComercial]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveUnidadComercial]"
+                      name="ClaveUnidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidadComercial]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[AbreviacionUnidadComercial]"
+                      name="AbreviacionUnidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadComercial]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionUnidadComercial]"
+                      name="DescripcionUnidadComercial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ImporteME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ImporteME]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ImporteME]"
+                      name="ImporteME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ImporteUSD]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ImporteUSD]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ImporteUSD]"
+                      name="ImporteUSD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorMciaME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorMciaME]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorMciaME]"
+                      name="ValorMciaME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorMciaUSD]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorMciaUSD]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorMciaUSD]"
+                      name="ValorMciaUSD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorAgregadoUSD]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorAgregadoUSD]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorAgregadoUSD]"
+                      name="ValorAgregadoUSD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PesoBruto]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[PesoBruto]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PesoBruto]"
+                      name="PesoBruto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPaisOrigen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idPaisOrigen]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPaisOrigen]"
+                      name="idPaisOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClavePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClavePaisOrigen]"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClavePaisOrigen]"
+                      name="ClavePaisOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NombrePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NombrePaisOrigen]"
+                      length="60"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NombrePaisOrigen]"
+                      name="NombrePaisOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idFraccion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idFraccion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idFraccion]"
+                      name="idFraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Fraccion]"
+                      length="10"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Fraccion]"
+                      name="Fraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadTarifa]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[CantidadTarifa]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadTarifa]"
+                      name="CantidadTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador]"
+                      name="idIdentificador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador]"
+                      name="Identificador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento]"
+                      name="Complemento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idOrdenFraccion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idOrdenFraccion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idOrdenFraccion]"
+                      name="idOrdenFraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_1]"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_1]"
+                      name="NOTA_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_2]"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_2]"
+                      name="NOTA_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_3]"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_3]"
+                      name="NOTA_3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_4]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_4]"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_4]"
+                      name="NOTA_4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_5]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_5]"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[NOTA_5]"
+                      name="NOTA_5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PrecioUnitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      precision="20"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Commodity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Commodity]"
+                      length="4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Commodity]"
+                      name="Commodity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Bultos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Bultos]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Bultos]"
+                      name="Bultos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPartidaOriginal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idPartidaOriginal]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idPartidaOriginal]"
+                      name="idPartidaOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[OrdenCompra]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[OrdenCompra]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[OrdenCompra]"
+                      name="OrdenCompra"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador2]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador2]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador2]"
+                      name="idIdentificador2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Identificador2]"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador2]"
+                      name="Identificador2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento2_1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento2_1]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento2_1]"
+                      name="Complemento2_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento2_2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento2_2]"
+                      length="50"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento2_2]"
+                      name="Complemento2_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Comlpemento2_3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Comlpemento2_3]"
+                      length="40"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Comlpemento2_3]"
+                      name="Comlpemento2_3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador3]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador3]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idIdentificador3]"
+                      name="idIdentificador3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Identificador3]"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Identificador3]"
+                      name="Identificador3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento3_1]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_1]"
+                      name="Complemento3_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento3_2]"
+                      length="50"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_2]"
+                      name="Complemento3_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento3_3]"
+                      length="40"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[Complemento3_3]"
+                      name="Complemento3_3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idUnidadCOVE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idUnidadCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idUnidadCOVE]"
+                      name="idUnidadCOVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadMedidaCOVE]"
+                      length="10"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveUnidadMedidaCOVE]"
+                      name="ClaveUnidadMedidaCOVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadMedidaCOVE]"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionUnidadMedidaCOVE]"
+                      name="DescripcionUnidadMedidaCOVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadCOVE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[CantidadCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[CantidadCOVE]"
+                      name="CantidadCOVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionCOVE]"
+                      length="255"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[DescripcionCOVE]"
+                      name="DescripcionCOVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idValoracion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idValoracion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[idValoracion]"
+                      name="idValoracion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveValoracion]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveValoracion]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ClaveValoracion]"
+                      name="ClaveValoracion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[mv_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[mv_Descripcion]"
+                      length="60"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[mv_Descripcion]"
+                      name="mv_Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorCOVE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorCOVE]"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[ValorCOVE]"
+                      name="ValorCOVE"
+                      precision="20"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PartePreCaptura]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[PartePreCaptura]"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].Columns[PartePreCaptura]"
+                      name="PartePreCaptura"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idPartida]"
+                      dataType="i4"
+                      name="idPartida" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idFactura]"
+                      dataType="i4"
+                      name="idFactura" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idParte]"
+                      dataType="i4"
+                      name="idParte" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveParte]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ClaveParte" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionTipoParte]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="DescripcionTipoParte" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Modelo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Modelo" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NoSerie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="NoSerie" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[CantidadComercial]"
+                      dataType="r8"
+                      name="CantidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idUMC]"
+                      dataType="i4"
+                      name="idUMC" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      name="ClaveUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AbreviacionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DescripcionUnidadComercial" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ImporteME]"
+                      dataType="r8"
+                      name="ImporteME" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ImporteUSD]"
+                      dataType="r8"
+                      name="ImporteUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorMciaME]"
+                      dataType="r8"
+                      name="ValorMciaME" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorMciaUSD]"
+                      dataType="r8"
+                      name="ValorMciaUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorAgregadoUSD]"
+                      dataType="r8"
+                      name="ValorAgregadoUSD" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[PesoBruto]"
+                      dataType="r8"
+                      name="PesoBruto" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idPaisOrigen]"
+                      dataType="i4"
+                      name="idPaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClavePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClavePaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NombrePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="NombrePaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idFraccion]"
+                      dataType="i4"
+                      name="idFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[CantidadTarifa]"
+                      dataType="r8"
+                      name="CantidadTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador]"
+                      dataType="i4"
+                      name="idIdentificador" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Identificador" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Complemento" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idOrdenFraccion]"
+                      dataType="i4"
+                      name="idOrdenFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_1" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_4" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[NOTA_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOTA_5" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
+                      dataType="numeric"
+                      name="PrecioUnitario"
+                      precision="20"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Commodity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Commodity" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Bultos]"
+                      dataType="i4"
+                      name="Bultos" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idPartidaOriginal]"
+                      dataType="i4"
+                      name="idPartidaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[OrdenCompra]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="OrdenCompra" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador2]"
+                      dataType="i4"
+                      name="idIdentificador2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Identificador2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Identificador2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento2_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Complemento2_1" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento2_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento2_2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Comlpemento2_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Comlpemento2_3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador3]"
+                      dataType="i4"
+                      name="idIdentificador3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Identificador3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Identificador3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento3_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Complemento3_1" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento3_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento3_2" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[Complemento3_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Complemento3_3" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idUnidadCOVE]"
+                      dataType="i4"
+                      name="idUnidadCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ClaveUnidadMedidaCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DescripcionUnidadMedidaCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[CantidadCOVE]"
+                      dataType="r8"
+                      name="CantidadCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[DescripcionCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="DescripcionCOVE" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[idValoracion]"
+                      dataType="i4"
+                      name="idValoracion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ClaveValoracion]"
+                      dataType="i2"
+                      name="ClaveValoracion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[mv_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="mv_Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[ValorCOVE]"
+                      dataType="numeric"
+                      name="ValorCOVE"
+                      precision="20"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output].ExternalColumns[PartePreCaptura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PartePreCaptura" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idPartida]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idPartida]"
+                      name="idPartida" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idFactura]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idFactura]"
+                      name="idFactura" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idParte]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idParte]"
+                      name="idParte" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveParte]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveParte]"
+                      name="ClaveParte" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionTipoParte]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionTipoParte]"
+                      name="DescripcionTipoParte" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Marca]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Marca]"
+                      name="Marca" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Modelo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Modelo]"
+                      name="Modelo" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NoSerie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NoSerie]"
+                      name="NoSerie" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[CantidadComercial]"
+                      name="CantidadComercial" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idUMC]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idUMC]"
+                      name="idUMC" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadComercial]"
+                      dataType="i2"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadComercial]"
+                      name="ClaveUnidadComercial" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[AbreviacionUnidadComercial]"
+                      name="AbreviacionUnidadComercial" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadComercial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadComercial]"
+                      name="DescripcionUnidadComercial" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ImporteME]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ImporteME]"
+                      name="ImporteME" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ImporteUSD]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ImporteUSD]"
+                      name="ImporteUSD" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorMciaME]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorMciaME]"
+                      name="ValorMciaME" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorMciaUSD]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorMciaUSD]"
+                      name="ValorMciaUSD" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorAgregadoUSD]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorAgregadoUSD]"
+                      name="ValorAgregadoUSD" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[PesoBruto]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[PesoBruto]"
+                      name="PesoBruto" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idPaisOrigen]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idPaisOrigen]"
+                      name="idPaisOrigen" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClavePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClavePaisOrigen]"
+                      name="ClavePaisOrigen" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NombrePaisOrigen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NombrePaisOrigen]"
+                      name="NombrePaisOrigen" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idFraccion]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idFraccion]"
+                      name="idFraccion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Fraccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Fraccion]"
+                      name="Fraccion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[CantidadTarifa]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[CantidadTarifa]"
+                      name="CantidadTarifa" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idIdentificador]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idIdentificador]"
+                      name="idIdentificador" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Identificador]"
+                      name="Identificador" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento]"
+                      name="Complemento" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idOrdenFraccion]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idOrdenFraccion]"
+                      name="idOrdenFraccion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_1]"
+                      name="NOTA_1" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_2]"
+                      name="NOTA_2" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_3]"
+                      name="NOTA_3" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_4]"
+                      name="NOTA_4" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[NOTA_5]"
+                      name="NOTA_5" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      precision="20"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Commodity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Commodity]"
+                      name="Commodity" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Bultos]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Bultos]"
+                      name="Bultos" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idPartidaOriginal]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idPartidaOriginal]"
+                      name="idPartidaOriginal" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[OrdenCompra]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[OrdenCompra]"
+                      name="OrdenCompra" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idIdentificador2]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idIdentificador2]"
+                      name="idIdentificador2" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Identificador2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Identificador2]"
+                      name="Identificador2" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento2_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento2_1]"
+                      name="Complemento2_1" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento2_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento2_2]"
+                      name="Complemento2_2" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Comlpemento2_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Comlpemento2_3]"
+                      name="Comlpemento2_3" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idIdentificador3]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idIdentificador3]"
+                      name="idIdentificador3" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Identificador3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Identificador3]"
+                      name="Identificador3" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento3_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento3_1]"
+                      name="Complemento3_1" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento3_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento3_2]"
+                      name="Complemento3_2" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento3_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[Complemento3_3]"
+                      name="Complemento3_3" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idUnidadCOVE]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idUnidadCOVE]"
+                      name="idUnidadCOVE" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveUnidadMedidaCOVE]"
+                      name="ClaveUnidadMedidaCOVE" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadMedidaCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionUnidadMedidaCOVE]"
+                      name="DescripcionUnidadMedidaCOVE" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[CantidadCOVE]"
+                      dataType="r8"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[CantidadCOVE]"
+                      name="CantidadCOVE" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionCOVE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[DescripcionCOVE]"
+                      name="DescripcionCOVE" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idValoracion]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[idValoracion]"
+                      name="idValoracion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveValoracion]"
+                      dataType="i2"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ClaveValoracion]"
+                      name="ClaveValoracion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[mv_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[mv_Descripcion]"
+                      name="mv_Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorCOVE]"
+                      dataType="numeric"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ValorCOVE]"
+                      name="ValorCOVE"
+                      precision="20"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[PartePreCaptura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[PartePreCaptura]"
+                      name="PartePreCaptura" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraer Partida.Paths[OLE DB Source Output]"
+              endId="Package\Extraer Partida\ExtraccionPartida.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraer Partida\Partida.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla Partida"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{DD28ECFA-F460-4073-8676-8674A6A56BAB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla Partida"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertFacturaPartida" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{58E1EE2A-4010-4DC2-B668-37D07E7224AD}"
+      DTS:From="Package\Truncar tabla Partida"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraer Partida" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Truncar tabla Partida"
+          TopLeft="242,61" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Extraer Partida"
+          TopLeft="263,137" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="334.25,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraer Partida">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="112,42"
+          Id="Package\Extraer Partida\Partida"
+          TopLeft="241,56" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Extraer Partida\ExtraccionPartida"
+          TopLeft="216,130" />
+        <EdgeLayout
+          Id="Package\Extraer Partida.Paths[OLE DB Source Output]"
+          TopLeft="296.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer Partida\Partida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraer Partida\ExtraccionPartida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

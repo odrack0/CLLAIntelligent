@@ -1,0 +1,976 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 11:27:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{161CA161-BC74-4481-8E8A-F28EADC31864}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{A5189D0D-0B17-4BE9-953B-8A0338393825}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion PedimentoContribucionesFraccion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{83216DC9-D810-46EB-A5A6-B128CD3D611B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion PedimentoContribucionesFraccion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ContribucionesFraccion"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--01:43 10,791,047
+SELECT 
+	PCF.idFracContribuciones,
+	PCF.idFraccion,
+	PCF.idContribucion,
+	C.ClaveContribucion,
+	C.Abreviacion,
+	c.ct_Descripcion,
+	PCF.PorcentajeAplicacion,
+	PCF.idFormaPago,
+	FP.ClaveFormaPago,
+	FP.fp_Descripcion,
+	PCF.idTipoTasa,
+	T.TipoTasa,
+	T.Descripcion AS DescripcionTasa,
+	PCF.ImporteContribucion,
+	PCF.TipoCuotaCompensatoria,
+	PCF.TasaContribucion,
+	PCF.PedimentoCompensacion,
+	PCF.CaracteristicasCalculo
+FROM Ped_ContribucionesFraccion PCF
+	JOIN Contribuciones         C   ON (PCF.idContribucion = C.idContribucion)
+	JOIN FormasDePago           FP  ON (PCF.idFormaPago    = FP.idFormapago)
+	JOIN Tasas                  T   ON (PCF.idTipoTasa     = T.idTipo)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFracContribuciones]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idFracContribuciones]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFracContribuciones]"
+                      name="idFracContribuciones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFraccion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idFraccion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFraccion]"
+                      name="idFraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idContribucion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idContribucion]"
+                      name="idContribucion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ClaveContribucion]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ClaveContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ClaveContribucion]"
+                      name="ClaveContribucion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[Abreviacion]"
+                      length="10"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[Abreviacion]"
+                      name="Abreviacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ct_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ct_Descripcion]"
+                      length="120"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ct_Descripcion]"
+                      name="ct_Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[PorcentajeAplicacion]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[PorcentajeAplicacion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[PorcentajeAplicacion]"
+                      name="PorcentajeAplicacion"
+                      precision="8"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFormaPago]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idFormaPago]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFormaPago]"
+                      name="idFormaPago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ClaveFormaPago]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ClaveFormaPago]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ClaveFormaPago]"
+                      name="ClaveFormaPago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[fp_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[fp_Descripcion]"
+                      length="35"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[fp_Descripcion]"
+                      name="fp_Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idTipoTasa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idTipoTasa]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idTipoTasa]"
+                      name="idTipoTasa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TipoTasa]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[TipoTasa]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TipoTasa]"
+                      name="TipoTasa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[DescripcionTasa]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[DescripcionTasa]"
+                      length="51"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[DescripcionTasa]"
+                      name="DescripcionTasa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ImporteContribucion]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ImporteContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ImporteContribucion]"
+                      name="ImporteContribucion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TipoCuotaCompensatoria]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[TipoCuotaCompensatoria]"
+                      length="1"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TipoCuotaCompensatoria]"
+                      name="TipoCuotaCompensatoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TasaContribucion]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[TasaContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TasaContribucion]"
+                      name="TasaContribucion"
+                      precision="13"
+                      scale="8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[PedimentoCompensacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[PedimentoCompensacion]"
+                      length="12"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[PedimentoCompensacion]"
+                      name="PedimentoCompensacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[CaracteristicasCalculo]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[CaracteristicasCalculo]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[CaracteristicasCalculo]"
+                      name="CaracteristicasCalculo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idFracContribuciones]"
+                      dataType="i4"
+                      name="idFracContribuciones" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idFraccion]"
+                      dataType="i4"
+                      name="idFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idContribucion]"
+                      dataType="i4"
+                      name="idContribucion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ClaveContribucion]"
+                      dataType="i2"
+                      name="ClaveContribucion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Abreviacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ct_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="ct_Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[PorcentajeAplicacion]"
+                      dataType="numeric"
+                      name="PorcentajeAplicacion"
+                      precision="8"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idFormaPago]"
+                      dataType="i4"
+                      name="idFormaPago" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ClaveFormaPago]"
+                      dataType="i2"
+                      name="ClaveFormaPago" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[fp_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="fp_Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[idTipoTasa]"
+                      dataType="i4"
+                      name="idTipoTasa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[TipoTasa]"
+                      dataType="i2"
+                      name="TipoTasa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[DescripcionTasa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="DescripcionTasa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[ImporteContribucion]"
+                      dataType="cy"
+                      name="ImporteContribucion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[TipoCuotaCompensatoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="TipoCuotaCompensatoria" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[TasaContribucion]"
+                      dataType="numeric"
+                      name="TasaContribucion"
+                      precision="13"
+                      scale="8" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[PedimentoCompensacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="PedimentoCompensacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].ExternalColumns[CaracteristicasCalculo]"
+                      dataType="ui1"
+                      name="CaracteristicasCalculo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idFracContribuciones]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idFracContribuciones]"
+                      name="idFracContribuciones" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idFraccion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idFraccion]"
+                      name="idFraccion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idContribucion]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idContribucion]"
+                      name="idContribucion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ClaveContribucion]"
+                      dataType="i2"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ClaveContribucion]"
+                      name="ClaveContribucion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[Abreviacion]"
+                      name="Abreviacion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ct_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ct_Descripcion]"
+                      name="ct_Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[PorcentajeAplicacion]"
+                      dataType="numeric"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[PorcentajeAplicacion]"
+                      name="PorcentajeAplicacion"
+                      precision="8"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idFormaPago]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idFormaPago]"
+                      name="idFormaPago" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ClaveFormaPago]"
+                      dataType="i2"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ClaveFormaPago]"
+                      name="ClaveFormaPago" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[fp_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[fp_Descripcion]"
+                      name="fp_Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idTipoTasa]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[idTipoTasa]"
+                      name="idTipoTasa" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[TipoTasa]"
+                      dataType="i2"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[TipoTasa]"
+                      name="TipoTasa" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[DescripcionTasa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[DescripcionTasa]"
+                      name="DescripcionTasa" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ImporteContribucion]"
+                      dataType="cy"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ImporteContribucion]"
+                      name="ImporteContribucion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[TipoCuotaCompensatoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[TipoCuotaCompensatoria]"
+                      name="TipoCuotaCompensatoria" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[TasaContribucion]"
+                      dataType="numeric"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[TasaContribucion]"
+                      name="TasaContribucion"
+                      precision="13"
+                      scale="8" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[PedimentoCompensacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[PedimentoCompensacion]"
+                      name="PedimentoCompensacion" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[CaracteristicasCalculo]"
+                      dataType="ui1"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[CaracteristicasCalculo]"
+                      name="CaracteristicasCalculo" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionContribucionesFraccion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ExtraccionSysExpertPedimentoContribucionesFraccion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[idFracContribuciones]"
+                      cachedDataType="i4"
+                      cachedName="idFracContribuciones"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFracContribuciones]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFracContribuciones]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[idFraccion]"
+                      cachedDataType="i4"
+                      cachedName="idFraccion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFraccion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFraccion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[idContribucion]"
+                      cachedDataType="i4"
+                      cachedName="idContribucion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idContribucion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[ClaveContribucion]"
+                      cachedDataType="i2"
+                      cachedName="ClaveContribucion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ClaveContribucion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[Abreviacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Abreviacion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Abreviacion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[Abreviacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[ct_Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="120"
+                      cachedName="ct_Descripcion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ct_Descripcion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ct_Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[PorcentajeAplicacion]"
+                      cachedDataType="numeric"
+                      cachedName="PorcentajeAplicacion"
+                      cachedPrecision="8"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PorcentajeAplicacion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[PorcentajeAplicacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[idFormaPago]"
+                      cachedDataType="i4"
+                      cachedName="idFormaPago"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFormaPago]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idFormaPago]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[ClaveFormaPago]"
+                      cachedDataType="i2"
+                      cachedName="ClaveFormaPago"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveFormaPago]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ClaveFormaPago]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[fp_Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="35"
+                      cachedName="fp_Descripcion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[fp_Descripcion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[fp_Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[idTipoTasa]"
+                      cachedDataType="i4"
+                      cachedName="idTipoTasa"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idTipoTasa]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[idTipoTasa]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[TipoTasa]"
+                      cachedDataType="i2"
+                      cachedName="TipoTasa"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[TipoTasa]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TipoTasa]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[DescripcionTasa]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="51"
+                      cachedName="DescripcionTasa"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionTasa]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[DescripcionTasa]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[ImporteContribucion]"
+                      cachedDataType="cy"
+                      cachedName="ImporteContribucion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ImporteContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[ImporteContribucion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[TipoCuotaCompensatoria]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="TipoCuotaCompensatoria"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[TipoCuotaCompensatoria]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TipoCuotaCompensatoria]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[TasaContribucion]"
+                      cachedDataType="numeric"
+                      cachedName="TasaContribucion"
+                      cachedPrecision="13"
+                      cachedScale="8"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[TasaContribucion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[TasaContribucion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[PedimentoCompensacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="PedimentoCompensacion"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoCompensacion]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[PedimentoCompensacion]" />
+                    <inputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].Columns[CaracteristicasCalculo]"
+                      cachedDataType="ui1"
+                      cachedName="CaracteristicasCalculo"
+                      externalMetadataColumnId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[CaracteristicasCalculo]"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output].Columns[CaracteristicasCalculo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFracContribuciones]"
+                      dataType="i4"
+                      name="idFracContribuciones" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFraccion]"
+                      dataType="i4"
+                      name="idFraccion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idContribucion]"
+                      dataType="i4"
+                      name="idContribucion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveContribucion]"
+                      dataType="i2"
+                      name="ClaveContribucion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[Abreviacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Abreviacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ct_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="ct_Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PorcentajeAplicacion]"
+                      dataType="numeric"
+                      name="PorcentajeAplicacion"
+                      precision="8"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idFormaPago]"
+                      dataType="i4"
+                      name="idFormaPago" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveFormaPago]"
+                      dataType="i2"
+                      name="ClaveFormaPago" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[fp_Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="fp_Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[idTipoTasa]"
+                      dataType="i4"
+                      name="idTipoTasa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[TipoTasa]"
+                      dataType="i2"
+                      name="TipoTasa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionTasa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="DescripcionTasa" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[ImporteContribucion]"
+                      dataType="cy"
+                      name="ImporteContribucion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[TipoCuotaCompensatoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="TipoCuotaCompensatoria" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[TasaContribucion]"
+                      dataType="numeric"
+                      name="TasaContribucion"
+                      precision="13"
+                      scale="8" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoCompensacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="PedimentoCompensacion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input].ExternalColumns[CaracteristicasCalculo]"
+                      dataType="ui1"
+                      name="CaracteristicasCalculo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion PedimentoContribucionesFraccion.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla ContribucionesFraccion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{E8F282D3-810D-488B-BFE0-E72654A23703}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla ContribucionesFraccion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoContribucionesFraccion" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D64F79C5-1A05-40A6-AB6B-FA3B5EBDB030}"
+      DTS:From="Package\Truncar tabla ContribucionesFraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraccion PedimentoContribucionesFraccion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="289,42"
+          Id="Package\Extraccion PedimentoContribucionesFraccion"
+          TopLeft="156,109" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Truncar tabla ContribucionesFraccion"
+          TopLeft="178,26" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="302.5,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion PedimentoContribucionesFraccion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion"
+          TopLeft="148,122" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion"
+          TopLeft="131,232" />
+        <EdgeLayout
+          Id="Package\Extraccion PedimentoContribucionesFraccion.Paths[OLE DB Source Output]"
+          TopLeft="245.25,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion PedimentoContribucionesFraccion\ContribucionesFraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion PedimentoContribucionesFraccion\ExtraccionContribucionesFraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

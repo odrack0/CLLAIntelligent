@@ -1,0 +1,644 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/27/2020 7:35:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{CCB57A6D-B342-4930-8582-674E7C8B948F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{E953BC5E-38B1-4214-8912-720FE5C2B817}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extraccion ParteIIContenedor"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EF0C81A6-EDA3-4AA8-836A-BCD805A62325}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extraccion ParteIIContenedor"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extraccion ParteIIContenedor\Contenedor"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Contenedor"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PIIC.idPedPIIContenedores,
+	PIIC.idPedParteII,
+	PIIC.idContenedor,
+	C.Clave,
+	C.Descripcion,
+	PIIC.NumeroContenedor,
+	PIICC.Candado,
+	PIICC.Color
+FROM Ped_PartesIIContenedores                PIIC
+	JOIN Contenedores                        C     ON (PIIC.idContenedor         =  C.idContenedor)
+	LEFT JOIN Ped_PartesIIContenedorCandados PIICC ON (PIIC.idPedPIIContenedores = PIICC.idPedPIIContenedores)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion ParteIIContenedor\Contenedor.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idPedPIIContenedores]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[idPedPIIContenedores]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idPedPIIContenedores]"
+                      name="idPedPIIContenedores"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idPedParteII]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[idPedParteII]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idPedParteII]"
+                      name="idPedParteII"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idContenedor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[idContenedor]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idContenedor]"
+                      name="idContenedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Clave]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Clave]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Clave]"
+                      name="Clave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      length="80"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[NumeroContenedor]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[NumeroContenedor]"
+                      length="12"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[NumeroContenedor]"
+                      name="NumeroContenedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Candado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Candado]"
+                      length="35"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Candado]"
+                      name="Candado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Color]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      length="1"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[idPedPIIContenedores]"
+                      dataType="i4"
+                      name="idPedPIIContenedores" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[idPedParteII]"
+                      dataType="i4"
+                      name="idPedParteII" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[idContenedor]"
+                      dataType="i4"
+                      name="idContenedor" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Clave]"
+                      dataType="i2"
+                      name="Clave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[NumeroContenedor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="NumeroContenedor" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Candado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="Candado" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Color" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[idPedPIIContenedores]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[idPedPIIContenedores]"
+                      name="idPedPIIContenedores" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[idPedParteII]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[idPedParteII]"
+                      name="idPedParteII" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[idContenedor]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[idContenedor]"
+                      name="idContenedor" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Clave]"
+                      dataType="i2"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Clave]"
+                      name="Clave" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[NumeroContenedor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[NumeroContenedor]"
+                      name="NumeroContenedor" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Candado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Candado]"
+                      name="Candado" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionContenedor"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ExtraccionSysExpertPedimentoParteIIContenedor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[idPedPIIContenedores]"
+                      cachedDataType="i4"
+                      cachedName="idPedPIIContenedores"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[idPedPIIContenedores]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idPedPIIContenedores]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[idPedParteII]"
+                      cachedDataType="i4"
+                      cachedName="idPedParteII"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[idPedParteII]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idPedParteII]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[idContenedor]"
+                      cachedDataType="i4"
+                      cachedName="idContenedor"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[idContenedor]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[idContenedor]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[Clave]"
+                      cachedDataType="i2"
+                      cachedName="Clave"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Clave]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Clave]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[NumeroContenedor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="NumeroContenedor"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[NumeroContenedor]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[NumeroContenedor]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[Candado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="35"
+                      cachedName="Candado"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Candado]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Candado]" />
+                    <inputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].Columns[Color]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output].Columns[Color]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[idPedPIIContenedores]"
+                      dataType="i4"
+                      name="idPedPIIContenedores" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[idPedParteII]"
+                      dataType="i4"
+                      name="idPedParteII" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[idContenedor]"
+                      dataType="i4"
+                      name="idContenedor" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Clave]"
+                      dataType="i2"
+                      name="Clave" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[NumeroContenedor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="NumeroContenedor" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Candado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="Candado" />
+                    <externalMetadataColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Color" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extraccion ParteIIContenedor.Paths[OLE DB Source Output]"
+              endId="Package\Extraccion ParteIIContenedor\ExtraccionContenedor.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extraccion ParteIIContenedor\Contenedor.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla ParteIIContenedor"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{C3AA01E5-BC5A-419B-ADEF-BBEBFFBC7F10}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla ParteIIContenedor"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoParteIIContenedor" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{37DE2D4F-01C9-4D74-8944-2B87395EF0D3}"
+      DTS:From="Package\Truncar tabla ParteIIContenedor"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extraccion ParteIIContenedor" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Truncar tabla ParteIIContenedor"
+          TopLeft="294,57" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Extraccion ParteIIContenedor"
+          TopLeft="306,146" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="412.5,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extraccion ParteIIContenedor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Extraccion ParteIIContenedor\Contenedor"
+          TopLeft="234,27" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Extraccion ParteIIContenedor\ExtraccionContenedor"
+          TopLeft="214,145" />
+        <EdgeLayout
+          Id="Package\Extraccion ParteIIContenedor.Paths[OLE DB Source Output]"
+          TopLeft="302.75,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion ParteIIContenedor\Contenedor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extraccion ParteIIContenedor\ExtraccionContenedor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

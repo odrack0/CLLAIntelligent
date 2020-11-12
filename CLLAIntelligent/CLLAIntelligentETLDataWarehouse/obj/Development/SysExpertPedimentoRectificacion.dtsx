@@ -1,0 +1,849 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/28/2020 7:17:18 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{4F613A97-2132-47B7-8B5C-A4BFCD5E17DB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{D4C122EE-FAF0-4D81-8622-6ED0B870AF9B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ExtraerRectificacion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C2D66D6C-F46C-4600-8506-8C04F3CDCF44}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExtraerRectificacion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ExtraerRectificacion\ExtraccionRectificacion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionRectificacion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoRectificacion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[idRectificacion]"
+                      cachedDataType="i4"
+                      cachedName="idRectificacion"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idRectificacion]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[idCveDocRectificacion]"
+                      cachedDataType="i4"
+                      cachedName="idCveDocRectificacion"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idCveDocRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idCveDocRectificacion]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[CveDocRectificacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CveDocRectificacion"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[CveDocRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[CveDocRectificacion]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[PedimentoOriginal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="PedimentoOriginal"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[PedimentoOriginal]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[idCveDocOriginal]"
+                      cachedDataType="i4"
+                      cachedName="idCveDocOriginal"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idCveDocOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idCveDocOriginal]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[CveDocOriginal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CveDocOriginal"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[CveDocOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[CveDocOriginal]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[FechaRectificacion]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaRectificacion"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[FechaRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[FechaRectificacion]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[idAduanaOriginal]"
+                      cachedDataType="i4"
+                      cachedName="idAduanaOriginal"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idAduanaOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idAduanaOriginal]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[ClaveAduana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="ClaveAduana"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveAduana]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[ClaveAduana]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[NombreAduana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="130"
+                      cachedName="NombreAduana"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[NombreAduana]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[NombreAduana]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[TasaRecargos]"
+                      cachedDataType="numeric"
+                      cachedName="TasaRecargos"
+                      cachedPrecision="10"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[TasaRecargos]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[TasaRecargos]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[FactorActualizacion]"
+                      cachedDataType="numeric"
+                      cachedName="FactorActualizacion"
+                      cachedPrecision="6"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[FactorActualizacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[FactorActualizacion]" />
+                    <inputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].Columns[idReferenciaOriginal]"
+                      cachedDataType="i4"
+                      cachedName="idReferenciaOriginal"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idReferenciaOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idReferenciaOriginal]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idRectificacion]"
+                      dataType="i4"
+                      name="idRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idCveDocRectificacion]"
+                      dataType="i4"
+                      name="idCveDocRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[CveDocRectificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="CveDocRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="PedimentoOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idCveDocOriginal]"
+                      dataType="i4"
+                      name="idCveDocOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[CveDocOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="CveDocOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[FechaRectificacion]"
+                      dataType="dbTimeStamp"
+                      name="FechaRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idAduanaOriginal]"
+                      dataType="i4"
+                      name="idAduanaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClaveAduana" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="130"
+                      name="NombreAduana" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[TasaRecargos]"
+                      dataType="numeric"
+                      name="TasaRecargos"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[FactorActualizacion]"
+                      dataType="numeric"
+                      name="FactorActualizacion"
+                      precision="6"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input].ExternalColumns[idReferenciaOriginal]"
+                      dataType="i4"
+                      name="idReferenciaOriginal" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\ExtraccionRectificacion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\ExtraccionRectificacion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\ExtraccionRectificacion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ExtraerRectificacion\Rectificacion"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Rectificacion"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	PR.idRectificacion,
+	PR.idReferencia,
+	PR.idCveDocRectificacion,
+	CDREC.Clave AS CveDocRectificacion,
+	PR.PedimentoOriginal,
+	PR.idCveDocOriginal,
+	CDORG.Clave  AS CveDocOriginal,
+	PR.FechaRectificacion,
+	PR.idAduanaOriginal,
+	A.ClaveAduana,
+	A.NombreAduana,
+	PR.TasaRecargos,
+	PR.FactorActualizacion,
+	PR.idReferenciaOriginal
+FROM Ped_Rectificaciones PR
+	JOIN CvesDocs        CDREC ON (PR.idCveDocRectificacion = CDREC.idClave)
+	JOIN CvesDocs        CDORG ON (PR.idCveDocOriginal      = CDORG.idClave)
+	JOIN Aduanas         A     ON (PR.idAduanaOriginal      = A.idAduana)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ExtraerRectificacion\Rectificacion.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idRectificacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idRectificacion]"
+                      name="idRectificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idCveDocRectificacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idCveDocRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idCveDocRectificacion]"
+                      name="idCveDocRectificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[CveDocRectificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[CveDocRectificacion]"
+                      length="3"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[CveDocRectificacion]"
+                      name="CveDocRectificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[PedimentoOriginal]"
+                      length="12"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[PedimentoOriginal]"
+                      name="PedimentoOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idCveDocOriginal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idCveDocOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idCveDocOriginal]"
+                      name="idCveDocOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[CveDocOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[CveDocOriginal]"
+                      length="3"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[CveDocOriginal]"
+                      name="CveDocOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[FechaRectificacion]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[FechaRectificacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[FechaRectificacion]"
+                      name="FechaRectificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idAduanaOriginal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idAduanaOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idAduanaOriginal]"
+                      name="idAduanaOriginal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[ClaveAduana]"
+                      length="3"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[ClaveAduana]"
+                      name="ClaveAduana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[NombreAduana]"
+                      length="130"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[NombreAduana]"
+                      name="NombreAduana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[TasaRecargos]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[TasaRecargos]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[TasaRecargos]"
+                      name="TasaRecargos"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[FactorActualizacion]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[FactorActualizacion]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[FactorActualizacion]"
+                      name="FactorActualizacion"
+                      precision="6"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idReferenciaOriginal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idReferenciaOriginal]"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].Columns[idReferenciaOriginal]"
+                      name="idReferenciaOriginal"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idRectificacion]"
+                      dataType="i4"
+                      name="idRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idCveDocRectificacion]"
+                      dataType="i4"
+                      name="idCveDocRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[CveDocRectificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="CveDocRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="PedimentoOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idCveDocOriginal]"
+                      dataType="i4"
+                      name="idCveDocOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[CveDocOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="CveDocOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[FechaRectificacion]"
+                      dataType="dbTimeStamp"
+                      name="FechaRectificacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idAduanaOriginal]"
+                      dataType="i4"
+                      name="idAduanaOriginal" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ClaveAduana" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="130"
+                      name="NombreAduana" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[TasaRecargos]"
+                      dataType="numeric"
+                      name="TasaRecargos"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[FactorActualizacion]"
+                      dataType="numeric"
+                      name="FactorActualizacion"
+                      precision="6"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output].ExternalColumns[idReferenciaOriginal]"
+                      dataType="i4"
+                      name="idReferenciaOriginal" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idRectificacion]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idRectificacion]"
+                      name="idRectificacion" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idCveDocRectificacion]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idCveDocRectificacion]"
+                      name="idCveDocRectificacion" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[CveDocRectificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[CveDocRectificacion]"
+                      name="CveDocRectificacion" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[PedimentoOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[PedimentoOriginal]"
+                      name="PedimentoOriginal" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idCveDocOriginal]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idCveDocOriginal]"
+                      name="idCveDocOriginal" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[CveDocOriginal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[CveDocOriginal]"
+                      name="CveDocOriginal" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[FechaRectificacion]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[FechaRectificacion]"
+                      name="FechaRectificacion" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idAduanaOriginal]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idAduanaOriginal]"
+                      name="idAduanaOriginal" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[ClaveAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[ClaveAduana]"
+                      name="ClaveAduana" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[NombreAduana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="130"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[NombreAduana]"
+                      name="NombreAduana" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[TasaRecargos]"
+                      dataType="numeric"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[TasaRecargos]"
+                      name="TasaRecargos"
+                      precision="10"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[FactorActualizacion]"
+                      dataType="numeric"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[FactorActualizacion]"
+                      name="FactorActualizacion"
+                      precision="6"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idReferenciaOriginal]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[idReferenciaOriginal]"
+                      name="idReferenciaOriginal" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ExtraerRectificacion.Paths[OLE DB Source Output]"
+              endId="Package\ExtraerRectificacion\ExtraccionRectificacion.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\ExtraerRectificacion\Rectificacion.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar rectificacion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{E22FCC55-9468-4D4C-98B7-9998D2E24F25}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar rectificacion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoRectificacion" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9D90CC40-0CBD-49A2-AEF7-D47C15B6765A}"
+      DTS:From="Package\Truncar rectificacion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ExtraerRectificacion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Truncar rectificacion"
+          TopLeft="250,34" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ExtraerRectificacion"
+          TopLeft="248,104" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="335.5,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ExtraerRectificacion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\ExtraerRectificacion\Rectificacion"
+          TopLeft="202,33" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\ExtraerRectificacion\ExtraccionRectificacion"
+          TopLeft="182,133" />
+        <EdgeLayout
+          Id="Package\ExtraerRectificacion.Paths[OLE DB Source Output]"
+          TopLeft="273,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExtraerRectificacion\Rectificacion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExtraerRectificacion\ExtraccionRectificacion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
