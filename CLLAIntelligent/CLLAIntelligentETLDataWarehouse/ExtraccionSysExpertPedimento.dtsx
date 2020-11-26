@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="183"
-  DTS:VersionGUID="{B480D63B-1AE7-4E16-964E-F36D56B6B853}">
+  DTS:VersionBuild="187"
+  DTS:VersionGUID="{BDFC633C-19E0-4240-B412-B4E04500AF2A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -85,6 +85,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -423,6 +425,8 @@ ORDER BY
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -5974,6 +5978,8 @@ ORDER BY PEDGRALES.idReferencia</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -6615,6 +6621,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -7516,6 +7524,8 @@ ORDER BY
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -8419,6 +8429,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -9019,6 +9031,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -13862,6 +13876,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -17613,6 +17629,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -18204,6 +18222,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -19747,6 +19767,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -20749,6 +20771,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -21390,6 +21414,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -22089,6 +22115,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -22855,6 +22883,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -23348,6 +23378,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -23959,6 +23991,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -24452,6 +24486,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -25123,6 +25159,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -26037,6 +26075,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -26883,6 +26923,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -27813,7 +27855,7 @@ WHERE
           Id="Package\PedimentoDigitalizacion"
           TopLeft="1102,264" />
         <NodeLayout
-          Size="213,42"
+          Size="164,42"
           Id="Package\PedimentoFactura"
           TopLeft="608,120" />
         <NodeLayout
@@ -28216,14 +28258,14 @@ WHERE
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-47,0"
+              EndConnector="-96,0"
               Start="0,0"
-              End="-39.5,0">
+              End="-88.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-39.5,0" />
+                    End="-88.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -28371,7 +28413,7 @@ WHERE
     design-time-name="Package\BitacoraPedimentoDesaduanizados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="263,46"
           Id="Package\BitacoraPedimentoDesaduanizados\ExtraccionPedimentoDesaduanizados"
@@ -28399,9 +28441,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -28432,7 +28472,7 @@ WHERE
     design-time-name="Package\Pedimento">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="132,42"
           Id="Package\Pedimento\Ped_Grales"
@@ -28440,7 +28480,7 @@ WHERE
         <NodeLayout
           Size="229,42"
           Id="Package\Pedimento\Actualizacion BitacoraExtraccion"
-          TopLeft="640,336" />
+          TopLeft="466,337" />
         <NodeLayout
           Size="223,42"
           Id="Package\Pedimento\ExtraccionSysExpertPedimento"
@@ -28468,9 +28508,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -28479,34 +28517,32 @@ WHERE
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="245.833333333333,151"
+              EndConnector="71.8333333333334,152"
               Start="0,0"
-              End="245.833333333333,143.5">
+              End="71.8333333333334,144.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5921052631579" />
+                    End="0,58" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,57.5921052631579"
-                    Point2="0,61.5921052631579"
-                    Point3="4,61.5921052631579" />
+                    Point1="0,58"
+                    Point2="0,62"
+                    Point3="4,62" />
                   <mssgle:LineSegment
-                    End="241.833333333333,61.5921052631579" />
+                    End="67.8333333333334,62" />
                   <mssgle:CubicBezierSegment
-                    Point1="241.833333333333,61.5921052631579"
-                    Point2="245.833333333333,61.5921052631579"
-                    Point3="245.833333333333,65.5921052631579" />
+                    Point1="67.8333333333334,62"
+                    Point2="71.8333333333334,62"
+                    Point3="71.8333333333334,66" />
                   <mssgle:LineSegment
-                    End="245.833333333333,143.5" />
+                    End="71.8333333333334,144.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -28540,9 +28576,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -28714,7 +28748,7 @@ WHERE
     design-time-name="Package\PedimentoContribucion">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="221,42"
           Id="Package\PedimentoContribucion\Ped_ContribucionesPedimento"
@@ -28762,9 +28796,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -28786,9 +28818,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -28822,9 +28852,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -29138,115 +29166,103 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="142,42"
+          Id="Package\PedimentoFactura\Ped_Facturas"
+          TopLeft="429,24" />
+        <NodeLayout
           Size="120,42"
           Id="Package\PedimentoFactura\Multicast"
-          TopLeft="495,137" />
+          TopLeft="437,128" />
         <NodeLayout
           Size="226,42"
           Id="Package\PedimentoFactura\ActualizacionBitacoraExtraccion"
           TopLeft="518,236" />
-        <EdgeLayout
-          Id="Package\PedimentoFactura.Paths[Multicast Output 2]"
-          TopLeft="573.666666666667,179">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57.3333333333334,57"
-              Start="0,0"
-              End="57.3333333333334,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.25"
-                    Point2="0,23.25"
-                    Point3="4,23.25" />
-                  <mssgle:LineSegment
-                    End="53.3333333333334,23.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="53.3333333333334,23.25"
-                    Point2="57.3333333333334,23.25"
-                    Point3="57.3333333333334,27.25" />
-                  <mssgle:LineSegment
-                    End="57.3333333333334,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\PedimentoFactura\Ped_Facturas"
-          TopLeft="505,57" />
-        <EdgeLayout
-          Id="Package\PedimentoFactura.Paths[OLE DB Source Output]"
-          TopLeft="576,99">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-21,38"
-              Start="0,0"
-              End="-21,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15"
-                    Point2="0,19"
-                    Point3="-4,19" />
-                  <mssgle:LineSegment
-                    End="-17,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-17,19"
-                    Point2="-21,19"
-                    Point3="-21,23" />
-                  <mssgle:LineSegment
-                    End="-21,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="258,42"
           Id="Package\PedimentoFactura\ExtraccionSysExpertPedimentoFactura"
           TopLeft="236,236" />
         <EdgeLayout
-          Id="Package\PedimentoFactura.Paths[Multicast Output 1]"
-          TopLeft="536.333333333333,179">
+          Id="Package\PedimentoFactura.Paths[OLE DB Source Output]"
+          TopLeft="498.5,66">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-171.333333333333,57"
+              EndConnector="0,62"
               Start="0,0"
-              End="-171.333333333333,49.5">
+              End="0,54.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.25"
-                    Point2="0,23.25"
-                    Point3="-4,23.25" />
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PedimentoFactura.Paths[Multicast Output 2]"
+          TopLeft="515.666666666667,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.333333333333,66"
+              Start="0,0"
+              End="115.333333333333,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-167.333333333333,23.25" />
+                    End="0,22.921052631579" />
                   <mssgle:CubicBezierSegment
-                    Point1="-167.333333333333,23.25"
-                    Point2="-171.333333333333,23.25"
-                    Point3="-171.333333333333,27.25" />
+                    Point1="0,22.921052631579"
+                    Point2="0,26.921052631579"
+                    Point3="4,26.921052631579" />
                   <mssgle:LineSegment
-                    End="-171.333333333333,49.5" />
+                    End="111.333333333333,26.921052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.333333333333,26.921052631579"
+                    Point2="115.333333333333,26.921052631579"
+                    Point3="115.333333333333,30.921052631579" />
+                  <mssgle:LineSegment
+                    End="115.333333333333,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PedimentoFactura.Paths[Multicast Output 1]"
+          TopLeft="478.333333333333,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.333333333333,66"
+              Start="0,0"
+              End="-113.333333333333,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9210526315789" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.9210526315789"
+                    Point2="0,26.9210526315789"
+                    Point3="-4,26.9210526315789" />
+                  <mssgle:LineSegment
+                    End="-109.333333333333,26.9210526315789" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.333333333333,26.9210526315789"
+                    Point2="-113.333333333333,26.9210526315789"
+                    Point3="-113.333333333333,30.9210526315789" />
+                  <mssgle:LineSegment
+                    End="-113.333333333333,58.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -29676,6 +29692,14 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFraccion\Ped_Fraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFraccion\ExtraccionSysExpertPedimentoFraccion">
     <Properties>
       <Property>
@@ -29685,14 +29709,6 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFraccion\Ped_Fraccion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="183"
-  DTS:VersionGUID="{B480D63B-1AE7-4E16-964E-F36D56B6B853}">
+  DTS:VersionBuild="185"
+  DTS:VersionGUID="{5F0FA01B-3918-4FD1-9081-4159ADE3312D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -85,6 +85,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -423,6 +425,8 @@ ORDER BY
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -5974,6 +5978,8 @@ ORDER BY PEDGRALES.idReferencia</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -6615,6 +6621,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -7516,6 +7524,8 @@ ORDER BY
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -8419,6 +8429,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -9019,6 +9031,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -13862,6 +13876,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -17613,6 +17629,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -18204,6 +18222,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -19747,6 +19767,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -20749,6 +20771,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -21390,6 +21414,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -22089,6 +22115,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -22855,6 +22883,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -23348,6 +23378,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -23959,6 +23991,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -24452,6 +24486,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -25123,6 +25159,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -26037,6 +26075,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -26883,6 +26923,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          autoAdjustBufferSize="true"
+          defaultBufferMaxRows="100000"
           version="1">
           <components>
             <component
@@ -28371,7 +28413,7 @@ WHERE
     design-time-name="Package\BitacoraPedimentoDesaduanizados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="263,46"
           Id="Package\BitacoraPedimentoDesaduanizados\ExtraccionPedimentoDesaduanizados"
@@ -28399,9 +28441,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -29676,6 +29716,14 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFraccion\Ped_Fraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFraccion\ExtraccionSysExpertPedimentoFraccion">
     <Properties>
       <Property>
@@ -29685,14 +29733,6 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFraccion\Ped_Fraccion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

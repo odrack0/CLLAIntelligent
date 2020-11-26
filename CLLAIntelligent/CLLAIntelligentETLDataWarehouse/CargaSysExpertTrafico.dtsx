@@ -1,0 +1,980 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/16/2020 12:10:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{07DAD5C3-270B-44FB-9E9D-DA427DBB148E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{3C6AED2C-2D49-4268-8DC7-71DE047BF554}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BitacoraCargaTrafico"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{5D922FD1-CF66-4170-98B5-2B6F9AA73423}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BitacoraCargaTrafico"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="INSERT INTO BitacoraCargaSysExpertTrafico&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ET.idTrafico,&#xA;&#x9;&#x9;NULL&#xA;&#x9;FROM ExtraccionSysExpertTrafico             ET&#xA;&#x9;&#x9;LEFT JOIN BitacoraCargaSysExpertTrafico BC ON (ET.idTrafico = BC.idTrafico)&#xA;&#x9;WHERE&#xA;&#x9;&#x9;BC.idTrafico IS NULL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Pedimento Alta"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{80215AF4-E461-4A86-BC7D-5963689B1183}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Pedimento Alta"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Pedimento Alta\DimPedimentoBitacora"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DimPedimentoBitacora"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimPedimentoBitacora]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Pedimento Alta\DimPedimentoBitacora.Connections[OleDbConnection]"
+                  connectionManagerID="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_Datawarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].Columns[FechaHoraActual]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaHoraActual"
+                      externalMetadataColumnId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoBitacoraUltimaActualizacion]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[FechaHoraActual]" />
+                    <inputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].Columns[idReferencia]"
+                      cachedDataType="i4"
+                      cachedName="idReferencia"
+                      externalMetadataColumnId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[OrigenidReferencia]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[idReferencia]" />
+                    <inputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].Columns[FechaMovimiento]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaMovimiento"
+                      externalMetadataColumnId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaFecha]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[FechaMovimiento]" />
+                    <inputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].Columns[HoraMovimiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="HoraMovimiento"
+                      externalMetadataColumnId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaHora]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[HoraMovimiento]" />
+                    <inputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].Columns[NombreEjecuto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NombreEjecuto"
+                      externalMetadataColumnId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaNombreEjecuto]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[NombreEjecuto]" />
+                    <inputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].Columns[Origen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Origen"
+                      externalMetadataColumnId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaOrigenEjecuto]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[Origen]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoBitacoraID]"
+                      dataType="i4"
+                      name="PedimentoBitacoraID" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoID]"
+                      dataType="i4"
+                      name="PedimentoID" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[OrigenidReferencia]"
+                      dataType="i4"
+                      name="OrigenidReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[PedimentoBitacoraUltimaActualizacion]"
+                      dataType="dbTimeStamp"
+                      name="PedimentoBitacoraUltimaActualizacion" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaFecha]"
+                      dataType="dbTimeStamp"
+                      name="AltaFecha" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaHora]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="AltaHora" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaNombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AltaNombreEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[AltaOrigenEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AltaOrigenEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[DesaduanamientoAcuse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DesaduanamientoAcuse" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[DesaduanamientoFecha]"
+                      dataType="dbTimeStamp"
+                      name="DesaduanamientoFecha" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[DesaduanamientoHora]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="DesaduanamientoHora" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ValidacionFecha]"
+                      dataType="dbTimeStamp"
+                      name="ValidacionFecha" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ValidacionHora]"
+                      dataType="dbTimeStamp"
+                      name="ValidacionHora" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ValidacionNombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ValidacionNombreEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ValidacionArchivo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ValidacionArchivo" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[FirmaAcuse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="FirmaAcuse" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[FirmaFecha]"
+                      dataType="dbTimeStamp"
+                      name="FirmaFecha" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[FirmaHora]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="FirmaHora" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[FirmaNombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirmaNombreEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ImpresionFecha]"
+                      dataType="dbTimeStamp"
+                      name="ImpresionFecha" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ImpresionHora]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="ImpresionHora" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input].ExternalColumns[ImpresionNombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ImpresionNombreEjecuto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Pedimento Alta\DimPedimentoBitacora.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Pedimento Alta\DimPedimentoBitacora.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\DimPedimentoBitacora.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Pedimento Alta\DimPedimentoBitacora.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ExtraccionTraficoAltaPedimento"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	
+	ET.idTrafico,
+	idReferencia,
+	FechaMovimiento,
+	HoraMovimiento,
+	NombreEjecuto,
+	CASE
+	WHEN ClaveSituacion = 1 THEN
+	'PEDIMENTOS'
+	ELSE
+	'REMESAS'
+	END AS Origen,
+	GETDATE() AS FechaHoraActual
+FROM BitacoraCargaSysExpertTrafico  BCT
+	JOIN ExtraccionSysExpertTrafico ET  ON (BCT.idTrafico = ET.idTrafico)
+WHERE 
+	BCT.FechaCargaSituacion IS NULL AND
+	ET.ClaveSituacion = 1 OR ET.ClaveSituacion = 2</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[idReferencia]"
+                      name="idReferencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[FechaMovimiento]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[FechaMovimiento]"
+                      name="FechaMovimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[HoraMovimiento]"
+                      length="8"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[NombreEjecuto]"
+                      length="50"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[NombreEjecuto]"
+                      name="NombreEjecuto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[Origen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[Origen]"
+                      length="10"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[Origen]"
+                      name="Origen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[FechaHoraActual]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[FechaHoraActual]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[FechaHoraActual]"
+                      name="FechaHoraActual"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[idTrafico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[idTrafico]"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].Columns[idTrafico]"
+                      name="idTrafico"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[idReferencia]"
+                      dataType="i4"
+                      name="idReferencia" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      name="FechaMovimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="HoraMovimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NombreEjecuto" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[Origen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Origen" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[FechaHoraActual]"
+                      dataType="dbTimeStamp"
+                      name="FechaHoraActual" />
+                    <externalMetadataColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output].ExternalColumns[idTrafico]"
+                      dataType="i4"
+                      name="idTrafico" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[idTrafico]"
+                      dataType="i4"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[idTrafico]"
+                      name="idTrafico" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      dataType="i4"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[idReferencia]"
+                      name="idReferencia" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[FechaMovimiento]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[FechaMovimiento]"
+                      name="FechaMovimiento" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[HoraMovimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[HoraMovimiento]"
+                      name="HoraMovimiento" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[NombreEjecuto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[NombreEjecuto]"
+                      name="NombreEjecuto" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[Origen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[Origen]"
+                      name="Origen" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[FechaHoraActual]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[FechaHoraActual]"
+                      name="FechaHoraActual" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Pedimento Alta\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Pedimento Alta\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Pedimento Alta\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Pedimento Alta\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Pedimento Alta\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Pedimento Alta\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Pedimento Alta.Paths[Multicast Output 1]"
+              endId="Package\Pedimento Alta\DimPedimentoBitacora.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\Pedimento Alta\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Pedimento Alta.Paths[OLE DB Source Output]"
+              endId="Package\Pedimento Alta\Multicast.Inputs[Multicast Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situacion - Facturas alta"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{34330cbc-218e-4e20-aea6-dc88219a0d2a}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situacion - Facturas alta"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Transformacion y carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoFacturaAlta&#xA; SELECT &#xA;  idReferencia,&#xA;  idFactura,&#xA;  idGuia,&#xA;  GuiaMaster,&#xA;  GuiaHouse,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto,&#xA;  SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA; FROM ExtraccionSysExpertTrafico &#xA;  WHERE ClaveSituacion = 14&#xA; ORDER BY &#xA;  FechaMovimiento&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 14" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{63d44e26-a457-4abf-bf69-1d3439a83189}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situacion - Pedimentos desaduanizados"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  idReferencia,&#xA;  MAX(idTrafico)&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 92  &#xA; GROUP BY&#xA;  idReferencia&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  T.idReferencia,&#xA;  T.Dato,&#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento&#xA; FROM @SituacionesUnicas        S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @PedimentosDesaduanizados TABLE (idReferencia INT, Desaduanamiento VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @PedimentosDesaduanizados&#xA; SELECT&#xA;  idReferencia,&#xA;  SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)),&#xA;  FechaMovimiento,&#xA;  HoraMovimiento&#xA; FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoDesaduanamiento&#xA; SELECT * FROM @PedimentosDesaduanizados &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 92 &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento alta"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{58c1e27d-70d8-45df-be9f-1c04d89819db}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento alta"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Transformacion y carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoAlta&#xA; SELECT &#xA;  idReferencia,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto,&#xA;  CASE&#xA;   WHEN ClaveSituacion = 1 THEN&#xA;    'PEDIMENTOS'&#xA;   ELSE&#xA;    'REMESAS'&#xA;  END&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE &#xA;  ClaveSituacion = 1 OR ClaveSituacion = 2  &#xA; ORDER BY &#xA;  FechaMovimiento &#xA;&#xA;--Eliminacion de informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 1 OR ClaveSituacion = 2  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento firma"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{49a1d6e5-e912-42a2-998d-57adaf3f7876}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento firma"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--SELECT * FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 86 ORDER BY FechaMovimiento 995,807&#xA;--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  idReferencia,&#xA;  MAX(idTrafico)&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 86  &#xA; GROUP BY&#xA;  idReferencia&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(MAX))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  T.idReferencia,&#xA;  T.Dato,&#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento,&#xA;  T.NombreEjecuto&#xA; FROM @SituacionesUnicas        S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;DECLARE @PedimentosFirmados TABLE (idReferencia INT,  FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Firma VARCHAR(50))&#xA;INSERT INTO @PedimentosFirmados&#xA; SELECT&#xA;  idReferencia,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto,&#xA;  SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato))&#xA; FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoFirma&#xA; SELECT * FROM @PedimentosFirmados &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 86&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento impresion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{923dee1d-9543-423f-bd57-227d62a42260}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento impresion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="5">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  idReferencia,&#xA;  MAX(idTrafico)&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 8  &#xA; GROUP BY&#xA;  idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto  VARCHAR(50))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  T.idReferencia, &#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento,&#xA;  T.NombreEjecuto&#xA; FROM @SituacionesUnicas        S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;--CargaInformacion&#xA;&#xA;INSERT INTO CargaSysExpertTraficoPedimentoImpresion&#xA; SELECT * FROM @Situaciones &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 8&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Pedimento validacion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{cce0cf07-0169-4440-85d0-e0f566b21183}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Pedimento validacion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="6">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  idReferencia,&#xA;  MAX(idTrafico)&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 12  &#xA; GROUP BY&#xA;  idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Observaciones VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  T.idReferencia,&#xA;  T.Observaciones,&#xA;  T.NombreEjecuto,&#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento&#xA; FROM @SituacionesUnicas    S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;----Transformacion de la informaion&#xA;DECLARE @ArchivosCreados TABLE (idReferencia INT, Archivo VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @ArchivosCreados&#xA; SELECT&#xA;  idReferencia,&#xA;  SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones)),&#xA;  NombreEjecuto,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento&#xA; FROM @Situaciones&#xA;&#xA;INSERT INTO CargaSysExpertTraficoPedimentoValidacion&#xA; SELECT&#xA;  idReferencia,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto,&#xA;  Archivo&#xA; FROM @ArchivosCreados&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 12 &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{11cef8ee-e4ed-40c1-a182-39e468fe29a3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - PedimentoRemesa firma manual"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="7">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  idReferencia,&#xA;  MAX(idTrafico)&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 93  &#xA; GROUP BY&#xA;  idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), Observaciones VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  T.idReferencia,&#xA;  T.Dato,&#xA;  T.Observaciones,&#xA;  T.NombreEjecuto,&#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento&#xA; FROM @SituacionesUnicas        S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @Firmas TABLE (idReferencia INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecutvo VARCHAR(50), OrigenEjecucion VARCHAR(50), Firma VARCHAR(250))&#xA;INSERT INTO @Firmas&#xA; SELECT&#xA;  idReferencia,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto,&#xA;  CASE&#xA;   WHEN CHARINDEX('REMESA', Dato) &gt; 0 THEN&#xA;    'REMESA'&#xA;   ELSE&#xA;    'PEDIMENTO'&#xA;  END,&#xA;  CASE&#xA;   WHEN CHARINDEX('REMESA', Dato) &gt; 0 THEN&#xA;    SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;   ELSE&#xA;    SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato))&#xA;  END&#xA; FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoRemesaFirmaManual&#xA; SELECT * FROM @Firmas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 93  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Remesa alta"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{1b526bf0-474a-4fe3-bd64-93456bc4ffd8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Remesa alta"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="8">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion previa&#xA;DECLARE @AltaRemesasPrevia TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Dato VARCHAR(50))&#xA;&#xA;INSERT INTO @AltaRemesasPrevia&#xA; SELECT &#xA;  idReferencia,&#xA;  idRemesa,&#xA;  NumeroRemesa,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto,&#xA;  Dato&#xA; FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 3 AND idReferencia IS NOT NULL&#xA;&#xA;--Limpieza de datos&#xA;DELETE @AltaRemesasPrevia WHERE idRemesa IS NULL AND DATO = 'SIN CONSECUTIVO DE REMESA' &#xA;&#xA;--Transformacion de datos&#xA;UPDATE @AltaRemesasPrevia&#xA;SET NumeroRemesa = &#xA; CASE&#xA;  WHEN NumeroRemesa IS NULL AND CHARINDEX(':', Dato) &gt; 0 THEN&#xA;   CAST(SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)) AS INT)&#xA;  ELSE&#xA;   NumeroRemesa&#xA; END&#xA;&#xA;DECLARE @AltaRemesas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50))&#xA;INSERT INTO @AltaRemesas&#xA; SELECT &#xA;  idReferencia,&#xA;  idRemesa,&#xA;  NumeroRemesa,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto&#xA; FROM @AltaRemesasPrevia&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaAlta&#xA; SELECT * FROM @AltaRemesas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 3 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{1515e9ff-08a1-4338-8047-3dcfb7c2779e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Remesa desaduanamiento"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="9">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--SELECT * FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 91 ORDER BY FechaMovimiento 1,260,487&#xA;&#xA;--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idTrafico INT, idReferencia INT, idRemesa INT, NumeroRemesa INT, Observaciones VARCHAR(50))&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  MAX(idTrafico),&#xA;  idReferencia,&#xA;  idRemesa,&#xA;  NumeroRemesa,&#xA;  Observaciones&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 91  &#xA; GROUP BY&#xA;  idReferencia,&#xA;  idRemesa,&#xA;  NumeroRemesa,&#xA;  Observaciones&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT,  FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), Dato VARCHAR(50), Observaciones VARCHAR(250))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  S.idReferencia,&#xA;  S.idRemesa,&#xA;  S.NumeroRemesa,&#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento,&#xA;  T.Dato,&#xA;  S.Observaciones  &#xA; FROM @SituacionesUnicas       S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @RemesasDesaduanizadas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, Desaduanamiento VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @RemesasDesaduanizadas&#xA; SELECT&#xA;  idReferencia,&#xA;  idRemesa,&#xA;  CASE&#xA;   WHEN NumeroRemesa IS NULL THEN&#xA;    SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;   ELSE&#xA;    NumeroRemesa&#xA;  END,&#xA;  --NumeroRemesa,&#xA;  SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)),&#xA;  FechaMovimiento,&#xA;  HoraMovimiento&#xA; FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaDesaduanamiento&#xA; SELECT * FROM @RemesasDesaduanizadas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 91" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transformacion y carga situaciones - Remesa impresion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
+      DTS:DTSID="{f5bcdd91-76b9-4201-82e3-c6b8900e7027}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion y carga situaciones - Remesa impresion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="10">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idTrafico INT, idReferencia INT, idRemesa INT, NumeroRemesa INT, Dato VARCHAR(50))&#xA;INSERT INTO @SituacionesUnicas&#xA; SELECT &#xA;  MAX(idTrafico),&#xA;  idReferencia,&#xA;  idRemesa,&#xA;  NumeroRemesa,&#xA;  Dato&#xA; FROM ExtraccionSysExpertTrafico &#xA; WHERE ClaveSituacion = 9  &#xA; GROUP BY&#xA;  idReferencia,&#xA;  idRemesa,&#xA;  NumeroRemesa,&#xA;  Dato&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Dato VARCHAR(50))&#xA;INSERT INTO @Situaciones&#xA; SELECT&#xA;  T.idReferencia,&#xA;  T.idRemesa,&#xA;  T.NumeroRemesa,&#xA;  T.FechaMovimiento,&#xA;  T.HoraMovimiento,&#xA;  T.NombreEjecuto,&#xA;  T.Dato&#xA; FROM @SituacionesUnicas        S&#xA;  JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @RemesasImpresas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50))&#xA;INSERT INTO @RemesasImpresas&#xA; SELECT&#xA;  idReferencia,&#xA;  idRemesa,&#xA;  CASE&#xA;   WHEN NumeroRemesa IS NULL THEN&#xA;    CAST(SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)) AS INT)&#xA;   ELSE &#xA;    NumeroRemesa&#xA;  END,&#xA;  FechaMovimiento,&#xA;  HoraMovimiento,&#xA;  NombreEjecuto&#xA; FROM @Situaciones&#xA;&#xA;--Cargar informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaImpresion&#xA; SELECT * FROM @RemesasImpresas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 9&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{98D6F521-1971-4963-A035-76CBC2A4432D}"
+      DTS:From="Package\BitacoraCargaTrafico"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Pedimento Alta" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\BitacoraCargaTrafico"
+          TopLeft="65,49" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Pedimento Alta"
+          TopLeft="286,50" />
+        <NodeLayout
+          Size="306,42"
+          Id="Package\Transformacion y carga situacion - Facturas alta"
+          TopLeft="1075,49" />
+        <NodeLayout
+          Size="377,42"
+          Id="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
+          TopLeft="582,170" />
+        <NodeLayout
+          Size="326,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento alta"
+          TopLeft="372,319" />
+        <NodeLayout
+          Size="333,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento firma"
+          TopLeft="1057,557" />
+        <NodeLayout
+          Size="354,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento impresion"
+          TopLeft="1041,127" />
+        <NodeLayout
+          Size="355,42"
+          Id="Package\Transformacion y carga situaciones - Pedimento validacion"
+          TopLeft="1047,194" />
+        <NodeLayout
+          Size="408,42"
+          Id="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
+          TopLeft="1019,267" />
+        <NodeLayout
+          Size="313,42"
+          Id="Package\Transformacion y carga situaciones - Remesa alta"
+          TopLeft="1059,332" />
+        <NodeLayout
+          Size="379,42"
+          Id="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
+          TopLeft="1031,482" />
+        <NodeLayout
+          Size="342,42"
+          Id="Package\Transformacion y carga situaciones - Remesa impresion"
+          TopLeft="1042,410" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="242,70.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44,0"
+              Start="0,0"
+              End="36.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Pedimento Alta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Pedimento Alta\Multicast"
+          TopLeft="504,181" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Pedimento Alta\DimPedimentoBitacora"
+          TopLeft="358,285" />
+        <EdgeLayout
+          Id="Package\Pedimento Alta.Paths[Multicast Output 1]"
+          TopLeft="545.333333333333,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-94.8333333333334,62"
+              Start="0,0"
+              End="-94.8333333333334,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.2894736842105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.2894736842105"
+                    Point2="0,25.2894736842105"
+                    Point3="-4,25.2894736842105" />
+                  <mssgle:LineSegment
+                    End="-90.8333333333334,25.2894736842105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-90.8333333333334,25.2894736842105"
+                    Point2="-94.8333333333334,25.2894736842105"
+                    Point3="-94.8333333333334,29.2894736842105" />
+                  <mssgle:LineSegment
+                    End="-94.8333333333334,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento"
+          TopLeft="453,43" />
+        <EdgeLayout
+          Id="Package\Pedimento Alta.Paths[OLE DB Source Output]"
+          TopLeft="565.25,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,96"
+              Start="0,0"
+              End="0,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Pedimento Alta\ExtraccionTraficoAltaPedimento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Pedimento Alta\DimPedimentoBitacora">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

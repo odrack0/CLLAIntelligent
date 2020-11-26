@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/24/2020 7:41:07 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{179CA5EC-3B67-4456-84CF-CD722A217F7D}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{EF68D4A6-EA14-4664-A1B9-94BE07BF81E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -39,20 +39,231 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Actualizar tabla extraccion"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{02013F4E-FF95-4125-BD1C-D1DA881EC112}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:refId="Package\ActualizaBitacoraExtraccion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{ADECE35E-BF7D-4AA6-A757-CB73E7AAD04B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Actualizar tabla extraccion"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ObjectName="ActualizaBitacoraExtraccion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="UPDATE Extraccion&#xA;&#x9;SET IdUltimoExtraido = (SELECT MAX(idTrafico) FROM ExtraccionSysExpertTrafico)&#xA;WHERE&#xA;&#x9;ExtraccionID = 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="ActualizaBitacoraExtraccion"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE BitacoraExtraccionSysExpert
+SET idTrafico = ?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input].Columns[idTrafico]"
+                      cachedDataType="i4"
+                      cachedName="idTrafico"
+                      externalMetadataColumnId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output].Columns[idTrafico]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ObtenerIdTraficoUltimoExtraido"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT MAX(idTrafico) AS idTrafico FROM ExtraccionSysExpertTrafico</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output].Columns[idTrafico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output].ExternalColumns[idTrafico]"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output].Columns[idTrafico]"
+                      name="idTrafico"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output].ExternalColumns[idTrafico]"
+                      dataType="i4"
+                      name="idTrafico" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output].Columns[idTrafico]"
+                      dataType="i4"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output].Columns[idTrafico]"
+                      name="idTrafico" />
+                    <outputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ActualizaBitacoraExtraccion.Paths[OLE DB Source Output]"
+              endId="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -423,7 +634,32 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	T.idTrafico, 
+	T.idSituacion, 
+	T.idReferencia, 
+	T.NumeroReferencia, 
+	T.idRemesa, 
+	T.NumeroRemesa, 
+	T.idFactura, 
+	T.NumeroFactura, 
+	T.idGuia, 
+	T.GuiaMaster, 
+	T.GuiaHouse, 
+	ST.ClaveSituacion, 
+	ST.DescripcionSituacion, 
+	T.FechaMovimiento, 
+	T.HoraMovimiento ,	
+	T.idUsuario, 
+	U.USU_NAME AS NombreEjecuto, 
+	T.Dato, 
+	T.Observaciones  
+FROM Trafico T 
+	JOIN SituacionesTrafico ST ON (T.idSituacion = ST.idSituacion) 
+	LEFT JOIN USUARIOS U  ON (T.idUsuario = U.PK_USUARIO)  
+WHERE 
+	ST.ClaveSituacion IN (1,2,3,8,9,12,13,14,85,86,88,91,92,93,94,105,107,108,136,144,169,170,177,178,179,180,300,305,306,307,307,308,308,309,310,310,311,315,317,320,320,325,400,405,410,410,430,460,490,500,505,506,800,801,1000,1001,1002,1003,6027,6103,6116,611) AND 
+	T.idTrafico &gt; (SELECT idTrafico FROM BitacoraExtraccionSysExpert)</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -440,7 +676,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -893,296 +1129,16 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Obtener Ultimo idTrafico Extraido"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{C0CECF80-E7CB-430F-B553-348BCACA0D30}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Obtener Ultimo idTrafico Extraido"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="SELECT&#xA;&#x9;IdUltimoExtraido&#xA;FROM Extraccion&#xA;WHERE&#xA;&#x9;ExtraccionID = 1"
-          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="IdUltimoExtraido"
-            SQLTask:DtsVariableName="User::TraficoIdUltimoExtraido" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situacion - Facturas alta"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{49487CC2-CA41-4924-BB22-1E3DC9C4F9ED}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situacion - Facturas alta"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Transformacion y carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoFacturaAlta&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idFactura,&#xA;&#x9;&#x9;idGuia,&#xA;&#x9;&#x9;GuiaMaster,&#xA;&#x9;&#x9;GuiaHouse,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;&#x9;WHERE ClaveSituacion = 14&#xA;&#x9;ORDER BY &#xA;&#x9;&#x9;FechaMovimiento&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 14" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{7FE7563F-A324-49C2-9FF2-BB809583E2B6}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situacion - Pedimentos desaduanizados"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 92 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @PedimentosDesaduanizados TABLE (idReferencia INT, Desaduanamiento VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @PedimentosDesaduanizados&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)),&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoDesaduanamiento&#xA;&#x9;SELECT * FROM @PedimentosDesaduanizados &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 92 &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Pedimento alta"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{0DF3ED06-E34F-452F-9DED-E207BDAE5278}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Pedimento alta"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Transformacion y carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoAlta&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN ClaveSituacion = 1 THEN&#xA;&#x9;&#x9;&#x9;&#x9;'PEDIMENTOS'&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;'REMESAS'&#xA;&#x9;&#x9;END&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE &#xA;&#x9;&#x9;ClaveSituacion = 1 OR ClaveSituacion = 2  &#xA;&#x9;ORDER BY &#xA;&#x9;&#x9;FechaMovimiento &#xA;&#xA;--Eliminacion de informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 1 OR ClaveSituacion = 2  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Pedimento firma"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{537AF64F-47A8-498E-94B2-F6C218FB38D6}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Pedimento firma"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--SELECT * FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 86 ORDER BY FechaMovimiento 995,807&#xA;--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 86 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(MAX))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.NombreEjecuto&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;DECLARE @PedimentosFirmados TABLE (idReferencia INT,  FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Firma VARCHAR(50))&#xA;INSERT INTO @PedimentosFirmados&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato))&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoFirma&#xA;&#x9;SELECT * FROM @PedimentosFirmados &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 86&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Pedimento impresion"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{E126C878-7B6E-4D6B-8BDA-0D2FCA3BFBEB}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Pedimento impresion"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 8 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto  VARCHAR(50))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#x9;&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.NombreEjecuto&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;--CargaInformacion&#xA;&#xA;INSERT INTO CargaSysExpertTraficoPedimentoImpresion&#xA;&#x9;SELECT * FROM @Situaciones &#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 8&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Pedimento validacion"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{34EF89B5-87C8-491B-851F-2AA183597D78}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Pedimento validacion"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 12 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Observaciones VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Observaciones,&#xA;&#x9;&#x9;T.NombreEjecuto,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;----Transformacion de la informaion&#xA;DECLARE @ArchivosCreados TABLE (idReferencia INT, Archivo VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @ArchivosCreados&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones)),&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento&#xA;&#x9;FROM @Situaciones&#xA;&#xA;INSERT INTO CargaSysExpertTraficoPedimentoValidacion&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;Archivo&#xA;&#x9;FROM @ArchivosCreados&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 12 &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{242B7449-CB6B-4A59-83BA-E9AE44914365}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - PedimentoRemesa firma manual"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idReferencia INT, idTrafico INT)&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;MAX(idTrafico)&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 93 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, Dato VARCHAR(50), Observaciones VARCHAR(250), NombreEjecuto VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;T.Observaciones,&#xA;&#x9;&#x9;T.NombreEjecuto,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @Firmas TABLE (idReferencia INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecutvo VARCHAR(50), OrigenEjecucion VARCHAR(50), Firma VARCHAR(250))&#xA;INSERT INTO @Firmas&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN CHARINDEX('REMESA', Dato) &gt; 0 THEN&#xA;&#x9;&#x9;&#x9;&#x9;'REMESA'&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;'PEDIMENTO'&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN CHARINDEX('REMESA', Dato) &gt; 0 THEN&#xA;&#x9;&#x9;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato))&#xA;&#x9;&#x9;END&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoPedimentoRemesaFirmaManual&#xA;&#x9;SELECT * FROM @Firmas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 93 &#x9;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Remesa alta"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{999D4237-E952-4AAA-9CB0-5396E95D9390}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Remesa alta"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Extraccion previa&#xA;DECLARE @AltaRemesasPrevia TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Dato VARCHAR(50))&#xA;&#xA;INSERT INTO @AltaRemesasPrevia&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto,&#xA;&#x9;&#x9;Dato&#xA;&#x9;FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 3 AND idReferencia IS NOT NULL&#xA;&#xA;--Limpieza de datos&#xA;DELETE @AltaRemesasPrevia WHERE idRemesa IS NULL AND DATO = 'SIN CONSECUTIVO DE REMESA' &#xA;&#xA;--Transformacion de datos&#xA;UPDATE @AltaRemesasPrevia&#xA;SET NumeroRemesa = &#xA;&#x9;CASE&#xA;&#x9;&#x9;WHEN NumeroRemesa IS NULL AND CHARINDEX(':', Dato) &gt; 0 THEN&#xA;&#x9;&#x9;&#x9;CAST(SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)) AS INT)&#xA;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;NumeroRemesa&#xA;&#x9;END&#xA;&#xA;DECLARE @AltaRemesas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50))&#xA;INSERT INTO @AltaRemesas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto&#xA;&#x9;FROM @AltaRemesasPrevia&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaAlta&#xA;&#x9;SELECT * FROM @AltaRemesas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 3 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{3C314D6A-FDC0-434B-9270-7132D59D2183}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Remesa desaduanamiento"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--SELECT * FROM ExtraccionSysExpertTrafico WHERE ClaveSituacion = 91 ORDER BY FechaMovimiento 1,260,487&#xA;&#xA;--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idTrafico INT, idReferencia INT, idRemesa INT, NumeroRemesa INT, Observaciones VARCHAR(50))&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;MAX(idTrafico),&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Observaciones&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 91 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Observaciones&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT,  FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), Dato VARCHAR(50), Observaciones VARCHAR(250))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;S.idReferencia,&#xA;&#x9;&#x9;S.idRemesa,&#xA;&#x9;&#x9;S.NumeroRemesa,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.Dato,&#xA;&#x9;&#x9;S.Observaciones&#x9;&#x9;&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @RemesasDesaduanizadas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, Desaduanamiento VARCHAR(50), FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8))&#xA;INSERT INTO @RemesasDesaduanizadas&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN NumeroRemesa IS NULL THEN&#xA;&#x9;&#x9;&#x9;&#x9;SUBSTRING(Observaciones, CHARINDEX(':', Observaciones) + 1, LEN(Observaciones) - CHARINDEX(':', Observaciones))&#xA;&#x9;&#x9;&#x9;ELSE&#xA;&#x9;&#x9;&#x9;&#x9;NumeroRemesa&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;--NumeroRemesa,&#xA;&#x9;&#x9;SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)),&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Carga de informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaDesaduanamiento&#xA;&#x9;SELECT * FROM @RemesasDesaduanizadas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 91" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transformacion y carga situaciones - Remesa impresion"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{3499F0EF-27CF-4680-89C9-84EFAB090570}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transformacion y carga situaciones - Remesa impresion"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="--Extraccion de situaciones unicas&#xA;DECLARE @SituacionesUnicas TABLE(idTrafico INT, idReferencia INT, idRemesa INT, NumeroRemesa INT, Dato VARCHAR(50))&#xA;INSERT INTO @SituacionesUnicas&#xA;&#x9;SELECT &#xA;&#x9;&#x9;MAX(idTrafico),&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Dato&#xA;&#x9;FROM ExtraccionSysExpertTrafico &#xA;&#x9;WHERE ClaveSituacion = 9 &#x9;&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;NumeroRemesa,&#xA;&#x9;&#x9;Dato&#xA;&#xA;--Reunion de informacion necesaria&#xA;DECLARE @Situaciones TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50), Dato VARCHAR(50))&#xA;INSERT INTO @Situaciones&#xA;&#x9;SELECT&#xA;&#x9;&#x9;T.idReferencia,&#xA;&#x9;&#x9;T.idRemesa,&#xA;&#x9;&#x9;T.NumeroRemesa,&#xA;&#x9;&#x9;T.FechaMovimiento,&#xA;&#x9;&#x9;T.HoraMovimiento,&#xA;&#x9;&#x9;T.NombreEjecuto,&#xA;&#x9;&#x9;T.Dato&#xA;&#x9;FROM @SituacionesUnicas&#x9;&#x9;&#x9;&#x9;    S&#xA;&#x9;&#x9;JOIN ExtraccionSysExpertTrafico T ON (S.idTrafico = T.idTrafico)&#xA;&#xA;--Transformacion de la informaion&#xA;DECLARE @RemesasImpresas TABLE (idReferencia INT, idRemesa INT, NumeroRemesa INT, FechaMovimiento DATETIME, HoraMovimiento VARCHAR(8), NombreEjecuto VARCHAR(50))&#xA;INSERT INTO @RemesasImpresas&#xA;&#x9;SELECT&#xA;&#x9;&#x9;idReferencia,&#xA;&#x9;&#x9;idRemesa,&#xA;&#x9;&#x9;CASE&#xA;&#x9;&#x9;&#x9;WHEN NumeroRemesa IS NULL THEN&#xA;&#x9;&#x9;&#x9;&#x9;CAST(SUBSTRING(Dato, CHARINDEX(':', Dato) + 1, LEN(Dato) - CHARINDEX(':', Dato)) AS INT)&#xA;&#x9;&#x9;&#x9;ELSE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;NumeroRemesa&#xA;&#x9;&#x9;END,&#xA;&#x9;&#x9;FechaMovimiento,&#xA;&#x9;&#x9;HoraMovimiento,&#xA;&#x9;&#x9;NombreEjecuto&#xA;&#x9;FROM @Situaciones&#xA;&#xA;--Cargar informacion&#xA;INSERT INTO CargaSysExpertTraficoRemesaImpresion&#xA;&#x9;SELECT * FROM @RemesasImpresas&#xA;&#xA;--Eliminar informacion procesada&#xA;DELETE ExtraccionSysExpertTrafico WHERE ClaveSituacion = 9&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{AA39DDDA-BCC5-4AC2-8F99-59EB6910F5FC}"
-      DTS:From="Package\Obtener Ultimo idTrafico Extraido"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\Extraccion trafico" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{F7BF1D2D-25EE-4965-9F01-F9AC686C20C0}"
+      DTS:DTSID="{AE83C0B6-476B-4C36-80F8-D3CD0D7737C0}"
       DTS:From="Package\Extraccion trafico"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Actualizar tabla extraccion" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
-      DTS:CreationName=""
-      DTS:DTSID="{2594964D-4714-44A3-A774-D983BB84FB03}"
-      DTS:From="Package\Transformacion y carga situaciones - Remesa impresion"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 10"
-      DTS:To="Package\Transformacion y carga situaciones - Remesa desaduanamiento" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
-      DTS:CreationName=""
-      DTS:DTSID="{9382167E-3B15-4AF8-B747-516294978A36}"
-      DTS:From="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 11"
-      DTS:To="Package\Transformacion y carga situaciones - Pedimento firma" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{508EBDB8-47FD-48C9-A425-8D7D179BD4E2}"
-      DTS:From="Package\Actualizar tabla extraccion"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Transformacion y carga situacion - Pedimentos desaduanizados" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{DD9D55B7-10CB-4DA9-9679-A0301B7BBE50}"
-      DTS:From="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Transformacion y carga situacion - Facturas alta" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{00751FAF-86A5-4B38-91F5-9229E7B43E87}"
-      DTS:From="Package\Transformacion y carga situacion - Facturas alta"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Transformacion y carga situaciones - Pedimento alta" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
-      DTS:CreationName=""
-      DTS:DTSID="{66045D6F-29A5-49F7-870C-CFC2EA6CFFAD}"
-      DTS:From="Package\Transformacion y carga situaciones - Pedimento alta"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 5"
-      DTS:To="Package\Transformacion y carga situaciones - Pedimento impresion" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{4C423086-9197-4043-AD9F-C43FD1B35B9C}"
-      DTS:From="Package\Transformacion y carga situaciones - Pedimento impresion"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Transformacion y carga situaciones - Pedimento validacion" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{8D14E2D2-6CB2-4A7E-A203-EFEB7492DCF1}"
-      DTS:From="Package\Transformacion y carga situaciones - Pedimento validacion"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 7"
-      DTS:To="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
-      DTS:CreationName=""
-      DTS:DTSID="{005C4B2C-2D7A-46CA-ABB9-90576C40B438}"
-      DTS:From="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 8"
-      DTS:To="Package\Transformacion y carga situaciones - Remesa alta" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
-      DTS:CreationName=""
-      DTS:DTSID="{26106DC1-CD3D-4007-83B5-D36E99B85F35}"
-      DTS:From="Package\Transformacion y carga situaciones - Remesa alta"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 9"
-      DTS:To="Package\Transformacion y carga situaciones - Remesa impresion" />
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ActualizaBitacoraExtraccion" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1195,44 +1151,18 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="202,42"
-          Id="Package\Actualizar tabla extraccion"
-          TopLeft="301,167" />
+          Size="207,42"
+          Id="Package\ActualizaBitacoraExtraccion"
+          TopLeft="350,113" />
         <NodeLayout
           Size="160,42"
           Id="Package\Extraccion trafico"
-          TopLeft="321,90" />
-        <NodeLayout
-          Size="236,42"
-          Id="Package\Obtener Ultimo idTrafico Extraido"
-          TopLeft="284,9" />
+          TopLeft="370,36" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="401.5,51">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39"
-              Start="0,0"
-              End="0,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="401.5,132">
+          TopLeft="451.75,78">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1244,266 +1174,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="377,42"
-          Id="Package\Transformacion y carga situacion - Pedimentos desaduanizados"
-          TopLeft="215,257" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="402.75,209">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="306,42"
-          Id="Package\Transformacion y carga situacion - Facturas alta"
-          TopLeft="252,334" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="404.25,299">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35"
-              Start="0,0"
-              End="0,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="326,42"
-          Id="Package\Transformacion y carga situaciones - Pedimento alta"
-          TopLeft="249,403" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="408.5,376">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="354,42"
-          Id="Package\Transformacion y carga situaciones - Pedimento impresion"
-          TopLeft="232,474" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="410.5,445">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29"
-              Start="0,0"
-              End="0,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="355,42"
-          Id="Package\Transformacion y carga situaciones - Pedimento validacion"
-          TopLeft="238,541" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="412.25,516">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25"
-              Start="0,0"
-              End="0,17.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="408,42"
-          Id="Package\Transformacion y carga situaciones - PedimentoRemesa firma manual"
-          TopLeft="210,614" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="414.75,583">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="313,42"
-          Id="Package\Transformacion y carga situaciones - Remesa alta"
-          TopLeft="250,679" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="410.25,656">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23"
-              Start="0,0"
-              End="0,15.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="342,42"
-          Id="Package\Transformacion y carga situaciones - Remesa impresion"
-          TopLeft="233,757" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="405.25,721">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="379,42"
-          Id="Package\Transformacion y carga situaciones - Remesa desaduanamiento"
-          TopLeft="222,829" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="407.75,799">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30"
-              Start="0,0"
-              End="0,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="333,42"
-          Id="Package\Transformacion y carga situaciones - Pedimento firma"
-          TopLeft="248,904" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="413,871">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33"
-              Start="0,0"
-              End="0,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1516,6 +1186,64 @@
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\ActualizaBitacoraExtraccion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207,42"
+          Id="Package\ActualizaBitacoraExtraccion\ActualizaBitacoraExtraccion"
+          TopLeft="377,212" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido"
+          TopLeft="341,70" />
+        <EdgeLayout
+          Id="Package\ActualizaBitacoraExtraccion.Paths[OLE DB Source Output]"
+          TopLeft="455,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.5,100"
+              Start="0,0"
+              End="25.5,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="4,50" />
+                  <mssgle:LineSegment
+                    End="21.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,50"
+                    Point2="25.5,50"
+                    Point3="25.5,54" />
+                  <mssgle:LineSegment
+                    End="25.5,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ActualizaBitacoraExtraccion\ObtenerIdTraficoUltimoExtraido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Extraccion trafico">
     <LayoutInfo>
       <GraphLayout
@@ -1523,37 +1251,25 @@
         <NodeLayout
           Size="206,42"
           Id="Package\Extraccion trafico\ExtraccionSysExpertTrafico"
-          TopLeft="165,136" />
+          TopLeft="161,109" />
         <NodeLayout
           Size="111,42"
           Id="Package\Extraccion trafico\Trafico"
           TopLeft="204,44" />
         <EdgeLayout
           Id="Package\Extraccion trafico.Paths[OLE DB Source Output]"
-          TopLeft="259.5,86">
+          TopLeft="261.75,86">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.5,50"
+              EndConnector="0,23"
               Start="0,0"
-              End="8.5,42.5">
+              End="0,15.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="4.5,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.5,25"
-                    Point2="8.5,25"
-                    Point3="8.5,29" />
-                  <mssgle:LineSegment
-                    End="8.5,42.5" />
+                    End="0,15.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

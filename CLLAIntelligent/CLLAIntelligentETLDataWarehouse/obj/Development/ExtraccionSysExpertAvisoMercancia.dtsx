@@ -1,18 +1,18 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/27/2020 7:15:50 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-M14V5SA"
   DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
-  DTS:DTSID="{1C1699D3-70F3-4BB0-8E42-B1A4FD0776FD}"
+  DTS:DTSID="{9F65C458-C642-40FC-93EB-3E6A8AD6A298}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.132"
   DTS:LocaleID="2058"
-  DTS:ObjectName="SysExpertAvisoMercancia"
+  DTS:ObjectName="ExtraccionSysExpertAvisoMercancia"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{170468BD-D42C-4D73-8B33-49159A13DBDA}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{D5A7B5D5-FEAA-40C1-A4B8-3229F759EB2A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

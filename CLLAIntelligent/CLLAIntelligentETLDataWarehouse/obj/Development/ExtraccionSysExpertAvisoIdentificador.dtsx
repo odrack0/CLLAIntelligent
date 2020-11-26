@@ -1,30 +1,30 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="10/27/2020 7:04:29 PM"
+  DTS:CreationDate="10/27/2020 6:42:43 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-M14V5SA"
   DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
-  DTS:DTSID="{6FA36C9D-7D7A-44E0-BD3B-6A5D50A3629C}"
+  DTS:DTSID="{95964143-EB63-47FC-86DF-B95F45828809}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.132"
   DTS:LocaleID="2058"
-  DTS:ObjectName="SysExpertAvisoMercanciaIdentificador"
+  DTS:ObjectName="ExtraccionSysExpertAvisoIdentificador"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{21EE4431-F269-4EF8-B43F-87ADDB7231B0}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{C98B84CB-EA42-4C08-B443-A182A3412344}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Extraer AvisoIdentificador"
+      DTS:refId="Package\Extraer aviso identificador"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{62DE2AEA-649A-4325-8737-F18F567BD109}"
+      DTS:DTSID="{DFA1136A-0FAC-4B6D-9D06-7D97FB299B9F}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Extraer AvisoIdentificador"
+      DTS:ObjectName="Extraer aviso identificador"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador"
+              refId="Package\Extraer aviso identificador\ExtraccionIdentificador"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[ExtraccionSysExpertPedimentoAvisoMercanciaIdentificador]</property>
+                  name="OpenRowset">[ExtraccionSysExpertPedimentoAvisoIdentificador]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -89,7 +89,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Connections[OleDbConnection]"
+                  refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Connections[OleDbConnection]"
                   connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
                   connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
                   description="The OLE DB runtime connection used to access the database."
@@ -97,97 +97,97 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[idIdentMercancias]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[idIdentAvisos]"
                       cachedDataType="i4"
-                      cachedName="idIdentMercancias"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentMercancias]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentMercancias]" />
+                      cachedName="idIdentAvisos"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentAvisos]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentAvisos]" />
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[idMercAvisos]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[idRemesa]"
                       cachedDataType="i4"
-                      cachedName="idMercAvisos"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idMercAvisos]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idMercAvisos]" />
+                      cachedName="idRemesa"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idRemesa]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idRemesa]" />
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[idIdentificador]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[idIdentificador]"
                       cachedDataType="i4"
                       cachedName="idIdentificador"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentificador]" />
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentificador]" />
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Identificador]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Identificador]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="3"
                       cachedName="Identificador"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Identificador]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Identificador]" />
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Identificador]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Identificador]" />
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Complemento1]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Complemento1]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="Complemento1"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento1]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento1]" />
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento1]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento1]" />
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Complemento2]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Complemento2]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Complemento2"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento2]" />
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento2]" />
                     <inputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Complemento3]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].Columns[Complemento3]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="40"
                       cachedName="Complemento3"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento3]" />
+                      externalMetadataColumnId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento3]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentMercancias]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentAvisos]"
                       dataType="i4"
-                      name="idIdentMercancias" />
+                      name="idIdentAvisos" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idMercAvisos]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idRemesa]"
                       dataType="i4"
-                      name="idMercAvisos" />
+                      name="idRemesa" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[idIdentificador]"
                       dataType="i4"
                       name="idIdentificador" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Identificador]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Identificador]"
                       codePage="1252"
                       dataType="str"
                       length="3"
                       name="Identificador" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento1]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento1]"
                       codePage="1252"
                       dataType="str"
                       length="30"
                       name="Complemento1" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Complemento2" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input].ExternalColumns[Complemento3]"
                       codePage="1252"
                       dataType="str"
                       length="40"
@@ -197,22 +197,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extraer aviso identificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extraer aviso identificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extraer aviso identificador\ExtraccionIdentificador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -221,7 +221,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Extraer AvisoIdentificador\Identificador"
+              refId="Package\Extraer aviso identificador\Identificador"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -246,15 +246,15 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-	PIM.idIdentMercancias,
-	PIM.idMercAvisos,
-	PIM.idIdentificador,
+	PIA.idIdentAvisos,
+	PIA.idRemesa,
+	PIA.idIdentificador,
 	I.Identificador,
-	PIM.Complemento1,
-	PIM.Complemento2,
-	PIM.Complemento3
-FROM Ped_IdentificadoresMercancias PIM
-	JOIN Identificadores           I    ON (PIM.idIdentificador =  I.idIdentificador)</property>
+	PIA.Complemento1,
+	PIA.Complemento2,
+	PIA.Complemento3
+FROM Ped_IdentificadoresAvisos PIA
+	JOIN Identificadores       I   ON (PIA.idIdentificador = I.idIdentificador)</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -279,7 +279,7 @@ FROM Ped_IdentificadoresMercancias PIM
               </properties>
               <connections>
                 <connection
-                  refId="Package\Extraer AvisoIdentificador\Identificador.Connections[OleDbConnection]"
+                  refId="Package\Extraer aviso identificador\Identificador.Connections[OleDbConnection]"
                   connectionManagerID="{88D774A8-C8D9-471D-9C6A-373F7CC73544}:external"
                   connectionManagerRefId="Project.ConnectionManagers[SysExpert]"
                   description="The OLE DB runtime connection used to access the database."
@@ -287,115 +287,115 @@ FROM Ped_IdentificadoresMercancias PIM
               </connections>
               <outputs>
                 <output
-                  refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output]"
+                  refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentMercancias]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentAvisos]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentMercancias]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentMercancias]"
-                      name="idIdentMercancias"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentAvisos]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentAvisos]"
+                      name="idIdentAvisos"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idMercAvisos]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idRemesa]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idMercAvisos]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idMercAvisos]"
-                      name="idMercAvisos"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idRemesa]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idRemesa]"
+                      name="idRemesa"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentificador]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentificador]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador]"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentificador]"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[idIdentificador]"
                       name="idIdentificador"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Identificador]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Identificador]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
                       length="3"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Identificador]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Identificador]"
                       name="Identificador"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento1]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento1]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento1]"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento1]"
                       length="30"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento1]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento1]"
                       name="Complemento1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento2]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento2]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento2]"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento2]"
                       length="50"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento2]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento2]"
                       name="Complemento2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento3]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento3]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento3]"
+                      externalMetadataColumnId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento3]"
                       length="40"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento3]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].Columns[Complemento3]"
                       name="Complemento3"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentMercancias]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentAvisos]"
                       dataType="i4"
-                      name="idIdentMercancias" />
+                      name="idIdentAvisos" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idMercAvisos]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idRemesa]"
                       dataType="i4"
-                      name="idMercAvisos" />
+                      name="idRemesa" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[idIdentificador]"
                       dataType="i4"
                       name="idIdentificador" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
                       codePage="1252"
                       dataType="str"
                       length="3"
                       name="Identificador" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento1]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento1]"
                       codePage="1252"
                       dataType="str"
                       length="30"
                       name="Complemento1" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento2]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Complemento2" />
                     <externalMetadataColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento3]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output].ExternalColumns[Complemento3]"
                       codePage="1252"
                       dataType="str"
                       length="40"
@@ -403,63 +403,63 @@ FROM Ped_IdentificadoresMercancias PIM
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentMercancias]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentAvisos]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentMercancias]"
-                      name="idIdentMercancias" />
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentAvisos]"
+                      name="idIdentAvisos" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idMercAvisos]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idRemesa]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idMercAvisos]"
-                      name="idMercAvisos" />
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idRemesa]"
+                      name="idRemesa" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentificador]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentificador]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentificador]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[idIdentificador]"
                       name="idIdentificador" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Identificador]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Identificador]"
                       codePage="1252"
                       dataType="str"
                       length="3"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Identificador]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Identificador]"
                       name="Identificador" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento1]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento1]"
                       codePage="1252"
                       dataType="str"
                       length="30"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento1]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento1]"
                       name="Complemento1" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento2]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento2]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento2]"
                       name="Complemento2" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento3]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento3]"
                       codePage="1252"
                       dataType="str"
                       length="40"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento3]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[Complemento3]"
                       name="Complemento3" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -470,29 +470,29 @@ FROM Ped_IdentificadoresMercancias PIM
           </components>
           <paths>
             <path
-              refId="Package\Extraer AvisoIdentificador.Paths[OLE DB Source Output]"
-              endId="Package\Extraer AvisoIdentificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input]"
+              refId="Package\Extraer aviso identificador.Paths[OLE DB Source Output]"
+              endId="Package\Extraer aviso identificador\ExtraccionIdentificador.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Extraer AvisoIdentificador\Identificador.Outputs[OLE DB Source Output]" />
+              startId="Package\Extraer aviso identificador\Identificador.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Truncar MercanciaIdentificador"
+      DTS:refId="Package\Truncar tabla AvisoIdentificador"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{B59824AA-F5EE-42B5-AC41-12457B78E71D}"
+      DTS:DTSID="{7462A23A-74CF-47B3-ADEB-78954BB1A5DA}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Truncar MercanciaIdentificador"
+      DTS:ObjectName="Truncar tabla AvisoIdentificador"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoAvisoMercanciaIdentificador" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionSysExpertPedimentoAvisoIdentificador" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -500,11 +500,11 @@ FROM Ped_IdentificadoresMercancias PIM
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{9998877B-4A7E-43B1-B4D6-5C467C392116}"
-      DTS:From="Package\Truncar MercanciaIdentificador"
+      DTS:DTSID="{3FC4FFC3-51D8-426E-A18F-10FF2AB023A5}"
+      DTS:From="Package\Truncar tabla AvisoIdentificador"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Extraer AvisoIdentificador" />
+      DTS:To="Package\Extraer aviso identificador" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -519,27 +519,27 @@ FROM Ped_IdentificadoresMercancias PIM
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="200,42"
-          Id="Package\Extraer AvisoIdentificador"
-          TopLeft="139,122" />
+          Size="201,42"
+          Id="Package\Extraer aviso identificador"
+          TopLeft="236,100" />
         <NodeLayout
-          Size="225,42"
-          Id="Package\Truncar MercanciaIdentificador"
-          TopLeft="131,52" />
+          Size="229,42"
+          Id="Package\Truncar tabla AvisoIdentificador"
+          TopLeft="222,34" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="241.25,94">
+          TopLeft="336.5,76">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28"
+              EndConnector="0,24"
               Start="0,0"
-              End="0,20.5">
+              End="0,16.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="0,16.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -552,44 +552,44 @@ FROM Ped_IdentificadoresMercancias PIM
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Extraer AvisoIdentificador">
+    design-time-name="Package\Extraer aviso identificador">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
-          Id="Package\Extraer AvisoIdentificador\Identificador"
-          TopLeft="236,29" />
+          Id="Package\Extraer aviso identificador\Identificador"
+          TopLeft="300,53" />
         <NodeLayout
           Size="187,42"
-          Id="Package\Extraer AvisoIdentificador\ExtraccionIdentificador"
-          TopLeft="223,108" />
+          Id="Package\Extraer aviso identificador\ExtraccionIdentificador"
+          TopLeft="285,154" />
         <EdgeLayout
-          Id="Package\Extraer AvisoIdentificador.Paths[OLE DB Source Output]"
-          TopLeft="305,71">
+          Id="Package\Extraer aviso identificador.Paths[OLE DB Source Output]"
+          TopLeft="369,95">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.5,37"
+              EndConnector="9.5,59"
               Start="0,0"
-              End="11.5,29.5">
+              End="9.5,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.5" />
+                    End="0,25.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.5"
-                    Point2="0,18.5"
-                    Point3="4,18.5" />
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
                   <mssgle:LineSegment
-                    End="7.5,18.5" />
+                    End="5.5,29.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="7.5,18.5"
-                    Point2="11.5,18.5"
-                    Point3="11.5,22.5" />
+                    Point1="5.5,29.5"
+                    Point2="9.5,29.5"
+                    Point3="9.5,33.5" />
                   <mssgle:LineSegment
-                    End="11.5,29.5" />
+                    End="9.5,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -602,7 +602,7 @@ FROM Ped_IdentificadoresMercancias PIM
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Extraer AvisoIdentificador\ExtraccionIdentificador">
+    design-time-name="Package\Extraer aviso identificador\ExtraccionIdentificador">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -615,7 +615,7 @@ FROM Ped_IdentificadoresMercancias PIM
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Extraer AvisoIdentificador\Identificador">
+    design-time-name="Package\Extraer aviso identificador\Identificador">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

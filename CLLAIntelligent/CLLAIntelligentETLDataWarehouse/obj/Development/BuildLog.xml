@@ -2,58 +2,68 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CLLAIntelligentETLDataWarehouse</Name>
-    <LastWriteTime>2020-11-12T17:25:13.5143594Z</LastWriteTime>
+    <LastWriteTime>2020-11-23T19:31:50.6201084Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
-      <Name>SysExpertTrafico.dtsx</Name>
-      <LastWriteTime>2020-10-27T04:33:08.7038238Z</LastWriteTime>
+      <Name>ExtraccionSysExpertPedimento.dtsx</Name>
+      <LastWriteTime>2020-11-26T18:43:07.2738394Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>ClienteTrendOperacionDirectaA1.dtsx</Name>
-      <LastWriteTime>2020-10-30T00:30:46.3261881Z</LastWriteTime>
+      <Name>ExtraccionSysExpertTrafico.dtsx</Name>
+      <LastWriteTime>2020-11-23T19:29:05.7179939Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>ClienteTrendCatalogoMaterial.dtsx</Name>
+      <Name>CargaSysExpertTrafico.dtsx</Name>
+      <LastWriteTime>2020-11-23T19:32:05.5843741Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ExtraccionClienteTrendCatalogoActivoFijo.dtsx</Name>
+      <LastWriteTime>2020-11-16T18:46:34.5139399Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ExtraccionClienteTrendCatalogoMaterial.dtsx</Name>
       <LastWriteTime>2020-10-30T00:42:33.7372481Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>ClienteTrendCatalogoActivoFijo.dtsx</Name>
-      <LastWriteTime>2020-10-30T00:46:40.2406276Z</LastWriteTime>
+      <Name>ExtraccionClienteTrendOperacionDirectaA1.dtsx</Name>
+      <LastWriteTime>2020-10-30T00:30:46.3261881Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>SysExpertRemesa.dtsx</Name>
-      <LastWriteTime>2020-11-05T21:46:50.8893094Z</LastWriteTime>
+      <Name>ExtraccionSysExpertAviso.dtsx</Name>
+      <LastWriteTime>2020-11-17T21:43:23.4591276Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>SysExpertAvisoIdentificador.dtsx</Name>
-      <LastWriteTime>2020-11-05T21:48:03.1905656Z</LastWriteTime>
+      <Name>ExtraccionSysExpertRemesa.dtsx</Name>
+      <LastWriteTime>2020-11-23T21:33:58.7070145Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>SysExpertAvisoMercancia.dtsx</Name>
-      <LastWriteTime>2020-11-05T21:48:03.1756059Z</LastWriteTime>
+      <Name>ExtraccionSysExpertEstatusGuia.dtsx</Name>
+      <LastWriteTime>2020-11-23T19:30:43.630427Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>SysExpertAvisoMercanciaIdentificador.dtsx</Name>
-      <LastWriteTime>2020-11-05T21:48:03.1616424Z</LastWriteTime>
+      <Name>CargaSysExpertRemesa.dtsx</Name>
+      <LastWriteTime>2020-11-17T21:41:10.6577618Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>ExtraccionSysExpertPedimento.dtsx</Name>
-      <LastWriteTime>2020-11-11T00:36:21.3612316Z</LastWriteTime>
+      <Name>CargaSysExpertEstatusGuia.dtsx</Name>
+      <LastWriteTime>2020-11-17T21:45:03.5058167Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>CargaSysExpertPedimento.dtsx</Name>
-      <LastWriteTime>2020-11-12T17:41:20.9458635Z</LastWriteTime>
+      <LastWriteTime>2020-11-17T15:27:39.5517718Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

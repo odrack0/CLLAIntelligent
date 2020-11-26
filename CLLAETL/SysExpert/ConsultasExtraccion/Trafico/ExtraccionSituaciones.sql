@@ -1,35 +1,29 @@
-INSERT INTO CLLA_DWH_SA.dbo.ExtraccionSysExpertTrafico
-	SELECT 
-		T.idTrafico, 
-		T.idSituacion, 
-		T.idReferencia, 
-		T.NumeroReferencia, 
-		NULL,--T.idRemesa, 
-		NULL,--T.NumeroRemesa, 
-		T.idFactura, 
-		T.NumeroFactura, 
-		T.idGuia, 
-		T.GuiaMaster, 
-		T.GuiaHouse, 
-		ST.ClaveSituacion, 
-		ST.DescripcionSituacion, 
-		T.FechaMovimiento, 
-		T.HoraMovimiento ,	
-		T.idUsuario, 
-		U.USU_NAME AS NombreEjecuto, 
-		T.Dato, 
-		T.Observaciones
-	FROM SysExpertCabrera20201022.dbo.Trafico                T 
-		JOIN SysExpertCabrera20201022.dbo.SituacionesTrafico ST ON (T.idSituacion = ST.idSituacion) 
-		LEFT JOIN SysExpertCabrera20201022.dbo.USUARIOS      U  ON (T.idUsuario   = U.PK_USUARIO)
-	WHERE 
-		ST.ClaveSituacion IN (1,2,3,8,9,12,13,14,85,86,88,91,92,93,94,105,107,108,136,144,169,170,177,178,179,180,300,305,306,307,307,308,308,309,310,310,311,315,317,320,320,325,400,405,410,410,430,460,490,500,505,506,800,801,1000,1001,1002,1003,6027,6103,6116,611)	--AND idTrafico >=5
-
-
-
---SELECT T.idTrafico, T.idSituacion, T.idReferencia, T.NumeroReferencia, T.idRemesa, T.NumeroRemesa, T.idFactura, T.NumeroFactura, T.idGuia, T.GuiaMaster, T.GuiaHouse, ST.ClaveSituacion, ST.DescripcionSituacion, T.FechaMovimiento, T.HoraMovimiento ,	T.idUsuario, U.USU_NAME AS NombreEjecuto, T.Dato, T.Observaciones
---FROM Trafico T JOIN SituacionesTrafico ST ON (T.idSituacion = ST.idSituacion) LEFT JOIN USUARIOS U  ON (T.idUsuario = U.PK_USUARIO)
---WHERE ST.ClaveSituacion IN (1,2,3,8,9,12,13,14,85,86,88,91,92,93,94,105,107,108,136,144,169,170,177,178,179,180,300,305,306,307,307,308,308,309,310,310,311,315,317,320,320,325,400,405,410,410,430,460,490,500,505,506,800,801,1000,1001,1002,1003,6027,6103,6116,611)	AND idTrafico >=5
+SELECT 
+	T.idTrafico, 
+	T.idSituacion, 
+	T.idReferencia, 
+	T.NumeroReferencia, 
+	T.idRemesa, 
+	T.NumeroRemesa, 
+	T.idFactura, 
+	T.NumeroFactura, 
+	T.idGuia, 
+	T.GuiaMaster, 
+	T.GuiaHouse, 
+	ST.ClaveSituacion, 
+	ST.DescripcionSituacion, 
+	T.FechaMovimiento, 
+	T.HoraMovimiento ,	
+	T.idUsuario, 
+	U.USU_NAME AS NombreEjecuto, 
+	T.Dato, 
+	T.Observaciones  
+FROM Trafico T 
+	JOIN SituacionesTrafico ST ON (T.idSituacion = ST.idSituacion) 
+	LEFT JOIN USUARIOS U  ON (T.idUsuario = U.PK_USUARIO)  
+WHERE 
+	ST.ClaveSituacion IN (1,2,3,8,9,12,13,14,85,86,88,91,92,93,94,105,107,108,136,144,169,170,177,178,179,180,300,305,306,307,307,308,308,309,310,310,311,315,317,320,320,325,400,405,410,410,430,460,490,500,505,506,800,801,1000,1001,1002,1003,6027,6103,6116,611) AND 
+	T.idTrafico > (SELECT idTrafico FROM BitacoraExtraccionSysExpert)
 
 --1	ALTA DE REFERENCIA
 --2	ALTA DE REFERENCIA DESDE REMESAS

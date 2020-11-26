@@ -1,41 +1,35 @@
-SELECT 
-	R.idRemesa,
-	R.idReferencia,
-	R.NumeroRemesa,
-	R.FechaOperacion,
-	R.idTipoCambio,
-	TC.Valor AS TipoCambio,
-	R.ArchivoValidacion,
-	R.Firma,
-	R.Desaduanamiento,
-	R.DesaduanaFecha,
-	R.Aleatorio,
-	R.Observaciones,
-	R.idPrevalidador,
-	PR.ClavePrevalidador,
-	PR.NombrePrevalidador,
-	R.FolioAviso,
-	R.Contenedor,
-	R.idTransportista,
-	T.Clave   AS ClaveTransportista,
-	T.CAAT    AS CAATTransportista,
-	T.Nombre  AS NombreTransportista,
-	R.TipoMedioTransporte,
-	R.IdentificacionTransporte,
-	R.CantidadGuias,
-	R.MarcasNumeros,
-	R.DatosVehiculo,
-	R.idRecinto,
-	RCN.Clave AS ClaveRecinto,
-	RCN.Nombre AS NombreRecinto,
-	R.Contingencia
-  FROM Ped_Remesas             R
-	JOIN TipoCambio            TC  ON (R.idTipoCambio    = TC.idTipoCambio)
-	LEFT JOIN Prevalidadores   PR  ON (R.idPrevalidador  = PR.idPrevalidador)
-	LEFT JOIN Transportistas   T   ON (R.idTransportista = T.idTransportista)
-	LEFT JOIN RecintosFiscales RCN ON (R.idRecinto       = RCN.idRecinto)
-
-
-GO
-
-
+SELECT [idRemesa]
+      ,[idReferencia]
+      ,[NumeroRemesa]
+      ,[FechaOperacion]
+      ,PR.[idTipoCambio]
+      ,[ArchivoValidacion]
+      ,PR.[Firma]
+      ,[Desaduanamiento]
+      ,[DesaduanaFecha]
+      ,[idUsuarioDesaduana]
+	  ,U.USU_NAME
+      ,[Aleatorio]
+      ,[Observaciones]
+      ,PR.[idTramitador]
+      ,T.Nombre
+	  ,PR.[idPrevalidador]
+	  ,P.ClavePrevalidador
+	  ,P.NombrePrevalidador
+      ,[Contenedor]
+      ,PR.[idTransportista]
+      ,[TipoMedioTransporte]
+      ,[IdentificacionTransporte]
+      ,[CantidadGuias]
+      ,[Contenedor2]+
+      ,[MarcasNumeros]
+      ,PR.[idRecinto]
+  FROM [dbo].[Ped_Remesas]     PR
+	LEFT JOIN TipoCambio       TC    ON (PR.idTipoCambio        = TC.idTipoCambio)
+	LEFT JOIN USUARIOS         U     ON (PR.idUsuarioDesaduana  = U.PK_USUARIO)
+	LEFT JOIN Tramitadores     T     ON (PR.idTramitador        = T.idTramitador)
+	LEFT JOIN Prevalidadores   P     ON (PR.idPrevalidador      = P.idPrevalidador)
+	LEFT JOIN Transportistas   TRANS ON (PR.idTransportista     = TRANS.idTransportista)
+	LEFT JOIN RecintosFiscales RF    ON (PR.idRecinto           = RF.idRecinto)
+WHERE	
+	PR.Desaduanamiento <> ''
