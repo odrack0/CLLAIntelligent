@@ -151,6 +151,3 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	LEFT JOIN Paises                PEDFACPAISMONEM WITH(NOLOCK) ON (PEDFACTURAS.idPaisMonEmbalaje = PEDFACPAISMONEM.idPais)
 	LEFT JOIN Paises                PEDFACPAISMONFL WITH(NOLOCK) ON (PEDFACTURAS.idPaisMonFletes   = PEDFACPAISMONFL.idPais)
 	LEFT JOIN Paises                PEDFACPAISMONOI WITH(NOLOCK) ON (PEDFACTURAS.idPaisMonOtrosIncrement   = PEDFACPAISMONOI.idPais)
-WHERE
-	BEP.FechaExtraccionPedimentoFactura IS NULL
-

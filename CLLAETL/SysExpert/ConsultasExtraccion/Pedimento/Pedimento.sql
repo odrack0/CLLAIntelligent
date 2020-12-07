@@ -174,7 +174,5 @@ SELECT
 		LEFT JOIN Paises                       PAISMONSEGUROS   WITH(NOLOCK) ON (PEDGRALES.idPaisMonSeguros        = PAISMONSEGUROS.idPais)					
 		LEFT JOIN Paises                       PAISMONEMBALAJE  WITH(NOLOCK) ON (PEDGRALES.idPaisMonEmbalaje       = PAISMONEMBALAJE.idPais)				
 		LEFT JOIN Paises                       PAISMONOTROSINC  WITH(NOLOCK) ON (PEDGRALES.idPaisMonOtrosIncrement = PAISMONOTROSINC.idPais)
-WHERE
-	BEP.FechaExtraccionPedimento IS NULL
 ORDER BY
 	PEDGRALES.idReferencia

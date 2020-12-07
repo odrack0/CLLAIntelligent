@@ -13,5 +13,3 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN Ped_DiferenciasRectificacion     DR ON (BEP.idReferencia  = DR.idReferencia)
 	JOIN Contribuciones                   C  ON (DR.idContribucion = C.idContribucion)
 	JOIN FormasDePago                     FP ON (DR.idFormaPago    =  FP.idFormapago)
-WHERE
-	BEP.FechaExtraccionPedimentoRectificacionDiferencia IS NULL

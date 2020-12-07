@@ -18,5 +18,3 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN CvesDocs                         CDREC ON (PR.idCveDocRectificacion = CDREC.idClave)
 	JOIN CvesDocs                         CDORG ON (PR.idCveDocOriginal      = CDORG.idClave)
 	JOIN Aduanas                          A     ON (PR.idAduanaOriginal      = A.idAduana)
-WHERE
-	BEP.FechaExtraccionPedimentoRectificacion IS NULL

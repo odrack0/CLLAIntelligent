@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CLLAIntelligentETLDataWarehouse</Name>
-    <LastWriteTime>2020-11-23T19:31:50.6201084Z</LastWriteTime>
+    <LastWriteTime>2020-12-01T23:41:34.7817428Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>ExtraccionSysExpertPedimento.dtsx</Name>
-      <LastWriteTime>2020-11-26T18:43:07.2738394Z</LastWriteTime>
+      <LastWriteTime>2020-11-27T15:26:12.3483888Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -63,7 +63,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>CargaSysExpertPedimento.dtsx</Name>
-      <LastWriteTime>2020-11-17T15:27:39.5517718Z</LastWriteTime>
+      <LastWriteTime>2020-11-27T15:43:03.6322898Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Package1.dtsx</Name>
+      <LastWriteTime>2020-12-01T23:41:34.6721665Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

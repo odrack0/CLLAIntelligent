@@ -42,5 +42,3 @@ FROM  BitacoraExtraccionSysExpertPedimento BEP
 	LEFT JOIN Paises                       PV  ON (PF.idPaisVendedor    = PV.idPais)
 	LEFT JOIN Paises                       PM  ON (PF.idPaisMoneda      = PM.idPais)
 	LEFT JOIN Paises                       PP  ON (PF.idPaisProcedencia = PP.idPais)
-WHERE 
-	BEP.FechaExtraccionPedimentoFraccion IS NULL

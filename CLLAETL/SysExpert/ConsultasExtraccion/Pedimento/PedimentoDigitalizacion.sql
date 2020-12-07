@@ -8,5 +8,3 @@ SELECT
 	D.VUNumeroOperacion
 FROM BitacoraExtraccionSysExpertPedimento BIP
 	JOIN Ped_Digitalizacion               D   ON (BIP.idReferencia = D.idReferencia)
-WHERE
-	BIP.FechaExtraccionPedimentoDigitalizacion IS NULL

@@ -19,5 +19,3 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN Ped_Descargas                    PD  ON (BEP.idReferencia    = PD.idReferencia)
 	JOIN Aduanas                          A   ON (PD.idAduanaOriginal = A.idAduana)
 	JOIN UnidadesMedida                   UM  ON (PD.idUMC            = UM.idUnidad)
-WHERE
-	BEP.FechaExtraccionPedimentoDescarga IS NULL

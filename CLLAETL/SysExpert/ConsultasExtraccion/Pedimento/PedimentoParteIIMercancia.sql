@@ -20,7 +20,3 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN Ped_PartesIIMercancias           M    ON (PII.idPedParteII = M.idPedParteII)
 	LEFT JOIN UnidadesMedida              UMC  ON (M.idUnidad       =  UMC.idUnidad)
 	LEFT JOIN UnidadesMedida              UMT  ON (UMC.idUnidad     = UMT.idUnidad)
-WHERE
-	BEP.FechaExtraccionPedimentoParteIIMercancia IS NULL
-
-

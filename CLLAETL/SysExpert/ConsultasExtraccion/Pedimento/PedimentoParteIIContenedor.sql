@@ -13,5 +13,3 @@ FROM BitacoraExtraccionSysExpertPedimento    BEP
 	JOIN Ped_PartesIIContenedores            PIIC  ON (PII.idPedParteII          = PIIC.idPedParteII)
 	JOIN Contenedores                        C     ON (PIIC.idContenedor         = C.idContenedor)
 	LEFT JOIN Ped_PartesIIContenedorCandados PIICC ON (PIIC.idPedPIIContenedores = PIICC.idPedPIIContenedores)
-WHERE
-	BEP.FechaExtraccionPedimentoParteIIContenedor IS NULL

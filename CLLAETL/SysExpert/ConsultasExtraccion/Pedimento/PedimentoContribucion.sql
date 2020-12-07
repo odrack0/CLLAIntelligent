@@ -20,7 +20,5 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN Contribuciones                   C  ON (CP.idContribucion = C.idContribucion)
 	JOIN FormasDePago                     FP ON (CP.idFormaPago    = FP.idFormapago)
 	JOIN Tasas                            T  ON (CP.idTipoTasa     = T.idTipo)
-WHERE
-	BEP.FechaExtraccionPedimentoContribucion IS NULL
 ORDER BY 
 	idReferencia

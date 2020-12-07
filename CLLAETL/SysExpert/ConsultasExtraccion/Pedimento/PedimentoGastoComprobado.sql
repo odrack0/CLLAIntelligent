@@ -14,5 +14,3 @@ SELECT
 FROM  BitacoraExtraccionSysExpertPedimento  BEP
 	JOIN Ped_GastosComprobados              PGC ON (BEP.idReferencia = PGC.idReferenciaGasto)
 	JOIN GastosComprobados                  GC  ON (PGC.idGasto =  GC.idGasto)
-WHERE
-	BEP.FechaExtraccionPedimentoGastoComprobado IS NULL

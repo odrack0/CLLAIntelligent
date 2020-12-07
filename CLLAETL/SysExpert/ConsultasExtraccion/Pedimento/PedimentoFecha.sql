@@ -9,5 +9,3 @@ SELECT
 FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN Ped_Fechas                       PF ON (BEP.idReferencia = PF.idReferencia)
 	JOIN Fechas                           F  ON (PF.idFecha       = F.idFecha)
-WHERE
-	BEP.FechaExtraccionPedimentoFecha IS NULL

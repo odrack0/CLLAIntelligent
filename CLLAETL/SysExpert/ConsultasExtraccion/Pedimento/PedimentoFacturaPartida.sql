@@ -109,8 +109,3 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	LEFT JOIN UnidadesMedidaCOVE       PEDPARTUMCOVE       WITH(NOLOCK) ON (PEDPART.idUnidadCOVE           = PEDPARTUMCOVE.idUnidadCOVE)
 	LEFT JOIN MetodosValoracion        PEDPARTMETVAL       WITH(NOLOCK) ON (PEDPART.idValoracion           = PEDPARTMETVAL.IdValoracion)
 	LEFT JOIN TipoDeMercancia          PEDPARTTIPMER       WITH(NOLOCK) ON (PEDPART.idTipoDeMercancia      = PEDPARTTIPMER.idTipoDeMercancia)
-WHERE
-	BEP.FechaExtraccionPedimentoFacturaPartida IS NULL
-
-
-	
