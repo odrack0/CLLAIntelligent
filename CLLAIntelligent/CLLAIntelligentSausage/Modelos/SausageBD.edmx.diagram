@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="11fdd948d7fb46ac9ce18f59c7c8d951" Name="Diagram1">
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigital" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalArchivo" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalBitacora" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracion" Width="1.5" PointX="1.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivo" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivoCliente" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionCliente" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalEventoBitacora" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalGastoComprobado" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalMetaDato" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalOrigen" Width="1.5" PointX="1.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamiento" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivo" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivoBitacora" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalTipoArchivo" Width="1.5" PointX="1.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes" Width="1.5" PointX="8.75" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

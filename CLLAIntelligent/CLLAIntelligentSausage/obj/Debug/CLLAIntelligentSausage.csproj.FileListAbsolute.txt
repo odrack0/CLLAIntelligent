@@ -1,0 +1,12 @@
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.csprojAssemblyReference.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.csproj.CoreCompileInputs.cache
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\CLLAIntelligentSausage.exe.config
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\CLLAIntelligentSausage.exe
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\CLLAIntelligentSausage.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\EntityFramework.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\EntityFramework.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.csproj.CopyComplete
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.exe
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.pdb

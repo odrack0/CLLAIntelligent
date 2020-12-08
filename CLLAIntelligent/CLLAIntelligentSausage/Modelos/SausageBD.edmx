@@ -1,0 +1,1360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CLLASausageModelos.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ExpedienteDigital">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigital" />
+          </Key>
+          <Property Name="IdExpedienteDigital" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdReferenciaSysExpert" Type="int" Nullable="false" />
+          <Property Name="IdAgenciaSysExpert" Type="int" Nullable="false" />
+          <Property Name="ExpedienteCompleto" Type="bit" Nullable="false" />
+          <Property Name="ExpedienteFinalizado" Type="bit" Nullable="false" />
+          <Property Name="ExpedienteSincronizadoSysExpertWeb" Type="bit" Nullable="false" />
+          <Property Name="ClaveClienteSysExpert" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalArchivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigital" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="int" Nullable="false" />
+          <Property Name="NomenclaturaRutaCompletaFinalizado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RutaCompletaFinalizado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Finalizado" Type="datetime" />
+          <Property Name="Ruta" Type="nvarchar(max)" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Extension" Type="nvarchar(max)" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalBitacora">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalBitacora" />
+          </Key>
+          <Property Name="IdExpedienteDigitalBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigital" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalEventoBitacora" Type="int" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracion">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAgenciaSysExpert" Type="int" Nullable="false" />
+          <Property Name="NomenclaturaRutaRaizProcesamiento" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NomenclaturaRutaRaizCompletado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComprimirDespuesFinalizado" Type="bit" Nullable="false" />
+          <Property Name="NomenclaturaNombreComprimidoProcesamiento" Type="nvarchar(max)" />
+          <Property Name="NomenclaturaNombreComprimidoFinalizado" Type="nvarchar(max)" />
+          <Property Name="EliminarDespuesFinalizado" Type="bit" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracionArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracionArchivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracion" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalTipoArchivo" Type="int" Nullable="false" />
+          <Property Name="NomenclauturaNombreProcesamiento" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NomenclauturaNombreFinalizado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracionArchivoCliente">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivoCliente" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracionArchivoCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaveClienteSysExpert" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracionArchivo" Type="int" Nullable="false" />
+          <Property Name="NomenclauturaNombreFinalizado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracionCliente">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracionCliente" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracionCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaveClienteSysExpert" Type="int" Nullable="false" />
+          <Property Name="NomenclaturaRutaRaizCompletado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalEventoBitacora">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+          </Key>
+          <Property Name="IdExpedienteDigitalEventoBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalGastoComprobado">
+          <Key>
+            <PropertyRef Name="IdGastoComprobado" />
+          </Key>
+          <Property Name="IdGastoComprobado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigital" Type="int" />
+          <Property Name="EmisorNombre" Type="nvarchar(max)" />
+          <Property Name="EmisorRFC" Type="nvarchar(max)" />
+          <Property Name="Folio" Type="nvarchar(max)" />
+          <Property Name="Fecha" Type="nvarchar(max)" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RutaArchivoXMLOrigen" Type="nvarchar(max)" />
+          <Property Name="RutaArchivoXMLDestino" Type="nvarchar(max)" />
+          <Property Name="RutaArchivoPDFOrigen" Type="nvarchar(max)" />
+          <Property Name="RutaArchivoPDFDestino" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalMetaDato">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalMetaDato" />
+          </Key>
+          <Property Name="IdExpedienteDigitalMetaDato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigital" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="int" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Valor" Type="nvarchar(max)" />
+          <Property Name="EsHijo" Type="int" />
+          <Property Name="Nivel" Type="int" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalOrigen">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalOrigen" />
+          </Key>
+          <Property Name="IdExpedienteDigitalOrigen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="RutaRaiz" Type="nvarchar(max)" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalProcesamiento">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
+          </Key>
+          <Property Name="IdExpedienteDigitalProcesamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigital" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracionArchivo" Type="int" />
+          <Property Name="HoraFecha" Type="datetime" Nullable="false" />
+          <Property Name="OrigenNomenclatura" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DestinoNomenclatura" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RutaMoverPosProcesamiento" Type="nvarchar(max)" />
+          <Property Name="EliminarDespuesProcesamiento" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalProcesamientoArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigitalProcesamiento" Type="int" Nullable="false" />
+          <Property Name="ArchivoRutaCompletaOrigen" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArchivoRutaCompletaDestino" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Requerido" Type="bit" Nullable="false" />
+          <Property Name="Procesado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalProcesamientoArchivoBitacora">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivoBitacora" />
+          </Key>
+          <Property Name="IdExpedienteDigitalProcesamientoArchivoBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="int" Nullable="false" />
+          <Property Name="IdExpedienteDigitalEventoBitacora" Type="int" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalTipoArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalTipoArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalTipoArchivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdExpedienteDigitalOrigen" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="NomenclaturaNombreOrigen" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RutaMoverPosProcesamiento" Type="nvarchar(max)" />
+          <Property Name="EliminarDespuesProcesar" Type="bit" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLLASausage.dbo.vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes">
+          <Key>
+            <PropertyRef Name="IdTipoArchivo" />
+            <PropertyRef Name="TipoArchivo" />
+          </Key>
+          <Property Name="NumeroReferencia" Type="nvarchar(max)" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="ClaveCliente" Type="nvarchar(max)" />
+          <Property Name="IdTipoArchivo" Type="int" Nullable="false" />
+          <Property Name="TipoArchivo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Evento" Type="nvarchar(max)" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="RutaOrigen" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalArchivo" Type="Self.ExpedienteDigitalArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalArchivo">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalArchivo" Type="Self.ExpedienteDigitalArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalBitacora" Type="Self.ExpedienteDigitalBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalBitacora">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+          <End Role="ExpedienteDigitalEventoBitacora" Type="Self.ExpedienteDigitalEventoBitacora" Multiplicity="1" />
+          <End Role="ExpedienteDigitalBitacora" Type="Self.ExpedienteDigitalBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalEventoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+          <End Role="ExpedienteDigitalConfiguracion" Type="Self.ExpedienteDigitalConfiguracion" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracion">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo">
+          <End Role="ExpedienteDigitalTipoArchivo" Type="Self.ExpedienteDigitalTipoArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalTipoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalTipoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalTipoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr">
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionArchivoCliente" Type="Self.ExpedienteDigitalConfiguracionArchivoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionArchivoCliente">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+          <End Role="ExpedienteDigitalConfiguracion" Type="Self.ExpedienteDigitalConfiguracion" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionCliente" Type="Self.ExpedienteDigitalConfiguracionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracion">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionCliente">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="0..1" />
+          <End Role="ExpedienteDigitalGastoComprobado" Type="Self.ExpedienteDigitalGastoComprobado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalGastoComprobado">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalMetaDato" Type="Self.ExpedienteDigitalMetaDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalMetaDato">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="0..1" />
+          <End Role="ExpedienteDigitalMetaDato" Type="Self.ExpedienteDigitalMetaDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalMetaDato">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamiento">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo">
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="0..1" />
+          <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamiento">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento">
+          <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamiento">
+              <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+          <End Role="ExpedienteDigitalEventoBitacora" Type="Self.ExpedienteDigitalEventoBitacora" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" Type="Self.ExpedienteDigitalProcesamientoArchivoBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalEventoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamientoArchivoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA">
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" Type="Self.ExpedienteDigitalProcesamientoArchivoBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamientoArchivoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen">
+          <End Role="ExpedienteDigitalOrigen" Type="Self.ExpedienteDigitalOrigen" Multiplicity="1" />
+          <End Role="ExpedienteDigitalTipoArchivo" Type="Self.ExpedienteDigitalTipoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalOrigen">
+              <PropertyRef Name="IdExpedienteDigitalOrigen" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalTipoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fnExpedienteDigitalFinalizadoPendiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IdExpedienteDigitalArchivo" Type="int" Nullable="false" />
+                <Property Name="RutaCompletaOrigen" Type="nvarchar(max)" Nullable="false" />
+                <Property Name="RutaCompletaDestino" Type="nvarchar(max)" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnExpedienteDigitalProcesamientoPendiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IdExpedienteDigitalProcesamiento" Type="int" Nullable="false" />
+                <Property Name="IdExpedienteDigital" Type="int" Nullable="false" />
+                <Property Name="OrigenNomenclatura" Type="nvarchar(max)" />
+                <Property Name="DestinoNomenclatura" Type="nvarchar(max)" />
+                <Property Name="IdExpedienteDigitalTipoArchivo" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="LastIndexOf" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="text" Type="ntext" Mode="In" />
+          <Parameter Name="delimiter" Type="ntext" Mode="In" />
+        </Function>
+        <Function Name="spExpedienteDigitalEliminaClienteSysExpert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClaveCliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spExpedienteDigitalImportaFacturasYMetadatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spExpedienteDigitalImportaPedimentosYMetadatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spExpedienteDigitalInsertaArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdExpedienteDigital" Type="int" Mode="In" />
+          <Parameter Name="IdExpedienteDigitalProcesamientoArchivo" Type="int" Mode="In" />
+          <Parameter Name="NomenclaturaRutaCompletaFinalizado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="RutaCompletaFinalizado" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spExpedienteDigitalInsertaProcesamientoArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdExpedienteDigitalProcesamiento" Type="int" Mode="In" />
+          <Parameter Name="ArchivoRutaCompletaOrigen" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ArchivoRutaCompletaDestino" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Requerido" Type="bit" Mode="In" />
+          <Parameter Name="LlavePrimaria" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="CLLASausageModelosStoreContainer">
+          <EntitySet Name="ExpedienteDigital" EntityType="Self.ExpedienteDigital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalArchivo" EntityType="Self.ExpedienteDigitalArchivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalBitacora" EntityType="Self.ExpedienteDigitalBitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalConfiguracion" EntityType="Self.ExpedienteDigitalConfiguracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalConfiguracionArchivo" EntityType="Self.ExpedienteDigitalConfiguracionArchivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalConfiguracionArchivoCliente" EntityType="Self.ExpedienteDigitalConfiguracionArchivoCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalConfiguracionCliente" EntityType="Self.ExpedienteDigitalConfiguracionCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalEventoBitacora" EntityType="Self.ExpedienteDigitalEventoBitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalGastoComprobado" EntityType="Self.ExpedienteDigitalGastoComprobado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalMetaDato" EntityType="Self.ExpedienteDigitalMetaDato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalOrigen" EntityType="Self.ExpedienteDigitalOrigen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalProcesamiento" EntityType="Self.ExpedienteDigitalProcesamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalProcesamientoArchivo" EntityType="Self.ExpedienteDigitalProcesamientoArchivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalProcesamientoArchivoBitacora" EntityType="Self.ExpedienteDigitalProcesamientoArchivoBitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpedienteDigitalTipoArchivo" EntityType="Self.ExpedienteDigitalTipoArchivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes" EntityType="Self.vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[NumeroReferencia] AS [NumeroReferencia], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[FechaPago] AS [FechaPago], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[ClaveCliente] AS [ClaveCliente], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[IdTipoArchivo] AS [IdTipoArchivo], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[TipoArchivo] AS [TipoArchivo], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[Evento] AS [Evento], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[FechaHora] AS [FechaHora], 
+    [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes].[RutaOrigen] AS [RutaOrigen]
+    FROM [dbo].[vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes] AS [vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalArchivo" EntitySet="ExpedienteDigitalArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" Association="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+            <End Role="ExpedienteDigitalArchivo" EntitySet="ExpedienteDigitalArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalBitacora" EntitySet="ExpedienteDigitalBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" Association="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+            <End Role="ExpedienteDigitalEventoBitacora" EntitySet="ExpedienteDigitalEventoBitacora" />
+            <End Role="ExpedienteDigitalBitacora" EntitySet="ExpedienteDigitalBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+            <End Role="ExpedienteDigitalConfiguracion" EntitySet="ExpedienteDigitalConfiguracion" />
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo">
+            <End Role="ExpedienteDigitalTipoArchivo" EntitySet="ExpedienteDigitalTipoArchivo" />
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr">
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+            <End Role="ExpedienteDigitalConfiguracionArchivoCliente" EntitySet="ExpedienteDigitalConfiguracionArchivoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+            <End Role="ExpedienteDigitalConfiguracion" EntitySet="ExpedienteDigitalConfiguracion" />
+            <End Role="ExpedienteDigitalConfiguracionCliente" EntitySet="ExpedienteDigitalConfiguracionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalGastoComprobado" EntitySet="ExpedienteDigitalGastoComprobado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalMetaDato" EntitySet="ExpedienteDigitalMetaDato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" Association="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+            <End Role="ExpedienteDigitalMetaDato" EntitySet="ExpedienteDigitalMetaDato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" Association="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo">
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+            <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento">
+            <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+            <End Role="ExpedienteDigitalEventoBitacora" EntitySet="ExpedienteDigitalEventoBitacora" />
+            <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" EntitySet="ExpedienteDigitalProcesamientoArchivoBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA">
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+            <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" EntitySet="ExpedienteDigitalProcesamientoArchivoBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen" Association="Self.FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen">
+            <End Role="ExpedienteDigitalOrigen" EntitySet="ExpedienteDigitalOrigen" />
+            <End Role="ExpedienteDigitalTipoArchivo" EntitySet="ExpedienteDigitalTipoArchivo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CLLASausageModelos" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fnExpedienteDigitalFinalizadoPendiente_Result">
+          <Property Name="IdExpedienteDigitalArchivo" Type="Int32" Nullable="false" />
+          <Property Name="RutaCompletaOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RutaCompletaDestino" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="fnExpedienteDigitalProcesamientoPendiente_Result">
+          <Property Name="IdExpedienteDigitalProcesamiento" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigital" Type="Int32" Nullable="false" />
+          <Property Name="OrigenNomenclatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DestinoNomenclatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdExpedienteDigitalTipoArchivo" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="ExpedienteDigital">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigital" />
+          </Key>
+          <Property Name="IdExpedienteDigital" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdReferenciaSysExpert" Type="Int32" Nullable="false" />
+          <Property Name="IdAgenciaSysExpert" Type="Int32" Nullable="false" />
+          <Property Name="ExpedienteCompleto" Type="Boolean" Nullable="false" />
+          <Property Name="ExpedienteFinalizado" Type="Boolean" Nullable="false" />
+          <Property Name="ExpedienteSincronizadoSysExpertWeb" Type="Boolean" Nullable="false" />
+          <Property Name="ClaveClienteSysExpert" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigital" ToRole="ExpedienteDigitalArchivo" />
+          <NavigationProperty Name="ExpedienteDigitalBitacora" Relationship="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigital" ToRole="ExpedienteDigitalBitacora" />
+          <NavigationProperty Name="ExpedienteDigitalGastoComprobado" Relationship="Self.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigital" ToRole="ExpedienteDigitalGastoComprobado" />
+          <NavigationProperty Name="ExpedienteDigitalMetaDato" Relationship="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigital" ToRole="ExpedienteDigitalMetaDato" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamiento" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigital" ToRole="ExpedienteDigitalProcesamiento" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalArchivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigital" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="Int32" Nullable="false" />
+          <Property Name="NomenclaturaRutaCompletaFinalizado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RutaCompletaFinalizado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Finalizado" Type="DateTime" Precision="3" />
+          <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigital" Relationship="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigitalArchivo" ToRole="ExpedienteDigital" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamientoArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" FromRole="ExpedienteDigitalArchivo" ToRole="ExpedienteDigitalProcesamientoArchivo" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalBitacora">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalBitacora" />
+          </Key>
+          <Property Name="IdExpedienteDigitalBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigital" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalEventoBitacora" Type="Int32" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExpedienteDigital" Relationship="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigitalBitacora" ToRole="ExpedienteDigital" />
+          <NavigationProperty Name="ExpedienteDigitalEventoBitacora" Relationship="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" FromRole="ExpedienteDigitalBitacora" ToRole="ExpedienteDigitalEventoBitacora" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracion">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAgenciaSysExpert" Type="Int32" Nullable="false" />
+          <Property Name="NomenclaturaRutaRaizProcesamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomenclaturaRutaRaizCompletado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ComprimirDespuesFinalizado" Type="Boolean" Nullable="false" />
+          <Property Name="NomenclaturaNombreComprimidoProcesamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NomenclaturaNombreComprimidoFinalizado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EliminarDespuesFinalizado" Type="Boolean" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracionArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" FromRole="ExpedienteDigitalConfiguracion" ToRole="ExpedienteDigitalConfiguracionArchivo" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracionCliente" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" FromRole="ExpedienteDigitalConfiguracion" ToRole="ExpedienteDigitalConfiguracionCliente" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracionArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracionArchivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigitalConfiguracion" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalTipoArchivo" Type="Int32" Nullable="false" />
+          <Property Name="NomenclauturaNombreProcesamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomenclauturaNombreFinalizado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracion" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" FromRole="ExpedienteDigitalConfiguracionArchivo" ToRole="ExpedienteDigitalConfiguracion" />
+          <NavigationProperty Name="ExpedienteDigitalTipoArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo" FromRole="ExpedienteDigitalConfiguracionArchivo" ToRole="ExpedienteDigitalTipoArchivo" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracionArchivoCliente" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr" FromRole="ExpedienteDigitalConfiguracionArchivo" ToRole="ExpedienteDigitalConfiguracionArchivoCliente" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamiento" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" FromRole="ExpedienteDigitalConfiguracionArchivo" ToRole="ExpedienteDigitalProcesamiento" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracionArchivoCliente">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivoCliente" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracionArchivoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaveClienteSysExpert" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracionArchivo" Type="Int32" Nullable="false" />
+          <Property Name="NomenclauturaNombreFinalizado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracionArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr" FromRole="ExpedienteDigitalConfiguracionArchivoCliente" ToRole="ExpedienteDigitalConfiguracionArchivo" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalConfiguracionCliente">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalConfiguracionCliente" />
+          </Key>
+          <Property Name="IdExpedienteDigitalConfiguracionCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaveClienteSysExpert" Type="Int32" Nullable="false" />
+          <Property Name="NomenclaturaRutaRaizCompletado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracion" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" FromRole="ExpedienteDigitalConfiguracionCliente" ToRole="ExpedienteDigitalConfiguracion" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalEventoBitacora">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+          </Key>
+          <Property Name="IdExpedienteDigitalEventoBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalBitacora" Relationship="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" FromRole="ExpedienteDigitalEventoBitacora" ToRole="ExpedienteDigitalBitacora" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamientoArchivoBitacora" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" FromRole="ExpedienteDigitalEventoBitacora" ToRole="ExpedienteDigitalProcesamientoArchivoBitacora" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalGastoComprobado">
+          <Key>
+            <PropertyRef Name="IdGastoComprobado" />
+          </Key>
+          <Property Name="IdGastoComprobado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigital" Type="Int32" />
+          <Property Name="EmisorNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmisorRFC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Folio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RutaArchivoXMLOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RutaArchivoXMLDestino" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RutaArchivoPDFOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RutaArchivoPDFDestino" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExpedienteDigital" Relationship="Self.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigitalGastoComprobado" ToRole="ExpedienteDigital" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalMetaDato">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalMetaDato" />
+          </Key>
+          <Property Name="IdExpedienteDigitalMetaDato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigital" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EsHijo" Type="Int32" />
+          <Property Name="Nivel" Type="Int32" />
+          <NavigationProperty Name="ExpedienteDigital" Relationship="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigitalMetaDato" ToRole="ExpedienteDigital" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamientoArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" FromRole="ExpedienteDigitalMetaDato" ToRole="ExpedienteDigitalProcesamientoArchivo" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalOrigen">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalOrigen" />
+          </Key>
+          <Property Name="IdExpedienteDigitalOrigen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RutaRaiz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalTipoArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen" FromRole="ExpedienteDigitalOrigen" ToRole="ExpedienteDigitalTipoArchivo" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalProcesamiento">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
+          </Key>
+          <Property Name="IdExpedienteDigitalProcesamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigital" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalConfiguracionArchivo" Type="Int32" />
+          <Property Name="HoraFecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrigenNomenclatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DestinoNomenclatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RutaMoverPosProcesamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EliminarDespuesProcesamiento" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigital" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" FromRole="ExpedienteDigitalProcesamiento" ToRole="ExpedienteDigital" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracionArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" FromRole="ExpedienteDigitalProcesamiento" ToRole="ExpedienteDigitalConfiguracionArchivo" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamientoArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento" FromRole="ExpedienteDigitalProcesamiento" ToRole="ExpedienteDigitalProcesamientoArchivo" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalProcesamientoArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigitalProcesamiento" Type="Int32" Nullable="false" />
+          <Property Name="ArchivoRutaCompletaOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArchivoRutaCompletaDestino" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Requerido" Type="Boolean" Nullable="false" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" FromRole="ExpedienteDigitalProcesamientoArchivo" ToRole="ExpedienteDigitalArchivo" />
+          <NavigationProperty Name="ExpedienteDigitalMetaDato" Relationship="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" FromRole="ExpedienteDigitalProcesamientoArchivo" ToRole="ExpedienteDigitalMetaDato" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamiento" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento" FromRole="ExpedienteDigitalProcesamientoArchivo" ToRole="ExpedienteDigitalProcesamiento" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamientoArchivoBitacora" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA" FromRole="ExpedienteDigitalProcesamientoArchivo" ToRole="ExpedienteDigitalProcesamientoArchivoBitacora" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalProcesamientoArchivoBitacora">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivoBitacora" />
+          </Key>
+          <Property Name="IdExpedienteDigitalProcesamientoArchivoBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigitalProcesamientoArchivo" Type="Int32" Nullable="false" />
+          <Property Name="IdExpedienteDigitalEventoBitacora" Type="Int32" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExpedienteDigitalEventoBitacora" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" FromRole="ExpedienteDigitalProcesamientoArchivoBitacora" ToRole="ExpedienteDigitalEventoBitacora" />
+          <NavigationProperty Name="ExpedienteDigitalProcesamientoArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA" FromRole="ExpedienteDigitalProcesamientoArchivoBitacora" ToRole="ExpedienteDigitalProcesamientoArchivo" />
+        </EntityType>
+        <EntityType Name="ExpedienteDigitalTipoArchivo">
+          <Key>
+            <PropertyRef Name="IdExpedienteDigitalTipoArchivo" />
+          </Key>
+          <Property Name="IdExpedienteDigitalTipoArchivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdExpedienteDigitalOrigen" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NomenclaturaNombreOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RutaMoverPosProcesamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EliminarDespuesProcesar" Type="Boolean" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpedienteDigitalConfiguracionArchivo" Relationship="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo" FromRole="ExpedienteDigitalTipoArchivo" ToRole="ExpedienteDigitalConfiguracionArchivo" />
+          <NavigationProperty Name="ExpedienteDigitalOrigen" Relationship="Self.FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen" FromRole="ExpedienteDigitalTipoArchivo" ToRole="ExpedienteDigitalOrigen" />
+        </EntityType>
+        <EntityType Name="vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes">
+          <Key>
+            <PropertyRef Name="IdTipoArchivo" />
+            <PropertyRef Name="TipoArchivo" />
+          </Key>
+          <Property Name="NumeroReferencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="ClaveCliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoArchivo" Type="Int32" Nullable="false" />
+          <Property Name="TipoArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Evento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="RutaOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalArchivo" Type="Self.ExpedienteDigitalArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalArchivo">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalBitacora" Type="Self.ExpedienteDigitalBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalBitacora">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="0..1" />
+          <End Role="ExpedienteDigitalGastoComprobado" Type="Self.ExpedienteDigitalGastoComprobado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalGastoComprobado">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalMetaDato" Type="Self.ExpedienteDigitalMetaDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalMetaDato">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital">
+          <End Role="ExpedienteDigital" Type="Self.ExpedienteDigital" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigital">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamiento">
+              <PropertyRef Name="IdExpedienteDigital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalArchivo" Type="Self.ExpedienteDigitalArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+          <End Role="ExpedienteDigitalEventoBitacora" Type="Self.ExpedienteDigitalEventoBitacora" Multiplicity="1" />
+          <End Role="ExpedienteDigitalBitacora" Type="Self.ExpedienteDigitalBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalEventoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+          <End Role="ExpedienteDigitalConfiguracion" Type="Self.ExpedienteDigitalConfiguracion" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracion">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+          <End Role="ExpedienteDigitalConfiguracion" Type="Self.ExpedienteDigitalConfiguracion" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionCliente" Type="Self.ExpedienteDigitalConfiguracionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracion">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionCliente">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo">
+          <End Role="ExpedienteDigitalTipoArchivo" Type="Self.ExpedienteDigitalTipoArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalTipoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalTipoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalTipoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr">
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalConfiguracionArchivoCliente" Type="Self.ExpedienteDigitalConfiguracionArchivoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalConfiguracionArchivoCliente">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo">
+          <End Role="ExpedienteDigitalConfiguracionArchivo" Type="Self.ExpedienteDigitalConfiguracionArchivo" Multiplicity="0..1" />
+          <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalConfiguracionArchivo">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamiento">
+              <PropertyRef Name="IdExpedienteDigitalConfiguracionArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+          <End Role="ExpedienteDigitalEventoBitacora" Type="Self.ExpedienteDigitalEventoBitacora" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" Type="Self.ExpedienteDigitalProcesamientoArchivoBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalEventoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamientoArchivoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalEventoBitacora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="0..1" />
+          <End Role="ExpedienteDigitalMetaDato" Type="Self.ExpedienteDigitalMetaDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalMetaDato">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen">
+          <End Role="ExpedienteDigitalOrigen" Type="Self.ExpedienteDigitalOrigen" Multiplicity="1" />
+          <End Role="ExpedienteDigitalTipoArchivo" Type="Self.ExpedienteDigitalTipoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalOrigen">
+              <PropertyRef Name="IdExpedienteDigitalOrigen" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalTipoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento">
+          <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamiento">
+              <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA">
+          <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="1" />
+          <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" Type="Self.ExpedienteDigitalProcesamientoArchivoBitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpedienteDigitalProcesamientoArchivo">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Principal>
+            <Dependent Role="ExpedienteDigitalProcesamientoArchivoBitacora">
+              <PropertyRef Name="IdExpedienteDigitalProcesamientoArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CLLASausageContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ExpedienteDigital" EntityType="Self.ExpedienteDigital" />
+          <EntitySet Name="ExpedienteDigitalArchivo" EntityType="Self.ExpedienteDigitalArchivo" />
+          <EntitySet Name="ExpedienteDigitalBitacora" EntityType="Self.ExpedienteDigitalBitacora" />
+          <EntitySet Name="ExpedienteDigitalConfiguracion" EntityType="Self.ExpedienteDigitalConfiguracion" />
+          <EntitySet Name="ExpedienteDigitalConfiguracionArchivo" EntityType="Self.ExpedienteDigitalConfiguracionArchivo" />
+          <EntitySet Name="ExpedienteDigitalConfiguracionArchivoCliente" EntityType="Self.ExpedienteDigitalConfiguracionArchivoCliente" />
+          <EntitySet Name="ExpedienteDigitalConfiguracionCliente" EntityType="Self.ExpedienteDigitalConfiguracionCliente" />
+          <EntitySet Name="ExpedienteDigitalEventoBitacora" EntityType="Self.ExpedienteDigitalEventoBitacora" />
+          <EntitySet Name="ExpedienteDigitalGastoComprobado" EntityType="Self.ExpedienteDigitalGastoComprobado" />
+          <EntitySet Name="ExpedienteDigitalMetaDato" EntityType="Self.ExpedienteDigitalMetaDato" />
+          <EntitySet Name="ExpedienteDigitalOrigen" EntityType="Self.ExpedienteDigitalOrigen" />
+          <EntitySet Name="ExpedienteDigitalProcesamiento" EntityType="Self.ExpedienteDigitalProcesamiento" />
+          <EntitySet Name="ExpedienteDigitalProcesamientoArchivo" EntityType="Self.ExpedienteDigitalProcesamientoArchivo" />
+          <EntitySet Name="ExpedienteDigitalProcesamientoArchivoBitacora" EntityType="Self.ExpedienteDigitalProcesamientoArchivoBitacora" />
+          <EntitySet Name="ExpedienteDigitalTipoArchivo" EntityType="Self.ExpedienteDigitalTipoArchivo" />
+          <EntitySet Name="vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes" EntityType="Self.vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes" />
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalArchivo" EntitySet="ExpedienteDigitalArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalBitacora" EntitySet="ExpedienteDigitalBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalGastoComprobado" EntitySet="ExpedienteDigitalGastoComprobado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalMetaDato" EntitySet="ExpedienteDigitalMetaDato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" Association="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital">
+            <End Role="ExpedienteDigital" EntitySet="ExpedienteDigital" />
+            <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" Association="Self.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+            <End Role="ExpedienteDigitalArchivo" EntitySet="ExpedienteDigitalArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" Association="Self.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+            <End Role="ExpedienteDigitalEventoBitacora" EntitySet="ExpedienteDigitalEventoBitacora" />
+            <End Role="ExpedienteDigitalBitacora" EntitySet="ExpedienteDigitalBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+            <End Role="ExpedienteDigitalConfiguracion" EntitySet="ExpedienteDigitalConfiguracion" />
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion">
+            <End Role="ExpedienteDigitalConfiguracion" EntitySet="ExpedienteDigitalConfiguracion" />
+            <End Role="ExpedienteDigitalConfiguracionCliente" EntitySet="ExpedienteDigitalConfiguracionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo">
+            <End Role="ExpedienteDigitalTipoArchivo" EntitySet="ExpedienteDigitalTipoArchivo" />
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr" Association="Self.FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr">
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+            <End Role="ExpedienteDigitalConfiguracionArchivoCliente" EntitySet="ExpedienteDigitalConfiguracionArchivoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" Association="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo">
+            <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
+            <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
+            <End Role="ExpedienteDigitalEventoBitacora" EntitySet="ExpedienteDigitalEventoBitacora" />
+            <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" EntitySet="ExpedienteDigitalProcesamientoArchivoBitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" Association="Self.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo">
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+            <End Role="ExpedienteDigitalMetaDato" EntitySet="ExpedienteDigitalMetaDato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen" Association="Self.FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen">
+            <End Role="ExpedienteDigitalOrigen" EntitySet="ExpedienteDigitalOrigen" />
+            <End Role="ExpedienteDigitalTipoArchivo" EntitySet="ExpedienteDigitalTipoArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento">
+            <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA">
+            <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
+            <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" EntitySet="ExpedienteDigitalProcesamientoArchivoBitacora" />
+          </AssociationSet>
+          <FunctionImport Name="fnExpedienteDigitalFinalizadoPendiente" IsComposable="true" ReturnType="Collection(CLLASausageModelos.fnExpedienteDigitalFinalizadoPendiente_Result)" />
+          <FunctionImport Name="fnExpedienteDigitalProcesamientoPendiente" IsComposable="true" ReturnType="Collection(CLLASausageModelos.fnExpedienteDigitalProcesamientoPendiente_Result)" />
+          <FunctionImport Name="spExpedienteDigitalEliminaClienteSysExpert">
+            <Parameter Name="ClaveCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spExpedienteDigitalImportaFacturasYMetadatos" />
+          <FunctionImport Name="spExpedienteDigitalImportaPedimentosYMetadatos" />
+          <FunctionImport Name="spExpedienteDigitalInsertaArchivo">
+            <Parameter Name="IdExpedienteDigital" Mode="In" Type="Int32" />
+            <Parameter Name="IdExpedienteDigitalProcesamientoArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="NomenclaturaRutaCompletaFinalizado" Mode="In" Type="String" />
+            <Parameter Name="RutaCompletaFinalizado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spExpedienteDigitalInsertaProcesamientoArchivo">
+            <Parameter Name="IdExpedienteDigitalProcesamiento" Mode="In" Type="Int32" />
+            <Parameter Name="ArchivoRutaCompletaOrigen" Mode="In" Type="String" />
+            <Parameter Name="ArchivoRutaCompletaDestino" Mode="In" Type="String" />
+            <Parameter Name="Requerido" Mode="In" Type="Boolean" />
+            <Parameter Name="LlavePrimaria" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CLLASausageModelosStoreContainer" CdmEntityContainer="CLLASausageContext">
+          <EntitySetMapping Name="ExpedienteDigital">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigital">
+              <MappingFragment StoreEntitySet="ExpedienteDigital">
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="IdReferenciaSysExpert" ColumnName="IdReferenciaSysExpert" />
+                <ScalarProperty Name="IdAgenciaSysExpert" ColumnName="IdAgenciaSysExpert" />
+                <ScalarProperty Name="ExpedienteCompleto" ColumnName="ExpedienteCompleto" />
+                <ScalarProperty Name="ExpedienteFinalizado" ColumnName="ExpedienteFinalizado" />
+                <ScalarProperty Name="ExpedienteSincronizadoSysExpertWeb" ColumnName="ExpedienteSincronizadoSysExpertWeb" />
+                <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalArchivo">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalArchivo">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalArchivo">
+                <ScalarProperty Name="IdExpedienteDigitalArchivo" ColumnName="IdExpedienteDigitalArchivo" />
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivo" ColumnName="IdExpedienteDigitalProcesamientoArchivo" />
+                <ScalarProperty Name="NomenclaturaRutaCompletaFinalizado" ColumnName="NomenclaturaRutaCompletaFinalizado" />
+                <ScalarProperty Name="RutaCompletaFinalizado" ColumnName="RutaCompletaFinalizado" />
+                <ScalarProperty Name="Finalizado" ColumnName="Finalizado" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalBitacora">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalBitacora">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalBitacora">
+                <ScalarProperty Name="IdExpedienteDigitalBitacora" ColumnName="IdExpedienteDigitalBitacora" />
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="IdExpedienteDigitalEventoBitacora" ColumnName="IdExpedienteDigitalEventoBitacora" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalConfiguracion">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalConfiguracion">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalConfiguracion">
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracion" ColumnName="IdExpedienteDigitalConfiguracion" />
+                <ScalarProperty Name="IdAgenciaSysExpert" ColumnName="IdAgenciaSysExpert" />
+                <ScalarProperty Name="NomenclaturaRutaRaizProcesamiento" ColumnName="NomenclaturaRutaRaizProcesamiento" />
+                <ScalarProperty Name="NomenclaturaRutaRaizCompletado" ColumnName="NomenclaturaRutaRaizCompletado" />
+                <ScalarProperty Name="ComprimirDespuesFinalizado" ColumnName="ComprimirDespuesFinalizado" />
+                <ScalarProperty Name="NomenclaturaNombreComprimidoProcesamiento" ColumnName="NomenclaturaNombreComprimidoProcesamiento" />
+                <ScalarProperty Name="NomenclaturaNombreComprimidoFinalizado" ColumnName="NomenclaturaNombreComprimidoFinalizado" />
+                <ScalarProperty Name="EliminarDespuesFinalizado" ColumnName="EliminarDespuesFinalizado" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalConfiguracionArchivo">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivo">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalConfiguracionArchivo">
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracionArchivo" ColumnName="IdExpedienteDigitalConfiguracionArchivo" />
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracion" ColumnName="IdExpedienteDigitalConfiguracion" />
+                <ScalarProperty Name="IdExpedienteDigitalTipoArchivo" ColumnName="IdExpedienteDigitalTipoArchivo" />
+                <ScalarProperty Name="NomenclauturaNombreProcesamiento" ColumnName="NomenclauturaNombreProcesamiento" />
+                <ScalarProperty Name="NomenclauturaNombreFinalizado" ColumnName="NomenclauturaNombreFinalizado" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalConfiguracionArchivoCliente">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivoCliente">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalConfiguracionArchivoCliente">
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracionArchivoCliente" ColumnName="IdExpedienteDigitalConfiguracionArchivoCliente" />
+                <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracionArchivo" ColumnName="IdExpedienteDigitalConfiguracionArchivo" />
+                <ScalarProperty Name="NomenclauturaNombreFinalizado" ColumnName="NomenclauturaNombreFinalizado" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalConfiguracionCliente">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalConfiguracionCliente">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalConfiguracionCliente">
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracionCliente" ColumnName="IdExpedienteDigitalConfiguracionCliente" />
+                <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
+                <ScalarProperty Name="NomenclaturaRutaRaizCompletado" ColumnName="NomenclaturaRutaRaizCompletado" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracion" ColumnName="IdExpedienteDigitalConfiguracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalEventoBitacora">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalEventoBitacora">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalEventoBitacora">
+                <ScalarProperty Name="IdExpedienteDigitalEventoBitacora" ColumnName="IdExpedienteDigitalEventoBitacora" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalGastoComprobado">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalGastoComprobado">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalGastoComprobado">
+                <ScalarProperty Name="IdGastoComprobado" ColumnName="IdGastoComprobado" />
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="EmisorNombre" ColumnName="EmisorNombre" />
+                <ScalarProperty Name="EmisorRFC" ColumnName="EmisorRFC" />
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="RutaArchivoXMLOrigen" ColumnName="RutaArchivoXMLOrigen" />
+                <ScalarProperty Name="RutaArchivoXMLDestino" ColumnName="RutaArchivoXMLDestino" />
+                <ScalarProperty Name="RutaArchivoPDFOrigen" ColumnName="RutaArchivoPDFOrigen" />
+                <ScalarProperty Name="RutaArchivoPDFDestino" ColumnName="RutaArchivoPDFDestino" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalMetaDato">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalMetaDato">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalMetaDato">
+                <ScalarProperty Name="IdExpedienteDigitalMetaDato" ColumnName="IdExpedienteDigitalMetaDato" />
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivo" ColumnName="IdExpedienteDigitalProcesamientoArchivo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="EsHijo" ColumnName="EsHijo" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalOrigen">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalOrigen">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalOrigen">
+                <ScalarProperty Name="IdExpedienteDigitalOrigen" ColumnName="IdExpedienteDigitalOrigen" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="RutaRaiz" ColumnName="RutaRaiz" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalProcesamiento">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalProcesamiento">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalProcesamiento">
+                <ScalarProperty Name="IdExpedienteDigitalProcesamiento" ColumnName="IdExpedienteDigitalProcesamiento" />
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="IdExpedienteDigitalConfiguracionArchivo" ColumnName="IdExpedienteDigitalConfiguracionArchivo" />
+                <ScalarProperty Name="HoraFecha" ColumnName="HoraFecha" />
+                <ScalarProperty Name="OrigenNomenclatura" ColumnName="OrigenNomenclatura" />
+                <ScalarProperty Name="DestinoNomenclatura" ColumnName="DestinoNomenclatura" />
+                <ScalarProperty Name="RutaMoverPosProcesamiento" ColumnName="RutaMoverPosProcesamiento" />
+                <ScalarProperty Name="EliminarDespuesProcesamiento" ColumnName="EliminarDespuesProcesamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalProcesamientoArchivo">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivo">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalProcesamientoArchivo">
+                <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivo" ColumnName="IdExpedienteDigitalProcesamientoArchivo" />
+                <ScalarProperty Name="IdExpedienteDigitalProcesamiento" ColumnName="IdExpedienteDigitalProcesamiento" />
+                <ScalarProperty Name="ArchivoRutaCompletaOrigen" ColumnName="ArchivoRutaCompletaOrigen" />
+                <ScalarProperty Name="ArchivoRutaCompletaDestino" ColumnName="ArchivoRutaCompletaDestino" />
+                <ScalarProperty Name="Requerido" ColumnName="Requerido" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalProcesamientoArchivoBitacora">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivoBitacora">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalProcesamientoArchivoBitacora">
+                <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivoBitacora" ColumnName="IdExpedienteDigitalProcesamientoArchivoBitacora" />
+                <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivo" ColumnName="IdExpedienteDigitalProcesamientoArchivo" />
+                <ScalarProperty Name="IdExpedienteDigitalEventoBitacora" ColumnName="IdExpedienteDigitalEventoBitacora" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpedienteDigitalTipoArchivo">
+            <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalTipoArchivo">
+              <MappingFragment StoreEntitySet="ExpedienteDigitalTipoArchivo">
+                <ScalarProperty Name="IdExpedienteDigitalTipoArchivo" ColumnName="IdExpedienteDigitalTipoArchivo" />
+                <ScalarProperty Name="IdExpedienteDigitalOrigen" ColumnName="IdExpedienteDigitalOrigen" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NomenclaturaNombreOrigen" ColumnName="NomenclaturaNombreOrigen" />
+                <ScalarProperty Name="RutaMoverPosProcesamiento" ColumnName="RutaMoverPosProcesamiento" />
+                <ScalarProperty Name="EliminarDespuesProcesar" ColumnName="EliminarDespuesProcesar" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes">
+            <EntityTypeMapping TypeName="CLLASausageModelos.vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes">
+              <MappingFragment StoreEntitySet="vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes">
+                <ScalarProperty Name="NumeroReferencia" ColumnName="NumeroReferencia" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="ClaveCliente" ColumnName="ClaveCliente" />
+                <ScalarProperty Name="IdTipoArchivo" ColumnName="IdTipoArchivo" />
+                <ScalarProperty Name="TipoArchivo" ColumnName="TipoArchivo" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="RutaOrigen" ColumnName="RutaOrigen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="CLLASausageModelos.Store.fnExpedienteDigitalFinalizadoPendiente" FunctionImportName="fnExpedienteDigitalFinalizadoPendiente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CLLASausageModelos.fnExpedienteDigitalFinalizadoPendiente_Result">
+                <ScalarProperty Name="IdExpedienteDigitalArchivo" ColumnName="IdExpedienteDigitalArchivo" />
+                <ScalarProperty Name="RutaCompletaOrigen" ColumnName="RutaCompletaOrigen" />
+                <ScalarProperty Name="RutaCompletaDestino" ColumnName="RutaCompletaDestino" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="CLLASausageModelos.Store.fnExpedienteDigitalProcesamientoPendiente" FunctionImportName="fnExpedienteDigitalProcesamientoPendiente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CLLASausageModelos.fnExpedienteDigitalProcesamientoPendiente_Result">
+                <ScalarProperty Name="IdExpedienteDigitalProcesamiento" ColumnName="IdExpedienteDigitalProcesamiento" />
+                <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+                <ScalarProperty Name="OrigenNomenclatura" ColumnName="OrigenNomenclatura" />
+                <ScalarProperty Name="DestinoNomenclatura" ColumnName="DestinoNomenclatura" />
+                <ScalarProperty Name="IdExpedienteDigitalTipoArchivo" ColumnName="IdExpedienteDigitalTipoArchivo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spExpedienteDigitalEliminaClienteSysExpert" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalEliminaClienteSysExpert" />
+          <FunctionImportMapping FunctionImportName="spExpedienteDigitalImportaFacturasYMetadatos" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalImportaFacturasYMetadatos" />
+          <FunctionImportMapping FunctionImportName="spExpedienteDigitalImportaPedimentosYMetadatos" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalImportaPedimentosYMetadatos" />
+          <FunctionImportMapping FunctionImportName="spExpedienteDigitalInsertaArchivo" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalInsertaArchivo" />
+          <FunctionImportMapping FunctionImportName="spExpedienteDigitalInsertaProcesamientoArchivo" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalInsertaProcesamientoArchivo" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "CLLAIntelligentETLSausage", "CLLAIntelligentETLSausage\CLLAIntelligentETLSausage.dtproj", "{E08D4AF6-572F-47DA-A621-F9049CC4D976}"
-EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "CLLAIntelligentETLDataWarehouse", "CLLAIntelligentETLDataWarehouse\CLLAIntelligentETLDataWarehouse.dtproj", "{18C876A2-029F-4611-83E3-C094BFD1E125}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLLAIntelligentSausage", "CLLAIntelligentSausage\CLLAIntelligentSausage.csproj", "{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,18 +14,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E08D4AF6-572F-47DA-A621-F9049CC4D976}.Debug|Any CPU.ActiveCfg = Development
-		{E08D4AF6-572F-47DA-A621-F9049CC4D976}.Debug|Any CPU.Build.0 = Development
-		{E08D4AF6-572F-47DA-A621-F9049CC4D976}.Development|Any CPU.ActiveCfg = Development
-		{E08D4AF6-572F-47DA-A621-F9049CC4D976}.Development|Any CPU.Build.0 = Development
-		{E08D4AF6-572F-47DA-A621-F9049CC4D976}.Release|Any CPU.ActiveCfg = Development
-		{E08D4AF6-572F-47DA-A621-F9049CC4D976}.Release|Any CPU.Build.0 = Development
 		{18C876A2-029F-4611-83E3-C094BFD1E125}.Debug|Any CPU.ActiveCfg = Development
 		{18C876A2-029F-4611-83E3-C094BFD1E125}.Debug|Any CPU.Build.0 = Development
 		{18C876A2-029F-4611-83E3-C094BFD1E125}.Development|Any CPU.ActiveCfg = Development
 		{18C876A2-029F-4611-83E3-C094BFD1E125}.Development|Any CPU.Build.0 = Development
 		{18C876A2-029F-4611-83E3-C094BFD1E125}.Release|Any CPU.ActiveCfg = Development
 		{18C876A2-029F-4611-83E3-C094BFD1E125}.Release|Any CPU.Build.0 = Development
+		{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FABD3A80-B5C4-4C2A-80E3-E8145EF085B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
