@@ -1,0 +1,1413 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/10/2020 10:15:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{89E5A5C7-25CE-41A2-B30E-5F0A58B9AAC5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{7F75725B-68E9-4F8B-AF5D-6B2760172973}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{80131C46-58D8-44E6-AE13-498E9F70E0E9}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\10.1.45.252\Sistemas\IntegrationServices\Carga\ProyectoNICOS\PYONICOSMaterialDespachadoTIGIE2020.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CagarDespachadoTIGIENICo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{11C2F7FF-BD5F-46B3-99FC-B20914DF5D3B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CagarDespachadoTIGIENICo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CagarDespachadoTIGIENICo\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\CagarDespachadoTIGIENICo\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\CagarDespachadoTIGIENICo\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\CagarDespachadoTIGIENICo\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\CagarDespachadoTIGIENICo\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PYONICOSMaterialDespachadoTIGIE2020NICOS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PYONICOSMaterialDespachadoTIGIE2020NICOS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Connections[OleDbConnection]"
+                  connectionManagerID="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_Datawarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Aduana]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Aduana"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Aduana]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Aduana]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[ClienteClave]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="ClienteClave"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[ClienteClave]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteClave]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[ClienteRazonSocial]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="ClienteRazonSocial"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[ClienteRazonSocial]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteRazonSocial]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[NoParte]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="NoParte"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[NoParte]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NoParte]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Desccripcion]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Desccripcion"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Desccripcion]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Desccripcion]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[PaisOrigen]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PaisOrigen"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigen]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[PaisOrigen]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[UMC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UMC"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UMC]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Fraccion]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Fraccion"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Fraccion2012]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fraccion2012"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion2012]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2012]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Fraccion2020]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fraccion2020"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion2020]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2020]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[NICo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NICo"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[NICo]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NICo]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[UnidadMedidaTarifa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UnidadMedidaTarifa"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[UnidadMedidaTarifa]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UnidadMedidaTarifa]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[IGI]"
+                      cachedDataType="r8"
+                      cachedName="IGI"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[IGI]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGI]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[IGE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="IGE"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[IGE]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGE]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].Columns[Observaciones]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Observaciones"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Observaciones]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Aduana]"
+                      dataType="wstr"
+                      length="250"
+                      name="Aduana" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[ClienteClave]"
+                      dataType="wstr"
+                      length="250"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[ClienteRazonSocial]"
+                      dataType="wstr"
+                      length="250"
+                      name="ClienteRazonSocial" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="250"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Desccripcion]"
+                      dataType="wstr"
+                      length="250"
+                      name="Desccripcion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigen]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      dataType="wstr"
+                      length="10"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion2012]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion2012" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion2020]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion2020" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICo" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[UnidadMedidaTarifa]"
+                      dataType="wstr"
+                      length="255"
+                      name="UnidadMedidaTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[IGI]"
+                      dataType="r8"
+                      name="IGI" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      name="IGE" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input].ExternalColumns[PYONICOSMaterialDespachadoTIGIE2020NICOSID]"
+                      dataType="i4"
+                      name="PYONICOSMaterialDespachadoTIGIE2020NICOSID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">DespachadoNICOS$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Aduana]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Aduana"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Aduana]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Aduana]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[ClienteClave]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="ClienteClave"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[ClienteClave]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteClave]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[ClienteRazonSocial]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="ClienteRazonSocial"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[ClienteRazonSocial]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteRazonSocial]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[NoParte]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="NoParte"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[NoParte]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NoParte]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Desccripcion]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Desccripcion"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Desccripcion]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Desccripcion]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[PaisOrigen]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PaisOrigen"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[PaisOrigen]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[PaisOrigen]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[UMC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UMC"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[UMC]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UMC]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Fraccion]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Fraccion"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Fraccion]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Fraccion2012]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fraccion2012"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Fraccion2012]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2012]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Fraccion2020]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fraccion2020"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Fraccion2020]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2020]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[NICo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NICo"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[NICo]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NICo]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Descripcion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[UnidadMedidaTarifa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UnidadMedidaTarifa"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[UnidadMedidaTarifa]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UnidadMedidaTarifa]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[IGI]"
+                      cachedDataType="r8"
+                      cachedName="IGI"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[IGI]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGI]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[IGE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="IGE"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[IGE]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGE]" />
+                    <inputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].Columns[Observaciones]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Observaciones"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Observaciones]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Observaciones]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Aduana]"
+                      dataType="wstr"
+                      length="255"
+                      name="Aduana" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[ClienteClave]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[ClienteRazonSocial]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClienteRazonSocial" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Desccripcion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Desccripcion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[PaisOrigen]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Fraccion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Fraccion2012]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion2012" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Fraccion2020]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion2020" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICo" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Descripcion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[UnidadMedidaTarifa]"
+                      dataType="wstr"
+                      length="255"
+                      name="UnidadMedidaTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[IGI]"
+                      dataType="wstr"
+                      length="255"
+                      name="IGI" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      name="IGE" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="RelacionMaterialDespachadoTIGIE2020NICOS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @TIGIENICOS TABLE
+(
+	Fraccion2012       NVARCHAR(255),
+	Fraccion2020       NVARCHAR(255),
+	NICo               NVARCHAR(255),
+	Descripcion        NVARCHAR(255),
+	UnidadMedidaTarifa NVARCHAR(255),
+	IGI                FLOAT,
+	IGE                NVARCHAR(255),
+	Observaciones      NVARCHAR(255)
+)
+INSERT INTO @TIGIENICOS
+	SELECT 
+		NICO.[TIGIE 2012],
+		NICO.[TIGIE 2020_(SA 2017)],
+		NICO.NICo,
+		TIGIE.DESCIPCIÓN,
+		TIGIE.[UNIDAD DE MEDIDA],
+		TIGIE.IGI,
+		TIGIE.IGE,
+		TIGIE.OBSERVACIONES
+	FROM ExtraccionProyectoNICOSSENICOS     NICO 
+		JOIN ExtraccionProyectoNICOSSETIGIE TIGIE ON (NICO.[TIGIE 2020_(SA 2017)] = TIGIE.[FRACCIÓN ARANCELARIA]) 
+
+DECLARE @PartesFraccionesSLAM TABLE 
+(
+	Aduana             VARCHAR(250), 	
+	ClienteClave       VARCHAR(250),
+	ClienteRazonSocial VARCHAR(250), 	
+	NoParte            VARCHAR(250), 
+	Desccripcion       VARCHAR(250),
+	PaisOrigen         VARCHAR(255),
+	UMC                VARCHAR(255),
+	FraccionFloat      FLOAT,
+	Fraccion           VARCHAR(50), 
+	FraccionMascara    VARCHAR (10) 
+	
+)
+
+INSERT INTO @PartesFraccionesSLAM
+	SELECT DISTINCT
+		'240' AS Aduana,
+		TRIM(STR(ClienteClave, 25, 5)),
+		Cliente,
+		NoParte,
+		DescripcionEsp,
+		PaisOrigenDestino,
+		UMC,
+		Fraccion,
+		LEFT(TRIM(STR(Fraccion, 25, 5)), 8),
+		NULL
+		
+	FROM ExtraccionProyectoNICOSLAMClientesTIGIE
+	WHERE
+		Fraccion IS NOT NULL
+
+UPDATE @PartesFraccionesSLAM 
+	SET FraccionMascara = LEFT(Fraccion, 4) + '.' + SUBSTRING(Fraccion, 5, 2) + '.' + RIGHT(Fraccion, 2),
+		ClienteClave = SUBSTRING(ClienteClave, 1, CHARINDEX('.', ClienteClave) - 1)
+
+
+
+DECLARE @PartesFraccionesSysExpert TABLE 
+(
+	Aduana             VARCHAR(250), 	
+	ClienteClave       VARCHAR(250),
+	ClienteRazonSocial VARCHAR(250), 	
+	NoParte            VARCHAR(250), 
+	Desccripcion       VARCHAR(250),
+	PaisOrigen         VARCHAR(255),
+	UMC                VARCHAR(255),
+	Fraccion           VARCHAR(10)
+)
+
+INSERT INTO @PartesFraccionesSysExpert
+	SELECT DISTINCT
+		P.AduanaClave,
+		P.ClienteClaveCliente,
+		P.ClienteRazonSocial,
+		FP.ParteClave,
+		FP.ParteDescripcion,
+		FP.PaisOrigenClaveM3,
+		FP.UnidadMedidaComercialAbreviacion,	
+		PF.Fraccion
+	FROM ExtraccionSysExpertPedimento                   P
+		JOIN ExtraccionSysExpertPedimentoFecha          PFP ON (P.OrigenidReferencia = PFP.idReferencia AND PFP.idFecha = 2)
+		JOIN ExtraccionSysExpertPedimentoFactura        F   ON (P.OrigenidReferencia = F.OrigenIdReferencia)
+		JOIN ExtraccionSysExpertPedimentoFacturaPartida FP  ON (F.OrigenIdFactura    = FP.idFactura)
+		JOIN ExtraccionSysExpertPedimentoFraccion       PF  ON (FP.idOrdenFraccion   = PF.idPedFraccion)		
+	WHERE
+		PFP.Fecha &gt;= '20200101'
+
+
+DECLARE @MaterialDespachado TABLE
+(
+	Aduana             NVARCHAR(250), 	
+	ClienteClave       NVARCHAR(250),
+	ClienteRazonSocial NVARCHAR(250), 	
+	NoParte            NVARCHAR(250), 
+	Desccripcion       NVARCHAR(250),
+	PaisOrigen         NVARCHAR(255),
+	UMC                NVARCHAR(255),
+	Fraccion           NVARCHAR(10)	
+)
+
+INSERT INTO @MaterialDespachado
+	SELECT
+		Aduana,
+		ClienteClave,
+		ClienteRazonSocial,
+		NoParte,
+		Desccripcion,
+		PaisOrigen,
+		UMC,
+		FraccionMascara
+	FROM @PartesFraccionesSLAM
+
+INSERT INTO @MaterialDespachado
+	SELECT * FROM @PartesFraccionesSysExpert
+
+SELECT
+	MD.*,
+	TIGIENICOS.*
+FROM @MaterialDespachado MD
+	JOIN  @TIGIENICOS    TIGIENICOS ON (MD.Fraccion = TIGIENICOS.Fraccion2012)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Aduana]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Aduana]"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Aduana]"
+                      name="Aduana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteClave]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[ClienteClave]"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteClave]"
+                      name="ClienteClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteRazonSocial]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[ClienteRazonSocial]"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[ClienteRazonSocial]"
+                      name="ClienteRazonSocial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NoParte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[NoParte]"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NoParte]"
+                      name="NoParte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Desccripcion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Desccripcion]"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Desccripcion]"
+                      name="Desccripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[PaisOrigen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[PaisOrigen]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[PaisOrigen]"
+                      name="PaisOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UMC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[UMC]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UMC]"
+                      name="UMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Fraccion]"
+                      length="10"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion]"
+                      name="Fraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2012]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Fraccion2012]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2012]"
+                      name="Fraccion2012"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2020]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Fraccion2020]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Fraccion2020]"
+                      name="Fraccion2020"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NICo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[NICo]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[NICo]"
+                      name="NICo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UnidadMedidaTarifa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[UnidadMedidaTarifa]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[UnidadMedidaTarifa]"
+                      name="UnidadMedidaTarifa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGI]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[IGI]"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGI]"
+                      name="IGI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[IGE]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[IGE]"
+                      name="IGE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Observaciones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Observaciones]"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].Columns[Observaciones]"
+                      name="Observaciones"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Aduana]"
+                      dataType="wstr"
+                      length="250"
+                      name="Aduana" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[ClienteClave]"
+                      dataType="wstr"
+                      length="250"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[ClienteRazonSocial]"
+                      dataType="wstr"
+                      length="250"
+                      name="ClienteRazonSocial" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="250"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Desccripcion]"
+                      dataType="wstr"
+                      length="250"
+                      name="Desccripcion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[PaisOrigen]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Fraccion]"
+                      dataType="wstr"
+                      length="10"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Fraccion2012]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion2012" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Fraccion2020]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion2020" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICo" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[UnidadMedidaTarifa]"
+                      dataType="wstr"
+                      length="255"
+                      name="UnidadMedidaTarifa" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[IGI]"
+                      dataType="r8"
+                      name="IGI" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      name="IGE" />
+                    <externalMetadataColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Aduana]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Aduana]"
+                      name="Aduana" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ClienteClave]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ClienteClave]"
+                      name="ClienteClave" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ClienteRazonSocial]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ClienteRazonSocial]"
+                      name="ClienteRazonSocial" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[NoParte]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[NoParte]"
+                      name="NoParte" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Desccripcion]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Desccripcion]"
+                      name="Desccripcion" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[PaisOrigen]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[PaisOrigen]"
+                      name="PaisOrigen" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[UMC]"
+                      name="UMC" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Fraccion]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Fraccion]"
+                      name="Fraccion" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Fraccion2012]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Fraccion2012]"
+                      name="Fraccion2012" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Fraccion2020]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Fraccion2020]"
+                      name="Fraccion2020" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[NICo]"
+                      name="NICo" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[UnidadMedidaTarifa]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[UnidadMedidaTarifa]"
+                      name="UnidadMedidaTarifa" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[IGI]"
+                      dataType="r8"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[IGI]"
+                      name="IGI" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[IGE]"
+                      name="IGE" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[Observaciones]"
+                      name="Observaciones" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CagarDespachadoTIGIENICo.Paths[Multicast Output 1]"
+              endId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\CagarDespachadoTIGIENICo\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\CagarDespachadoTIGIENICo.Paths[Multicast Output 2]"
+              endId="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS.Inputs[Excel Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\CagarDespachadoTIGIENICo\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\CagarDespachadoTIGIENICo.Paths[OLE DB Source Output]"
+              endId="Package\CagarDespachadoTIGIENICo\Multicast.Inputs[Multicast Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\CagarDespachadoTIGIENICo"
+          TopLeft="399,83" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CagarDespachadoTIGIENICo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="295,42"
+          Id="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS"
+          TopLeft="391,75" />
+        <NodeLayout
+          Size="306,42"
+          Id="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS"
+          TopLeft="336,282" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\CagarDespachadoTIGIENICo\Multicast"
+          TopLeft="495,150" />
+        <EdgeLayout
+          Id="Package\CagarDespachadoTIGIENICo.Paths[OLE DB Source Output]"
+          TopLeft="538.5,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,33"
+              Start="0,0"
+              End="16.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="12.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,16.5"
+                    Point2="16.5,16.5"
+                    Point3="16.5,20.5" />
+                  <mssgle:LineSegment
+                    End="16.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CagarDespachadoTIGIENICo.Paths[Multicast Output 1]"
+          TopLeft="555,192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-66,90"
+              Start="0,0"
+              End="-66,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="-4,45" />
+                  <mssgle:LineSegment
+                    End="-62,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62,45"
+                    Point2="-66,45"
+                    Point3="-66,49" />
+                  <mssgle:LineSegment
+                    End="-66,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="329,42"
+          Id="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS"
+          TopLeft="654,285" />
+        <EdgeLayout
+          Id="Package\CagarDespachadoTIGIENICo.Paths[Multicast Output 2]"
+          TopLeft="573.666666666667,192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="244.833333333333,93"
+              Start="0,0"
+              End="244.833333333333,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.9342105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.9342105263158"
+                    Point2="0,37.9342105263158"
+                    Point3="4,37.9342105263158" />
+                  <mssgle:LineSegment
+                    End="240.833333333333,37.9342105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="240.833333333333,37.9342105263158"
+                    Point2="244.833333333333,37.9342105263158"
+                    Point3="244.833333333333,41.9342105263158" />
+                  <mssgle:LineSegment
+                    End="244.833333333333,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CagarDespachadoTIGIENICo\RelacionMaterialDespachadoTIGIE2020NICOS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CagarDespachadoTIGIENICo\PYONICOSMaterialDespachadoTIGIE2020NICOS_XLS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

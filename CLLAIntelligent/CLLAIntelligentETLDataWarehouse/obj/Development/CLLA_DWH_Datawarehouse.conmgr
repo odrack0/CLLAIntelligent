@@ -5,10 +5,10 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=localhost\SQLDEV2017;User ID=sa;Initial Catalog=CLLA_DWH_Datawarehouse;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      DTS:ConnectionString="Data Source=10.1.45.60;User ID=sa;Initial Catalog=CLLA_DWH_Datawarehouse;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAACQuqpq2kRSOj8lFCTm53wEFdNcA9EFnfyzxm+ZPHSrbwAAAAAOgAAAAAIAACAAAABn8/+tCEfADqHR/BDLIgBebhemO/yb/n0wLTUi1lmOoYAAAABo16ODBk+f336L7LonrzlttAulJUM3gbgCQUZ+FH9g61Vz1vH9k1AP63ft2qcCcKYnnsE/9gSl7KNQpbwDWHwih5bCkbWmP5knekK6hxlt0jZOp4h26sEg2EDD+WeGBsPRSkaKvHEkkAqW2nxKt17yHqPk6tEZ/uZFYlTiCy7zTEAAAACcfiVOyd4dy1AIstHSa8/kiRtinV/C13LPx3oFCAD/e1HqmpBqbaM5LQIp/w5OGM8ks8MBqZiQrinZU535sl81</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAAC3OgpPLSRlhoNYUQCP711hmNpSyzSqH5m0uydvwrYTUwAAAAAOgAAAAAIAACAAAAC/4o+wtWV111e8mgDr6sYIa8C834SvzaNInkpzP5v99IAAAABcoiSPLRkaVX9/r11yM8j3cTu5g2fktg7kaJEhmG8qs9g0n0yoZb2cLcOrvXcYq0yiVkx8pMJDsgZZxR4npTWyGcAeDaoKJalDqHyoX3W0ZXmDdilTJnkAGryKyCf9ze7L/UdKFfAukY3IErsRakGXhtwDgjcY1jDcHcmVDdrpkEAAAADX88c7CUV9lJi0ShfwHKWkVq5L48CL6hSKiF4N51jzMZWPvhLYH84vZyt+pu1dRr//l98/4mBTiCgVW3i4sFBA</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

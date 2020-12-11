@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="CargaSysExpertPedimento"
   DTS:PackageType="5"
-  DTS:VersionBuild="177"
-  DTS:VersionGUID="{FFD18E53-9FEE-4E3A-A416-629D533C9338}">
+  DTS:VersionBuild="178"
+  DTS:VersionGUID="{F6FB94FC-A076-4F6D-BB2D-2941D70E0434}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -11687,6 +11687,8 @@
       ,[Valoracionmv_Descripcion]  AS ValoracionDescripcion
       ,[ValorCOVE]
       ,[PartePreCaptura]
+	  ,[ParteClave]
+	  ,[ParteDescripcion]
   FROM BitacoraCargaSysExpertPedimento                      BCP
 	JOIN [dbo].[ExtraccionSysExpertPedimentoFacturaPartida] EPFP ON (BCP.idReferencia = EPFP.idReferencia)</property>
                 <property
@@ -12328,6 +12330,28 @@
                       lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[PartePreCaptura]"
                       name="PartePreCaptura"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].ExternalColumns[ParteClave]"
+                      length="50"
+                      lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[ParteClave]"
+                      name="ParteClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].ExternalColumns[ParteDescripcion]"
+                      length="250"
+                      lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[ParteDescripcion]"
+                      name="ParteDescripcion"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -12645,6 +12669,18 @@
                       dataType="str"
                       length="30"
                       name="PartePreCaptura" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].ExternalColumns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ParteClave" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].ExternalColumns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ParteDescripcion" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -13024,6 +13060,20 @@
                       length="30"
                       lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Error Output].Columns[PartePreCaptura]"
                       name="PartePreCaptura" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Error Output].Columns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Error Output].Columns[ParteClave]"
+                      name="ParteClave" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Error Output].Columns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Error Output].Columns[ParteDescripcion]"
+                      name="ParteDescripcion" />
                     <outputColumn
                       refId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -13543,6 +13593,22 @@
                       cachedName="PartePreCaptura"
                       externalMetadataColumnId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[PartePreCaptura]"
                       lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[PartePreCaptura]" />
+                    <inputColumn
+                      refId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].Columns[ParteClave]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ParteClave"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteClave]"
+                      lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[ParteClave]" />
+                    <inputColumn
+                      refId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].Columns[ParteDescripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="ParteDescripcion"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteDescripcion]"
+                      lineageId="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida.Outputs[OLE DB Source Output].Columns[ParteDescripcion]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13872,6 +13938,18 @@
                       dataType="str"
                       length="30"
                       name="PartePreCaptura" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ParteClave" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ParteDescripcion" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -21531,92 +21609,196 @@ INSERT INTO @Extraccion
     <LayoutInfo>
       <GraphLayout
         Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 39]"
-          TopLeft="863.5,1747">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-374.5,96"
-              Start="0,0"
-              End="-374.5,88.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44"
-                    Point2="0,48"
-                    Point3="-4,48" />
-                  <mssgle:LineSegment
-                    End="-370.5,48" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-370.5,48"
-                    Point2="-374.5,48"
-                    Point3="-374.5,52" />
-                  <mssgle:LineSegment
-                    End="-374.5,88.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="206,42"
           Id="Package\BitacoraCargadoPedimento"
           TopLeft="386,1843" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\BitacoraCargaPedimento"
+          TopLeft="501,45" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Pedimento"
+          TopLeft="111,195" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\PedimentoContenedor"
+          TopLeft="73,1015" />
+        <NodeLayout
+          Size="284,42"
+          Id="Package\PedimentoContenedorIntegridadReferencial"
+          TopLeft="690,1015" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\PedimentoContribucion"
+          TopLeft="85,353" />
+        <NodeLayout
+          Size="288,42"
+          Id="Package\PedimentoContribucionIntegridadReferencial"
+          TopLeft="652,347" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\PedimentoDescarga"
+          TopLeft="70,1091" />
+        <NodeLayout
+          Size="273,42"
+          Id="Package\PedimentoDescargaIntegridadReferencial"
+          TopLeft="697,1088" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\PedimentoDigitalizacion"
+          TopLeft="60,1164" />
+        <NodeLayout
+          Size="291,42"
+          Id="Package\PedimentoDigitalizacionIntegridadReferencial"
+          TopLeft="705,1169" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\PedimentoFactura"
+          TopLeft="86,852" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\PedimentoFacturaIntegridadReferencial"
+          TopLeft="685,847" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\PedimentoFacturaPartida"
+          TopLeft="83,932" />
+        <NodeLayout
+          Size="297,42"
+          Id="Package\PedimentoFacturaPartidaIntegridadReferencial"
+          TopLeft="682,928" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\PedimentoFecha"
+          TopLeft="95,451" />
+        <NodeLayout
+          Size="257,42"
+          Id="Package\PedimentoFechaIntegridadReferencial"
+          TopLeft="655,449" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\PedimentoFraccion"
+          TopLeft="96,521" />
+        <NodeLayout
+          Size="227,46"
+          Id="Package\PedimentoFraccionContribucion"
+          TopLeft="91,601" />
+        <NodeLayout
+          Size="327,42"
+          Id="Package\PedimentoFraccionContribucionIntegridadReferencial"
+          TopLeft="663,608" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\PedimentoFraccionIdentificador"
+          TopLeft="71,684" />
+        <NodeLayout
+          Size="328,42"
+          Id="Package\PedimentoFraccionIdentificadorIntegridadReferencial"
+          TopLeft="668,682" />
+        <NodeLayout
+          Size="268,42"
+          Id="Package\PedimentoFraccionIntegridadReferencial"
+          TopLeft="657,524" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\PedimentoFraccionPermiso"
+          TopLeft="83,765" />
+        <NodeLayout
+          Size="306,42"
+          Id="Package\PedimentoFraccionPermisoIntegridadReferencial"
+          TopLeft="674,758" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\PedimentoGastoComprobado"
+          TopLeft="57,1249" />
+        <NodeLayout
+          Size="316,42"
+          Id="Package\PedimentoGastoComprobadoIntegridadReferencial"
+          TopLeft="713,1253" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\PedimentoHojaControl"
+          TopLeft="49,1324" />
+        <NodeLayout
+          Size="285,42"
+          Id="Package\PedimentoHojaControlIntegridadReferencial"
+          TopLeft="712,1322" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\PedimentoIdentificador"
+          TopLeft="89,281" />
+        <NodeLayout
+          Size="295,42"
+          Id="Package\PedimentoIndentificadorIntegridadReferencial"
+          TopLeft="645,283" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\PedimentoParteII"
+          TopLeft="45,1559" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\PedimentoParteIIContenedor"
+          TopLeft="23,1632" />
+        <NodeLayout
+          Size="316,42"
+          Id="Package\PedimentoParteIIContenedorIntegridadReferencial"
+          TopLeft="711,1630" />
+        <NodeLayout
+          Size="262,42"
+          Id="Package\PedimentoParteIIIntegridadReferencial"
+          TopLeft="714,1557" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\PedimentoParteIIMercancia"
+          TopLeft="26,1703" />
+        <NodeLayout
+          Size="309,42"
+          Id="Package\PedimentoParteIIMercanciaIntegridadReferencial"
+          TopLeft="709,1705" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\PedimentoRectificacion"
+          TopLeft="46,1398" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\PedimentoRectificacionDiferencia"
+          TopLeft="37,1483" />
+        <NodeLayout
+          Size="335,42"
+          Id="Package\PedimentoRectificacionDiferenciaIntegridadReferencial"
+          TopLeft="718,1489" />
+        <NodeLayout
+          Size="285,42"
+          Id="Package\PedimentoRectificacionIntegridadreferencial"
+          TopLeft="708,1396" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="273,371">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="598,87">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="379,0"
+              EndConnector="-422.5,108"
               Start="0,0"
-              End="371.5,0">
+              End="-422.5,100.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="371.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="792.5,325">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-613.5,28"
-              Start="0,0"
-              End="-613.5,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10" />
+                    End="0,50" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10"
-                    Point2="0,14"
-                    Point3="-4,14" />
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="-4,54" />
                   <mssgle:LineSegment
-                    End="-609.5,14" />
+                    End="-418.5,54" />
                   <mssgle:CubicBezierSegment
-                    Point1="-609.5,14"
-                    Point2="-613.5,14"
-                    Point3="-613.5,18" />
+                    Point1="-418.5,54"
+                    Point2="-422.5,54"
+                    Point3="-422.5,58" />
                   <mssgle:LineSegment
-                    End="-613.5,20.5" />
+                    End="-422.5,100.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21626,19 +21808,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="277,303">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="179.25,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="368,0"
+              EndConnector="0,44"
               Start="0,0"
-              End="360.5,0">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="360.5,0" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21648,53 +21830,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="264,543.5">
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="796,389">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="393,0"
+              EndConnector="-623,62"
               Start="0,0"
-              End="385.5,0">
+              End="-623,54.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="385.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="783.5,491">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-603.5,30"
-              Start="0,0"
-              End="-603.5,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11" />
+                    End="0,27" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11"
-                    Point2="0,15"
-                    Point3="-4,15" />
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
                   <mssgle:LineSegment
-                    End="-599.5,15" />
+                    End="-619,31" />
                   <mssgle:CubicBezierSegment
-                    Point1="-599.5,15"
-                    Point2="-603.5,15"
-                    Point3="-603.5,19" />
+                    Point1="-619,31"
+                    Point2="-623,31"
+                    Point3="-623,35" />
                   <mssgle:LineSegment
-                    End="-603.5,22.5" />
+                    End="-623,54.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21704,19 +21864,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="280,951">
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="251,471">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="402,0"
+              EndConnector="404,0"
               Start="0,0"
-              End="394.5,0">
+              End="396.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="394.5,0" />
+                    End="396.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21726,19 +21886,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 38]"
-          TopLeft="234,1725">
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="791,566">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="475,0"
+              EndConnector="-586.5,35"
               Start="0,0"
-              End="467.5,0">
+              End="-586.5,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="467.5,0" />
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
+                  <mssgle:LineSegment
+                    End="-582.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-582.5,17.5"
+                    Point2="-586.5,17.5"
+                    Point3="-586.5,21.5" />
+                  <mssgle:LineSegment
+                    End="-586.5,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21748,31 +21920,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 37]"
-          TopLeft="869,1672">
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="318,626.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-739,31"
+              EndConnector="345,0"
               Start="0,0"
-              End="-739,23.5">
+              End="337.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.5"
-                    Point2="0,15.5"
-                    Point3="-4,15.5" />
-                  <mssgle:LineSegment
-                    End="-735,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-735,15.5"
-                    Point2="-739,15.5"
-                    Point3="-739,19.5" />
-                  <mssgle:LineSegment
-                    End="-739,23.5" />
+                    End="337.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21782,238 +21942,14 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 36]"
-          TopLeft="239,1652">
+          Id="Package.PrecedenceConstraints[Constraint 14]"
+          TopLeft="826.5,650">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="472,0"
+              EndConnector="-642,34"
               Start="0,0"
-              End="464.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="464.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 35]"
-          TopLeft="845,1599">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-714,33"
-              Start="0,0"
-              End="-714,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="-4,16.5" />
-                  <mssgle:LineSegment
-                    End="-710,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-710,16.5"
-                    Point2="-714,16.5"
-                    Point3="-714,20.5" />
-                  <mssgle:LineSegment
-                    End="-714,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 34]"
-          TopLeft="206,1579">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="508,0"
-              Start="0,0"
-              End="500.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="500.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 33]"
-          TopLeft="885.5,1531">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-760,28"
-              Start="0,0"
-              End="-760,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10"
-                    Point2="0,14"
-                    Point3="-4,14" />
-                  <mssgle:LineSegment
-                    End="-756,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-756,14"
-                    Point2="-760,14"
-                    Point3="-760,18" />
-                  <mssgle:LineSegment
-                    End="-760,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 32]"
-          TopLeft="271,1507">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="447,0"
-              Start="0,0"
-              End="439.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="439.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 31]"
-          TopLeft="850.5,1438">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-696.5,45"
-              Start="0,0"
-              End="-696.5,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.5"
-                    Point2="0,22.5"
-                    Point3="-4,22.5" />
-                  <mssgle:LineSegment
-                    End="-692.5,22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-692.5,22.5"
-                    Point2="-696.5,22.5"
-                    Point3="-696.5,26.5" />
-                  <mssgle:LineSegment
-                    End="-696.5,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 30]"
-          TopLeft="233,1418">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="475,0"
-              Start="0,0"
-              End="467.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="467.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="817,889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-635.5,43"
-              Start="0,0"
-              End="-635.5,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.5"
-                    Point2="0,21.5"
-                    Point3="-4,21.5" />
-                  <mssgle:LineSegment
-                    End="-631.5,21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-631.5,21.5"
-                    Point2="-635.5,21.5"
-                    Point3="-635.5,25.5" />
-                  <mssgle:LineSegment
-                    End="-635.5,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 29]"
-          TopLeft="854.5,1364">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-715,34"
-              Start="0,0"
-              End="-715,26.5">
+              End="-642,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -22024,13 +21960,13 @@ INSERT INTO @Extraccion
                     Point2="0,17"
                     Point3="-4,17" />
                   <mssgle:LineSegment
-                    End="-711,17" />
+                    End="-638,17" />
                   <mssgle:CubicBezierSegment
-                    Point1="-711,17"
-                    Point2="-715,17"
-                    Point3="-715,21" />
+                    Point1="-638,17"
+                    Point2="-642,17"
+                    Point3="-642,21" />
                   <mssgle:LineSegment
-                    End="-715,26.5" />
+                    End="-642,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22040,19 +21976,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 28]"
-          TopLeft="233,1344">
+          Id="Package.PrecedenceConstraints[Constraint 15]"
+          TopLeft="298,704">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="479,0"
+              EndConnector="370,0"
               Start="0,0"
-              End="471.5,0">
+              End="362.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="471.5,0" />
+                    End="362.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22062,31 +21998,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 27]"
-          TopLeft="871,1295">
+          Id="Package.PrecedenceConstraints[Constraint 16]"
+          TopLeft="832,724">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-730,29"
+              EndConnector="-646.5,41"
               Start="0,0"
-              End="-730,21.5">
+              End="-646.5,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.5" />
+                    End="0,16.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.5"
-                    Point2="0,14.5"
-                    Point3="-4,14.5" />
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="-4,20.5" />
                   <mssgle:LineSegment
-                    End="-726,14.5" />
+                    End="-642.5,20.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-726,14.5"
-                    Point2="-730,14.5"
-                    Point3="-730,18.5" />
+                    Point1="-642.5,20.5"
+                    Point2="-646.5,20.5"
+                    Point3="-646.5,24.5" />
                   <mssgle:LineSegment
-                    End="-730,21.5" />
+                    End="-646.5,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22096,19 +22032,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 26]"
-          TopLeft="272,1272">
+          Id="Package.PrecedenceConstraints[Constraint 17]"
+          TopLeft="288,782.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="441,0"
+              EndConnector="386,0"
               Start="0,0"
-              End="433.5,0">
+              End="378.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="433.5,0" />
+                    End="378.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22118,31 +22054,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 25]"
-          TopLeft="850.5,1211">
+          Id="Package.PrecedenceConstraints[Constraint 18]"
+          TopLeft="827,800">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-686,38"
+              EndConnector="-659,52"
               Start="0,0"
-              End="-686,30.5">
+              End="-659,44.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15" />
+                    End="0,22" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15"
-                    Point2="0,19"
-                    Point3="-4,19" />
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="-4,26" />
                   <mssgle:LineSegment
-                    End="-682,19" />
+                    End="-655,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="-682,19"
-                    Point2="-686,19"
-                    Point3="-686,23" />
+                    Point1="-655,26"
+                    Point2="-659,26"
+                    Point3="-659,30" />
                   <mssgle:LineSegment
-                    End="-686,30.5" />
+                    End="-659,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22152,8 +22088,120 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 24]"
-          TopLeft="250,1187.5">
+          Id="Package.PrecedenceConstraints[Constraint 19]"
+          TopLeft="830.5,970">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-666,45"
+              Start="0,0"
+              End="-666,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="-4,22.5" />
+                  <mssgle:LineSegment
+                    End="-662,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-662,22.5"
+                    Point2="-666,22.5"
+                    Point3="-666,26.5" />
+                  <mssgle:LineSegment
+                    End="-666,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="250,870.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="435,0"
+              Start="0,0"
+              End="427.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="427.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 20]"
+          TopLeft="256,1036">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="434,0"
+              Start="0,0"
+              End="426.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="426.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 21]"
+          TopLeft="832,1057">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-676,34"
+              Start="0,0"
+              End="-676,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="-4,17" />
+                  <mssgle:LineSegment
+                    End="-672,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-672,17"
+                    Point2="-676,17"
+                    Point3="-676,21" />
+                  <mssgle:LineSegment
+                    End="-676,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 22]"
+          TopLeft="242,1110.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -22208,8 +22256,8 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 22]"
-          TopLeft="242,1110.5">
+          Id="Package.PrecedenceConstraints[Constraint 24]"
+          TopLeft="250,1187.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -22230,14 +22278,126 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 21]"
-          TopLeft="832,1057">
+          Id="Package.PrecedenceConstraints[Constraint 25]"
+          TopLeft="850.5,1211">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-676,34"
+              EndConnector="-686,38"
               Start="0,0"
-              End="-676,26.5">
+              End="-686,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="-4,19" />
+                  <mssgle:LineSegment
+                    End="-682,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-682,19"
+                    Point2="-686,19"
+                    Point3="-686,23" />
+                  <mssgle:LineSegment
+                    End="-686,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 26]"
+          TopLeft="272,1272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="441,0"
+              Start="0,0"
+              End="433.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="433.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 27]"
+          TopLeft="871,1295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-730,29"
+              Start="0,0"
+              End="-730,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="-4,14.5" />
+                  <mssgle:LineSegment
+                    End="-726,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-726,14.5"
+                    Point2="-730,14.5"
+                    Point3="-730,18.5" />
+                  <mssgle:LineSegment
+                    End="-730,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 28]"
+          TopLeft="233,1344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="479,0"
+              Start="0,0"
+              End="471.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="471.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 29]"
+          TopLeft="854.5,1364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-715,34"
+              Start="0,0"
+              End="-715,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -22248,13 +22408,13 @@ INSERT INTO @Extraccion
                     Point2="0,17"
                     Point3="-4,17" />
                   <mssgle:LineSegment
-                    End="-672,17" />
+                    End="-711,17" />
                   <mssgle:CubicBezierSegment
-                    Point1="-672,17"
-                    Point2="-676,17"
-                    Point3="-676,21" />
+                    Point1="-711,17"
+                    Point2="-715,17"
+                    Point3="-715,21" />
                   <mssgle:LineSegment
-                    End="-676,26.5" />
+                    End="-715,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22264,19 +22424,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 20]"
-          TopLeft="256,1036">
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="817,889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="434,0"
+              EndConnector="-635.5,43"
               Start="0,0"
-              End="426.5,0">
+              End="-635.5,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="426.5,0" />
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="-4,21.5" />
+                  <mssgle:LineSegment
+                    End="-631.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-631.5,21.5"
+                    Point2="-635.5,21.5"
+                    Point3="-635.5,25.5" />
+                  <mssgle:LineSegment
+                    End="-635.5,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22286,19 +22458,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="250,870.5">
+          Id="Package.PrecedenceConstraints[Constraint 30]"
+          TopLeft="233,1418">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="435,0"
+              EndConnector="475,0"
               Start="0,0"
-              End="427.5,0">
+              End="467.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="427.5,0" />
+                    End="467.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22308,14 +22480,14 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 19]"
-          TopLeft="830.5,970">
+          Id="Package.PrecedenceConstraints[Constraint 31]"
+          TopLeft="850.5,1438">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-666,45"
+              EndConnector="-696.5,45"
               Start="0,0"
-              End="-666,37.5">
+              End="-696.5,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -22326,13 +22498,13 @@ INSERT INTO @Extraccion
                     Point2="0,22.5"
                     Point3="-4,22.5" />
                   <mssgle:LineSegment
-                    End="-662,22.5" />
+                    End="-692.5,22.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-662,22.5"
-                    Point2="-666,22.5"
-                    Point3="-666,26.5" />
+                    Point1="-692.5,22.5"
+                    Point2="-696.5,22.5"
+                    Point3="-696.5,26.5" />
                   <mssgle:LineSegment
-                    End="-666,37.5" />
+                    End="-696.5,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22342,31 +22514,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 18]"
-          TopLeft="827,800">
+          Id="Package.PrecedenceConstraints[Constraint 32]"
+          TopLeft="271,1507">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-659,52"
+              EndConnector="447,0"
               Start="0,0"
-              End="-659,44.5">
+              End="439.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="-4,26" />
-                  <mssgle:LineSegment
-                    End="-655,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-655,26"
-                    Point2="-659,26"
-                    Point3="-659,30" />
-                  <mssgle:LineSegment
-                    End="-659,44.5" />
+                    End="439.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22376,19 +22536,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 17]"
-          TopLeft="288,782.5">
+          Id="Package.PrecedenceConstraints[Constraint 33]"
+          TopLeft="885.5,1531">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="386,0"
+              EndConnector="-760,28"
               Start="0,0"
-              End="378.5,0">
+              End="-760,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="378.5,0" />
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-756,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-756,14"
+                    Point2="-760,14"
+                    Point3="-760,18" />
+                  <mssgle:LineSegment
+                    End="-760,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22398,31 +22570,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 16]"
-          TopLeft="832,724">
+          Id="Package.PrecedenceConstraints[Constraint 34]"
+          TopLeft="206,1579">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-646.5,41"
+              EndConnector="508,0"
               Start="0,0"
-              End="-646.5,33.5">
+              End="500.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="-4,20.5" />
-                  <mssgle:LineSegment
-                    End="-642.5,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-642.5,20.5"
-                    Point2="-646.5,20.5"
-                    Point3="-646.5,24.5" />
-                  <mssgle:LineSegment
-                    End="-646.5,33.5" />
+                    End="500.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22432,19 +22592,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 15]"
-          TopLeft="298,704">
+          Id="Package.PrecedenceConstraints[Constraint 35]"
+          TopLeft="845,1599">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="370,0"
+              EndConnector="-714,33"
               Start="0,0"
-              End="362.5,0">
+              End="-714,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="362.5,0" />
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="-4,16.5" />
+                  <mssgle:LineSegment
+                    End="-710,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-710,16.5"
+                    Point2="-714,16.5"
+                    Point3="-714,20.5" />
+                  <mssgle:LineSegment
+                    End="-714,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22454,31 +22626,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 14]"
-          TopLeft="826.5,650">
+          Id="Package.PrecedenceConstraints[Constraint 36]"
+          TopLeft="239,1652">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-642,34"
+              EndConnector="472,0"
               Start="0,0"
-              End="-642,26.5">
+              End="464.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13"
-                    Point2="0,17"
-                    Point3="-4,17" />
-                  <mssgle:LineSegment
-                    End="-638,17" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-638,17"
-                    Point2="-642,17"
-                    Point3="-642,21" />
-                  <mssgle:LineSegment
-                    End="-642,26.5" />
+                    End="464.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22488,19 +22648,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="318,626.5">
+          Id="Package.PrecedenceConstraints[Constraint 37]"
+          TopLeft="869,1672">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="345,0"
+              EndConnector="-739,31"
               Start="0,0"
-              End="337.5,0">
+              End="-739,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="337.5,0" />
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-735,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-735,15.5"
+                    Point2="-739,15.5"
+                    Point3="-739,19.5" />
+                  <mssgle:LineSegment
+                    End="-739,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22510,31 +22682,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 12]"
-          TopLeft="791,566">
+          Id="Package.PrecedenceConstraints[Constraint 38]"
+          TopLeft="234,1725">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-586.5,35"
+              EndConnector="475,0"
               Start="0,0"
-              End="-586.5,27.5">
+              End="467.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.5"
-                    Point2="0,17.5"
-                    Point3="-4,17.5" />
-                  <mssgle:LineSegment
-                    End="-582.5,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-582.5,17.5"
-                    Point2="-586.5,17.5"
-                    Point3="-586.5,21.5" />
-                  <mssgle:LineSegment
-                    End="-586.5,27.5" />
+                    End="467.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22544,19 +22704,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="251,471">
+          Id="Package.PrecedenceConstraints[Constraint 39]"
+          TopLeft="863.5,1747">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="404,0"
+              EndConnector="-374.5,96"
               Start="0,0"
-              End="396.5,0">
+              End="-374.5,88.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="396.5,0" />
+                    End="0,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44"
+                    Point2="0,48"
+                    Point3="-4,48" />
+                  <mssgle:LineSegment
+                    End="-370.5,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-370.5,48"
+                    Point2="-374.5,48"
+                    Point3="-374.5,52" />
+                  <mssgle:LineSegment
+                    End="-374.5,88.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22566,31 +22738,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="796,389">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="280,951">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-623,62"
+              EndConnector="402,0"
               Start="0,0"
-              End="-623,54.5">
+              End="394.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
-                  <mssgle:LineSegment
-                    End="-619,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-619,31"
-                    Point2="-623,31"
-                    Point3="-623,35" />
-                  <mssgle:LineSegment
-                    End="-623,54.5" />
+                    End="394.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22600,19 +22760,31 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="179.25,237">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="783.5,491">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="-603.5,30"
               Start="0,0"
-              End="0,36.5">
+              End="-603.5,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="-4,15" />
+                  <mssgle:LineSegment
+                    End="-599.5,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-599.5,15"
+                    Point2="-603.5,15"
+                    Point3="-603.5,19" />
+                  <mssgle:LineSegment
+                    End="-603.5,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22622,31 +22794,19 @@ INSERT INTO @Extraccion
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="598,87">
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="264,543.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-422.5,108"
+              EndConnector="393,0"
               Start="0,0"
-              End="-422.5,100.5">
+              End="385.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50"
-                    Point2="0,54"
-                    Point3="-4,54" />
-                  <mssgle:LineSegment
-                    End="-418.5,54" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-418.5,54"
-                    Point2="-422.5,54"
-                    Point3="-422.5,58" />
-                  <mssgle:LineSegment
-                    End="-422.5,100.5" />
+                    End="385.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22655,166 +22815,84 @@ INSERT INTO @Extraccion
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="285,42"
-          Id="Package\PedimentoRectificacionIntegridadreferencial"
-          TopLeft="708,1396" />
-        <NodeLayout
-          Size="335,42"
-          Id="Package\PedimentoRectificacionDiferenciaIntegridadReferencial"
-          TopLeft="718,1489" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\PedimentoRectificacionDiferencia"
-          TopLeft="37,1483" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\PedimentoRectificacion"
-          TopLeft="46,1398" />
-        <NodeLayout
-          Size="309,42"
-          Id="Package\PedimentoParteIIMercanciaIntegridadReferencial"
-          TopLeft="709,1705" />
-        <NodeLayout
-          Size="208,42"
-          Id="Package\PedimentoParteIIMercancia"
-          TopLeft="26,1703" />
-        <NodeLayout
-          Size="262,42"
-          Id="Package\PedimentoParteIIIntegridadReferencial"
-          TopLeft="714,1557" />
-        <NodeLayout
-          Size="316,42"
-          Id="Package\PedimentoParteIIContenedorIntegridadReferencial"
-          TopLeft="711,1630" />
-        <NodeLayout
-          Size="216,42"
-          Id="Package\PedimentoParteIIContenedor"
-          TopLeft="23,1632" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\PedimentoParteII"
-          TopLeft="45,1559" />
-        <NodeLayout
-          Size="295,42"
-          Id="Package\PedimentoIndentificadorIntegridadReferencial"
-          TopLeft="645,283" />
-        <NodeLayout
-          Size="188,42"
-          Id="Package\PedimentoIdentificador"
-          TopLeft="89,281" />
-        <NodeLayout
-          Size="285,42"
-          Id="Package\PedimentoHojaControlIntegridadReferencial"
-          TopLeft="712,1322" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\PedimentoHojaControl"
-          TopLeft="49,1324" />
-        <NodeLayout
-          Size="316,42"
-          Id="Package\PedimentoGastoComprobadoIntegridadReferencial"
-          TopLeft="713,1253" />
-        <NodeLayout
-          Size="215,42"
-          Id="Package\PedimentoGastoComprobado"
-          TopLeft="57,1249" />
-        <NodeLayout
-          Size="306,42"
-          Id="Package\PedimentoFraccionPermisoIntegridadReferencial"
-          TopLeft="674,758" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\PedimentoFraccionPermiso"
-          TopLeft="83,765" />
-        <NodeLayout
-          Size="268,42"
-          Id="Package\PedimentoFraccionIntegridadReferencial"
-          TopLeft="657,524" />
-        <NodeLayout
-          Size="328,42"
-          Id="Package\PedimentoFraccionIdentificadorIntegridadReferencial"
-          TopLeft="668,682" />
-        <NodeLayout
-          Size="227,42"
-          Id="Package\PedimentoFraccionIdentificador"
-          TopLeft="71,684" />
-        <NodeLayout
-          Size="327,42"
-          Id="Package\PedimentoFraccionContribucionIntegridadReferencial"
-          TopLeft="663,608" />
-        <NodeLayout
-          Size="227,46"
-          Id="Package\PedimentoFraccionContribucion"
-          TopLeft="91,601" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\PedimentoFraccion"
-          TopLeft="96,521" />
-        <NodeLayout
-          Size="257,42"
-          Id="Package\PedimentoFechaIntegridadReferencial"
-          TopLeft="655,449" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\PedimentoFecha"
-          TopLeft="95,451" />
-        <NodeLayout
-          Size="297,42"
-          Id="Package\PedimentoFacturaPartidaIntegridadReferencial"
-          TopLeft="682,928" />
-        <NodeLayout
-          Size="197,42"
-          Id="Package\PedimentoFacturaPartida"
-          TopLeft="83,932" />
-        <NodeLayout
-          Size="264,42"
-          Id="Package\PedimentoFacturaIntegridadReferencial"
-          TopLeft="685,847" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\PedimentoFactura"
-          TopLeft="86,852" />
-        <NodeLayout
-          Size="291,42"
-          Id="Package\PedimentoDigitalizacionIntegridadReferencial"
-          TopLeft="705,1169" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\PedimentoDigitalizacion"
-          TopLeft="60,1164" />
-        <NodeLayout
-          Size="273,42"
-          Id="Package\PedimentoDescargaIntegridadReferencial"
-          TopLeft="697,1088" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\PedimentoDescarga"
-          TopLeft="70,1091" />
-        <NodeLayout
-          Size="288,42"
-          Id="Package\PedimentoContribucionIntegridadReferencial"
-          TopLeft="652,347" />
-        <NodeLayout
-          Size="188,42"
-          Id="Package\PedimentoContribucion"
-          TopLeft="85,353" />
-        <NodeLayout
-          Size="284,42"
-          Id="Package\PedimentoContenedorIntegridadReferencial"
-          TopLeft="690,1015" />
-        <NodeLayout
-          Size="183,42"
-          Id="Package\PedimentoContenedor"
-          TopLeft="73,1015" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Pedimento"
-          TopLeft="111,195" />
-        <NodeLayout
-          Size="194,42"
-          Id="Package\BitacoraCargaPedimento"
-          TopLeft="501,45" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="277,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="368,0"
+              Start="0,0"
+              End="360.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="360.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="792.5,325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-613.5,28"
+              Start="0,0"
+              End="-613.5,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-609.5,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-609.5,14"
+                    Point2="-613.5,14"
+                    Point3="-613.5,18" />
+                  <mssgle:LineSegment
+                    End="-613.5,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="273,371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="379,0"
+              Start="0,0"
+              End="371.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="371.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -22869,6 +22947,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Pedimento\ExtraccionPedimento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Pedimento\FactPedimento">
     <Properties>
       <Property>
@@ -22878,14 +22964,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Pedimento\ExtraccionPedimento">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -22928,6 +23006,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoContenedor\ExtraccionPedimentoContenedor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoContenedor\FactPedimentoContenedor">
     <Properties>
       <Property>
@@ -22937,14 +23023,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoContenedor\ExtraccionPedimentoContenedor">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23033,6 +23111,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoDescarga\ExtraccionPedimentoDescarga">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoDescarga\FactPedimentoDescarga">
     <Properties>
       <Property>
@@ -23042,14 +23128,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoDescarga\ExtraccionPedimentoDescarga">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23092,6 +23170,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoDigitalizacion\ExtraccionPedimentoDigitalizacion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoDigitalizacion\FactPedimentoDigitalizacion">
     <Properties>
       <Property>
@@ -23101,14 +23187,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoDigitalizacion\ExtraccionPedimentoDigitalizacion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23151,6 +23229,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFactura\ExtraccionPedimentoFactura">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFactura\FactPedimentoFactura">
     <Properties>
       <Property>
@@ -23160,14 +23246,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFactura\ExtraccionPedimentoFactura">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23210,6 +23288,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida">
     <Properties>
       <Property>
@@ -23219,14 +23305,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23269,14 +23347,6 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFecha\ExtraccionPedimentoFecha">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFecha\DimPedimentoFecha">
     <Properties>
       <Property>
@@ -23286,6 +23356,14 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFecha\ExtraccionPedimentoFecha">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23328,6 +23406,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFraccion\ExtraccionPedimentoFraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFraccion\FactPedimentoFraccion">
     <Properties>
       <Property>
@@ -23337,14 +23423,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFraccion\ExtraccionPedimentoFraccion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23446,6 +23524,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFraccionIdentificador\ExtraccionPedimentoFraccionIdentificador">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFraccionIdentificador\FactPedimentoFraccionIdentificador">
     <Properties>
       <Property>
@@ -23455,14 +23541,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFraccionIdentificador\ExtraccionPedimentoFraccionIdentificador">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23505,6 +23583,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoFraccionPermiso\ExtraccionPedimentoFraccionPermiso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoFraccionPermiso\FactPedimentoFraccionPermiso">
     <Properties>
       <Property>
@@ -23514,14 +23600,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoFraccionPermiso\ExtraccionPedimentoFraccionPermiso">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23564,6 +23642,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoGastoComprobado\ExraccionPedimentoGastoComprobado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoGastoComprobado\FactGastoComprobado">
     <Properties>
       <Property>
@@ -23573,14 +23659,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoGastoComprobado\ExraccionPedimentoGastoComprobado">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23728,6 +23806,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoParteII\ExtraccionPedimentoParteII">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoParteII\FactPedimentoParteII">
     <Properties>
       <Property>
@@ -23737,14 +23823,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoParteII\ExtraccionPedimentoParteII">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23787,6 +23865,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoParteIIContenedor\ExtraccionPedimentoParteIIContenedor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoParteIIContenedor\FactPedimentoParteIIContenedor">
     <Properties>
       <Property>
@@ -23796,14 +23882,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoParteIIContenedor\ExtraccionPedimentoParteIIContenedor">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23905,6 +23983,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoRectificacion\ExtraccionPedimentoRectificacion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoRectificacion\FactPedimentoRectificacion">
     <Properties>
       <Property>
@@ -23914,14 +24000,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoRectificacion\ExtraccionPedimentoRectificacion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -23964,6 +24042,14 @@ INSERT INTO @Extraccion
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\PedimentoRectificacionDiferencia\ExtraccionPedimentoRectificacionDiferencia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\PedimentoRectificacionDiferencia\FactPedimentoRectificacionDiferencia">
     <Properties>
       <Property>
@@ -23973,14 +24059,6 @@ INSERT INTO @Extraccion
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\PedimentoRectificacionDiferencia\ExtraccionPedimentoRectificacionDiferencia">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

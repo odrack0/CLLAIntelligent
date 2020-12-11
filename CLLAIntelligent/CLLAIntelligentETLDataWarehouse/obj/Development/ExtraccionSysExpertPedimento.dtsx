@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="229"
-  DTS:VersionGUID="{16D1E97B-DFBC-4B8F-B351-67F9F035D43D}">
+  DTS:VersionBuild="230"
+  DTS:VersionGUID="{B87DBF13-6E10-4FC3-B856-7AE501E162EF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -13440,6 +13440,22 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
                       cachedName="TipoDeMercanciaNombreTipoMercancia"
                       externalMetadataColumnId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[TipoDeMercanciaNombreTipoMercancia]"
                       lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[TipoDeMercanciaNombreTipoMercancia]" />
+                    <inputColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].Columns[ParteClave]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ParteClave"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteClave]"
+                      lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[ParteClave]" />
+                    <inputColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].Columns[ParteDescripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="ParteDescripcion"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteDescripcion]"
+                      lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[ParteDescripcion]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13945,6 +13961,18 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
                       refId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[TipoDeMercanciaNombreTipoMercancia]"
                       dataType="i4"
                       name="TipoDeMercanciaNombreTipoMercancia" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ParteClave" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\ExtraccionSysExpertPedimentoFacturaPartida.Inputs[OLE DB Destination Input].ExternalColumns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ParteDescripcion" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -13999,10 +14027,12 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	ASGFAC.idReferencia
+	 ASGFAC.idReferencia
 	,PEDPART.idPartida [idPartida]
 	,PEDPART.idFactura [idFactura]
 	,PEDPART.idParte [idParte]
+	,PADPARTPARTES.Clave AS ParteClave
+	,PADPARTPARTES.pt_Descripcion AS ParteDescripcion
 	,PEDPART.Descripcion [Descripcion]
 	,PEDPART.Marca [Marca]
 	,PEDPART.Modelo [Modelo]
@@ -14099,6 +14129,7 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN AsignacionFacturas            ASGFAC              WITH(NOLOCK) ON (BEP.idReferencia               = ASGFAC.idReferencia)
 	JOIN Ped_Facturas                  PEDFAC              WITH(NOLOCK) ON (ASGFAC.idFactura               = PEDFAC.idFactura)
 	JOIN Ped_Partidas                  PEDPART             WITH(NOLOCK) ON (PEDFAC.idFactura               = PEDPART.idFactura)
+	LEFT JOIN Partes                   PADPARTPARTES       WITH(NOLOCK) ON (PEDPART.idParte                = PADPARTPARTES.idParte)
 	LEFT JOIN UnidadesMedida           PEDPARTUM           WITH(NOLOCK) ON (PEDPART.idUMC                  = PEDPARTUM.idUnidad)
 	LEFT JOIN Paises                   PEDPARTPAIS         WITH(NOLOCK) ON (PEDPART.idPaisOrigen           = PEDPARTPAIS.idPais)
 	LEFT JOIN TIGIE                    PEDPARTTIGIE        WITH(NOLOCK) ON (PEDPART.idFraccion             = PEDPARTTIGIE.idFraccion)
@@ -15126,6 +15157,28 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
                       lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[TipoDeMercanciaNombreTipoMercancia]"
                       name="TipoDeMercanciaNombreTipoMercancia"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].ExternalColumns[ParteClave]"
+                      length="50"
+                      lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[ParteClave]"
+                      name="ParteClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].ExternalColumns[ParteDescripcion]"
+                      length="250"
+                      lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].Columns[ParteDescripcion]"
+                      name="ParteDescripcion"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -15631,6 +15684,18 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
                       refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].ExternalColumns[TipoDeMercanciaNombreTipoMercancia]"
                       dataType="i4"
                       name="TipoDeMercanciaNombreTipoMercancia" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].ExternalColumns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ParteClave" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Output].ExternalColumns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ParteDescripcion" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -15658,6 +15723,20 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
                       dataType="i4"
                       lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Error Output].Columns[idParte]"
                       name="idParte" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Error Output].Columns[ParteClave]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Error Output].Columns[ParteClave]"
+                      name="ParteClave" />
+                    <outputColumn
+                      refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Error Output].Columns[ParteDescripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Error Output].Columns[ParteDescripcion]"
+                      name="ParteDescripcion" />
                     <outputColumn
                       refId="Package\PedimentoFacturaPartida\Ped_Partidas.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
                       codePage="1252"

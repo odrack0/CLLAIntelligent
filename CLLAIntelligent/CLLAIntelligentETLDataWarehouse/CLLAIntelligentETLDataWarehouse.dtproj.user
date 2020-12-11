@@ -10,7 +10,7 @@
         <WinAuthDomain />
         <ServerName>.\SQLDEV2017</ServerName>
         <PathOnServer>/SSISDB/SSIS/CLLAIntelligentETLDataWarehouse</PathOnServer>
-        <StartObjectID>CargaSysExpertPedimento.dtsx</StartObjectID>
+        <StartObjectID>CargaProyectoNICOS.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

@@ -1,8 +1,10 @@
 SELECT
-	ASGFAC.idReferencia
+	 ASGFAC.idReferencia
 	,PEDPART.idPartida [idPartida]
 	,PEDPART.idFactura [idFactura]
 	,PEDPART.idParte [idParte]
+	,PADPARTPARTES.Clave AS ParteClave
+	,PADPARTPARTES.pt_Descripcion AS ParteDescripcion
 	,PEDPART.Descripcion [Descripcion]
 	,PEDPART.Marca [Marca]
 	,PEDPART.Modelo [Modelo]
@@ -99,6 +101,7 @@ FROM BitacoraExtraccionSysExpertPedimento BEP
 	JOIN AsignacionFacturas            ASGFAC              WITH(NOLOCK) ON (BEP.idReferencia               = ASGFAC.idReferencia)
 	JOIN Ped_Facturas                  PEDFAC              WITH(NOLOCK) ON (ASGFAC.idFactura               = PEDFAC.idFactura)
 	JOIN Ped_Partidas                  PEDPART             WITH(NOLOCK) ON (PEDFAC.idFactura               = PEDPART.idFactura)
+	LEFT JOIN Partes                   PADPARTPARTES       WITH(NOLOCK) ON (PEDPART.idParte                = PADPARTPARTES.idParte)
 	LEFT JOIN UnidadesMedida           PEDPARTUM           WITH(NOLOCK) ON (PEDPART.idUMC                  = PEDPARTUM.idUnidad)
 	LEFT JOIN Paises                   PEDPARTPAIS         WITH(NOLOCK) ON (PEDPART.idPaisOrigen           = PEDPARTPAIS.idPais)
 	LEFT JOIN TIGIE                    PEDPARTTIGIE        WITH(NOLOCK) ON (PEDPART.idFraccion             = PEDPARTTIGIE.idFraccion)

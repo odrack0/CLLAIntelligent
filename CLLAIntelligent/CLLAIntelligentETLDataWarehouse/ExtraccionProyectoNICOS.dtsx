@@ -1,0 +1,2313 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/9/2020 11:26:04 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{A84F96E0-5AD1-47FF-8A97-4DB0E3CA4F99}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{7215C241-E091-4E6E-BE75-04ECED6FF57A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{A23EB1A8-AE97-4472-B3C1-8888A7C982C0}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\10.1.45.252\Sistemas\IntegrationServices\SecretariaEconomia\NICOS.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{0D91AA5B-E44A-4B31-802F-E53160A7FAB2}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\10.1.45.252\Sistemas\IntegrationServices\SLAM\NICOS\TodosClientes-NICO.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SecretariaEconomiaNICOS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{48c16c85-1ec8-454a-b688-f77252979009}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SecretariaEconomiaNICOS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SecretariaEconomiaNICOS\NICOS"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="NICOS"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'CORRELACIÓN NICo´s$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SecretariaEconomiaNICOS\NICOS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[TIGIE 2012]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[TIGIE 2012]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[TIGIE 2012]"
+                      name="TIGIE 2012"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[TIGIE 2020_(SA 2017)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[TIGIE 2020_(SA 2017)]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[TIGIE 2020_(SA 2017)]"
+                      name="TIGIE 2020_(SA 2017)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[NICo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[NICo]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[NICo]"
+                      name="NICo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[TIGIE 2012]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIGIE 2012" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[TIGIE 2020_(SA 2017)]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIGIE 2020_(SA 2017)" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICo" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[F4]"
+                      dataType="wstr"
+                      length="255"
+                      name="F4" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[F5]"
+                      dataType="wstr"
+                      length="255"
+                      name="F5" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[F6]"
+                      dataType="wstr"
+                      length="255"
+                      name="F6" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[F7]"
+                      dataType="wstr"
+                      length="255"
+                      name="F7" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].ExternalColumns[F8]"
+                      dataType="wstr"
+                      length="255"
+                      name="F8" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[TIGIE 2012]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[TIGIE 2012]"
+                      name="TIGIE 2012" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[TIGIE 2020_(SA 2017)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[TIGIE 2020_(SA 2017)]"
+                      name="TIGIE 2020_(SA 2017)" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[NICo]"
+                      name="NICo" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SecretariaEconomiaNICOS\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionProyectoNICOSSENICOS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TIGIE 2012]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TIGIE 2012"
+                      externalMetadataColumnId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIGIE 2012]"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[TIGIE 2012]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TIGIE 2020_(SA 2017)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TIGIE 2020_(SA 2017)"
+                      externalMetadataColumnId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIGIE 2020_(SA 2017)]"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[TIGIE 2020_(SA 2017)]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NICo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NICo"
+                      externalMetadataColumnId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NICo]"
+                      lineageId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output].Columns[NICo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIGIE 2012]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIGIE 2012" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIGIE 2020_(SA 2017)]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIGIE 2020_(SA 2017)" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NICo]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SecretariaEconomiaNICOS.Paths[Excel Source Output]"
+              endId="Package\SecretariaEconomiaNICOS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\SecretariaEconomiaNICOS\NICOS.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SecretariaEconomiaTIGIE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{ACC12FE9-9020-46B0-9331-D44C7AAE5BBF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SecretariaEconomiaTIGIE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SecretariaEconomiaTIGIE\Extraccion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Extraccion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionProyectoNICOSSETIGIE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SecretariaEconomiaTIGIE\Extraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[FRACCIÓN ARANCELARIA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FRACCIÓN ARANCELARIA"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FRACCIÓN ARANCELARIA]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[FRACCIÓN ARANCELARIA]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[NICO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NICO"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[NICO]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[NICO]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[DESCIPCIÓN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DESCIPCIÓN"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[DESCIPCIÓN]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[DESCIPCIÓN]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[UNIDAD DE MEDIDA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UNIDAD DE MEDIDA"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[UNIDAD DE MEDIDA]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[UNIDAD DE MEDIDA]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[FRACCION CORRELATIVA (SA 2012)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FRACCION CORRELATIVA (SA 2012)"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FRACCION CORRELATIVA (SA 2012)]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[FRACCION CORRELATIVA (SA 2012)]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[IGI]"
+                      cachedDataType="r8"
+                      cachedName="IGI"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[IGI]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[IGI]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[IGE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="IGE"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[IGE]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[IGE]" />
+                    <inputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].Columns[OBSERVACIONES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="OBSERVACIONES"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[OBSERVACIONES]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[OBSERVACIONES]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FRACCIÓN ARANCELARIA]"
+                      dataType="wstr"
+                      length="255"
+                      name="FRACCIÓN ARANCELARIA" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[NICO]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICO" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[DESCIPCIÓN]"
+                      dataType="wstr"
+                      length="255"
+                      name="DESCIPCIÓN" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[UNIDAD DE MEDIDA]"
+                      dataType="wstr"
+                      length="255"
+                      name="UNIDAD DE MEDIDA" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FRACCION CORRELATIVA (SA 2012)]"
+                      dataType="wstr"
+                      length="255"
+                      name="FRACCION CORRELATIVA (SA 2012)" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[IGI]"
+                      dataType="r8"
+                      name="IGI" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      name="IGE" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[OBSERVACIONES]"
+                      dataType="wstr"
+                      length="255"
+                      name="OBSERVACIONES" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SecretariaEconomiaTIGIE\Extraccion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaTIGIE\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaTIGIE\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SecretariaEconomiaTIGIE\TIGIE"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="TIGIE"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Capítulos 01-98$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SecretariaEconomiaTIGIE\TIGIE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[FRACCIÓN ARANCELARIA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[FRACCIÓN ARANCELARIA]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[FRACCIÓN ARANCELARIA]"
+                      name="FRACCIÓN ARANCELARIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[NICO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[NICO]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[NICO]"
+                      name="NICO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[DESCIPCIÓN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[DESCIPCIÓN]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[DESCIPCIÓN]"
+                      name="DESCIPCIÓN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[UNIDAD DE MEDIDA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[UNIDAD DE MEDIDA]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[UNIDAD DE MEDIDA]"
+                      name="UNIDAD DE MEDIDA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[FRACCION CORRELATIVA (SA 2012)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[FRACCION CORRELATIVA (SA 2012)]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[FRACCION CORRELATIVA (SA 2012)]"
+                      name="FRACCION CORRELATIVA (SA 2012)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[IGI]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[IGI]"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[IGI]"
+                      name="IGI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[IGE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[IGE]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[IGE]"
+                      name="IGE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[OBSERVACIONES]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[OBSERVACIONES]"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].Columns[OBSERVACIONES]"
+                      name="OBSERVACIONES"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[FRACCIÓN ARANCELARIA]"
+                      dataType="wstr"
+                      length="255"
+                      name="FRACCIÓN ARANCELARIA" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[NICO]"
+                      dataType="wstr"
+                      length="255"
+                      name="NICO" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[DESCIPCIÓN]"
+                      dataType="wstr"
+                      length="255"
+                      name="DESCIPCIÓN" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[UNIDAD DE MEDIDA]"
+                      dataType="wstr"
+                      length="255"
+                      name="UNIDAD DE MEDIDA" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[FRACCION CORRELATIVA (SA 2012)]"
+                      dataType="wstr"
+                      length="255"
+                      name="FRACCION CORRELATIVA (SA 2012)" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[IGI]"
+                      dataType="r8"
+                      name="IGI" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      name="IGE" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[OBSERVACIONES]"
+                      dataType="wstr"
+                      length="255"
+                      name="OBSERVACIONES" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[F9]"
+                      dataType="wstr"
+                      length="255"
+                      name="F9" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[F10]"
+                      dataType="wstr"
+                      length="255"
+                      name="F10" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[F11]"
+                      dataType="wstr"
+                      length="255"
+                      name="F11" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[F12]"
+                      dataType="wstr"
+                      length="255"
+                      name="F12" />
+                    <externalMetadataColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output].ExternalColumns[F13]"
+                      dataType="wstr"
+                      length="255"
+                      name="F13" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[FRACCIÓN ARANCELARIA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[FRACCIÓN ARANCELARIA]"
+                      name="FRACCIÓN ARANCELARIA" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[NICO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[NICO]"
+                      name="NICO" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[DESCIPCIÓN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[DESCIPCIÓN]"
+                      name="DESCIPCIÓN" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[UNIDAD DE MEDIDA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[UNIDAD DE MEDIDA]"
+                      name="UNIDAD DE MEDIDA" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[FRACCION CORRELATIVA (SA 2012)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[FRACCION CORRELATIVA (SA 2012)]"
+                      name="FRACCION CORRELATIVA (SA 2012)" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[IGI]"
+                      dataType="r8"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[IGI]"
+                      name="IGI" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[IGE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[IGE]"
+                      name="IGE" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[OBSERVACIONES]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[OBSERVACIONES]"
+                      name="OBSERVACIONES" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SecretariaEconomiaTIGIE.Paths[Excel Source Output]"
+              endId="Package\SecretariaEconomiaTIGIE\Extraccion.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\SecretariaEconomiaTIGIE\TIGIE.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SLAM"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{F04F087A-D012-4BF7-A78C-92FC6221D483}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SLAM"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SLAM\ClientesTIGIE"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="ClientesTIGIE"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Hoja1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SLAM\ClientesTIGIE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ClienteClave]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ClienteClave]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ClienteClave]"
+                      name="ClienteClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Cliente]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Cliente]"
+                      name="Cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ClienteNumero]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ClienteNumero]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ClienteNumero]"
+                      name="ClienteNumero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ProveedorClave]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ProveedorClave]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ProveedorClave]"
+                      name="ProveedorClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Proveedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Proveedor]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Proveedor]"
+                      name="Proveedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ProveedorNumero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ProveedorNumero]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ProveedorNumero]"
+                      name="ProveedorNumero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[NoParte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[NoParte]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[NoParte]"
+                      name="NoParte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[NoParteProveedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[NoParteProveedor]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[NoParteProveedor]"
+                      name="NoParteProveedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Fraccion]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Fraccion]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Fraccion]"
+                      name="Fraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Fraccion10]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Fraccion10]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Fraccion10]"
+                      name="Fraccion10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FraccionAmericana]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[FraccionAmericana]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FraccionAmericana]"
+                      name="FraccionAmericana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[DescripcionEsp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[DescripcionEsp]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[DescripcionEsp]"
+                      name="DescripcionEsp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[DescripcionIng]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[DescripcionIng]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[DescripcionIng]"
+                      name="DescripcionIng"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[UMFO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[UMFO]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[UMFO]"
+                      name="UMFO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[UMC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[UMC]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[UMC]"
+                      name="UMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PrecioUnitario]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PesoUnitarioLbs]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PesoUnitarioLbs]"
+                      name="PesoUnitarioLbs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PaisVendedorComprador]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PaisVendedorComprador]"
+                      name="PaisVendedorComprador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PaisOrigenDestino]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PaisOrigenDestino]"
+                      name="PaisOrigenDestino"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[TLC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[TLC]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[TLC]"
+                      name="TLC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PROSEC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PROSEC]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PROSEC]"
+                      name="PROSEC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Industria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Industria]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Industria]"
+                      name="Industria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Marca]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Marca]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Marca]"
+                      name="Marca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Modelo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Modelo]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Modelo]"
+                      name="Modelo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[SubModelo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[SubModelo]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[SubModelo]"
+                      name="SubModelo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[TipoOperacion]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[TipoOperacion]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[TipoOperacion]"
+                      name="TipoOperacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Notas]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Notas]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Notas]"
+                      name="Notas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Observaciones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Observaciones]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Observaciones]"
+                      name="Observaciones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FechaAlta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[FechaAlta]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FechaAlta]"
+                      name="FechaAlta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[FechaUltimaModificacion]"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FechaUltimaModificacion]"
+                      name="FechaUltimaModificacion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ClienteClave]"
+                      dataType="r8"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ClienteNumero]"
+                      dataType="r8"
+                      name="ClienteNumero" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ProveedorClave]"
+                      dataType="r8"
+                      name="ProveedorClave" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Proveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Proveedor" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[ProveedorNumero]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProveedorNumero" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[NoParteProveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParteProveedor" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Fraccion]"
+                      dataType="r8"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Fraccion10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion10" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[FraccionAmericana]"
+                      dataType="wstr"
+                      length="255"
+                      name="FraccionAmericana" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[DescripcionEsp]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionEsp" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[DescripcionIng]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionIng" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[UMFO]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMFO" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PrecioUnitario]"
+                      dataType="r8"
+                      name="PrecioUnitario" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      name="PesoUnitarioLbs" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisVendedorComprador" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigenDestino" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[TLC]"
+                      dataType="wstr"
+                      length="255"
+                      name="TLC" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[PROSEC]"
+                      dataType="wstr"
+                      length="255"
+                      name="PROSEC" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Industria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Industria" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Modelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="Modelo" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[SubModelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubModelo" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[TipoOperacion]"
+                      dataType="r8"
+                      name="TipoOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Notas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Notas" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].ExternalColumns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaUltimaModificacion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ClienteClave]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ClienteClave]"
+                      name="ClienteClave" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Cliente]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ClienteNumero]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ClienteNumero]"
+                      name="ClienteNumero" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ProveedorClave]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ProveedorClave]"
+                      name="ProveedorClave" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Proveedor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Proveedor]"
+                      name="Proveedor" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ProveedorNumero]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ProveedorNumero]"
+                      name="ProveedorNumero" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[NoParte]"
+                      name="NoParte" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[NoParteProveedor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[NoParteProveedor]"
+                      name="NoParteProveedor" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Fraccion]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Fraccion]"
+                      name="Fraccion" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Fraccion10]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Fraccion10]"
+                      name="Fraccion10" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[FraccionAmericana]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[FraccionAmericana]"
+                      name="FraccionAmericana" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[DescripcionEsp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[DescripcionEsp]"
+                      name="DescripcionEsp" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[DescripcionIng]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[DescripcionIng]"
+                      name="DescripcionIng" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[UMFO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[UMFO]"
+                      name="UMFO" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[UMC]"
+                      name="UMC" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PrecioUnitario]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PesoUnitarioLbs]"
+                      name="PesoUnitarioLbs" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PaisVendedorComprador]"
+                      name="PaisVendedorComprador" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PaisOrigenDestino]"
+                      name="PaisOrigenDestino" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[TLC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[TLC]"
+                      name="TLC" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PROSEC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[PROSEC]"
+                      name="PROSEC" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Industria]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Industria]"
+                      name="Industria" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Marca]"
+                      name="Marca" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Modelo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Modelo]"
+                      name="Modelo" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[SubModelo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[SubModelo]"
+                      name="SubModelo" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[TipoOperacion]"
+                      dataType="r8"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[TipoOperacion]"
+                      name="TipoOperacion" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Notas]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Notas]"
+                      name="Notas" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[Observaciones]"
+                      name="Observaciones" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[FechaAlta]"
+                      name="FechaAlta" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[FechaUltimaModificacion]"
+                      name="FechaUltimaModificacion" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SLAM\Extraccion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Extraccion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionProyectoNICOSLAMClientesTIGIE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SLAM\Extraccion.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[ClienteClave]"
+                      cachedDataType="r8"
+                      cachedName="ClienteClave"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClienteClave]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ClienteClave]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cliente"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Cliente]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[ClienteNumero]"
+                      cachedDataType="r8"
+                      cachedName="ClienteNumero"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClienteNumero]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ClienteNumero]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[ProveedorClave]"
+                      cachedDataType="r8"
+                      cachedName="ProveedorClave"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorClave]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ProveedorClave]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Proveedor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Proveedor"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Proveedor]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Proveedor]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[ProveedorNumero]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProveedorNumero"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorNumero]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[ProveedorNumero]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[NoParte]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NoParte"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[NoParte]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[NoParte]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[NoParteProveedor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NoParteProveedor"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[NoParteProveedor]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[NoParteProveedor]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Fraccion]"
+                      cachedDataType="r8"
+                      cachedName="Fraccion"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Fraccion]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Fraccion10]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fraccion10"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion10]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Fraccion10]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[FraccionAmericana]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FraccionAmericana"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FraccionAmericana]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FraccionAmericana]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[DescripcionEsp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DescripcionEsp"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionEsp]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[DescripcionEsp]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[DescripcionIng]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DescripcionIng"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionIng]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[DescripcionIng]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[UMFO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UMFO"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[UMFO]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[UMFO]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[UMC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UMC"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[UMC]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[PrecioUnitario]"
+                      cachedDataType="r8"
+                      cachedName="PrecioUnitario"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PrecioUnitario]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[PesoUnitarioLbs]"
+                      cachedDataType="r8"
+                      cachedName="PesoUnitarioLbs"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PesoUnitarioLbs]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PesoUnitarioLbs]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[PaisVendedorComprador]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PaisVendedorComprador"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorComprador]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PaisVendedorComprador]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[PaisOrigenDestino]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PaisOrigenDestino"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenDestino]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PaisOrigenDestino]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[TLC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TLC"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[TLC]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[TLC]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[PROSEC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PROSEC"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PROSEC]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[PROSEC]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Industria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Industria"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Industria]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Industria]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Marca]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Marca"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Marca]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Modelo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Modelo"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Modelo]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Modelo]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[SubModelo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SubModelo"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[SubModelo]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[SubModelo]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[TipoOperacion]"
+                      cachedDataType="r8"
+                      cachedName="TipoOperacion"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[TipoOperacion]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[TipoOperacion]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Notas]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Notas"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Notas]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Notas]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[Observaciones]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Observaciones"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[Observaciones]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[FechaAlta]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FechaAlta"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FechaAlta]" />
+                    <inputColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].Columns[FechaUltimaModificacion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FechaUltimaModificacion"
+                      externalMetadataColumnId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FechaUltimaModificacion]"
+                      lineageId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output].Columns[FechaUltimaModificacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClienteClave]"
+                      dataType="r8"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ClienteNumero]"
+                      dataType="r8"
+                      name="ClienteNumero" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorClave]"
+                      dataType="r8"
+                      name="ProveedorClave" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Proveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Proveedor" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorNumero]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProveedorNumero" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[NoParteProveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParteProveedor" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      dataType="r8"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion10" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FraccionAmericana]"
+                      dataType="wstr"
+                      length="255"
+                      name="FraccionAmericana" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionEsp]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionEsp" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionIng]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionIng" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[UMFO]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMFO" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      dataType="r8"
+                      name="PrecioUnitario" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      name="PesoUnitarioLbs" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisVendedorComprador" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigenDestino" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[TLC]"
+                      dataType="wstr"
+                      length="255"
+                      name="TLC" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[PROSEC]"
+                      dataType="wstr"
+                      length="255"
+                      name="PROSEC" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Industria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Industria" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Modelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="Modelo" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[SubModelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubModelo" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[TipoOperacion]"
+                      dataType="r8"
+                      name="TipoOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Notas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Notas" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input].ExternalColumns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaUltimaModificacion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SLAM\Extraccion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SLAM\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SLAM\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SLAM\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SLAM\Extraccion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SLAM.Paths[Excel Source Output]"
+              endId="Package\SLAM\Extraccion.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\SLAM\ClientesTIGIE.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8022FD82-236C-4F69-83D7-D704B2A33D2B}"
+      DTS:From="Package\SecretariaEconomiaTIGIE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SecretariaEconomiaNICOS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{152938EB-C110-4515-A026-80F0D62C501E}"
+      DTS:From="Package\SecretariaEconomiaNICOS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SLAM" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\SecretariaEconomiaTIGIE"
+          TopLeft="403,45" />
+        <NodeLayout
+          Size="105,42"
+          Id="Package\SLAM"
+          TopLeft="450,251" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\SecretariaEconomiaNICOS"
+          TopLeft="401,145" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="502.25,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="502.25,187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SecretariaEconomiaTIGIE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="127,42"
+          Id="Package\SecretariaEconomiaTIGIE\Extraccion"
+          TopLeft="450,140" />
+        <NodeLayout
+          Size="106,42"
+          Id="Package\SecretariaEconomiaTIGIE\TIGIE"
+          TopLeft="455,35" />
+        <EdgeLayout
+          Id="Package\SecretariaEconomiaTIGIE.Paths[Excel Source Output]"
+          TopLeft="510.75,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SecretariaEconomiaTIGIE\Extraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SecretariaEconomiaTIGIE\TIGIE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SLAM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="143,42"
+          Id="Package\SLAM\ClientesTIGIE"
+          TopLeft="431,87" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\SLAM\Extraccion"
+          TopLeft="437,212" />
+        <EdgeLayout
+          Id="Package\SLAM.Paths[Excel Source Output]"
+          TopLeft="501.5,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SLAM\ClientesTIGIE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SLAM\Extraccion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SecretariaEconomiaNICOS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="110,42"
+          Id="Package\SecretariaEconomiaNICOS\NICOS"
+          TopLeft="455,35" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SecretariaEconomiaNICOS\OLE DB Destination"
+          TopLeft="425,134" />
+        <EdgeLayout
+          Id="Package\SecretariaEconomiaNICOS.Paths[Excel Source Output]"
+          TopLeft="510.25,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SecretariaEconomiaNICOS\NICOS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SecretariaEconomiaNICOS\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

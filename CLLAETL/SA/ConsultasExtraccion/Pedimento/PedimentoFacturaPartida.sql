@@ -57,5 +57,7 @@ SELECT
       ,[Valoracionmv_Descripcion]  AS ValoracionDescripcion
       ,[ValorCOVE]
       ,[PartePreCaptura]
+	  ,[ParteClave]
+	  ,[ParteDescripcion]
   FROM BitacoraCargaSysExpertPedimento                      BCP
 	JOIN [dbo].[ExtraccionSysExpertPedimentoFacturaPartida] EPFP ON (BCP.idReferencia = EPFP.idReferencia)
