@@ -151,6 +151,7 @@
     <Property Name="IdExpedienteDigitalProcesamiento" Type="int" Nullable="false" />
     <Property Name="ArchivoRutaCompletaOrigen" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ArchivoRutaCompletaDestino" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrimeraBusqueda" Type="datetime" />
     <Property Name="Requerido" Type="bit" Nullable="false" />
     <Property Name="Procesado" Type="bit" Nullable="false" />
   </EntityType>
@@ -349,18 +350,6 @@ warning 6002: The table/view 'CLLASausage.dbo.vwExpedienteDigtialProcesamientoAr
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento">
-    <End Role="ExpedienteDigitalProcesamiento" Type="Self.ExpedienteDigitalProcesamiento" Multiplicity="1" />
-    <End Role="ExpedienteDigitalProcesamientoArchivo" Type="Self.ExpedienteDigitalProcesamientoArchivo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ExpedienteDigitalProcesamiento">
-        <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
-      </Principal>
-      <Dependent Role="ExpedienteDigitalProcesamientoArchivo">
-        <PropertyRef Name="IdExpedienteDigitalProcesamiento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
     <End Role="ExpedienteDigitalEventoBitacora" Type="Self.ExpedienteDigitalEventoBitacora" Multiplicity="1" />
     <End Role="ExpedienteDigitalProcesamientoArchivoBitacora" Type="Self.ExpedienteDigitalProcesamientoArchivoBitacora" Multiplicity="*" />
@@ -428,6 +417,7 @@ warning 6002: The table/view 'CLLASausage.dbo.vwExpedienteDigtialProcesamientoAr
   <Function Name="spExpedienteDigitalEliminaClienteSysExpert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClaveCliente" Type="int" Mode="In" />
   </Function>
+  <Function Name="spExpedienteDigitalGeneraTablaProcesamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spExpedienteDigitalImportaFacturasYMetadatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spExpedienteDigitalImportaPedimentosYMetadatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spExpedienteDigitalInsertaArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -522,10 +512,6 @@ warning 6002: The table/view 'CLLASausage.dbo.vwExpedienteDigtialProcesamientoAr
     <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" Association="Self.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo">
       <End Role="ExpedienteDigitalConfiguracionArchivo" EntitySet="ExpedienteDigitalConfiguracionArchivo" />
       <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivo_dbo_ExpedienteDigitalProcesamiento_IdExpedienteDigitalProcesamiento">
-      <End Role="ExpedienteDigitalProcesamiento" EntitySet="ExpedienteDigitalProcesamiento" />
-      <End Role="ExpedienteDigitalProcesamientoArchivo" EntitySet="ExpedienteDigitalProcesamientoArchivo" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" Association="Self.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora">
       <End Role="ExpedienteDigitalEventoBitacora" EntitySet="ExpedienteDigitalEventoBitacora" />

@@ -45,6 +45,16 @@ INSERT INTO @Extraccion
 		,MAX(FechaExtraccion) AS FechaExtraccion
 		,MAX(FechaOriginal) AS FechaOriginal
 		,MAX(FechaPago) AS FechaPago
+	    ,MAX(DAY(FechaPago)) AS FechaPagoDia
+		,MAX(MONTH(FechaPago)) AS FechaPagoMes
+		,MAX(YEAR(FechaPago)) AS FechaPagoAnio
+		,MAX(DATEPART(QUARTER, FechaPago)) AS FechaPagoTrimestre
+		,MAX(CASE 
+			WHEN DATEPART(quarter, FechaPago) >= 3 THEN 
+				2 
+			ELSE 
+				1 
+		END) AS FechaPagoSemestre
 		,MAX(FechaPresentacion) AS FechaPresentacion
 	FROM @PedimentoFecha
 	GROUP BY

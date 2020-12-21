@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="CargaSysExpertPedimento"
   DTS:PackageType="5"
-  DTS:VersionBuild="178"
-  DTS:VersionGUID="{F6FB94FC-A076-4F6D-BB2D-2941D70E0434}">
+  DTS:VersionBuild="185"
+  DTS:VersionGUID="{4707F8DA-C702-4A8D-9699-C3CF186DE322}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5179,7 +5179,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoContenedor]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoContenedor]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -5385,7 +5385,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoContenedor&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoContenedor.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoContenedor.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoContenedor&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoContenedor.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoContenedor.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -5775,7 +5775,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoContribucion]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoContribucion]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -6041,7 +6041,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoContribucion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoContribucion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoContribucion.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoContribucion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoContribucion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoContribucion.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -6472,7 +6472,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoDescarga]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoDescarga]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -6760,7 +6760,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoDescarga&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoDescarga.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoDescarga.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoDescarga&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoDescarga.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoDescarga.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -7014,7 +7014,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoDigitalizacion]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoDigitalizacion]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -7206,7 +7206,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoDigitalizacion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoDigitalizacion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoDigitalizacion.OrigenidReferencia&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoDigitalizacion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoDigitalizacion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoDigitalizacion.OrigenidReferencia&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -9992,7 +9992,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoFactura]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoFactura]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -11586,7 +11586,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoFactura&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoFactura.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoFactura.OrigenIdReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoFactura&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoFactura.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoFactura.OrigenIdReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -13107,7 +13107,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoFacturaPartida]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoFacturaPartida]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -14003,7 +14003,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoFacturaPartida&#xA;&#x9;SET PedimentoFacturaID = PF.PedimentoFacturaID&#xA;FROM FactPedimentoFactura PF&#xA;WHERE&#xA;&#x9;FactPedimentoFacturaPartida.PedimentoFacturaID IS NULL AND&#xA;&#x9;PF.OrigenidFactura = FactPedimentoFacturaPartida.OrigenidFactura&#xA;&#xA;UPDATE FactPedimentoFacturaPartida&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM FactPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;FactPedimentoFacturaPartida.PedimentoFraccionID IS NULL AND&#xA;&#x9;FactPedimentoFacturaPartida.OrigenidOrdenFraccion = PF.OrigenidPedFraccion" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoFacturaPartida&#xA;&#x9;SET PedimentoFacturaID = PF.PedimentoFacturaID&#xA;FROM DimPedimentoFactura PF&#xA;WHERE&#xA;&#x9;DimPedimentoFacturaPartida.PedimentoFacturaID IS NULL AND&#xA;&#x9;PF.OrigenidFactura = DimPedimentoFacturaPartida.OrigenidFactura&#xA;&#xA;UPDATE DimPedimentoFacturaPartida&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM DimPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;DimPedimentoFacturaPartida.PedimentoFraccionID IS NULL AND&#xA;&#x9;DimPedimentoFacturaPartida.OrigenidOrdenFraccion = PF.OrigenidPedFraccion" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -14128,6 +14128,36 @@
                       cachedName="FechaPresentacion"
                       externalMetadataColumnId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[Presentacion]"
                       lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPresentacion]" />
+                    <inputColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].Columns[FechaPagoDia]"
+                      cachedDataType="i4"
+                      cachedName="FechaPagoDia"
+                      externalMetadataColumnId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoDia]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoDia]" />
+                    <inputColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].Columns[FechaPagoMes]"
+                      cachedDataType="i4"
+                      cachedName="FechaPagoMes"
+                      externalMetadataColumnId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoMes]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoMes]" />
+                    <inputColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].Columns[FechaPagoAnio]"
+                      cachedDataType="i4"
+                      cachedName="FechaPagoAnio"
+                      externalMetadataColumnId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoAnio]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoAnio]" />
+                    <inputColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].Columns[FechaPagoTrimestre]"
+                      cachedDataType="i4"
+                      cachedName="FechaPagoTrimestre"
+                      externalMetadataColumnId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoTrimestre]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoTrimestre]" />
+                    <inputColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].Columns[FechaPagoSemestre]"
+                      cachedDataType="i4"
+                      cachedName="FechaPagoSemestre"
+                      externalMetadataColumnId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoSemestre]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoSemestre]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -14163,6 +14193,26 @@
                       refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[Presentacion]"
                       dataType="dbTimeStamp"
                       name="Presentacion" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoDia]"
+                      dataType="i4"
+                      name="PagoDia" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoMes]"
+                      dataType="i4"
+                      name="PagoMes" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoAnio]"
+                      dataType="i4"
+                      name="PagoAnio" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoTrimestre]"
+                      dataType="i4"
+                      name="PagoTrimestre" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\DimPedimentoFecha.Inputs[OLE DB Destination Input].ExternalColumns[PagoSemestre]"
+                      dataType="i4"
+                      name="PagoSemestre" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -14263,6 +14313,16 @@ INSERT INTO @Extraccion
 		,MAX(FechaExtraccion) AS FechaExtraccion
 		,MAX(FechaOriginal) AS FechaOriginal
 		,MAX(FechaPago) AS FechaPago
+	    ,MAX(DAY(FechaPago)) AS FechaPagoDia
+		,MAX(MONTH(FechaPago)) AS FechaPagoMes
+		,MAX(YEAR(FechaPago)) AS FechaPagoAnio
+		,MAX(DATEPART(QUARTER, FechaPago)) AS FechaPagoTrimestre
+		,MAX(CASE 
+			WHEN DATEPART(quarter, FechaPago) &gt;= 3 THEN 
+				2 
+			ELSE 
+				1 
+		END) AS FechaPagoSemestre
 		,MAX(FechaPresentacion) AS FechaPresentacion
 	FROM @PedimentoFecha
 	GROUP BY
@@ -14356,6 +14416,51 @@ INSERT INTO @Extraccion
                       lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPresentacion]"
                       name="FechaPresentacion"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoDia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoDia]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoDia]"
+                      name="FechaPagoDia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoMes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoMes]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoMes]"
+                      name="FechaPagoMes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoAnio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoAnio]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoAnio]"
+                      name="FechaPagoAnio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoTrimestre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoTrimestre]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoTrimestre]"
+                      name="FechaPagoTrimestre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoSemestre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoSemestre]"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].Columns[FechaPagoSemestre]"
+                      name="FechaPagoSemestre"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -14383,6 +14488,26 @@ INSERT INTO @Extraccion
                       refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPresentacion]"
                       dataType="dbTimeStamp"
                       name="FechaPresentacion" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoDia]"
+                      dataType="i4"
+                      name="FechaPagoDia" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoMes]"
+                      dataType="i4"
+                      name="FechaPagoMes" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoAnio]"
+                      dataType="i4"
+                      name="FechaPagoAnio" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoTrimestre]"
+                      dataType="i4"
+                      name="FechaPagoTrimestre" />
+                    <externalMetadataColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Output].ExternalColumns[FechaPagoSemestre]"
+                      dataType="i4"
+                      name="FechaPagoSemestre" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -14415,6 +14540,31 @@ INSERT INTO @Extraccion
                       dataType="dbTimeStamp"
                       lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPago]"
                       name="FechaPago" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoDia]"
+                      dataType="i4"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoDia]"
+                      name="FechaPagoDia" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoMes]"
+                      dataType="i4"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoMes]"
+                      name="FechaPagoMes" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoAnio]"
+                      dataType="i4"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoAnio]"
+                      name="FechaPagoAnio" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoTrimestre]"
+                      dataType="i4"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoTrimestre]"
+                      name="FechaPagoTrimestre" />
+                    <outputColumn
+                      refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoSemestre]"
+                      dataType="i4"
+                      lineageId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPagoSemestre]"
+                      name="FechaPagoSemestre" />
                     <outputColumn
                       refId="Package\PedimentoFecha\ExtraccionPedimentoFecha.Outputs[OLE DB Source Error Output].Columns[FechaPresentacion]"
                       dataType="dbTimeStamp"
@@ -15098,7 +15248,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoFraccion]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoFraccion]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -15514,7 +15664,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoFraccionContribucion]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoFraccionContribucion]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -16131,7 +16281,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoFraccionContribucion&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM FactPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;FactPedimentoFraccionContribucion.PedimentoFraccionID IS NULL AND&#xA;&#x9;PF.OrigenidPedFraccion = FactPedimentoFraccionContribucion.OrigenidPedFraccion&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoFraccionContribucion&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM DimPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;DimPedimentoFraccionContribucion.PedimentoFraccionID IS NULL AND&#xA;&#x9;PF.OrigenidPedFraccion = DimPedimentoFraccionContribucion.OrigenidPedFraccion&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -16391,7 +16541,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoFraccionIdentificador]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoFraccionIdentificador]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -16587,7 +16737,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoFraccionIdentificador&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM FactPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;FactPedimentoFraccionIdentificador.PedimentoFraccionID IS NULL AND&#xA;&#x9;PF.OrigenidPedFraccion = FactPedimentoFraccionIdentificador.OrigenidPedFraccion&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoFraccionIdentificador&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM DimPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;DimPedimentoFraccionIdentificador.PedimentoFraccionID IS NULL AND&#xA;&#x9;PF.OrigenidPedFraccion = DimPedimentoFraccionIdentificador.OrigenidPedFraccion&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -16604,7 +16754,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoFraccion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoFraccion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoFraccion.OrigenIdReferencia&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoFraccion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoFraccion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoFraccion.OrigenIdReferencia&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -16902,7 +17052,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoFraccionPermiso]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoFraccionPermiso]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -17118,7 +17268,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoFraccionPermiso&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM FactPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;FactPedimentoFraccionPermiso.PedimentoFraccionID IS NULL AND&#xA;&#x9;PF.OrigenidPedFraccion = FactPedimentoFraccionPermiso.OrigenidPedFraccion&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoFraccionPermiso&#xA;&#x9;SET PedimentoFraccionID = PF.PedimentoFraccionID&#xA;FROM DimPedimentoFraccion PF&#xA;WHERE&#xA;&#x9;DimPedimentoFraccionPermiso.PedimentoFraccionID IS NULL AND&#xA;&#x9;PF.OrigenidPedFraccion = DimPedimentoFraccionPermiso.OrigenidPedFraccion&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -17479,7 +17629,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoGastoComprobado]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoGastoComprobado]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -17729,7 +17879,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoGastoComprobado&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoGastoComprobado.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoGastoComprobado.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoGastoComprobado&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoGastoComprobado.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoGastoComprobado.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -17933,7 +18083,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoHojaControl]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoHojaControl]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -18097,7 +18247,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoHojaControl&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoHojaControl.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoHojaControl.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoHojaControl&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoHojaControl.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoHojaControl.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -18339,7 +18489,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoIdentificador]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoIdentificador]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -18525,7 +18675,24 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoIdentificador&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoIdentificador.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoIdentificador.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoIdentificador&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoIdentificador.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoIdentificador.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PedimentoIntegridadReferencial"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{99F21C46-EF73-44D5-87BE-5B5370670BC1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PedimentoIntegridadReferencial"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
+          SQLTask:SqlStatementSource="UPDATE FactPedimento&#xA;&#x9;SET FactPedimento.AduanaID = A.AduanaID&#xA;FROM DimAduana A&#xA;WHERE&#x9;&#xA;&#x9;FactPedimento.AduanaID IS NULL &#xA;&#x9;AND FactPedimento.AduanaClave = A.Clave" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -18729,7 +18896,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoParteII]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoParteII]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -19174,7 +19341,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoParteIIContenedor]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoParteIIContenedor]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -19390,7 +19557,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="&#xA;UPDATE FactPedimentoParteIIContenedor&#xA;&#x9;SET PedimentoParteIIID =  PPII.PedimentoParteIIID&#xA;FROM FactPedimentoParteII PPII&#xA;WHERE&#xA;&#x9;FactPedimentoParteIIContenedor.PedimentoParteIIID IS NULL AND&#xA;&#x9;PPII.OrigenidPedParteII = FactPedimentoParteIIContenedor.OrigenidPedParteII" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="&#xA;UPDATE DimPedimentoParteIIContenedor&#xA;&#x9;SET PedimentoParteIIID =  PPII.PedimentoParteIIID&#xA;FROM DimPedimentoParteII PPII&#xA;WHERE&#xA;&#x9;DimPedimentoParteIIContenedor.PedimentoParteIIID IS NULL AND&#xA;&#x9;PPII.OrigenidPedParteII = DimPedimentoParteIIContenedor.OrigenidPedParteII" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -19407,7 +19574,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoParteII&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoParteII.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoParteII.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoParteII&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoParteII.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoParteII.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -19843,7 +20010,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoParteIIMercancia]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoParteIIMercancia]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -20135,7 +20302,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoParteIIMercancia&#xA;&#x9;SET PedimentoParteIIID = PPII.PedimentoParteIIID&#xA;FROM FactPedimentoParteII PPII&#xA;WHERE&#xA;&#x9;FactPedimentoParteIIMercancia.PedimentoParteIIID IS NULL AND&#xA;&#x9;PPII.OrigenidPedParteII = FactPedimentoParteIIMercancia.OrigenidPedParteII" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoParteIIMercancia&#xA;&#x9;SET PedimentoParteIIID = PPII.PedimentoParteIIID&#xA;FROM DimPedimentoParteII PPII&#xA;WHERE&#xA;&#x9;DimPedimentoParteIIMercancia.PedimentoParteIIID IS NULL AND&#xA;&#x9;PPII.OrigenidPedParteII = DimPedimentoParteIIMercancia.OrigenidPedParteII" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -20508,7 +20675,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoRectificacion]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoRectificacion]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -21042,7 +21209,7 @@ INSERT INTO @Extraccion
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactPedimentoRectificacionDiferencia]</property>
+                  name="OpenRowset">[dbo].[DimPedimentoRectificacionDiferencia]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -21254,7 +21421,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoRectificacionDiferencia&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoRectificacionDiferencia.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoRectificacionDiferencia.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoRectificacionDiferencia&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoRectificacionDiferencia.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoRectificacionDiferencia.OrigenidReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -21271,7 +21438,7 @@ INSERT INTO @Extraccion
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BEF5F52E-FD64-4DA0-BFB9-579F91F3333C}"
-          SQLTask:SqlStatementSource="UPDATE FactPedimentoRectificacion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;FactPedimentoRectificacion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = FactPedimentoRectificacion.OrigenIdReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DimPedimentoRectificacion&#xA;&#x9;SET PedimentoID = P.PedimentoID&#xA;FROM FactPedimento P&#xA;WHERE&#xA;&#x9;DimPedimentoRectificacion.PedimentoID IS NULL AND&#xA;&#x9;P.OrigenidReferencia = DimPedimentoRectificacion.OrigenIdReferencia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -21287,11 +21454,11 @@ INSERT INTO @Extraccion
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{31C69E70-6DF8-43D1-87EF-CF946817F6DB}"
+      DTS:DTSID="{6053F330-FDA3-4D77-A025-3BD23CD4CE40}"
       DTS:From="Package\Pedimento"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\PedimentoIdentificador" />
+      DTS:To="Package\PedimentoIntegridadReferencial" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
       DTS:CreationName=""
@@ -21557,6 +21724,14 @@ INSERT INTO @Extraccion
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\PedimentoFacturaPartidaIntegridadReferencial" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 40]"
+      DTS:CreationName=""
+      DTS:DTSID="{71CFA16D-608D-439A-BC60-B5582D5D10F7}"
+      DTS:From="Package\PedimentoIntegridadReferencial"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 40"
+      DTS:To="Package\PedimentoIdentificador" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{0E4FB87F-9632-4BE6-8385-FCFC95F81046}"
@@ -21620,7 +21795,7 @@ INSERT INTO @Extraccion
         <NodeLayout
           Size="129,42"
           Id="Package\Pedimento"
-          TopLeft="111,195" />
+          TopLeft="106,195" />
         <NodeLayout
           Size="183,42"
           Id="Package\PedimentoContenedor"
@@ -21779,9 +21954,9 @@ INSERT INTO @Extraccion
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-422.5,108"
+              EndConnector="-427.5,108"
               Start="0,0"
-              End="-422.5,100.5">
+              End="-427.5,100.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -21792,35 +21967,13 @@ INSERT INTO @Extraccion
                     Point2="0,54"
                     Point3="-4,54" />
                   <mssgle:LineSegment
-                    End="-418.5,54" />
+                    End="-423.5,54" />
                   <mssgle:CubicBezierSegment
-                    Point1="-418.5,54"
-                    Point2="-422.5,54"
-                    Point3="-422.5,58" />
+                    Point1="-423.5,54"
+                    Point2="-427.5,54"
+                    Point3="-427.5,58" />
                   <mssgle:LineSegment
-                    End="-422.5,100.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="179.25,237">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="-427.5,100.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22893,6 +23046,66 @@ INSERT INTO @Extraccion
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="229,42"
+          Id="Package\PedimentoIntegridadReferencial"
+          TopLeft="643,197" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="235,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="408,0"
+              Start="0,0"
+              End="400.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="400.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 40]"
+          TopLeft="757.5,239">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-574.5,42"
+              Start="0,0"
+              End="-574.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-570.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-570.5,21"
+                    Point2="-574.5,21"
+                    Point3="-574.5,25" />
+                  <mssgle:LineSegment
+                    End="-574.5,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -23072,6 +23285,19 @@ INSERT INTO @Extraccion
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PedimentoContribucion\FactPedimentoContribucion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\PedimentoDescarga">
     <LayoutInfo>
@@ -23137,13 +23363,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="210,42"
-          Id="Package\PedimentoDigitalizacion\FactPedimentoDigitalizacion"
-          TopLeft="419,156" />
-        <NodeLayout
           Size="238,42"
           Id="Package\PedimentoDigitalizacion\ExtraccionPedimentoDigitalizacion"
           TopLeft="404,39" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\PedimentoDigitalizacion\FactPedimentoDigitalizacion"
+          TopLeft="419,156" />
         <EdgeLayout
           Id="Package\PedimentoDigitalizacion.Paths[OLE DB Source Output]"
           TopLeft="523.5,81">
@@ -23255,13 +23481,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="216,42"
-          Id="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida"
-          TopLeft="378,162" />
-        <NodeLayout
           Size="245,42"
           Id="Package\PedimentoFacturaPartida\ExtraccionPedimentoFacturaPartida"
           TopLeft="371,60" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\PedimentoFacturaPartida\FactPedimentoFacturaPartida"
+          TopLeft="378,162" />
         <EdgeLayout
           Id="Package\PedimentoFacturaPartida.Paths[OLE DB Source Output]"
           TopLeft="489.75,102">
@@ -23432,13 +23658,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="254,42"
-          Id="Package\PedimentoFraccionContribucion\CargaPedimentoFraccionContribucion"
-          TopLeft="397,136" />
-        <NodeLayout
           Size="275,42"
           Id="Package\PedimentoFraccionContribucion\ExtraccionPedimentoFraccionContribucion"
           TopLeft="385,58" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\PedimentoFraccionContribucion\CargaPedimentoFraccionContribucion"
+          TopLeft="397,136" />
         <EdgeLayout
           Id="Package\PedimentoFraccionContribucion.Paths[OLE DB Source Output]"
           TopLeft="523.25,100">
@@ -23491,13 +23717,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="247,42"
-          Id="Package\PedimentoFraccionIdentificador\FactPedimentoFraccionIdentificador"
-          TopLeft="356,170" />
-        <NodeLayout
           Size="275,42"
           Id="Package\PedimentoFraccionIdentificador\ExtraccionPedimentoFraccionIdentificador"
           TopLeft="338,58" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\PedimentoFraccionIdentificador\FactPedimentoFraccionIdentificador"
+          TopLeft="356,170" />
         <EdgeLayout
           Id="Package\PedimentoFraccionIdentificador.Paths[OLE DB Source Output]"
           TopLeft="477.5,100">
@@ -23609,13 +23835,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="185,42"
-          Id="Package\PedimentoGastoComprobado\FactGastoComprobado"
-          TopLeft="438,170" />
-        <NodeLayout
           Size="260,42"
           Id="Package\PedimentoGastoComprobado\ExraccionPedimentoGastoComprobado"
           TopLeft="395,29" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\PedimentoGastoComprobado\FactGastoComprobado"
+          TopLeft="438,170" />
         <EdgeLayout
           Id="Package\PedimentoGastoComprobado.Paths[OLE DB Source Output]"
           TopLeft="527.75,71">
@@ -23767,19 +23993,32 @@ INSERT INTO @Extraccion
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PedimentoIdentificador\FactPedimentoIdentificador">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\PedimentoParteII">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="181,42"
-          Id="Package\PedimentoParteII\FactPedimentoParteII"
-          TopLeft="391,159" />
-        <NodeLayout
           Size="209,42"
           Id="Package\PedimentoParteII\ExtraccionPedimentoParteII"
           TopLeft="378,39" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\PedimentoParteII\FactPedimentoParteII"
+          TopLeft="391,159" />
         <EdgeLayout
           Id="Package\PedimentoParteII.Paths[OLE DB Source Output]"
           TopLeft="482,81">
@@ -23891,13 +24130,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="257,42"
-          Id="Package\PedimentoParteIIMercancia\ExtraccionPedimentoParteIIMercancia"
-          TopLeft="411,39" />
-        <NodeLayout
           Size="228,42"
           Id="Package\PedimentoParteIIMercancia\FactPedimentoParteIIMercancia"
           TopLeft="433,136" />
+        <NodeLayout
+          Size="257,42"
+          Id="Package\PedimentoParteIIMercancia\ExtraccionPedimentoParteIIMercancia"
+          TopLeft="411,39" />
         <EdgeLayout
           Id="Package\PedimentoParteIIMercancia.Paths[OLE DB Source Output]"
           TopLeft="543.25,81">
@@ -23950,13 +24189,13 @@ INSERT INTO @Extraccion
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="207,42"
-          Id="Package\PedimentoRectificacion\FactPedimentoRectificacion"
-          TopLeft="442,159" />
-        <NodeLayout
           Size="236,42"
           Id="Package\PedimentoRectificacion\ExtraccionPedimentoRectificacion"
           TopLeft="422,50" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\PedimentoRectificacion\FactPedimentoRectificacion"
+          TopLeft="442,159" />
         <EdgeLayout
           Id="Package\PedimentoRectificacion.Paths[OLE DB Source Output]"
           TopLeft="542.75,92">

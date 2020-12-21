@@ -48,5 +48,6 @@ namespace CLLAIntelligentSausage.Modelos.Enumerados
         public static string CuentaGastoMes = "{CuentaGastoMes}";
         public static string GastoComprobadoFolio = "{GastoComprobadoFolio}";
         public static string GastoComprobadoDescripcion = "{GastoComprobadoDescripcion}";
+        public static string GastoComprobadoMontoTotal = "{GastoComprobadoMonto}";
     }
 }

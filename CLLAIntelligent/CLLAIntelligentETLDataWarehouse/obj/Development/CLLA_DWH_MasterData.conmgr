@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="10.1.45.60.CLLA_DWH_MasterData.sa"
+  DTS:DTSID="{1A4FF49D-030F-47F4-9F95-4654715D5608}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=10.1.45.60;User ID=sa;Initial Catalog=CLLA_DWH_MasterData;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAowGF+Jk1GUWWDv3wUwfV7QAAAAACAAAAAAAQZgAAAAEAACAAAABtEWT6Do/xL+Xbs0WZCAmyilcFgA2L4H2fYXZL2kdUmAAAAAAOgAAAAAIAACAAAAC+BnQxD8SKiUDrfXaK0RAH+Ec4ZkMldgAq/SCatRMRG4AAAAD77MTPw50eSnkiWZbZzVQ2FrOxb19KjMJj/uFMfbvbdfwcscPYz2t4Lv/QgyJkdYCIDj6Od6nDcgk54q/v26cbfOLNrP47bv3IapDurPrYhwyX5PWQtvEPt/I707QbSiRZzlniviFltdE0/Z2CaEnJqRomabjdQjClkI9Qyx296EAAAABLWp+jDCnnvT8V0VsE1JalyYD1DUHulC2aQhbrdlygJoW9x603BTnPmWpj/ZCzq7woml2IJ+CtHQjxUHNrAu8d</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

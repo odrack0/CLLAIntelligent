@@ -14,12 +14,6 @@ namespace CLLAIntelligentSausage.Modelos
     
     public partial class ExpedienteDigitalProcesamiento
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ExpedienteDigitalProcesamiento()
-        {
-            this.ExpedienteDigitalProcesamientoArchivo = new HashSet<ExpedienteDigitalProcesamientoArchivo>();
-        }
-    
         public int IdExpedienteDigitalProcesamiento { get; set; }
         public int IdExpedienteDigital { get; set; }
         public Nullable<int> IdExpedienteDigitalConfiguracionArchivo { get; set; }
@@ -31,7 +25,5 @@ namespace CLLAIntelligentSausage.Modelos
     
         public virtual ExpedienteDigital ExpedienteDigital { get; set; }
         public virtual ExpedienteDigitalConfiguracionArchivo ExpedienteDigitalConfiguracionArchivo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExpedienteDigitalProcesamientoArchivo> ExpedienteDigitalProcesamientoArchivo { get; set; }
     }
 }

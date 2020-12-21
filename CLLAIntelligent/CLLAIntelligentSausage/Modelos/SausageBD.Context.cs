@@ -39,10 +39,10 @@ namespace CLLAIntelligentSausage.Modelos
         public virtual DbSet<ExpedienteDigitalMetaDato> ExpedienteDigitalMetaDato { get; set; }
         public virtual DbSet<ExpedienteDigitalOrigen> ExpedienteDigitalOrigen { get; set; }
         public virtual DbSet<ExpedienteDigitalProcesamiento> ExpedienteDigitalProcesamiento { get; set; }
-        public virtual DbSet<ExpedienteDigitalProcesamientoArchivo> ExpedienteDigitalProcesamientoArchivo { get; set; }
         public virtual DbSet<ExpedienteDigitalProcesamientoArchivoBitacora> ExpedienteDigitalProcesamientoArchivoBitacora { get; set; }
         public virtual DbSet<ExpedienteDigitalTipoArchivo> ExpedienteDigitalTipoArchivo { get; set; }
         public virtual DbSet<vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes> vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes { get; set; }
+        public virtual DbSet<ExpedienteDigitalProcesamientoArchivo> ExpedienteDigitalProcesamientoArchivo { get; set; }
     
         [DbFunction("CLLASausageContext", "fnExpedienteDigitalFinalizadoPendiente")]
         public virtual IQueryable<fnExpedienteDigitalFinalizadoPendiente_Result> fnExpedienteDigitalFinalizadoPendiente()
@@ -115,6 +115,11 @@ namespace CLLAIntelligentSausage.Modelos
                 new ObjectParameter("Requerido", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalInsertaProcesamientoArchivo", idExpedienteDigitalProcesamientoParameter, archivoRutaCompletaOrigenParameter, archivoRutaCompletaDestinoParameter, requeridoParameter, llavePrimaria);
+        }
+    
+        public virtual int spExpedienteDigitalGeneraTablaProcesamiento()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalGeneraTablaProcesamiento");
         }
     }
 }

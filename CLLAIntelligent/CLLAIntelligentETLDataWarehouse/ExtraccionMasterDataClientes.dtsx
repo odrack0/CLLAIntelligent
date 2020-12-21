@@ -1,0 +1,612 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/14/2020 9:49:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{45A04120-AAD5-46BE-BF36-193F2751C01B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{A9399A7D-E334-4D7C-9B2C-E7AFD092A600}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{E4DE75FB-4E33-4F67-9DBF-3362EB16DBDC}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\10.1.45.252\Sistemas\IntegrationServices\Extraccion\MasterData\ClientesCLLA20201214.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Cargar MasterDataCliente"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{0FE73CA6-B26E-4992-B8B1-564C3C88ACA9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar MasterDataCliente"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1A4FF49D-030F-47F4-9F95-4654715D5608}"
+          SQLTask:SqlStatementSource="INSERT INTO CLLA_DWH_MasterData.dbo.Cliente&#x9;&#xA;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;ClaveClienteUnicaCLLA &#xA;&#x9;&#x9;,CLIENTE &#xA;&#x9;FROM CLLA_DWH_SA.dbo.ExtraccionMasterDataCliente&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ClaveClienteUnicaCLLA IS NOT NULL&#xA;&#xA;INSERT INTO CLLA_DWH_MasterData.dbo.ClienteSysExpert &#xA;&#x9;SELECT&#xA;&#x9;&#x9;MDC.ClienteID,&#xA;&#x9;&#x9;EC.ClaveClienteSysExpert&#xA;&#x9;FROM CLLA_DWH_MasterData.dbo.Cliente MDC&#xA;&#x9;&#x9;JOIN CLLA_DWH_SA.dbo.ExtraccionMasterDataCliente EC ON   MDC.ClaveUnica = EC.ClaveClienteUnicaCLLA&#xA;&#x9;WHERE&#xA;&#x9;&#x9;EC.ClaveClienteSysExpert IS NOT NULL&#xA;&#xA;INSERT INTO CLLA_DWH_MasterData.dbo.ClienteSLAM&#xA;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;MDC.ClienteID,&#xA;&#x9;&#x9;EC.ClaveClienteSLAM&#xA;&#x9;FROM CLLA_DWH_MasterData.dbo.Cliente MDC&#xA;&#x9;&#x9;JOIN CLLA_DWH_SA.dbo.ExtraccionMasterDataCliente EC ON   MDC.ClaveUnica = EC.ClaveClienteUnicaCLLA&#xA;&#x9;WHERE&#xA;&#x9;&#x9;EC.ClaveClienteSLAM IS NOT NULL&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Eliminar MasterDataCliente"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{A7603FDD-AAA8-490D-9D19-B0611839FD3F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Eliminar MasterDataCliente"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1A4FF49D-030F-47F4-9F95-4654715D5608}"
+          SQLTask:SqlStatementSource="DELETE  ClienteSysExpert&#xA;DELETE  ClienteSLAM&#xA;DELETE Cliente" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MasterDataClientes20201214"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BF1D7341-5E7C-43F0-8245-3527E8962E9B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MasterDataClientes20201214"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionMasterDataCliente"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ExtraccionMasterDataCliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].Columns[ClaveClienteUnicaCLLA]"
+                      cachedDataType="r8"
+                      cachedName="ClaveClienteUnicaCLLA"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[ClaveClienteUnicaCLLA]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteUnicaCLLA]" />
+                    <inputColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].Columns[ClaveClienteSysExpert]"
+                      cachedDataType="r8"
+                      cachedName="ClaveClienteSysExpert"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[ClaveClienteSysExpert]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteSysExpert]" />
+                    <inputColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].Columns[ClaveClienteSLAM]"
+                      cachedDataType="r8"
+                      cachedName="ClaveClienteSLAM"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[ClaveClienteSLAM]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteSLAM]" />
+                    <inputColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].Columns[CLIENTE ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CLIENTE "
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[CLIENTE ]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[CLIENTE ]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[ClaveClienteUnicaCLLA]"
+                      dataType="i4"
+                      name="ClaveClienteUnicaCLLA" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[ClaveClienteSysExpert]"
+                      dataType="i4"
+                      name="ClaveClienteSysExpert" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[ClaveClienteSLAM]"
+                      dataType="i4"
+                      name="ClaveClienteSLAM" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input].ExternalColumns[CLIENTE ]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLIENTE " />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MasterDataClientes20201214\MasterDataCliente20201214"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="MasterDataCliente20201214"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">MasterDataClientesCLLA$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteUnicaCLLA]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[ClaveClienteUnicaCLLA]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteUnicaCLLA]"
+                      name="ClaveClienteUnicaCLLA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteSysExpert]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[ClaveClienteSysExpert]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteSysExpert]"
+                      name="ClaveClienteSysExpert"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteSLAM]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[ClaveClienteSLAM]"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[ClaveClienteSLAM]"
+                      name="ClaveClienteSLAM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[CLIENTE ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[CLIENTE ]"
+                      length="255"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].Columns[CLIENTE ]"
+                      name="CLIENTE "
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[ClaveClienteUnicaCLLA]"
+                      dataType="r8"
+                      name="ClaveClienteUnicaCLLA" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[ClaveClienteSysExpert]"
+                      dataType="r8"
+                      name="ClaveClienteSysExpert" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[ClaveClienteSLAM]"
+                      dataType="r8"
+                      name="ClaveClienteSLAM" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[CLIENTE ]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLIENTE " />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[F5]"
+                      dataType="wstr"
+                      length="255"
+                      name="F5" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[F6]"
+                      dataType="wstr"
+                      length="255"
+                      name="F6" />
+                    <externalMetadataColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output].ExternalColumns[F7]"
+                      dataType="wstr"
+                      length="255"
+                      name="F7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ClaveClienteUnicaCLLA]"
+                      dataType="r8"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ClaveClienteUnicaCLLA]"
+                      name="ClaveClienteUnicaCLLA" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ClaveClienteSysExpert]"
+                      dataType="r8"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ClaveClienteSysExpert]"
+                      name="ClaveClienteSysExpert" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ClaveClienteSLAM]"
+                      dataType="r8"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ClaveClienteSLAM]"
+                      name="ClaveClienteSLAM" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[CLIENTE ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[CLIENTE ]"
+                      name="CLIENTE " />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MasterDataClientes20201214.Paths[Excel Source Output]"
+              endId="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\MasterDataClientes20201214\MasterDataCliente20201214.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar ExtraccionMasterDataCliente"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3B6E3619-D90E-498D-876B-1F8203747B9B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar ExtraccionMasterDataCliente"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionMasterDataCliente" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FDFE116D-FDD9-4B49-8584-1EA4291DD8E5}"
+      DTS:From="Package\Truncar ExtraccionMasterDataCliente"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Eliminar MasterDataCliente" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6417BE38-FD1B-426C-9B95-8D9E3E860987}"
+      DTS:From="Package\Eliminar MasterDataCliente"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\MasterDataClientes20201214" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{871E7C0D-62E1-464C-9BAF-DD62F75D72C4}"
+      DTS:From="Package\MasterDataClientes20201214"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Cargar MasterDataCliente" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\MasterDataClientes20201214"
+          TopLeft="447,244" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Truncar ExtraccionMasterDataCliente"
+          TopLeft="418,83" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Eliminar MasterDataCliente"
+          TopLeft="448,162" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="547.75,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="553,204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Cargar MasterDataCliente"
+          TopLeft="453,325" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="553.75,286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MasterDataClientes20201214">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211,42"
+          Id="Package\MasterDataClientes20201214\MasterDataCliente20201214"
+          TopLeft="435,78" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente"
+          TopLeft="430,200" />
+        <EdgeLayout
+          Id="Package\MasterDataClientes20201214.Paths[Excel Source Output]"
+          TopLeft="538.5,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MasterDataClientes20201214\ExtraccionMasterDataCliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MasterDataClientes20201214\MasterDataCliente20201214">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -9,7 +9,7 @@ namespace CLLAIntelligentSausage.Librerias
 {
     public static class Logs
     {
-        public static void EscrbirLog(string Evento)
+        public static void EscribirLog(string Evento)
         {
             string ArchivoLog = @"Logs\" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
             string Hora = DateTime.Now.ToString("HH:mm");
@@ -24,7 +24,7 @@ namespace CLLAIntelligentSausage.Librerias
 
         public static void EscribirLog(Exception ex)
         {
-            EscrbirLog(Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex));
+            EscribirLog(Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex));
         }
     }
 }

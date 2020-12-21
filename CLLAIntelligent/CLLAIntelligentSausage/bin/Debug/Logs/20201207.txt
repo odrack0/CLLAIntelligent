@@ -1,4 +1,0 @@
-16:11- Schema specified is not valid. Errors: 
-Modelos.SausageBD.ssdl(411,4) : error 0137: Functions that cannot be composed must not declare a return type.
-16:12- Schema specified is not valid. Errors: 
-Modelos.SausageBD.ssdl(411,4) : error 0137: Functions that cannot be composed must not declare a return type.

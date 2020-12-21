@@ -8,6 +8,37 @@ namespace CLLAIntelligentSausage.Librerias
 {
     public static class Excepciones
     {
+        public static string ObtenerNombreExcepcion(Exception ex)
+        {
+            string nombreExepcion = string.Empty;
+
+            Exception excepcion = ex;
+
+            while(excepcion != null)
+            {
+                nombreExepcion = excepcion.GetType().Name;
+
+                excepcion = excepcion.InnerException;
+            }
+
+            return nombreExepcion;
+        }
+
+        public static string ObtenerMensajeExepcion(Exception ex)
+        {
+            string mensajeExepcion = string.Empty;
+
+            Exception excepcion = ex;
+
+            while(excepcion != null)
+            {
+                mensajeExepcion = excepcion.Message;
+
+                excepcion = excepcion.InnerException;
+            }
+
+            return mensajeExepcion;
+        }
         public static List<string> ObtenerMensajesExcepcion(Exception Ex)
         {
             List<string> Mensajes = new List<string>();

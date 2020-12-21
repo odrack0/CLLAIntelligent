@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CLLAIntelligentETLDataWarehouse</Name>
-    <LastWriteTime>2020-12-10T19:54:07.6429957Z</LastWriteTime>
+    <LastWriteTime>2020-12-15T13:35:16.4418852Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -63,17 +63,37 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>CargaSysExpertPedimento.dtsx</Name>
-      <LastWriteTime>2020-12-10T20:17:53.5040811Z</LastWriteTime>
+      <LastWriteTime>2020-12-15T13:33:46.3704386Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>ExtraccionProyectoNICOS.dtsx</Name>
-      <LastWriteTime>2020-12-09T23:11:25.6034827Z</LastWriteTime>
+      <Name>ExtraccionMasterDataClientes.dtsx</Name>
+      <LastWriteTime>2020-12-14T23:35:42.7801768Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>CargaProyectoNICOS.dtsx</Name>
-      <LastWriteTime>2020-12-10T19:53:54.9746889Z</LastWriteTime>
+      <Name>CargaMasterDataCliente.dtsx</Name>
+      <LastWriteTime>2020-12-15T13:01:32.756337Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ExtraccionMaterialDespachadoLaredo.dtsx</Name>
+      <LastWriteTime>2020-12-15T01:11:52.0835231Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ExtraccionTIGIE2020.dtsx</Name>
+      <LastWriteTime>2020-12-15T01:22:27.2135057Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CargaTIGIE2020.dtsx</Name>
+      <LastWriteTime>2020-12-15T01:30:44.34409Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CargaMaterialDespachadoLaredo.dtsx</Name>
+      <LastWriteTime>2020-12-15T01:40:05.3293595Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

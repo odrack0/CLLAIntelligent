@@ -26,6 +26,7 @@ namespace CLLAIntelligentSausage.Modelos
         public int IdExpedienteDigitalProcesamiento { get; set; }
         public string ArchivoRutaCompletaOrigen { get; set; }
         public string ArchivoRutaCompletaDestino { get; set; }
+        public Nullable<System.DateTime> PrimeraBusqueda { get; set; }
         public bool Requerido { get; set; }
         public bool Procesado { get; set; }
     
@@ -33,7 +34,6 @@ namespace CLLAIntelligentSausage.Modelos
         public virtual ICollection<ExpedienteDigitalArchivo> ExpedienteDigitalArchivo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalMetaDato> ExpedienteDigitalMetaDato { get; set; }
-        public virtual ExpedienteDigitalProcesamiento ExpedienteDigitalProcesamiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalProcesamientoArchivoBitacora> ExpedienteDigitalProcesamientoArchivoBitacora { get; set; }
     }

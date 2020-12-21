@@ -156,18 +156,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ExpedienteDigitalProcesamientoArchivo">
-      <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivo">
-        <MappingFragment StoreEntitySet="ExpedienteDigitalProcesamientoArchivo">
-          <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivo" ColumnName="IdExpedienteDigitalProcesamientoArchivo" />
-          <ScalarProperty Name="IdExpedienteDigitalProcesamiento" ColumnName="IdExpedienteDigitalProcesamiento" />
-          <ScalarProperty Name="ArchivoRutaCompletaOrigen" ColumnName="ArchivoRutaCompletaOrigen" />
-          <ScalarProperty Name="ArchivoRutaCompletaDestino" ColumnName="ArchivoRutaCompletaDestino" />
-          <ScalarProperty Name="Requerido" ColumnName="Requerido" />
-          <ScalarProperty Name="Procesado" ColumnName="Procesado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ExpedienteDigitalProcesamientoArchivoBitacora">
       <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivoBitacora">
         <MappingFragment StoreEntitySet="ExpedienteDigitalProcesamientoArchivoBitacora">
@@ -232,5 +220,19 @@
     <FunctionImportMapping FunctionImportName="spExpedienteDigitalImportaPedimentosYMetadatos" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalImportaPedimentosYMetadatos" />
     <FunctionImportMapping FunctionImportName="spExpedienteDigitalInsertaArchivo" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalInsertaArchivo" />
     <FunctionImportMapping FunctionImportName="spExpedienteDigitalInsertaProcesamientoArchivo" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalInsertaProcesamientoArchivo" />
+    <EntitySetMapping Name="ExpedienteDigitalProcesamientoArchivo">
+      <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivo">
+        <MappingFragment StoreEntitySet="ExpedienteDigitalProcesamientoArchivo">
+          <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+          <ScalarProperty Name="Requerido" ColumnName="Requerido" />
+          <ScalarProperty Name="PrimeraBusqueda" ColumnName="PrimeraBusqueda" />
+          <ScalarProperty Name="ArchivoRutaCompletaDestino" ColumnName="ArchivoRutaCompletaDestino" />
+          <ScalarProperty Name="ArchivoRutaCompletaOrigen" ColumnName="ArchivoRutaCompletaOrigen" />
+          <ScalarProperty Name="IdExpedienteDigitalProcesamiento" ColumnName="IdExpedienteDigitalProcesamiento" />
+          <ScalarProperty Name="IdExpedienteDigitalProcesamientoArchivo" ColumnName="IdExpedienteDigitalProcesamientoArchivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spExpedienteDigitalGeneraTablaProcesamiento" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalGeneraTablaProcesamiento" />
   </EntityContainerMapping>
 </Mapping>

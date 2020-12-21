@@ -1,0 +1,1333 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/14/2020 6:57:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-M14V5SA"
+  DTS:CreatorName="DESKTOP-M14V5SA\EDUARDO LOPEZ"
+  DTS:DTSID="{B0E4111B-FD66-400B-9B59-99CB849DF2D9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{39F3F0B3-D559-49E6-9DAC-7C8128005C17}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{7C480A5A-3FD5-48C9-A1AF-8BCCFC895D00}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\10.1.45.252\Sistemas\IntegrationServices\Extraccion\Laredo\MaterialDespachado.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ExtraccionMaterialDespachadoLaredo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{12841394-B2B4-42E6-9173-3DE00CC2EBE1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExtraccionMaterialDespachadoLaredo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ExtraccionMaterialDespachadoLaredo"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ExtraccionMaterialDespachadoLaredo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Connections[OleDbConnection]"
+                  connectionManagerID="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CLLA_DWH_SA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[ClienteClave]"
+                      cachedDataType="r8"
+                      cachedName="ClienteClave"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ClienteClave]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ClienteClave]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cliente"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Cliente]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[ClienteNumero]"
+                      cachedDataType="r8"
+                      cachedName="ClienteNumero"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ClienteNumero]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ClienteNumero]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[ProveedorClave]"
+                      cachedDataType="r8"
+                      cachedName="ProveedorClave"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorClave]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ProveedorClave]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Proveedor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Proveedor"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Proveedor]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Proveedor]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[ProveedorNumero]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProveedorNumero"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorNumero]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ProveedorNumero]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[NoParte]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NoParte"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[NoParte]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[NoParte]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[NoParteProveedor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NoParteProveedor"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[NoParteProveedor]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[NoParteProveedor]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Fraccion]"
+                      cachedDataType="r8"
+                      cachedName="Fraccion"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Fraccion]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Fraccion10]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fraccion10"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion10]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Fraccion10]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[FraccionAmericana]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FraccionAmericana"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[FraccionAmericana]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FraccionAmericana]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[DescripcionEsp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DescripcionEsp"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionEsp]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[DescripcionEsp]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[DescripcionIng]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DescripcionIng"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionIng]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[DescripcionIng]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[UMFO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UMFO"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[UMFO]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[UMFO]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[UMC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UMC"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[UMC]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[PrecioUnitario]"
+                      cachedDataType="r8"
+                      cachedName="PrecioUnitario"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PrecioUnitario]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[PesoUnitarioLbs]"
+                      cachedDataType="r8"
+                      cachedName="PesoUnitarioLbs"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PesoUnitarioLbs]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PesoUnitarioLbs]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[PaisVendedorComprador]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PaisVendedorComprador"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorComprador]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PaisVendedorComprador]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[PaisOrigenDestino]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PaisOrigenDestino"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenDestino]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PaisOrigenDestino]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[TLC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TLC"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[TLC]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[TLC]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[PROSEC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PROSEC"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PROSEC]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PROSEC]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Industria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Industria"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Industria]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Industria]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Marca]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Marca"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Marca]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Modelo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Modelo"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Modelo]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Modelo]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[SubModelo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SubModelo"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[SubModelo]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[SubModelo]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[TipoOperacion]"
+                      cachedDataType="r8"
+                      cachedName="TipoOperacion"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[TipoOperacion]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[TipoOperacion]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Notas]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Notas"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Notas]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Notas]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[Observaciones]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Observaciones"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Observaciones]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[FechaAlta]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FechaAlta"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FechaAlta]" />
+                    <inputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].Columns[FechaUltimaModificacion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FechaUltimaModificacion"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[FechaUltimaModificacion]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FechaUltimaModificacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ClienteClave]"
+                      dataType="r8"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ClienteNumero]"
+                      dataType="r8"
+                      name="ClienteNumero" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorClave]"
+                      dataType="r8"
+                      name="ProveedorClave" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Proveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Proveedor" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorNumero]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProveedorNumero" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[NoParteProveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParteProveedor" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion]"
+                      dataType="r8"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Fraccion10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion10" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[FraccionAmericana]"
+                      dataType="wstr"
+                      length="255"
+                      name="FraccionAmericana" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionEsp]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionEsp" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[DescripcionIng]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionIng" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[UMFO]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMFO" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      dataType="r8"
+                      name="PrecioUnitario" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      name="PesoUnitarioLbs" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisVendedorComprador" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigenDestino" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[TLC]"
+                      dataType="wstr"
+                      length="255"
+                      name="TLC" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[PROSEC]"
+                      dataType="wstr"
+                      length="255"
+                      name="PROSEC" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Industria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Industria" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Modelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="Modelo" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[SubModelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubModelo" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[TipoOperacion]"
+                      dataType="r8"
+                      name="TipoOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Notas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Notas" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input].ExternalColumns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaUltimaModificacion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="MaterialDespachadoLaredo"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Hoja1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ClienteClave]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ClienteClave]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ClienteClave]"
+                      name="ClienteClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Cliente]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Cliente]"
+                      name="Cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ClienteNumero]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ClienteNumero]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ClienteNumero]"
+                      name="ClienteNumero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ProveedorClave]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ProveedorClave]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ProveedorClave]"
+                      name="ProveedorClave"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Proveedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Proveedor]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Proveedor]"
+                      name="Proveedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ProveedorNumero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ProveedorNumero]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[ProveedorNumero]"
+                      name="ProveedorNumero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[NoParte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[NoParte]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[NoParte]"
+                      name="NoParte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[NoParteProveedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[NoParteProveedor]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[NoParteProveedor]"
+                      name="NoParteProveedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Fraccion]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Fraccion]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Fraccion]"
+                      name="Fraccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Fraccion10]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Fraccion10]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Fraccion10]"
+                      name="Fraccion10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FraccionAmericana]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[FraccionAmericana]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FraccionAmericana]"
+                      name="FraccionAmericana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[DescripcionEsp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[DescripcionEsp]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[DescripcionEsp]"
+                      name="DescripcionEsp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[DescripcionIng]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[DescripcionIng]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[DescripcionIng]"
+                      name="DescripcionIng"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[UMFO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[UMFO]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[UMFO]"
+                      name="UMFO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[UMC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[UMC]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[UMC]"
+                      name="UMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PrecioUnitario]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PesoUnitarioLbs]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PesoUnitarioLbs]"
+                      name="PesoUnitarioLbs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PaisVendedorComprador]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PaisVendedorComprador]"
+                      name="PaisVendedorComprador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PaisOrigenDestino]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PaisOrigenDestino]"
+                      name="PaisOrigenDestino"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[TLC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[TLC]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[TLC]"
+                      name="TLC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PROSEC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PROSEC]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[PROSEC]"
+                      name="PROSEC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Industria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Industria]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Industria]"
+                      name="Industria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Marca]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Marca]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Marca]"
+                      name="Marca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Modelo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Modelo]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Modelo]"
+                      name="Modelo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[SubModelo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[SubModelo]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[SubModelo]"
+                      name="SubModelo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[TipoOperacion]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[TipoOperacion]"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[TipoOperacion]"
+                      name="TipoOperacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Notas]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Notas]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Notas]"
+                      name="Notas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Observaciones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Observaciones]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[Observaciones]"
+                      name="Observaciones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FechaAlta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[FechaAlta]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FechaAlta]"
+                      name="FechaAlta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[FechaUltimaModificacion]"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].Columns[FechaUltimaModificacion]"
+                      name="FechaUltimaModificacion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ClienteClave]"
+                      dataType="r8"
+                      name="ClienteClave" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Cliente]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ClienteNumero]"
+                      dataType="r8"
+                      name="ClienteNumero" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ProveedorClave]"
+                      dataType="r8"
+                      name="ProveedorClave" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Proveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Proveedor" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[ProveedorNumero]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProveedorNumero" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParte" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[NoParteProveedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="NoParteProveedor" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Fraccion]"
+                      dataType="r8"
+                      name="Fraccion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Fraccion10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fraccion10" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[FraccionAmericana]"
+                      dataType="wstr"
+                      length="255"
+                      name="FraccionAmericana" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[DescripcionEsp]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionEsp" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[DescripcionIng]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescripcionIng" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[UMFO]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMFO" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UMC" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PrecioUnitario]"
+                      dataType="r8"
+                      name="PrecioUnitario" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      name="PesoUnitarioLbs" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisVendedorComprador" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisOrigenDestino" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[TLC]"
+                      dataType="wstr"
+                      length="255"
+                      name="TLC" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[PROSEC]"
+                      dataType="wstr"
+                      length="255"
+                      name="PROSEC" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Industria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Industria" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Modelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="Modelo" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[SubModelo]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubModelo" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[TipoOperacion]"
+                      dataType="r8"
+                      name="TipoOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Notas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Notas" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      name="Observaciones" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output].ExternalColumns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaUltimaModificacion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ClienteClave]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ClienteClave]"
+                      name="ClienteClave" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Cliente]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Cliente]"
+                      name="Cliente" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ClienteNumero]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ClienteNumero]"
+                      name="ClienteNumero" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ProveedorClave]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ProveedorClave]"
+                      name="ProveedorClave" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Proveedor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Proveedor]"
+                      name="Proveedor" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ProveedorNumero]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ProveedorNumero]"
+                      name="ProveedorNumero" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[NoParte]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[NoParte]"
+                      name="NoParte" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[NoParteProveedor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[NoParteProveedor]"
+                      name="NoParteProveedor" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Fraccion]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Fraccion]"
+                      name="Fraccion" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Fraccion10]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Fraccion10]"
+                      name="Fraccion10" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[FraccionAmericana]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[FraccionAmericana]"
+                      name="FraccionAmericana" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[DescripcionEsp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[DescripcionEsp]"
+                      name="DescripcionEsp" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[DescripcionIng]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[DescripcionIng]"
+                      name="DescripcionIng" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[UMFO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[UMFO]"
+                      name="UMFO" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[UMC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[UMC]"
+                      name="UMC" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PrecioUnitario]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PesoUnitarioLbs]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PesoUnitarioLbs]"
+                      name="PesoUnitarioLbs" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PaisVendedorComprador]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PaisVendedorComprador]"
+                      name="PaisVendedorComprador" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PaisOrigenDestino]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PaisOrigenDestino]"
+                      name="PaisOrigenDestino" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[TLC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[TLC]"
+                      name="TLC" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PROSEC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[PROSEC]"
+                      name="PROSEC" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Industria]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Industria]"
+                      name="Industria" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Marca]"
+                      name="Marca" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Modelo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Modelo]"
+                      name="Modelo" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[SubModelo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[SubModelo]"
+                      name="SubModelo" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[TipoOperacion]"
+                      dataType="r8"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[TipoOperacion]"
+                      name="TipoOperacion" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Notas]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Notas]"
+                      name="Notas" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Observaciones]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[Observaciones]"
+                      name="Observaciones" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[FechaAlta]"
+                      name="FechaAlta" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[FechaUltimaModificacion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[FechaUltimaModificacion]"
+                      name="FechaUltimaModificacion" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ExtraccionMaterialDespachadoLaredo.Paths[Excel Source Output]"
+              endId="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar tabla ExtraccionMaterialDespachadoLaredo"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{7891FD20-588C-4240-8B11-98D8FDCD2AA9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar tabla ExtraccionMaterialDespachadoLaredo"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{73F4224F-F0F8-42E3-ADDC-DED4CC88CD1A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ExtraccionMaterialDespachadoLaredo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F6155A73-C7AE-44B1-86F1-69B6ADEA5C06}"
+      DTS:From="Package\Truncar tabla ExtraccionMaterialDespachadoLaredo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ExtraccionMaterialDespachadoLaredo" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="254,42"
+          Id="Package\ExtraccionMaterialDespachadoLaredo"
+          TopLeft="404,139" />
+        <NodeLayout
+          Size="320,42"
+          Id="Package\Truncar tabla ExtraccionMaterialDespachadoLaredo"
+          TopLeft="366,48" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="528.5,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ExtraccionMaterialDespachadoLaredo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo"
+          TopLeft="422,75" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo"
+          TopLeft="397,186" />
+        <EdgeLayout
+          Id="Package\ExtraccionMaterialDespachadoLaredo.Paths[Excel Source Output]"
+          TopLeft="524.5,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExtraccionMaterialDespachadoLaredo\MaterialDespachadoLaredo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExtraccionMaterialDespachadoLaredo\ExtraccionMaterialDespachadoLaredo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
