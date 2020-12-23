@@ -10,3 +10,11 @@ C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntellig
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.csproj.CopyComplete
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.exe
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\obj\Debug\CLLAIntelligentSausage.pdb
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.AccessControl.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.Permissions.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.AccessControl.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.Permissions.xml
+C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.Principal.Windows.xml
