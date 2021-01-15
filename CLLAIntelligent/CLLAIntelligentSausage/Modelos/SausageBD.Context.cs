@@ -27,22 +27,22 @@ namespace CLLAIntelligentSausage.Modelos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ExpedienteDigital> ExpedienteDigital { get; set; }
         public virtual DbSet<ExpedienteDigitalArchivo> ExpedienteDigitalArchivo { get; set; }
-        public virtual DbSet<ExpedienteDigitalBitacora> ExpedienteDigitalBitacora { get; set; }
         public virtual DbSet<ExpedienteDigitalConfiguracion> ExpedienteDigitalConfiguracion { get; set; }
         public virtual DbSet<ExpedienteDigitalConfiguracionArchivo> ExpedienteDigitalConfiguracionArchivo { get; set; }
         public virtual DbSet<ExpedienteDigitalConfiguracionArchivoCliente> ExpedienteDigitalConfiguracionArchivoCliente { get; set; }
         public virtual DbSet<ExpedienteDigitalConfiguracionCliente> ExpedienteDigitalConfiguracionCliente { get; set; }
-        public virtual DbSet<ExpedienteDigitalEventoBitacora> ExpedienteDigitalEventoBitacora { get; set; }
         public virtual DbSet<ExpedienteDigitalGastoComprobado> ExpedienteDigitalGastoComprobado { get; set; }
         public virtual DbSet<ExpedienteDigitalMetaDato> ExpedienteDigitalMetaDato { get; set; }
         public virtual DbSet<ExpedienteDigitalOrigen> ExpedienteDigitalOrigen { get; set; }
         public virtual DbSet<ExpedienteDigitalProcesamiento> ExpedienteDigitalProcesamiento { get; set; }
-        public virtual DbSet<ExpedienteDigitalProcesamientoArchivoBitacora> ExpedienteDigitalProcesamientoArchivoBitacora { get; set; }
         public virtual DbSet<ExpedienteDigitalTipoArchivo> ExpedienteDigitalTipoArchivo { get; set; }
-        public virtual DbSet<vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes> vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes { get; set; }
+        public virtual DbSet<Configuracion> Configuracion { get; set; }
+        public virtual DbSet<ExpedienteDigital> ExpedienteDigital { get; set; }
+        public virtual DbSet<ExpedienteDigitalEvento> ExpedienteDigitalEvento { get; set; }
         public virtual DbSet<ExpedienteDigitalProcesamientoArchivo> ExpedienteDigitalProcesamientoArchivo { get; set; }
+        public virtual DbSet<ExpedienteDigitalBitacoraExportacionCliente> ExpedienteDigitalBitacoraExportacionCliente { get; set; }
+        public virtual DbSet<ExpedienteDigitalBitacoraExportacion> ExpedienteDigitalBitacoraExportacion { get; set; }
     
         [DbFunction("CLLASausageContext", "fnExpedienteDigitalFinalizadoPendiente")]
         public virtual IQueryable<fnExpedienteDigitalFinalizadoPendiente_Result> fnExpedienteDigitalFinalizadoPendiente()
@@ -120,6 +120,21 @@ namespace CLLAIntelligentSausage.Modelos
         public virtual int spExpedienteDigitalGeneraTablaProcesamiento()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalGeneraTablaProcesamiento");
+        }
+    
+        public virtual int spExpedienteDigitalGeneraTablaBitacoraExportacionCliente()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalGeneraTablaBitacoraExportacionCliente");
+        }
+    
+        public virtual int spExpedienteDigitalGeneraTablaBitacoraExportacion()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalGeneraTablaBitacoraExportacion");
+        }
+    
+        public virtual int spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb");
         }
     }
 }

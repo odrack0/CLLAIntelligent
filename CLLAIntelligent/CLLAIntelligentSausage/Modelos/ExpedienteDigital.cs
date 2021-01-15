@@ -18,24 +18,30 @@ namespace CLLAIntelligentSausage.Modelos
         public ExpedienteDigital()
         {
             this.ExpedienteDigitalArchivo = new HashSet<ExpedienteDigitalArchivo>();
-            this.ExpedienteDigitalBitacora = new HashSet<ExpedienteDigitalBitacora>();
             this.ExpedienteDigitalGastoComprobado = new HashSet<ExpedienteDigitalGastoComprobado>();
             this.ExpedienteDigitalMetaDato = new HashSet<ExpedienteDigitalMetaDato>();
             this.ExpedienteDigitalProcesamiento = new HashSet<ExpedienteDigitalProcesamiento>();
         }
     
         public int IdExpedienteDigital { get; set; }
+        public Nullable<System.DateTime> Alta { get; set; }
         public int IdReferenciaSysExpert { get; set; }
         public int IdAgenciaSysExpert { get; set; }
-        public bool ExpedienteCompleto { get; set; }
-        public bool ExpedienteFinalizado { get; set; }
-        public bool ExpedienteSincronizadoSysExpertWeb { get; set; }
-        public int ClaveClienteSysExpert { get; set; }
+        public Nullable<int> ClaveClienteSysExpert { get; set; }
+        public Nullable<int> ClaveClienteSLAM { get; set; }
+        public Nullable<int> ClaveClienteUnica { get; set; }
+        public string ClienteRazonSocial { get; set; }
+        public string NumeroPedimento { get; set; }
+        public string NumeroReferencia { get; set; }
+        public string Aduana { get; set; }
+        public string Patente { get; set; }
+        public Nullable<System.DateTime> FechaPago { get; set; }
+        public Nullable<int> TipoOperacion { get; set; }
+        public string ClaveDocumento { get; set; }
+        public Nullable<bool> PedimentoConsolidado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalArchivo> ExpedienteDigitalArchivo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExpedienteDigitalBitacora> ExpedienteDigitalBitacora { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalGastoComprobado> ExpedienteDigitalGastoComprobado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

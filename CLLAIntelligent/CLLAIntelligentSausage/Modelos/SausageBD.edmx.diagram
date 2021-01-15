@@ -5,38 +5,39 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="11fdd948d7fb46ac9ce18f59c7c8d951" Name="Diagram1">
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigital" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalArchivo" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalBitacora" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracion" Width="1.5" PointX="1.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivo" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivoCliente" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionCliente" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalEventoBitacora" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalGastoComprobado" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalMetaDato" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalOrigen" Width="1.5" PointX="1.5" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamiento" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivoBitacora" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalTipoArchivo" Width="1.5" PointX="1.5" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="CLLASausageModelos.vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes" Width="1.5" PointX="8.75" PointY="11.25" IsExpanded="true" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" ManuallyRouted="false" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalArchivo" Width="2.875" PointX="4" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracion" Width="3.375" PointX="0.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivo" Width="3" PointX="4.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionArchivoCliente" Width="3.375" PointX="7.625" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalConfiguracionCliente" Width="3" PointX="4.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalGastoComprobado" Width="2" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalMetaDato" Width="3.25" PointX="1.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalOrigen" Width="2.25" PointX="1.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamiento" Width="3" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalTipoArchivo" Width="2.375" PointX="1.5" PointY="22" IsExpanded="true" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" ManuallyRouted="false" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionCliente_dbo_ExpedienteDigitalConfiguracion_IdExpedienteDigitalConfiguracion" ManuallyRouted="false" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionArchivo_dbo_ExpedienteDigitalTipoArchivo_IdExpedienteDigitalTipoArchivo" ManuallyRouted="false" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalConfiguracionArchivoCliente_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionAr" ManuallyRouted="false" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigitalConfiguracionArchivo_IdExpedienteDigitalConfiguracionArchivo" ManuallyRouted="false" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalEventoBitacora_IdExpedienteDigitalEventoBitacora" ManuallyRouted="false" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalTipoArchivo_dbo_ExpedienteDigitalOrigen_IdExpedienteDigitalOrigen" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivo" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="CLLASausageModelos.Configuracion" Width="3.125" PointX="7.75" PointY="0.625" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigital" Width="2.125" PointX="0.75" PointY="11.5" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigital_IdExpedienteDigital" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalGastoComprobado_dbo_ExpedienteDigital_IdExpedienteDigital" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigital_IdExpedienteDigital" />
+        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamiento_dbo_ExpedienteDigital_IdExpedienteDigital" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalEvento" Width="2.375" PointX="11.125" PointY="1.625" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalProcesamientoArchivo" Width="3.125" PointX="14.125" PointY="1.125" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalArchivo_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" />
+        <AssociationConnector Association="CLLASausageModelos.FK_ExpedienteDigitalProcesamientoArchivo_ExpedienteDigitalEvento" />
         <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalMetaDato_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoArchivo" />
-        <AssociationConnector Association="CLLASausageModelos.FK_dbo_ExpedienteDigitalProcesamientoArchivoBitacora_dbo_ExpedienteDigitalProcesamientoArchivo_IdExpedienteDigitalProcesamientoA" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalBitacoraExportacionCliente" Width="1.5" PointX="14.25" PointY="5.25" />
+        <AssociationConnector Association="CLLASausageModelos.FK_ExpedienteDigitalBitacoraExportacionCliente_ExpedienteDigitalArchivo1" />
+        <AssociationConnector Association="CLLASausageModelos.FK_ExpedienteDigitalBitacoraExportacionCliente_ExpedienteDigitalEvento" />
+        <EntityTypeShape EntityType="CLLASausageModelos.ExpedienteDigitalBitacoraExportacion" Width="1.5" PointX="17.25" PointY="5.375" />
+        <AssociationConnector Association="CLLASausageModelos.FK_ExpedienteDigitalBitacoraExportacion_ExpedienteDigitalArchivo" />
+        <AssociationConnector Association="CLLASausageModelos.FK_ExpedienteDigitalBitacoraExportacion_ExpedienteDigitalEvento" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

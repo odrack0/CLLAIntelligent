@@ -23,7 +23,7 @@ namespace CLLAIntelligentSausage.Modelos
         public string RutaMoverPosProcesamiento { get; set; }
         public bool EliminarDespuesProcesamiento { get; set; }
     
-        public virtual ExpedienteDigital ExpedienteDigital { get; set; }
         public virtual ExpedienteDigitalConfiguracionArchivo ExpedienteDigitalConfiguracionArchivo { get; set; }
+        public virtual ExpedienteDigital ExpedienteDigital { get; set; }
     }
 }

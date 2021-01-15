@@ -14,9 +14,11 @@ namespace CLLAIntelligentSausage.Modelos.Enumerados
         public static string PedClaveDocumento = "{PedClaveDocumento}";
         public static string PedRegimen = "{PedRegimen}";
         public static string PedAduanaClave = "{PedAduanaClave}";
-        public static string PedAduanaSeccion = "{PedAduanaSeccion}";
+        public static string PedAduanaSeccion = "{PedAduanaSeccion}";        
         public static string PedArchivoValidacionEnvio = "{PedArchivoValidacionEnvio}";
         public static string PedArchivoValidacionRespuesta = "{PedArchivoValidacionRespuesta}";
+        public static string PedArchivoValidacionAperturaEnvio = "{PedArchivoValidacionAperturaEnvio}";
+        public static string PedArchivoValidacionAperturaRespuesta = "{PedArchivoValidacionAperturaRespuesta}";
         public static string PedArchivoBancEnvio = "{PedArchivoBancEnvio}";
         public static string PedArchivoBancoRespuesta = "{PedArchivoBancoRespuesta}";
         public static string PedPatente = "{PedPatente}";
@@ -49,5 +51,6 @@ namespace CLLAIntelligentSausage.Modelos.Enumerados
         public static string GastoComprobadoFolio = "{GastoComprobadoFolio}";
         public static string GastoComprobadoDescripcion = "{GastoComprobadoDescripcion}";
         public static string GastoComprobadoMontoTotal = "{GastoComprobadoMonto}";
+        public static string SysExpertRutaExpediente = "{SysExpertRutaExpediente}";
     }
 }

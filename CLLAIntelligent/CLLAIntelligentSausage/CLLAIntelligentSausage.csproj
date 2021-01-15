@@ -42,6 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -71,12 +74,21 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tamir.SharpSSH, Version=1.1.1.13, Culture=neutral">
+      <HintPath>..\packages\Tamir.SharpSSH.1.1.1.13\lib\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="WinSCPnet, Version=1.7.2.10905, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinSCP.5.17.9\lib\net40\WinSCPnet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CFDISAT\v33.cs" />
     <Compile Include="Librerias\Exepciones.cs" />
     <Compile Include="Librerias\Logs.cs" />
+    <Compile Include="Modelos\Configuracion.cs">
+      <DependentUpon>SausageBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Enumerados\ExpedienteDigitalEventoBitacora.cs" />
     <Compile Include="Modelos\Enumerados\ExpedienteDigitalTipoArchivo.cs" />
     <Compile Include="Modelos\Enumerados\ExpedienteDigitalTipoMetaDato.cs" />
@@ -86,7 +98,10 @@
     <Compile Include="Modelos\ExpedienteDigitalArchivo.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\ExpedienteDigitalBitacora.cs">
+    <Compile Include="Modelos\ExpedienteDigitalBitacoraExportacion.cs">
+      <DependentUpon>SausageBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\ExpedienteDigitalBitacoraExportacionCliente.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ExpedienteDigitalConfiguracion.cs">
@@ -101,7 +116,7 @@
     <Compile Include="Modelos\ExpedienteDigitalConfiguracionCliente.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\ExpedienteDigitalEventoBitacora.cs">
+    <Compile Include="Modelos\ExpedienteDigitalEvento.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ExpedienteDigitalGastoComprobado.cs">
@@ -117,9 +132,6 @@
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ExpedienteDigitalProcesamientoArchivo.cs">
-      <DependentUpon>SausageBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelos\ExpedienteDigitalProcesamientoArchivoBitacora.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ExpedienteDigitalTipoArchivo.cs">
@@ -146,9 +158,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SausageBD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Modelos\vwExpedienteDigtialProcesamientoArchivoBitacoraPendientes.cs">
-      <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,6 +205,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\WinSCP.5.17.9\build\WinSCP.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinSCP.5.17.9\build\WinSCP.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\WinSCP.5.17.9\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.17.9\build\WinSCP.targets')" />
 </Project>

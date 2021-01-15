@@ -19,7 +19,6 @@ namespace CLLAIntelligentSausage.Modelos
         {
             this.ExpedienteDigitalArchivo = new HashSet<ExpedienteDigitalArchivo>();
             this.ExpedienteDigitalMetaDato = new HashSet<ExpedienteDigitalMetaDato>();
-            this.ExpedienteDigitalProcesamientoArchivoBitacora = new HashSet<ExpedienteDigitalProcesamientoArchivoBitacora>();
         }
     
         public int IdExpedienteDigitalProcesamientoArchivo { get; set; }
@@ -27,14 +26,15 @@ namespace CLLAIntelligentSausage.Modelos
         public string ArchivoRutaCompletaOrigen { get; set; }
         public string ArchivoRutaCompletaDestino { get; set; }
         public Nullable<System.DateTime> PrimeraBusqueda { get; set; }
-        public bool Requerido { get; set; }
-        public bool Procesado { get; set; }
+        public Nullable<System.DateTime> Procesado { get; set; }
+        public Nullable<System.DateTime> Error { get; set; }
+        public Nullable<int> ErrorIdExpedienteDigitalEvento { get; set; }
+        public string ErrorObservaciones { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalArchivo> ExpedienteDigitalArchivo { get; set; }
+        public virtual ExpedienteDigitalEvento ExpedienteDigitalEvento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalMetaDato> ExpedienteDigitalMetaDato { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExpedienteDigitalProcesamientoArchivoBitacora> ExpedienteDigitalProcesamientoArchivoBitacora { get; set; }
     }
 }
