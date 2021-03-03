@@ -18,8 +18,5 @@ C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntellig
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.AccessControl.xml
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.Permissions.xml
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\System.Security.Principal.Windows.xml
-C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\Renci.SshNet.dll
-C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\Renci.SshNet.xml
-C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\Tamir.SharpSSH.dll
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\WinSCP.exe
 C:\Users\EDUARDO LOPEZ\source\repos\CLLAIntelligent\CLLAIntelligent\CLLAIntelligentSausage\bin\Debug\WinSCPnet.dll

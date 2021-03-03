@@ -172,28 +172,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ExpedienteDigital">
-      <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigital">
-        <MappingFragment StoreEntitySet="ExpedienteDigital">
-          <ScalarProperty Name="PedimentoConsolidado" ColumnName="PedimentoConsolidado" />
-          <ScalarProperty Name="ClaveDocumento" ColumnName="ClaveDocumento" />
-          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
-          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-          <ScalarProperty Name="Patente" ColumnName="Patente" />
-          <ScalarProperty Name="Aduana" ColumnName="Aduana" />
-          <ScalarProperty Name="NumeroReferencia" ColumnName="NumeroReferencia" />
-          <ScalarProperty Name="NumeroPedimento" ColumnName="NumeroPedimento" />
-          <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
-          <ScalarProperty Name="ClaveClienteUnica" ColumnName="ClaveClienteUnica" />
-          <ScalarProperty Name="ClaveClienteSLAM" ColumnName="ClaveClienteSLAM" />
-          <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
-          <ScalarProperty Name="IdAgenciaSysExpert" ColumnName="IdAgenciaSysExpert" />
-          <ScalarProperty Name="IdReferenciaSysExpert" ColumnName="IdReferenciaSysExpert" />
-          <ScalarProperty Name="Alta" ColumnName="Alta" />
-          <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ExpedienteDigitalEvento">
       <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalEvento">
         <MappingFragment StoreEntitySet="ExpedienteDigitalEvento">
@@ -220,34 +198,9 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="spExpedienteDigitalGeneraTablaBitacoraExportacionCliente" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalGeneraTablaBitacoraExportacionCliente" />
-    <EntitySetMapping Name="ExpedienteDigitalBitacoraExportacionCliente">
-      <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalBitacoraExportacionCliente">
-        <MappingFragment StoreEntitySet="ExpedienteDigitalBitacoraExportacionCliente">
-          <ScalarProperty Name="RutaOrigen" ColumnName="RutaOrigen" />
-          <ScalarProperty Name="ErrorObservaciones" ColumnName="ErrorObservaciones" />
-          <ScalarProperty Name="ErrorIdExpedienteDigitalEvento" ColumnName="ErrorIdExpedienteDigitalEvento" />
-          <ScalarProperty Name="Error" ColumnName="Error" />
-          <ScalarProperty Name="Exportado" ColumnName="Exportado" />
-          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Puerto" ColumnName="Puerto" />
-          <ScalarProperty Name="Servidor" ColumnName="Servidor" />
-          <ScalarProperty Name="RutaCompletaExportado" ColumnName="RutaCompletaExportado" />
-          <ScalarProperty Name="Extension" ColumnName="Extension" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="RutaRaiz" ColumnName="RutaRaiz" />
-          <ScalarProperty Name="RutaRaizNomenclatura" ColumnName="RutaRaizNomenclatura" />
-          <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
-          <ScalarProperty Name="IdExpedienteDigitalTipoExportacion" ColumnName="IdExpedienteDigitalTipoExportacion" />
-          <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
-          <ScalarProperty Name="IdExpedienteDigitalArchivo" ColumnName="IdExpedienteDigitalArchivo" />
-          <ScalarProperty Name="IdExpedienteDigitalConfiguracionClienteExportacion" ColumnName="IdExpedienteDigitalConfiguracionClienteExportacion" />
-          <ScalarProperty Name="IdExpedienteDigitalBitacoraExportacionCliente" ColumnName="IdExpedienteDigitalBitacoraExportacionCliente" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="spExpedienteDigitalGeneraTablaBitacoraExportacion" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalGeneraTablaBitacoraExportacion" />
     <FunctionImportMapping FunctionImportName="spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb" />
+    <FunctionImportMapping FunctionImportName="spExpedienteDigitalCierreExpedientes" FunctionName="CLLASausageModelos.Store.spExpedienteDigitalCierreExpedientes" />
     <EntitySetMapping Name="ExpedienteDigitalBitacoraExportacion">
       <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalBitacoraExportacion">
         <MappingFragment StoreEntitySet="ExpedienteDigitalBitacoraExportacion">
@@ -255,6 +208,7 @@
           <ScalarProperty Name="ErrorIdExpedienteDigitalEvento" ColumnName="ErrorIdExpedienteDigitalEvento" />
           <ScalarProperty Name="Error" ColumnName="Error" />
           <ScalarProperty Name="Exportado" ColumnName="Exportado" />
+          <ScalarProperty Name="Programacion" ColumnName="Programacion" />
           <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Puerto" ColumnName="Puerto" />
@@ -270,6 +224,56 @@
           <ScalarProperty Name="IdExpedienteDigitalArchivo" ColumnName="IdExpedienteDigitalArchivo" />
           <ScalarProperty Name="IdExpedienteDigitalConfiguracionExportacion" ColumnName="IdExpedienteDigitalConfiguracionExportacion" />
           <ScalarProperty Name="IdExpedienteDigitalBitacoraExportacion" ColumnName="IdExpedienteDigitalBitacoraExportacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpedienteDigitalBitacoraExportacionCliente">
+      <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigitalBitacoraExportacionCliente">
+        <MappingFragment StoreEntitySet="ExpedienteDigitalBitacoraExportacionCliente">
+          <ScalarProperty Name="ErrorObservaciones" ColumnName="ErrorObservaciones" />
+          <ScalarProperty Name="ErrorIdExpedienteDigitalEvento" ColumnName="ErrorIdExpedienteDigitalEvento" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+          <ScalarProperty Name="Exportado" ColumnName="Exportado" />
+          <ScalarProperty Name="Programacion" ColumnName="Programacion" />
+          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Puerto" ColumnName="Puerto" />
+          <ScalarProperty Name="Servidor" ColumnName="Servidor" />
+          <ScalarProperty Name="RutaCompletaExportado" ColumnName="RutaCompletaExportado" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="RutaRaiz" ColumnName="RutaRaiz" />
+          <ScalarProperty Name="RutaRaizNomenclatura" ColumnName="RutaRaizNomenclatura" />
+          <ScalarProperty Name="RutaOrigen" ColumnName="RutaOrigen" />
+          <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
+          <ScalarProperty Name="IdExpedienteDigitalTipoExportacion" ColumnName="IdExpedienteDigitalTipoExportacion" />
+          <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
+          <ScalarProperty Name="IdExpedienteDigitalArchivo" ColumnName="IdExpedienteDigitalArchivo" />
+          <ScalarProperty Name="IdExpedienteDigitalConfiguracionClienteExportacion" ColumnName="IdExpedienteDigitalConfiguracionClienteExportacion" />
+          <ScalarProperty Name="IdExpedienteDigitalBitacoraExportacionCliente" ColumnName="IdExpedienteDigitalBitacoraExportacionCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpedienteDigital">
+      <EntityTypeMapping TypeName="CLLASausageModelos.ExpedienteDigital">
+        <MappingFragment StoreEntitySet="ExpedienteDigital">
+          <ScalarProperty Name="Completado" ColumnName="Completado" />
+          <ScalarProperty Name="PedimentoConsolidado" ColumnName="PedimentoConsolidado" />
+          <ScalarProperty Name="ClaveDocumento" ColumnName="ClaveDocumento" />
+          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="Patente" ColumnName="Patente" />
+          <ScalarProperty Name="Aduana" ColumnName="Aduana" />
+          <ScalarProperty Name="NumeroReferencia" ColumnName="NumeroReferencia" />
+          <ScalarProperty Name="NumeroPedimento" ColumnName="NumeroPedimento" />
+          <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+          <ScalarProperty Name="ClaveClienteUnica" ColumnName="ClaveClienteUnica" />
+          <ScalarProperty Name="ClaveClienteSLAM" ColumnName="ClaveClienteSLAM" />
+          <ScalarProperty Name="ClaveClienteSysExpert" ColumnName="ClaveClienteSysExpert" />
+          <ScalarProperty Name="IdAgenciaSysExpert" ColumnName="IdAgenciaSysExpert" />
+          <ScalarProperty Name="IdReferenciaSysExpert" ColumnName="IdReferenciaSysExpert" />
+          <ScalarProperty Name="Alta" ColumnName="Alta" />
+          <ScalarProperty Name="IdExpedienteDigital" ColumnName="IdExpedienteDigital" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

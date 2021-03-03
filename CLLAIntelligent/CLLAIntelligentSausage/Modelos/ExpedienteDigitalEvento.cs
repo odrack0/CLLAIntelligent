@@ -18,8 +18,8 @@ namespace CLLAIntelligentSausage.Modelos
         public ExpedienteDigitalEvento()
         {
             this.ExpedienteDigitalProcesamientoArchivo = new HashSet<ExpedienteDigitalProcesamientoArchivo>();
-            this.ExpedienteDigitalBitacoraExportacionCliente = new HashSet<ExpedienteDigitalBitacoraExportacionCliente>();
             this.ExpedienteDigitalBitacoraExportacion = new HashSet<ExpedienteDigitalBitacoraExportacion>();
+            this.ExpedienteDigitalBitacoraExportacionCliente = new HashSet<ExpedienteDigitalBitacoraExportacionCliente>();
         }
     
         public int IdExpedienteDigitalEvento { get; set; }
@@ -30,8 +30,8 @@ namespace CLLAIntelligentSausage.Modelos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalProcesamientoArchivo> ExpedienteDigitalProcesamientoArchivo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExpedienteDigitalBitacoraExportacionCliente> ExpedienteDigitalBitacoraExportacionCliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalBitacoraExportacion> ExpedienteDigitalBitacoraExportacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExpedienteDigitalBitacoraExportacionCliente> ExpedienteDigitalBitacoraExportacionCliente { get; set; }
     }
 }

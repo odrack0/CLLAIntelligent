@@ -22,7 +22,7 @@ namespace CLLAIntelligentSausage.Modelos
         public Nullable<int> EsHijo { get; set; }
         public Nullable<int> Nivel { get; set; }
     
-        public virtual ExpedienteDigital ExpedienteDigital { get; set; }
         public virtual ExpedienteDigitalProcesamientoArchivo ExpedienteDigitalProcesamientoArchivo { get; set; }
+        public virtual ExpedienteDigital ExpedienteDigital { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace CLLAIntelligentSausage.Modelos
         public int IdExpedienteDigital { get; set; }
         public int IdExpedienteDigitalTipoExportacion { get; set; }
         public int ClaveClienteSysExpert { get; set; }
+        public string RutaOrigen { get; set; }
         public string RutaRaizNomenclatura { get; set; }
         public string RutaRaiz { get; set; }
         public string Nombre { get; set; }
@@ -29,11 +30,11 @@ namespace CLLAIntelligentSausage.Modelos
         public string Puerto { get; set; }
         public string Usuario { get; set; }
         public string Contrasenia { get; set; }
+        public Nullable<System.DateTime> Programacion { get; set; }
         public Nullable<System.DateTime> Exportado { get; set; }
         public Nullable<System.DateTime> Error { get; set; }
         public Nullable<int> ErrorIdExpedienteDigitalEvento { get; set; }
         public string ErrorObservaciones { get; set; }
-        public string RutaOrigen { get; set; }
     
         public virtual ExpedienteDigitalArchivo ExpedienteDigitalArchivo { get; set; }
         public virtual ExpedienteDigitalEvento ExpedienteDigitalEvento { get; set; }

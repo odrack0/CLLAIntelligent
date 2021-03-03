@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -21,12 +22,8 @@ namespace CLLAIntelligentSausage
         public int ProcesamientoHistoricoDias = -1;
     }
 
-
     class Program
     {
-        //public static string ConfiguracionGastosComprobadosRutaOrigen = @"\\10.1.45.252\LaserFiche\FACTURAS PROVEEDORES\";
-        //public static string ConfiguracionGastosComprobadosRutaDestino = @"\\10.1.45.252\LaserFiche\FACTURAS PROVEEDORES\ProcesadoSausage\";
-        //public static int ConfiguracionProcesamientoHistoricoDias = -1; 
         public static Configuracion configuracionSistema = new Configuracion();
 
         public static void CargaConfiguracion(CLLASausageContext db)
@@ -37,164 +34,19 @@ namespace CLLAIntelligentSausage
             {
                 configuracionSistema.GastosComprobadosRutaOrigen = configuracion.GastosComprobadosRutaOrigen;
                 configuracionSistema.GastosComprobadosRutaDestino = configuracion.GastosComprobadosRutaDestino;
-                configuracionSistema.ProcesamientoHistoricoDias = configuracion.ProcesamientoHistoricoDias;
-                
+                configuracionSistema.ProcesamientoHistoricoDias = configuracion.ProcesamientoHistoricoDias;                
             }            
-        }
-    
-        public static void ProcesaArchivo(ExpedienteDigitalProcesamientoArchivo archivoPendiente, string rutaOrigenAlterna, CLLASausageContext db)
-        {
-            if (string.IsNullOrEmpty(rutaOrigenAlterna))
-            {
-                rutaOrigenAlterna = archivoPendiente.ArchivoRutaCompletaOrigen;
-            }
-
-            if (File.Exists(rutaOrigenAlterna))
-            {
-                //Crear directorio destino si no existe
-
-                try
-                {
-                    Directory.CreateDirectory(archivoPendiente.ArchivoRutaCompletaDestino.Substring(0, archivoPendiente.ArchivoRutaCompletaDestino.LastIndexOf(@"\")));
-                }
-                catch (Exception ex)
-                {
-                    archivoPendiente.Error = DateTime.Now;
-                    archivoPendiente.ErrorObservaciones = Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex);
-                    archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_CREAR_DIRECTORIO_DESTINO;
-                    //EventoBitacoraProcesamientoArchivo(archivoPendiente.IdExpedienteDigitalProcesamientoArchivo, ex, db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_CREAR_DIRECTORIO_DESTINO);
-                }
-
-                if (!File.Exists(archivoPendiente.ArchivoRutaCompletaDestino))
-                {
-                    File.Copy(rutaOrigenAlterna, archivoPendiente.ArchivoRutaCompletaDestino);
-                }
-
-                //if (archivoPendiente.)
-                //{
-                //    try
-                //    {
-                //        File.Delete(archivoOrigen);
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        errores++;
-                //        EventoBitacora(idExpedienteDigital, ex, db, CLLASausageModeloDatos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_ELIMINAR_ARCHIVO_EN_ORIGEN);
-                //    }
-                //}
-
-                //if (!string.IsNullOrEmpty(rutamover))
-                //{
-                //    string rutaMoverPosProcesamiento =
-                //        archivoOrigen.Substring(0, archivoOrigen.LastIndexOf(@"\")) +
-                //        @"\" +
-                //        rutamover +
-                //        archivoOrigen.Substring(archivoOrigen.LastIndexOf(@"\"));
-                //    try
-                //    {
-                //        Directory.CreateDirectory(rutaMoverPosProcesamiento.Substring(0, rutaMoverPosProcesamiento.LastIndexOf(@"\")));
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        errores++;
-                //        EventoBitacora(idExpedienteDigital, ex, db, CLLASausageModeloDatos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_CREAR_DIRECTORIO_PROCESADO_ORIGEN);
-                //    }
-
-                //    try
-                //    {
-                //        File.Move(archivoOrigen, rutaMoverPosProcesamiento);
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        errores++;
-                //        EventoBitacora(idExpedienteDigital, ex, db, CLLASausageModeloDatos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_MOVER_ARCHIVO_A_DIRECTORIO_PROCESADO_EN_ORIGEN);
-                //    }
-                //}
-
-                archivoPendiente.Procesado = DateTime.Now;
-                //archivoPendiente.Procesado = true;
-            }
-            else
-            {
-                archivoPendiente.Error = DateTime.Now;
-                archivoPendiente.ErrorObservaciones = "FALTA ARCHIVO EN ORIGEN";
-                archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN;
-                //EventoBitacoraProcesamientoArchivo(archivoPendiente.IdExpedienteDigitalProcesamientoArchivo, new Exception(archivoPendiente.ArchivoRutaCompletaOrigen), db, CLLAIntelligentSausage.Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN);
-            }
-        }
-        //static void EventoBitacora(int idExpedienteDigital, Exception ex, CLLASausageContext db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora evento)
-        //{
-        //    var expedienteDigitalBitacora = new ExpedienteDigitalBitacora
-        //    {
-        //        IdExpedienteDigital = idExpedienteDigital,
-        //        FechaHora = DateTime.Now,
-        //        IdExpedienteDigitalEventoBitacora = (int)evento,
-        //        Observaciones = Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex)
-        //    };
-
-        //    db.ExpedienteDigitalBitacora.Add(expedienteDigitalBitacora);
-        //}
-
-        //static void EventoBitacoraProcesamientoArchivo(int idExpedienteDigitalProcesamientoArchivo, Exception ex, CLLASausageContext db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora evento)
-        //{
-        //    var expedienteDigitalProcesamientoArchivoBitacora = new ExpedienteDigitalProcesamientoArchivoBitacora
-        //    {
-        //        IdExpedienteDigitalProcesamientoArchivo = idExpedienteDigitalProcesamientoArchivo,
-        //        FechaHora = DateTime.Now,
-        //        IdExpedienteDigitalEventoBitacora = (int)evento,
-        //        Observaciones = Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex)
-        //    };
-
-        //    db.ExpedienteDigitalProcesamientoArchivoBitacora.Add(expedienteDigitalProcesamientoArchivoBitacora);
-        //}
-
-        public static void AgregarProcesamientoArchivo(int idExpedienteDigital, int idExpedienteDigitalProcesamiento, string archivoRutaCompletaOrigen, string archivoRutaCompletaDestino, string archivoFinalizadoNomenclatura, string archivoFinalizadoRuta, Boolean requerido, CLLASausageContext db)
-        {
-            var parametroLlavePrimaria = new System.Data.Entity.Core.Objects.ObjectParameter("llaveprimaria", 1);
-
-            db.spExpedienteDigitalInsertaProcesamientoArchivo(
-                idExpedienteDigitalProcesamiento,
-                archivoRutaCompletaOrigen,
-                archivoRutaCompletaDestino,
-                requerido,
-                parametroLlavePrimaria
-            );
-
-            int llavePrimariaProcesamientoArchvo = (int)parametroLlavePrimaria.Value;
-
-            db.spExpedienteDigitalInsertaArchivo(
-                idExpedienteDigital,
-                llavePrimariaProcesamientoArchvo,
-                archivoFinalizadoNomenclatura,
-                archivoFinalizadoRuta
-                );
-        }
-
-        public static string RemplazaMetaDatosRutaArchivo(List<ExpedienteDigitalMetaDato> metaDatosExpedientePedimentoEncabezado, string rutaCompletaArchivo)
-        {
-            foreach (var metaDatoExpedientePedimentoEncabezado in metaDatosExpedientePedimentoEncabezado)
-            {
-                if (rutaCompletaArchivo.Contains(metaDatoExpedientePedimentoEncabezado.Nombre))
-                {
-                    rutaCompletaArchivo = rutaCompletaArchivo.Replace(metaDatoExpedientePedimentoEncabezado.Nombre, metaDatoExpedientePedimentoEncabezado.Valor);
-                }
-            }
-
-            return rutaCompletaArchivo;
         }
 
         public static void ProcesaGastosComprobados(CLLASausageContext db)
         {
             var archivosXML = Directory.GetFiles(configuracionSistema.GastosComprobadosRutaOrigen, "*.xml");
-            
+
             string rutaCompletaArchivoXML = string.Empty;
             string directorioRaizArchivoXML = string.Empty;
             string nombreCompletoArhivoXML = string.Empty;
             string nombreArchivoXML = string.Empty;
-
             string rutaCompletaArchivoPDF = string.Empty;
-            //string nombreCompletoArhivoXML = string.Empty;
-            //string nombreArchivoXML = string.Empty;
 
             foreach (var archivoXML in archivosXML)
             {
@@ -222,10 +74,6 @@ namespace CLLAIntelligentSausage
                         gastoComprobado.SubTotal = comprobante.SubTotal;
                         gastoComprobado.Total = comprobante.Total;
 
-                        //Archivos                    
-                        //string nombreCompletoArhivoXML = archivoXML.Substring(archivoXML.LastIndexOf(@"\") + 1);
-                        //string nombreArchivoXML = nombreCompletoArhivoXML.Substring(0, nombreCompletoArhivoXML.LastIndexOf("."));
-
                         gastoComprobado.RutaArchivoXMLOrigen = archivoXML;
                         gastoComprobado.RutaArchivoXMLDestino = configuracionSistema.GastosComprobadosRutaDestino + gastoComprobado.Fecha.Substring(0, 4) + "\\" + gastoComprobado.Fecha.Substring(5, 2) + "\\" + nombreCompletoArhivoXML;
                         gastoComprobado.RutaArchivoPDFOrigen = configuracionSistema.GastosComprobadosRutaOrigen + nombreArchivoXML + ".pdf";
@@ -250,22 +98,35 @@ namespace CLLAIntelligentSausage
 
                     try
                     {
-                        File.Move(rutaCompletaArchivoXML, rutaCompletaErrorXML);
-                        File.Move(rutaCompletaArchivoPDF, rutaCompletaErrorPDF);
+                        if (File.Exists(rutaCompletaErrorXML))
+                        {
+                            File.Delete(rutaCompletaArchivoXML);
+                        }
+                        else
+                        {
+                            File.Move(rutaCompletaArchivoXML, rutaCompletaErrorXML);
+                        }
+
+                        if (File.Exists(rutaCompletaErrorPDF))
+                        {
+                            File.Delete(rutaCompletaArchivoPDF);
+                        }
+                        else
+                        {
+                            File.Move(rutaCompletaArchivoPDF, rutaCompletaErrorPDF);
+                        }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Logs.EscribirLog("Error al mover XML (Error lectura XML): " + Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex));
                     }
 
-
-                    Console.WriteLine("The file already exists.");
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
-                    if(
+                    if (
                         Excepciones.ObtenerNombreExcepcion(ex) == "XmlException" ||
-                        (Excepciones.ObtenerNombreExcepcion(ex) == "InvalidOperationException" && Excepciones.ObtenerMensajeExepcion(ex) == "No se esperaba <Acuse xmlns=''>.") 
+                        (Excepciones.ObtenerNombreExcepcion(ex) == "InvalidOperationException" && Excepciones.ObtenerMensajeExepcion(ex) == "No se esperaba <Acuse xmlns=''>.")
                       )
                     {
                         string rutaErrorXML = directorioRaizArchivoXML + "ProcesadoSausage\\Error\\LecturaXML\\";
@@ -285,24 +146,56 @@ namespace CLLAIntelligentSausage
                         }
                     }
 
-                    
+
                 }
             }
         }
-        public static void ProcesaTablasProcesamiento(CLLASausageContext db) 
+
+        public static void AgregarProcesamientoArchivo(int idExpedienteDigital, int idExpedienteDigitalProcesamiento, string archivoRutaCompletaOrigen, string archivoRutaCompletaDestino, string archivoFinalizadoNomenclatura, string archivoFinalizadoRuta, Boolean requerido, CLLASausageContext db)
+        {
+            var parametroLlavePrimaria = new System.Data.Entity.Core.Objects.ObjectParameter("llaveprimaria", 1);
+
+            db.spExpedienteDigitalInsertaProcesamientoArchivo(
+                idExpedienteDigitalProcesamiento,
+                archivoRutaCompletaOrigen,
+                archivoRutaCompletaDestino,
+                requerido,
+                parametroLlavePrimaria
+            );
+
+            int llavePrimariaProcesamientoArchvo = (int)parametroLlavePrimaria.Value;
+
+            db.spExpedienteDigitalInsertaArchivo(
+                idExpedienteDigital,
+                llavePrimariaProcesamientoArchvo,
+                archivoFinalizadoNomenclatura,
+                archivoFinalizadoRuta
+                );
+        }
+
+        public static void ProcesaTablasProcesamiento(CLLASausageContext db)
         {
             #region GeneracionDeTablasProcesamiento    
 
-            var procesamientosPendientes = db.fnExpedienteDigitalProcesamientoPendiente().ToList();
+            var procesamientosPendientes = db.fnExpedienteDigitalProcesamientoPendiente().OrderBy(o => o.IdExpedienteDigital).ToList();
+            List<ExpedienteDigitalMetaDato> metaDatosExpediente = new List<ExpedienteDigitalMetaDato>();
+            List<ExpedienteDigitalMetaDato> metaDatosGeneralesExpediente = new List<ExpedienteDigitalMetaDato>();
+            int? ultimoIdExpedienteDigital = int.MinValue;
+
             foreach (var procesamientoPendiente in procesamientosPendientes)
             {
                 string origenNomenclaura = procesamientoPendiente.OrigenNomenclatura;
                 string destinoNomenclatura = procesamientoPendiente.DestinoNomenclatura;
-                //string archivoFinalizadoNomenclaturaOriginal = db.ExpedienteDigitalObtenerNomenclaturaArchivoFinalizado(procesamientoPendiente.IdExpedienteDigitalProcesamiento);Cambio de EF
                 string archivoFinalizadoNomenclaturaOriginal = FuncionesEscalares.fnExpedienteDigitalObtenerNomenclaturaArchivoFinalizado(procesamientoPendiente.IdExpedienteDigitalProcesamiento, db);
 
-                var metaDatosExpediente = db.ExpedienteDigitalMetaDato.Where(w => w.IdExpedienteDigital == procesamientoPendiente.IdExpedienteDigital).ToList();
-                var metaDatosGeneralesExpediente = metaDatosExpediente.Where(w => w.Nivel == 1).ToList();
+                if ((ultimoIdExpedienteDigital == int.MinValue) || (procesamientoPendiente.IdExpedienteDigital != ultimoIdExpedienteDigital))
+                {
+                    Console.WriteLine("Procesando tabla expediente id: " + procesamientoPendiente.IdExpedienteDigital.ToString());
+                    metaDatosExpediente = db.ExpedienteDigitalMetaDato.Where(w => w.IdExpedienteDigital == procesamientoPendiente.IdExpedienteDigital).ToList();
+                    metaDatosGeneralesExpediente = metaDatosExpediente.Where(w => w.Nivel == 1).ToList();
+                    ultimoIdExpedienteDigital = procesamientoPendiente.IdExpedienteDigital;
+                }
+
                 Boolean esPedConsolidado = metaDatosExpediente.Where(w => w.Nombre == Modelos.Enumerados.ExpedientedigitalTipoMetaDato.RemNumeroRemesa).ToList().Count == 0 ? false : true;
 
                 origenNomenclaura = RemplazaMetaDatosRutaArchivo(metaDatosGeneralesExpediente, origenNomenclaura);
@@ -470,7 +363,7 @@ namespace CLLAIntelligentSausage
                             {
                                 string origen =
                                     procesamientoPendiente.IdExpedienteDigitalTipoArchivo == (int)Modelos.Enumerados.ExpedienteDigitalTipoArchivo.GASTO_COMPROBADO_PDF ?
-                                    gastoComprobado.RutaArchivoXMLDestino : gastoComprobado.RutaArchivoPDFDestino;
+                                        gastoComprobado.RutaArchivoPDFDestino : gastoComprobado.RutaArchivoXMLDestino;
                                 string destino = RemplazaMetaDatosRutaArchivo(metaDatosPadre, destinoNomenclatura);
                                 string finalizado = RemplazaMetaDatosRutaArchivo(metaDatosPadre, archivoFinalizadoNomenclatura);
 
@@ -504,111 +397,212 @@ namespace CLLAIntelligentSausage
                         break;
                 }
 
-                db.SaveChanges();
+
             }
+
+            db.SaveChanges();
             #endregion
         }
 
-        public static void ProcesaArchivosPendientes(CLLASausageContext db)
-        {            
-            var procesamientoArchivosPendientes = db.ExpedienteDigitalProcesamientoArchivo.Where(w => DbFunctions.DiffDays(w.PrimeraBusqueda, DateTime.Now) < configuracionSistema.ProcesamientoHistoricoDias && w.Procesado == null).ToList();
-
-            foreach (var archivoPendiente in procesamientoArchivosPendientes)
+        public static void ProcesaArchivo(ExpedienteDigitalProcesamientoArchivo archivoPendiente, string rutaOrigenAlterna/*, CLLASausageContext db*/)
+        {
+            if (string.IsNullOrEmpty(rutaOrigenAlterna))
             {
-                if (archivoPendiente.ArchivoRutaCompletaOrigen.Contains("*"))
+                rutaOrigenAlterna = archivoPendiente.ArchivoRutaCompletaOrigen;
+            }
+
+            if (File.Exists(rutaOrigenAlterna))
+            {
+                //Crear directorio destino si no existe
+                try
                 {
-                    string directorio = archivoPendiente.ArchivoRutaCompletaOrigen.Substring(0, archivoPendiente.ArchivoRutaCompletaOrigen.LastIndexOf(@"\"));
+                    Directory.CreateDirectory(archivoPendiente.ArchivoRutaCompletaDestino.Substring(0, archivoPendiente.ArchivoRutaCompletaDestino.LastIndexOf(@"\")));
 
-                    if (Directory.Exists(directorio))
+                }
+                catch (Exception ex)
+                {
+                    archivoPendiente.Error = DateTime.Now;
+                    archivoPendiente.ErrorObservaciones = Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex);
+                    archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_CREAR_DIRECTORIO_DESTINO;
+                }
+
+                if (!File.Exists(archivoPendiente.ArchivoRutaCompletaDestino))
+                {
+                    File.Copy(rutaOrigenAlterna, archivoPendiente.ArchivoRutaCompletaDestino);
+                }
+
+                archivoPendiente.Procesado = DateTime.Now;
+            }
+            else
+            {
+                archivoPendiente.Error = DateTime.Now;
+                archivoPendiente.ErrorObservaciones = "FALTA ARCHIVO EN ORIGEN";
+                archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN;
+            }
+        }
+
+        public static void ProcesaArchivoPendiente(Object datos /*ExpedienteDigitalProcesamientoArchivo archivoPendiente*/)
+        {
+            ExpedienteDigitalProcesamientoArchivo archivoPendiente = (ExpedienteDigitalProcesamientoArchivo)datos;
+
+            if (archivoPendiente.ArchivoRutaCompletaOrigen.Contains("*"))
+            {
+                string directorio = archivoPendiente.ArchivoRutaCompletaOrigen.Substring(0, archivoPendiente.ArchivoRutaCompletaOrigen.LastIndexOf(@"\"));
+
+                if (Directory.Exists(directorio))
+                {
+                    string busqueda = archivoPendiente.ArchivoRutaCompletaOrigen.Substring(archivoPendiente.ArchivoRutaCompletaOrigen.LastIndexOf(@"\") + 1);
+
+                    var archivosEncontrados = Directory.GetFiles(directorio, busqueda);
+
+                    if (archivosEncontrados.Length > 0)
                     {
-                        string busqueda = archivoPendiente.ArchivoRutaCompletaOrigen.Substring(archivoPendiente.ArchivoRutaCompletaOrigen.LastIndexOf(@"\") + 1);
-
-                        var archivosEncontrados = Directory.GetFiles(directorio, busqueda);
-
-                        if (archivosEncontrados.Length > 0)
+                        foreach (var archivoEncontrado in archivosEncontrados)
                         {
-                            foreach (var archivoEncontrado in archivosEncontrados)
-                            {
-                                ProcesaArchivo(archivoPendiente, archivoEncontrado, db);
-                            }
-                        }
-                        else
-                        {
-                            archivoPendiente.Error = DateTime.Now;
-                            archivoPendiente.ErrorObservaciones = "FALTA ARCHIVO(S) EN ORIGEN";
-                            archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN;
-                            //EventoBitacoraProcesamientoArchivo(archivoPendiente.IdExpedienteDigitalProcesamientoArchivo, new Exception(archivoPendiente.ArchivoRutaCompletaOrigen), db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN);
+                            ProcesaArchivo(archivoPendiente, archivoEncontrado/*, db*/);
                         }
                     }
                     else
                     {
                         archivoPendiente.Error = DateTime.Now;
-                        archivoPendiente.ErrorObservaciones = "DIRECTORIO RAIZ NO EXISTE";
-                        archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.RUTA_RAIZ_ORIGEN_NO_EXISTENTE;
-                        //EventoBitacoraProcesamientoArchivo(archivoPendiente.IdExpedienteDigitalProcesamientoArchivo, new Exception(directorio), db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora.RUTA_RAIZ_ORIGEN_NO_EXISTENTE);
+                        archivoPendiente.ErrorObservaciones = "FALTA ARCHIVO(S) EN ORIGEN";
+                        archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN;
                     }
                 }
                 else
                 {
-                    ProcesaArchivo(archivoPendiente, null, db);
+                    archivoPendiente.Error = DateTime.Now;
+                    archivoPendiente.ErrorObservaciones = "DIRECTORIO RAIZ NO EXISTE";
+                    archivoPendiente.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.RUTA_RAIZ_ORIGEN_NO_EXISTENTE;
+                }
+            }
+            else
+            {
+                ProcesaArchivo(archivoPendiente, null/*, db*/);
+            }
+        }
+
+        public static void ProcesaArchivosPendientes(CLLASausageContext db, Configuracion configuracionSistema)
+        {
+            var procesamientoArchivosPendientes = db.ExpedienteDigitalProcesamientoArchivo.Where(w => DbFunctions.DiffDays(w.PrimeraBusqueda, DateTime.Now) < configuracionSistema.ProcesamientoHistoricoDias && w.Procesado == null).ToList();
+            int numeroTareas = procesamientoArchivosPendientes.Count;
+            ManualResetEvent finalizado = new ManualResetEvent(false);
+
+            foreach (var archivoPendiente in procesamientoArchivosPendientes)
+            {
+                Action accionEnvuelta = () => {
+                    try
+                    {
+                        ProcesaArchivoPendiente(archivoPendiente);
+                    }
+                    catch(Exception ex)
+                    {
+                        Logs.EscribirLog(ex);
+                    }
+                    finally
+                    {
+                        if (Interlocked.Decrement(ref numeroTareas) == 0)
+                        {
+                            finalizado.Set();
+                        }
+                    }
+                };
+
+                ThreadPool.QueueUserWorkItem(x => accionEnvuelta());
+            }
+
+            finalizado.WaitOne();
+            db.SaveChanges();
+        }
+
+        public static string RemplazaMetaDatosRutaArchivo(List<ExpedienteDigitalMetaDato> metaDatosExpedientePedimentoEncabezado, string rutaCompletaArchivo)
+        {
+            foreach (var metaDatoExpedientePedimentoEncabezado in metaDatosExpedientePedimentoEncabezado)
+            {
+                if (rutaCompletaArchivo.Contains(metaDatoExpedientePedimentoEncabezado.Nombre))
+                {
+                    rutaCompletaArchivo = rutaCompletaArchivo.Replace(metaDatoExpedientePedimentoEncabezado.Nombre, metaDatoExpedientePedimentoEncabezado.Valor);
+                }
+            }
+
+            return rutaCompletaArchivo;
+        }
+
+        public static void ProcesaCopiaArchivoProcesadoAFinalizado(fnExpedienteDigitalFinalizadoPendiente_Result archivoFinalizadoPendiente, ExpedienteDigitalArchivo expedienteDigitalArchivo/*, CLLASausageContext db*/)
+        {
+            if (expedienteDigitalArchivo == null)
+            {
+                throw new Exception("Existe un problema de integridad en la base de datos");
+            }
+
+            if (File.Exists(archivoFinalizadoPendiente.RutaCompletaOrigen))
+            {
+                //Crear directorio destino si no existe
+                try
+                {
+                    Directory.CreateDirectory(archivoFinalizadoPendiente.RutaCompletaDestino.Substring(0, archivoFinalizadoPendiente.RutaCompletaDestino.LastIndexOf(@"\")));
+                }
+                catch (Exception ex)
+                {
+                    Logs.EscribirLog("No se puede copiar archivo a finalizado" + Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex));
                 }
 
-                db.SaveChanges();
+                if (!File.Exists(archivoFinalizadoPendiente.RutaCompletaDestino))
+                {
+                    File.Copy(archivoFinalizadoPendiente.RutaCompletaOrigen, archivoFinalizadoPendiente.RutaCompletaDestino);
+                }
+
+                string rutaRaiz = archivoFinalizadoPendiente.RutaCompletaDestino.Substring(0, archivoFinalizadoPendiente.RutaCompletaDestino.LastIndexOf(@"\") + 1);
+                string nombreArchivoCompleto = archivoFinalizadoPendiente.RutaCompletaDestino.Substring(archivoFinalizadoPendiente.RutaCompletaDestino.LastIndexOf(@"\") + 1);
+                string nombreArchivo = nombreArchivoCompleto.Substring(0, nombreArchivoCompleto.LastIndexOf("."));
+                string extensionArchivo = nombreArchivoCompleto.Substring(nombreArchivoCompleto.LastIndexOf(".") + 1);
+
+                expedienteDigitalArchivo.Finalizado = DateTime.Now;
+                expedienteDigitalArchivo.Ruta = rutaRaiz;
+                expedienteDigitalArchivo.Nombre = nombreArchivo;
+                expedienteDigitalArchivo.Extension = extensionArchivo;
+                expedienteDigitalArchivo.Visible = true;
+            }
+            else
+            {
+                Logs.EscribirLog("No existe archivo en origen : " + archivoFinalizadoPendiente.RutaCompletaOrigen);
             }
         }
 
         public static void ProcesaCopiaArchivosProcesadosAFinalizados(CLLASausageContext db)
         {
             var archivosFinalizadosPendientes = db.fnExpedienteDigitalFinalizadoPendiente().ToList();
+            int numeroTareas = archivosFinalizadosPendientes.Count;
+            ManualResetEvent finalizado = new ManualResetEvent(false);
 
             foreach (var archivoFinalizadoPendiente in archivosFinalizadosPendientes)
             {
                 var expedienteDigitalArchivo = db.ExpedienteDigitalArchivo.Where(w => w.IdExpedienteDigitalArchivo == archivoFinalizadoPendiente.IdExpedienteDigitalArchivo).SingleOrDefault();
 
-                if (expedienteDigitalArchivo == null)
-                {
-                    throw new Exception("Existe un problema de integridad en la base de datos");
-                }
-
-                if (File.Exists(archivoFinalizadoPendiente.RutaCompletaOrigen))
-                {
-                    //Crear directorio destino si no existe
+                Action accionEnvuelta = () => {
                     try
                     {
-                        Directory.CreateDirectory(archivoFinalizadoPendiente.RutaCompletaDestino.Substring(0, archivoFinalizadoPendiente.RutaCompletaDestino.LastIndexOf(@"\")));
+                        ProcesaCopiaArchivoProcesadoAFinalizado(archivoFinalizadoPendiente, expedienteDigitalArchivo/*, db*/);
                     }
                     catch (Exception ex)
                     {
-                        //Pendiente implementacion error
-                        //EventoBitacora(expedienteDigitalArchivo.IdExpedienteDigital, ex, db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_CREAR_DIRECTORIO_DESTINO);
+                        Logs.EscribirLog(ex);
                     }
-
-                    if (!File.Exists(archivoFinalizadoPendiente.RutaCompletaDestino))
+                    finally
                     {
-                        File.Copy(archivoFinalizadoPendiente.RutaCompletaOrigen, archivoFinalizadoPendiente.RutaCompletaDestino);
+                        if (Interlocked.Decrement(ref numeroTareas) == 0)
+                        {
+                            finalizado.Set();
+                        }
                     }
+                };
 
-                    string rutaRaiz = archivoFinalizadoPendiente.RutaCompletaDestino.Substring(0, archivoFinalizadoPendiente.RutaCompletaDestino.LastIndexOf(@"\") + 1);
-                    string nombreArchivoCompleto = archivoFinalizadoPendiente.RutaCompletaDestino.Substring(archivoFinalizadoPendiente.RutaCompletaDestino.LastIndexOf(@"\") + 1);
-                    string nombreArchivo = nombreArchivoCompleto.Substring(0, nombreArchivoCompleto.LastIndexOf("."));
-                    string extensionArchivo = nombreArchivoCompleto.Substring(nombreArchivoCompleto.LastIndexOf(".") + 1);
-
-                    expedienteDigitalArchivo.Finalizado = DateTime.Now;
-                    expedienteDigitalArchivo.Ruta = rutaRaiz;
-                    expedienteDigitalArchivo.Nombre = nombreArchivo;
-                    expedienteDigitalArchivo.Extension = extensionArchivo;
-                    expedienteDigitalArchivo.Visible = true;
-
-                    db.SaveChanges();
-                }
-                else
-                {
-                    //PENDIENTE IMPLEMENTAR
-                    //EventoBitacoraProcesamientoArchivo(expedienteDigitalArchivo.IdExpedienteDigital, new Exception(archivoFinalizadoPendiente.RutaCompletaOrigen), db, Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN);
-                }
+                ThreadPool.QueueUserWorkItem(x => accionEnvuelta());
             }
-        }
 
+            finalizado.WaitOne();
+            db.SaveChanges();
+        }
         public static void ProcesaBitacoraExportacionCliente(CLLASausageContext db)
         {
             var bitacorasExportacionCliente = db.ExpedienteDigitalBitacoraExportacionCliente.Where(w => w.RutaRaiz == null).ToList();
@@ -629,7 +623,7 @@ namespace CLLAIntelligentSausage
         public static void CargaArchivosBitacoraExportacionClienteSFTP(CLLASausageContext db)
         {
 
-            var arhivosBitacoraExportacionCliente = db.ExpedienteDigitalBitacoraExportacionCliente.Where(w => w.RutaCompletaExportado != null && w.Exportado == null && w.IdExpedienteDigitalTipoExportacion == 3).ToList();
+            var arhivosBitacoraExportacionCliente = db.ExpedienteDigitalBitacoraExportacionCliente.Where(w => w.RutaCompletaExportado != null && w.Exportado == null && DateTime.Now >= w.Programacion && w.IdExpedienteDigitalTipoExportacion == 3).ToList();
 
             foreach (var archivo in arhivosBitacoraExportacionCliente)
             {
@@ -649,9 +643,22 @@ namespace CLLAIntelligentSausage
                         Session session = new Session();
                         session.Open(sessionOptions);
 
-                        if (!session.FileExists(archivo.RutaRaiz.Substring(1).Replace(@"\", "/")))
+                        string rutaRaizFormateada = archivo.RutaRaiz.Substring(1).Replace(@"\", "/");
+
+                        if (!session.FileExists(rutaRaizFormateada))
                         {
-                            session.CreateDirectory(archivo.RutaRaiz.Substring(1).Replace(@"\", "/"));
+                            var directorios = rutaRaizFormateada.Split('/').Where(w => w.Length > 0).ToList();
+
+                            string ruta = string.Empty;
+                            foreach(var directorio in directorios)
+                            {
+                                ruta = ruta + "/" + directorio;
+
+                                if(!session.FileExists(ruta))
+                                {
+                                    session.CreateDirectory(ruta);
+                                }
+                            }                                                      
                         }
 
                         session.PutFileToDirectory(archivo.RutaOrigen, archivo.RutaRaiz.Substring(1).Replace(@"\", "/"), false, new TransferOptions { OverwriteMode = OverwriteMode.Overwrite });
@@ -678,50 +685,86 @@ namespace CLLAIntelligentSausage
             }
         }
 
-        public static void ProcesaBitacoraExportacionSysExpert(CLLASausageContext db)
+        public static void ProcesaArchivoBitacoraExportacionSysExpert(ExpedienteDigitalBitacoraExportacion archivo)
         {
-            var bitacorasExportacion = db.ExpedienteDigitalBitacoraExportacion.Where(w => w.Exportado == null && w.IdExpedienteDigitalTipoExportacion == 2).ToList();
+            archivo.RutaCompletaExportado = archivo.RutaCompletaExportado.Replace("NAS-EXPDIGITAL", "10.1.45.252");
+            archivo.RutaRaiz = archivo.RutaRaiz.Replace("NAS-EXPDIGITAL", "10.1.45.252");
 
-            foreach(var archivo in bitacorasExportacion)
+            if (File.Exists(archivo.RutaOrigen))
             {
-                
-                archivo.RutaCompletaExportado = archivo.RutaCompletaExportado.Replace("NAS-EXPDIGITAL", "10.1.45.252");
-                archivo.RutaRaiz = archivo.RutaRaiz.Replace("NAS-EXPDIGITAL", "10.1.45.252");
-
-                if(File.Exists(archivo.RutaOrigen))
+                if (Directory.Exists(archivo.RutaRaiz))
                 {
-                    if(Directory.Exists(archivo.RutaRaiz))
+                    try
                     {
-                        try
+                        if(!File.Exists(archivo.RutaCompletaExportado))
                         {
                             File.Copy(archivo.RutaOrigen, archivo.RutaCompletaExportado, true);
+                        }                        
 
-                            archivo.Exportado = DateTime.Now;
-                        }
-                        catch(Exception ex)
-                        {
-                            //CAPTURAR
-                        }
+                        archivo.Exportado = DateTime.Now;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        //CAPTURAR ERROR
+                        archivo.Error = DateTime.Now;
+                        archivo.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.NO_ES_POSIBLE_COPIAR_ARCHIVO_DE_ORIGEN_A_DESTINO;
+                        archivo.ErrorObservaciones = "No se puede copiar archivo de Sausage a SysExpert " + Excepciones.ObtenerMensajesExcepcionEnCadenaSencilla(ex);
                     }
                 }
                 else
                 {
-                    //CAPTURAR ERROR
+                    archivo.Error = DateTime.Now;
+                    archivo.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.DIRECTORIO_DESTINO_NO_EXISTE;
+                    archivo.ErrorObservaciones = "Expediente de SysExpert no existe";
                 }
-
-                db.SaveChanges();
             }
+            else
+            {
+                archivo.Error = DateTime.Now;
+                archivo.ErrorIdExpedienteDigitalEvento = (int)Modelos.Enumerados.ExpedienteDigitalEventoBitacora.FALTA_ARCHIVO_ORIGEN;
+                archivo.ErrorObservaciones = "Archivo en finalizado Sausage no existe";
+            }
+        }
+
+        public static void ProcesaBitacoraExportacionSysExpert(CLLASausageContext db)
+        {
+            var bitacorasExportacion = db.ExpedienteDigitalBitacoraExportacion.Where(w => w.Exportado == null && w.IdExpedienteDigitalTipoExportacion == 2).ToList();
+            int numeroTareas = bitacorasExportacion.Count;
+
+            ManualResetEvent finalizado = new ManualResetEvent(false);
+
+            foreach (var archivo in bitacorasExportacion)
+            {
+                Action accionEnvuelta = () => {
+                    try
+                    {
+                        ProcesaArchivoBitacoraExportacionSysExpert(archivo);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logs.EscribirLog(ex);
+                    }
+                    finally
+                    {
+                        if (Interlocked.Decrement(ref numeroTareas) == 0)
+                        {
+                            finalizado.Set();
+                        }
+                    }
+                };
+
+                ThreadPool.QueueUserWorkItem(x => accionEnvuelta());
+
+            }
+
+            finalizado.WaitOne();
+            db.SaveChanges();
         }
         static void Main(string[] args)
         {
             try
             {
                 Logs.EscribirLog("Inicio-Ejecucion CLLASausage");
-                
+
                 Logs.EscribirLog("Inicio-Procesamiento previo en BD");
                 CLLASausageContext db = new CLLASausageContext();
                 db.Database.CommandTimeout = 600;
@@ -738,13 +781,14 @@ namespace CLLAIntelligentSausage
                 Logs.EscribirLog("Inicio-Tablas de procesamiento");
                 ProcesaTablasProcesamiento(db);
                 Logs.EscribirLog("Fin-Tablas de procesamiento");
-                Logs.EscribirLog("Inicio-Archivos pendientes");
-                ProcesaArchivosPendientes(db);
+                Logs.EscribirLog("Inicio-Archivos pendientes");                
+                ProcesaArchivosPendientes(db, configuracionSistema);
                 Logs.EscribirLog("Fin-Archivos pendientes");
                 Logs.EscribirLog("Inicio-Archivos finalizados");
                 ProcesaCopiaArchivosProcesadosAFinalizados(db);
                 Logs.EscribirLog("Fin-Archivos finalizados");
                 Logs.EscribirLog("Inicio-Exportacion archivos");
+                db.spExpedienteDigitalCierreExpedientes();
                 db.spExpedienteDigitalGeneraTablaBitacoraExportacionCliente();
                 ProcesaBitacoraExportacionCliente(db);
                 CargaArchivosBitacoraExportacionClienteSFTP(db);

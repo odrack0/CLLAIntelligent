@@ -11,10 +11,11 @@ namespace CLLAIntelligentSausage.Modelos.Enumerados
         public static string PedNumeroReferencia = "{PedNumeroReferencia}";
         public static string PedNumeroPedimento = "{PedNumeroPedimento}";
         public static string PedTipOperacionClave = "{PedTipOperacionClave}";
+        public static string PedTipOperacionDescripcion = "{PedTipOperacionDescripcion}";
         public static string PedClaveDocumento = "{PedClaveDocumento}";
         public static string PedRegimen = "{PedRegimen}";
         public static string PedAduanaClave = "{PedAduanaClave}";
-        public static string PedAduanaSeccion = "{PedAduanaSeccion}";        
+        public static string PedAduanaSeccion = "{PedAduanaSeccion}";
         public static string PedArchivoValidacionEnvio = "{PedArchivoValidacionEnvio}";
         public static string PedArchivoValidacionRespuesta = "{PedArchivoValidacionRespuesta}";
         public static string PedArchivoValidacionAperturaEnvio = "{PedArchivoValidacionAperturaEnvio}";
@@ -52,5 +53,12 @@ namespace CLLAIntelligentSausage.Modelos.Enumerados
         public static string GastoComprobadoDescripcion = "{GastoComprobadoDescripcion}";
         public static string GastoComprobadoMontoTotal = "{GastoComprobadoMonto}";
         public static string SysExpertRutaExpediente = "{SysExpertRutaExpediente}";
+        public static string PedArchivoValidacion = "{PedArchivoValidacion}";
+        public static string PedArchivoValidacionDiaJuliano = "{PedArchivoValidacionDiaJuliano}";
+        public static string PedArchivoBanco = "{PedArchivoBanco}";
+        public static string PedArchivoBancoDiaJuliano = "{PedArchivoBancoDiaJuliano}";
+        public static string PedTipOperacionAbreviacion = "{PedTipOperacionAbreviacion}";
+        public static string PedArchivoValidacionApertura = "{PedArchivoValidacionApertura}";
+        public static string PedArchivoValidacionAperturaDiaJuliano = "{PedArchivoValidacionAperturaDiaJuliano}";
     }
 }

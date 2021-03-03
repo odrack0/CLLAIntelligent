@@ -29,6 +29,7 @@
     <Property Name="TipoOperacion" Type="int" />
     <Property Name="ClaveDocumento" Type="nvarchar" MaxLength="50" />
     <Property Name="PedimentoConsolidado" Type="bit" />
+    <Property Name="Completado" Type="datetime" />
   </EntityType>
   <EntityType Name="ExpedienteDigitalArchivo">
     <Key>
@@ -64,6 +65,7 @@
     <Property Name="Puerto" Type="nvarchar(max)" />
     <Property Name="Usuario" Type="nvarchar(max)" />
     <Property Name="Contrasenia" Type="nvarchar(max)" />
+    <Property Name="Programacion" Type="datetime" />
     <Property Name="Exportado" Type="datetime" />
     <Property Name="Error" Type="datetime" />
     <Property Name="ErrorIdExpedienteDigitalEvento" Type="int" />
@@ -89,6 +91,7 @@
     <Property Name="Puerto" Type="nvarchar(max)" />
     <Property Name="Usuario" Type="nvarchar(max)" />
     <Property Name="Contrasenia" Type="nvarchar(max)" />
+    <Property Name="Programacion" Type="datetime" />
     <Property Name="Exportado" Type="datetime" />
     <Property Name="Error" Type="datetime" />
     <Property Name="ErrorIdExpedienteDigitalEvento" Type="int" />
@@ -459,6 +462,7 @@
     <Parameter Name="text" Type="ntext" Mode="In" />
     <Parameter Name="delimiter" Type="ntext" Mode="In" />
   </Function>
+  <Function Name="spExpedienteDigitalCierreExpedientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spExpedienteDigitalEliminaClienteSysExpert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClaveCliente" Type="int" Mode="In" />
   </Function>

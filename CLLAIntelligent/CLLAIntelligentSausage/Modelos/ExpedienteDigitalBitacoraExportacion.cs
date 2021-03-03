@@ -29,6 +29,7 @@ namespace CLLAIntelligentSausage.Modelos
         public string Puerto { get; set; }
         public string Usuario { get; set; }
         public string Contrasenia { get; set; }
+        public Nullable<System.DateTime> Programacion { get; set; }
         public Nullable<System.DateTime> Exportado { get; set; }
         public Nullable<System.DateTime> Error { get; set; }
         public Nullable<int> ErrorIdExpedienteDigitalEvento { get; set; }

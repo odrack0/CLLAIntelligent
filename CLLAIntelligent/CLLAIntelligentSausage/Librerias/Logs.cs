@@ -17,7 +17,9 @@ namespace CLLAIntelligentSausage.Librerias
 
             StreamWriter SW = new StreamWriter(ArchivoLog, true);
 
-            SW.WriteLine(Hora + "- " + Evento);
+            string evento = Hora + "- " + Evento;
+            Console.WriteLine(evento);
+            SW.WriteLine(evento);
 
             SW.Close();
         }

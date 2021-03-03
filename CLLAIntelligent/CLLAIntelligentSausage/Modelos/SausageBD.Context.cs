@@ -38,11 +38,11 @@ namespace CLLAIntelligentSausage.Modelos
         public virtual DbSet<ExpedienteDigitalProcesamiento> ExpedienteDigitalProcesamiento { get; set; }
         public virtual DbSet<ExpedienteDigitalTipoArchivo> ExpedienteDigitalTipoArchivo { get; set; }
         public virtual DbSet<Configuracion> Configuracion { get; set; }
-        public virtual DbSet<ExpedienteDigital> ExpedienteDigital { get; set; }
         public virtual DbSet<ExpedienteDigitalEvento> ExpedienteDigitalEvento { get; set; }
         public virtual DbSet<ExpedienteDigitalProcesamientoArchivo> ExpedienteDigitalProcesamientoArchivo { get; set; }
-        public virtual DbSet<ExpedienteDigitalBitacoraExportacionCliente> ExpedienteDigitalBitacoraExportacionCliente { get; set; }
         public virtual DbSet<ExpedienteDigitalBitacoraExportacion> ExpedienteDigitalBitacoraExportacion { get; set; }
+        public virtual DbSet<ExpedienteDigitalBitacoraExportacionCliente> ExpedienteDigitalBitacoraExportacionCliente { get; set; }
+        public virtual DbSet<ExpedienteDigital> ExpedienteDigital { get; set; }
     
         [DbFunction("CLLASausageContext", "fnExpedienteDigitalFinalizadoPendiente")]
         public virtual IQueryable<fnExpedienteDigitalFinalizadoPendiente_Result> fnExpedienteDigitalFinalizadoPendiente()
@@ -135,6 +135,11 @@ namespace CLLAIntelligentSausage.Modelos
         public virtual int spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb");
+        }
+    
+        public virtual int spExpedienteDigitalCierreExpedientes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExpedienteDigitalCierreExpedientes");
         }
     }
 }

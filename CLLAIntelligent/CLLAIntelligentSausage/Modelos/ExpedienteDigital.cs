@@ -39,6 +39,7 @@ namespace CLLAIntelligentSausage.Modelos
         public Nullable<int> TipoOperacion { get; set; }
         public string ClaveDocumento { get; set; }
         public Nullable<bool> PedimentoConsolidado { get; set; }
+        public Nullable<System.DateTime> Completado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpedienteDigitalArchivo> ExpedienteDigitalArchivo { get; set; }
