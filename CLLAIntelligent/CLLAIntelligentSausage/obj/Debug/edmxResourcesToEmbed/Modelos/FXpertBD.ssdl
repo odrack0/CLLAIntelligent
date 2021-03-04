@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FXPERTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CuentaDocumentacion">
+    <Key>
+      <PropertyRef Name="IdCuentaDocumentacion" />
+    </Key>
+    <Property Name="IdCuentaDocumentacion" Type="int" Nullable="false" />
+    <Property Name="ClaveCuenta" Type="int" Nullable="false" />
+    <Property Name="ClaveCuentaDocumentoTipo" Type="int" Nullable="false" />
+    <Property Name="DocumentoNumero" Type="varchar" MaxLength="30" />
+    <Property Name="DocumentoReferenteA" Type="varchar" MaxLength="2048" />
+    <Property Name="IdEmisorDocumento" Type="int" />
+    <Property Name="EmisorDocumento" Type="varchar" MaxLength="50" />
+    <Property Name="DocumentoFecha" Type="datetime" />
+    <Property Name="DocumentoFechaVigencia" Type="datetime" />
+    <Property Name="DocumentoImporte" Type="money" />
+    <Property Name="ClaveMoneda" Type="varchar" MaxLength="3" />
+    <Property Name="TipoDeCambio" Type="money" />
+    <Property Name="ClaveDocumentoOrigen" Type="varchar" MaxLength="1" />
+    <Property Name="ClaveDocumentoStatus" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="CuentaEncabezado">
+    <Key>
+      <PropertyRef Name="IdCuentaEncabezado" />
+    </Key>
+    <Property Name="IdCuentaEncabezado" Type="int" Nullable="false" />
+    <Property Name="ClaveCuenta" Type="int" />
+    <Property Name="Consecutivo" Type="int" />
+    <Property Name="Referencia" Type="varchar" MaxLength="30" />
+    <Property Name="Complementaria" Type="varchar" MaxLength="3" />
+    <Property Name="ClaveCuentaTipo" Type="int" />
+    <Property Name="ClaveCuentaClase" Type="int" />
+    <Property Name="ClaveOficina" Type="int" />
+    <Property Name="CuentaFecha" Type="datetime" />
+    <Property Name="IdReferenciaOrigenDatos" Type="int" />
+    <Property Name="ClaveCliente" Type="int" />
+    <Property Name="ClaveFacturarA" Type="int" />
+    <Property Name="ClaveEmbarqueTipo" Type="int" />
+    <Property Name="ClaveOperacionTipo" Type="int" />
+    <Property Name="ClaveRegimen" Type="int" />
+    <Property Name="ClaveCuentaStatus" Type="int" />
+    <Property Name="ClaveResponsableCuenta" Type="int" />
+    <Property Name="ClaveAduana" Type="varchar" MaxLength="3" />
+    <Property Name="ClaveMonedaFacturacion" Type="varchar" MaxLength="3" />
+    <Property Name="TipoDeCambio" Type="money" />
+    <Property Name="ClaveTarifa" Type="int" />
+    <Property Name="ClaveProducto" Type="int" />
+    <Property Name="Bultos" Type="int" />
+    <Property Name="PesoKg" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="ClaveOrigen" Type="int" />
+    <Property Name="ClaveDestino" Type="int" />
+    <Property Name="ClaveDestinatario" Type="int" />
+    <Property Name="ClaveEmitirFacturaA" Type="int" />
+    <Property Name="ClaveCFDRfc" Type="int" />
+    <Property Name="CFDVersion" Type="varchar" MaxLength="6" />
+    <Property Name="IdDetalleMaestra" Type="int" />
+    <Property Name="ClaveCuentaCFDOriginal" Type="int" />
+    <Property Name="PagoParcial" Type="int" />
+    <Property Name="ClaveVendedor" Type="int" />
+    <Property Name="ClaveSistemaOrigen" Type="int" />
+    <Property Name="ClaveDossier" Type="int" />
+    <Property Name="ClaveShipper" Type="int" />
+    <Property Name="ClaveCuentaOrigen" Type="int" />
+    <Property Name="RutaExpedienteDigital" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="FacturaEncabezado">
+    <Key>
+      <PropertyRef Name="IdFacturaEncabezado" />
+    </Key>
+    <Property Name="IdFacturaEncabezado" Type="int" Nullable="false" />
+    <Property Name="ClaveCuenta" Type="int" Nullable="false" />
+    <Property Name="Serie" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FacturaNumero" Type="int" Nullable="false" />
+    <Property Name="FacturaFecha" Type="datetime" Nullable="false" />
+    <Property Name="RFC" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="DomicilioFiscal" Type="varchar" MaxLength="250" />
+    <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+    <Property Name="ClaveFacturaStatus" Type="int" Nullable="false" />
+    <Property Name="ClaveCuentaAlCancelar" Type="int" />
+    <Property Name="ClaveFacturarA" Type="int" />
+    <Property Name="ClaveCFDFolio" Type="int" />
+    <Property Name="ClaveCFDComprobanteTipo" Type="int" />
+    <Property Name="ClaveCFDLugarExpedicion" Type="int" />
+    <Property Name="ClaveCFDPagoForma" Type="int" />
+    <Property Name="ClaveCFDPagoCondicion" Type="int" />
+    <Property Name="ClaveCFDPagoMetodo" Type="int" />
+    <Property Name="ClaveSATComprobanteTipo" Type="varchar" MaxLength="1" />
+    <Property Name="CFDVersion" Type="varchar" MaxLength="6" />
+    <Property Name="CFDFechaHora" Type="datetime" />
+    <Property Name="CFDAprobacionNumero" Type="varchar" MaxLength="20" />
+    <Property Name="CFDAprobacionAnio" Type="varchar" MaxLength="4" />
+    <Property Name="CFDComprobanteTipo" Type="varchar" MaxLength="30" />
+    <Property Name="CFDPagoForma" Type="varchar" MaxLength="40" />
+    <Property Name="CFDPagoCondicion" Type="varchar" MaxLength="40" />
+    <Property Name="CFDPagoMetodo" Type="varchar" MaxLength="250" />
+    <Property Name="CertificadoSerie" Type="varchar" MaxLength="20" />
+    <Property Name="CertificadoTexto" Type="varchar" MaxLength="2500" />
+    <Property Name="Sello" Type="varchar" MaxLength="1024" />
+    <Property Name="EmisorRFC" Type="varchar" MaxLength="13" />
+    <Property Name="EmisorRazonSocial" Type="varchar" MaxLength="120" />
+    <Property Name="EmisorCalle" Type="varchar" MaxLength="60" />
+    <Property Name="EmisorNumeroExterior" Type="varchar" MaxLength="20" />
+    <Property Name="EmisorNumeroInterior" Type="varchar" MaxLength="20" />
+    <Property Name="EmisorColonia" Type="varchar" MaxLength="60" />
+    <Property Name="EmisorLocalidad" Type="varchar" MaxLength="60" />
+    <Property Name="EmisorReferenciaDomicilio" Type="varchar" MaxLength="60" />
+    <Property Name="EmisorMunicipio" Type="varchar" MaxLength="70" />
+    <Property Name="EmisorEntidadFederativa" Type="varchar" MaxLength="30" />
+    <Property Name="EmisorNombrePais" Type="varchar" MaxLength="60" />
+    <Property Name="EmisorCodigoPostal" Type="varchar" MaxLength="5" />
+    <Property Name="ExpedicionCalle" Type="varchar" MaxLength="60" />
+    <Property Name="ExpedicionNumeroExterior" Type="varchar" MaxLength="20" />
+    <Property Name="ExpedicionNumeroInterior" Type="varchar" MaxLength="20" />
+    <Property Name="ExpedicionColonia" Type="varchar" MaxLength="60" />
+    <Property Name="ExpedicionLocalidad" Type="varchar" MaxLength="60" />
+    <Property Name="ExpedicionReferenciaDomicilio" Type="varchar" MaxLength="60" />
+    <Property Name="ExpedicionMunicipio" Type="varchar" MaxLength="70" />
+    <Property Name="ExpedicionEntidadFederativa" Type="varchar" MaxLength="30" />
+    <Property Name="ExpedicionNombrePais" Type="varchar" MaxLength="60" />
+    <Property Name="ExpedicionCodigoPostal" Type="varchar" MaxLength="5" />
+    <Property Name="ReceptorCalle" Type="varchar" MaxLength="60" />
+    <Property Name="ReceptorNumeroExterior" Type="varchar" MaxLength="20" />
+    <Property Name="ReceptorNumeroInterior" Type="varchar" MaxLength="20" />
+    <Property Name="ReceptorColonia" Type="varchar" MaxLength="60" />
+    <Property Name="ReceptorLocalidad" Type="varchar" MaxLength="60" />
+    <Property Name="ReceptorReferenciaDomicilio" Type="varchar" MaxLength="60" />
+    <Property Name="ReceptorMunicipio" Type="varchar" MaxLength="70" />
+    <Property Name="ReceptorEntidadFederativa" Type="varchar" MaxLength="30" />
+    <Property Name="ReceptorNombrePais" Type="varchar" MaxLength="60" />
+    <Property Name="ReceptorCodigoPostal" Type="varchar" MaxLength="5" />
+    <Property Name="CFDSubTotal" Type="money" />
+    <Property Name="CFDDescuentos" Type="money" />
+    <Property Name="CFDTotal" Type="money" />
+    <Property Name="CFDMotivoDescuentos" Type="varchar" MaxLength="60" />
+    <Property Name="CFDTasaIva" Type="money" />
+    <Property Name="CFDTasaRetencionIva" Type="money" />
+    <Property Name="CFDTasaRetencionISR" Type="money" />
+    <Property Name="EmisorCurp" Type="varchar" MaxLength="18" />
+    <Property Name="TFDVersion" Type="varchar" MaxLength="3" />
+    <Property Name="UUID" Type="varchar" MaxLength="36" />
+    <Property Name="FechaTimbrado" Type="datetime" />
+    <Property Name="NoCertificadoSAT" Type="varchar" MaxLength="20" />
+    <Property Name="SelloSAT" Type="varchar" MaxLength="1024" />
+    <Property Name="ClaveMonedaFacturacion" Type="varchar" MaxLength="3" />
+    <Property Name="IdFacturaOriginal" Type="int" />
+    <Property Name="EmisorRegimenFiscal" Type="varchar" MaxLength="120" />
+    <Property Name="MotivoDescuento" Type="varchar" MaxLength="60" />
+    <Property Name="Moneda" Type="varchar" MaxLength="30" />
+    <Property Name="TipoCambio" Type="money" />
+    <Property Name="LugarExpedicion" Type="varchar" MaxLength="120" />
+    <Property Name="NumCtaPago" Type="varchar" MaxLength="20" />
+    <Property Name="PACCertifico" Type="varchar" MaxLength="13" />
+    <Property Name="FechaCancelacionSAT" Type="datetime" />
+    <Property Name="CFDPagoMetodoClaves" Type="varchar" MaxLength="50" />
+    <Property Name="ClaveCFDSATPagoForma" Type="int" />
+    <Property Name="ClaveSATPagoForma" Type="varchar" MaxLength="2" />
+    <Property Name="ClaveCFDSATPagoMetodo" Type="int" />
+    <Property Name="ClaveSATPagoMetodo" Type="varchar" MaxLength="3" />
+    <Property Name="ClaveCFDSATRegimenFiscal" Type="int" />
+    <Property Name="ClaveSATRegimenFiscal" Type="varchar" MaxLength="3" />
+    <Property Name="ClaveCFDSATUso" Type="int" />
+    <Property Name="ClaveSATUso" Type="varchar" MaxLength="3" />
+    <Property Name="ReceptorClavePais" Type="varchar" MaxLength="3" />
+    <Property Name="ConfirmacionPAC" Type="varchar" MaxLength="5" />
+    <Property Name="ReceptorNumRegIdTrib" Type="varchar" MaxLength="40" />
+    <Property Name="LeyendaTFD" Type="varchar" MaxLength="150" />
+    <Property Name="IdEnProcesoDePago" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_CuentaDocumentacion_CuentaEncabezado' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_CuentaDocumentacion_CuentaEncabezado" />-->
+  <Function Name="fnCLLAObtenerFacturaPedimentoAduana240" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroPedimento" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Serie" Type="varchar" MaxLength="10" />
+          <Property Name="Folio" Type="int" />
+          <Property Name="Anio" Type="varchar" MaxLength="4" />
+          <Property Name="Mes" Type="varchar" MaxLength="2" />
+          <Property Name="NumeroPedimento" Type="varchar" MaxLength="30" />
+          <Property Name="ClaveCuenta" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="FXPERTModelStoreContainer">
+    <EntitySet Name="CuentaDocumentacion" EntityType="Self.CuentaDocumentacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CuentaEncabezado" EntityType="Self.CuentaEncabezado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacturaEncabezado" EntityType="Self.FacturaEncabezado" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -78,10 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CFDISAT\v33.cs" />
+    <Compile Include="Librerias\Archivos.cs" />
     <Compile Include="Librerias\Exepciones.cs" />
     <Compile Include="Librerias\Logs.cs" />
     <Compile Include="Modelos\Configuracion.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\CuentaDocumentacion.cs">
+      <DependentUpon>FXpertBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\CuentaEncabezado.cs">
+      <DependentUpon>FXpertBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Enumerados\ExpedienteDigitalEventoBitacora.cs" />
     <Compile Include="Modelos\Enumerados\ExpedienteDigitalProgramacionFactor.cs" />
@@ -133,6 +140,12 @@
     <Compile Include="Modelos\ExpedienteDigitalTipoArchivo.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\FacturaEncabezado.cs">
+      <DependentUpon>FXpertBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\fnCLLAObtenerFacturaPedimentoAduana240_Result.cs">
+      <DependentUpon>FXpertBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\fnExpedienteDigitalFinalizadoPendiente_Result.cs">
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
@@ -140,6 +153,21 @@
       <DependentUpon>SausageBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\FuncionesEscalares.cs" />
+    <Compile Include="Modelos\FXpertBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FXpertBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\FXpertBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FXpertBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\FXpertBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FXpertBD.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\SausageBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,6 +197,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SausageBD.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Modelos\FXpertBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FXpertBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\FXpertBD.edmx.diagram">
+      <DependentUpon>FXpertBD.edmx</DependentUpon>
+    </None>
     <None Include="Modelos\SausageBD.edmx.diagram">
       <DependentUpon>SausageBD.edmx</DependentUpon>
     </None>
@@ -179,6 +214,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Modelos\FXpertBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FXpertBD.edmx</DependentUpon>
+      <LastGenOutput>FXpertBD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\FXpertBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FXpertBD.edmx</DependentUpon>
+      <LastGenOutput>FXpertBD.cs</LastGenOutput>
+    </Content>
     <Content Include="Modelos\SausageBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SausageBD.edmx</DependentUpon>

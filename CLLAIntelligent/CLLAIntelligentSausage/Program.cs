@@ -431,6 +431,7 @@ namespace CLLAIntelligentSausage
                     File.Copy(rutaOrigenAlterna, archivoPendiente.ArchivoRutaCompletaDestino);
                 }
 
+
                 archivoPendiente.Procesado = DateTime.Now;
             }
             else
@@ -759,6 +760,68 @@ namespace CLLAIntelligentSausage
             finalizado.WaitOne();
             db.SaveChanges();
         }
+
+        public static void RemplazaExtensionesArchivosSAIIM3(string rutaRaiz)
+        {
+            var todosArchivos = Archivos.ObtenerElementosDeDirectorioEnProfundidad(rutaRaiz);
+            var archivosSaiim3 = todosArchivos.Where(w => !w.NombreCompleto.Contains(".pdf") && 
+                                                          !w.NombreCompleto.Contains(".PDF") && 
+                                                          !w.NombreCompleto.Contains(".xml") &&
+                                                          !w.NombreCompleto.Contains(".txt") &&
+                                                           w.EsArchivo == true).ToList();
+            foreach(var archivo in archivosSaiim3)
+            {
+                string rutaRaizArchivo = archivo.RutaCompleta.Substring(0, archivo.RutaCompleta.LastIndexOf(@"\"));                
+                string nuevoNombreArchivo = archivo.NombreCompleto.Replace(".", "_") + ".txt";
+                string nuevaRutaCompleta = rutaRaizArchivo + @"\" + nuevoNombreArchivo;
+                
+                
+                File.Move(archivo.RutaCompleta, nuevaRutaCompleta);
+            }
+        }
+
+        public static void IntegraCuentasGastoLaredo240(string rutaRaiz)
+        {
+            var todoProfundidad = Archivos.ObtenerElementosDeDirectorioEnProfundidad(rutaRaiz);
+            var directoriosPedimentos = todoProfundidad.Where(w => w.EsArchivo == false && (w.DirectorioPadre == "IMPO" || w.DirectorioPadre == "EXPO") ).ToList();
+
+            FXpertContext db = new FXpertContext();
+
+
+            foreach(var directorio in directoriosPedimentos)
+            {
+                try
+                {
+                    string numeroPedimento = directorio.NombreCompleto.Substring(6).Replace(" ", "-");
+                    Logs.EscribirLog("Pedimento: " + numeroPedimento);
+
+                    var cuenta = db.fnCLLAObtenerFacturaPedimentoAduana240(numeroPedimento).SingleOrDefault();
+
+                    string rutaCuenta = @"\\10.1.45.252\Fxpert\CFD\CLA910515NF0\" + cuenta.Anio + cuenta.Mes + @"\";
+                    string nombreOrigenXML = cuenta.Serie + cuenta.Folio + ".xml";
+                    string nombreOrigenPDF = cuenta.Serie + cuenta.Folio + ".pdf";
+                    string rutaOrigenXML = rutaCuenta + nombreOrigenXML;
+                    string rutaOrigenPDF = rutaCuenta + nombreOrigenPDF;
+
+                    string rutaDestinoXML = directorio.RutaCompleta + @"\" + directorio.NombreCompleto + "_CFDI " + nombreOrigenXML;
+                    string rutaDestinoPDF = directorio.RutaCompleta + @"\" + directorio.NombreCompleto + "_CFDI " + nombreOrigenPDF;
+
+                    if (!File.Exists(rutaDestinoXML))
+                    {
+                        File.Copy(rutaOrigenXML, rutaDestinoXML);
+                    }
+
+                    if (!File.Exists(rutaDestinoPDF))
+                    {
+                        File.Copy(rutaOrigenPDF, rutaDestinoPDF);
+                    }
+                }
+                catch(Exception ex)
+                {                    
+                    Logs.EscribirLog(ex);
+                }
+            }
+        }
         static void Main(string[] args)
         {
             try
@@ -781,7 +844,7 @@ namespace CLLAIntelligentSausage
                 Logs.EscribirLog("Inicio-Tablas de procesamiento");
                 ProcesaTablasProcesamiento(db);
                 Logs.EscribirLog("Fin-Tablas de procesamiento");
-                Logs.EscribirLog("Inicio-Archivos pendientes");                
+                Logs.EscribirLog("Inicio-Archivos pendientes");
                 ProcesaArchivosPendientes(db, configuracionSistema);
                 Logs.EscribirLog("Fin-Archivos pendientes");
                 Logs.EscribirLog("Inicio-Archivos finalizados");
@@ -796,8 +859,14 @@ namespace CLLAIntelligentSausage
                 db.spExpedienteDigitalProcesaBitacoraExportacionSysExpertWeb();
                 ProcesaBitacoraExportacionSysExpert(db);
                 Logs.EscribirLog("Fin-Exportacion archivos");
+                
                 db.Dispose();
                 Logs.EscribirLog("Fin-Ejecucion CLLASausage");
+                
+                
+                
+                //RemplazaExtensionesArchivosSAIIM3(@"\\10.1.45.252\SFTP_Molex\2021\240");
+                //IntegraCuentasGastoLaredo240(@"\\10.1.45.252\SFTP_Molex\2021\240");;
             }
             catch (Exception ex)
             {

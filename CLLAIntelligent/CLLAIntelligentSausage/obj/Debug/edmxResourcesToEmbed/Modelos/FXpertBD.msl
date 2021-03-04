@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FXPERTModelStoreContainer" CdmEntityContainer="FXpertContext">
+    <EntitySetMapping Name="CuentaDocumentacion">
+      <EntityTypeMapping TypeName="FXPERTModel.CuentaDocumentacion">
+        <MappingFragment StoreEntitySet="CuentaDocumentacion">
+          <ScalarProperty Name="IdCuentaDocumentacion" ColumnName="IdCuentaDocumentacion" />
+          <ScalarProperty Name="ClaveCuenta" ColumnName="ClaveCuenta" />
+          <ScalarProperty Name="ClaveCuentaDocumentoTipo" ColumnName="ClaveCuentaDocumentoTipo" />
+          <ScalarProperty Name="DocumentoNumero" ColumnName="DocumentoNumero" />
+          <ScalarProperty Name="DocumentoReferenteA" ColumnName="DocumentoReferenteA" />
+          <ScalarProperty Name="IdEmisorDocumento" ColumnName="IdEmisorDocumento" />
+          <ScalarProperty Name="EmisorDocumento" ColumnName="EmisorDocumento" />
+          <ScalarProperty Name="DocumentoFecha" ColumnName="DocumentoFecha" />
+          <ScalarProperty Name="DocumentoFechaVigencia" ColumnName="DocumentoFechaVigencia" />
+          <ScalarProperty Name="DocumentoImporte" ColumnName="DocumentoImporte" />
+          <ScalarProperty Name="ClaveMoneda" ColumnName="ClaveMoneda" />
+          <ScalarProperty Name="TipoDeCambio" ColumnName="TipoDeCambio" />
+          <ScalarProperty Name="ClaveDocumentoOrigen" ColumnName="ClaveDocumentoOrigen" />
+          <ScalarProperty Name="ClaveDocumentoStatus" ColumnName="ClaveDocumentoStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuentaEncabezado">
+      <EntityTypeMapping TypeName="FXPERTModel.CuentaEncabezado">
+        <MappingFragment StoreEntitySet="CuentaEncabezado">
+          <ScalarProperty Name="IdCuentaEncabezado" ColumnName="IdCuentaEncabezado" />
+          <ScalarProperty Name="ClaveCuenta" ColumnName="ClaveCuenta" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Complementaria" ColumnName="Complementaria" />
+          <ScalarProperty Name="ClaveCuentaTipo" ColumnName="ClaveCuentaTipo" />
+          <ScalarProperty Name="ClaveCuentaClase" ColumnName="ClaveCuentaClase" />
+          <ScalarProperty Name="ClaveOficina" ColumnName="ClaveOficina" />
+          <ScalarProperty Name="CuentaFecha" ColumnName="CuentaFecha" />
+          <ScalarProperty Name="IdReferenciaOrigenDatos" ColumnName="IdReferenciaOrigenDatos" />
+          <ScalarProperty Name="ClaveCliente" ColumnName="ClaveCliente" />
+          <ScalarProperty Name="ClaveFacturarA" ColumnName="ClaveFacturarA" />
+          <ScalarProperty Name="ClaveEmbarqueTipo" ColumnName="ClaveEmbarqueTipo" />
+          <ScalarProperty Name="ClaveOperacionTipo" ColumnName="ClaveOperacionTipo" />
+          <ScalarProperty Name="ClaveRegimen" ColumnName="ClaveRegimen" />
+          <ScalarProperty Name="ClaveCuentaStatus" ColumnName="ClaveCuentaStatus" />
+          <ScalarProperty Name="ClaveResponsableCuenta" ColumnName="ClaveResponsableCuenta" />
+          <ScalarProperty Name="ClaveAduana" ColumnName="ClaveAduana" />
+          <ScalarProperty Name="ClaveMonedaFacturacion" ColumnName="ClaveMonedaFacturacion" />
+          <ScalarProperty Name="TipoDeCambio" ColumnName="TipoDeCambio" />
+          <ScalarProperty Name="ClaveTarifa" ColumnName="ClaveTarifa" />
+          <ScalarProperty Name="ClaveProducto" ColumnName="ClaveProducto" />
+          <ScalarProperty Name="Bultos" ColumnName="Bultos" />
+          <ScalarProperty Name="PesoKg" ColumnName="PesoKg" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ClaveOrigen" ColumnName="ClaveOrigen" />
+          <ScalarProperty Name="ClaveDestino" ColumnName="ClaveDestino" />
+          <ScalarProperty Name="ClaveDestinatario" ColumnName="ClaveDestinatario" />
+          <ScalarProperty Name="ClaveEmitirFacturaA" ColumnName="ClaveEmitirFacturaA" />
+          <ScalarProperty Name="ClaveCFDRfc" ColumnName="ClaveCFDRfc" />
+          <ScalarProperty Name="CFDVersion" ColumnName="CFDVersion" />
+          <ScalarProperty Name="IdDetalleMaestra" ColumnName="IdDetalleMaestra" />
+          <ScalarProperty Name="ClaveCuentaCFDOriginal" ColumnName="ClaveCuentaCFDOriginal" />
+          <ScalarProperty Name="PagoParcial" ColumnName="PagoParcial" />
+          <ScalarProperty Name="ClaveVendedor" ColumnName="ClaveVendedor" />
+          <ScalarProperty Name="ClaveSistemaOrigen" ColumnName="ClaveSistemaOrigen" />
+          <ScalarProperty Name="ClaveDossier" ColumnName="ClaveDossier" />
+          <ScalarProperty Name="ClaveShipper" ColumnName="ClaveShipper" />
+          <ScalarProperty Name="ClaveCuentaOrigen" ColumnName="ClaveCuentaOrigen" />
+          <ScalarProperty Name="RutaExpedienteDigital" ColumnName="RutaExpedienteDigital" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacturaEncabezado">
+      <EntityTypeMapping TypeName="FXPERTModel.FacturaEncabezado">
+        <MappingFragment StoreEntitySet="FacturaEncabezado">
+          <ScalarProperty Name="IdFacturaEncabezado" ColumnName="IdFacturaEncabezado" />
+          <ScalarProperty Name="ClaveCuenta" ColumnName="ClaveCuenta" />
+          <ScalarProperty Name="Serie" ColumnName="Serie" />
+          <ScalarProperty Name="FacturaNumero" ColumnName="FacturaNumero" />
+          <ScalarProperty Name="FacturaFecha" ColumnName="FacturaFecha" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="DomicilioFiscal" ColumnName="DomicilioFiscal" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="ClaveFacturaStatus" ColumnName="ClaveFacturaStatus" />
+          <ScalarProperty Name="ClaveCuentaAlCancelar" ColumnName="ClaveCuentaAlCancelar" />
+          <ScalarProperty Name="ClaveFacturarA" ColumnName="ClaveFacturarA" />
+          <ScalarProperty Name="ClaveCFDFolio" ColumnName="ClaveCFDFolio" />
+          <ScalarProperty Name="ClaveCFDComprobanteTipo" ColumnName="ClaveCFDComprobanteTipo" />
+          <ScalarProperty Name="ClaveCFDLugarExpedicion" ColumnName="ClaveCFDLugarExpedicion" />
+          <ScalarProperty Name="ClaveCFDPagoForma" ColumnName="ClaveCFDPagoForma" />
+          <ScalarProperty Name="ClaveCFDPagoCondicion" ColumnName="ClaveCFDPagoCondicion" />
+          <ScalarProperty Name="ClaveCFDPagoMetodo" ColumnName="ClaveCFDPagoMetodo" />
+          <ScalarProperty Name="ClaveSATComprobanteTipo" ColumnName="ClaveSATComprobanteTipo" />
+          <ScalarProperty Name="CFDVersion" ColumnName="CFDVersion" />
+          <ScalarProperty Name="CFDFechaHora" ColumnName="CFDFechaHora" />
+          <ScalarProperty Name="CFDAprobacionNumero" ColumnName="CFDAprobacionNumero" />
+          <ScalarProperty Name="CFDAprobacionAnio" ColumnName="CFDAprobacionAnio" />
+          <ScalarProperty Name="CFDComprobanteTipo" ColumnName="CFDComprobanteTipo" />
+          <ScalarProperty Name="CFDPagoForma" ColumnName="CFDPagoForma" />
+          <ScalarProperty Name="CFDPagoCondicion" ColumnName="CFDPagoCondicion" />
+          <ScalarProperty Name="CFDPagoMetodo" ColumnName="CFDPagoMetodo" />
+          <ScalarProperty Name="CertificadoSerie" ColumnName="CertificadoSerie" />
+          <ScalarProperty Name="CertificadoTexto" ColumnName="CertificadoTexto" />
+          <ScalarProperty Name="Sello" ColumnName="Sello" />
+          <ScalarProperty Name="EmisorRFC" ColumnName="EmisorRFC" />
+          <ScalarProperty Name="EmisorRazonSocial" ColumnName="EmisorRazonSocial" />
+          <ScalarProperty Name="EmisorCalle" ColumnName="EmisorCalle" />
+          <ScalarProperty Name="EmisorNumeroExterior" ColumnName="EmisorNumeroExterior" />
+          <ScalarProperty Name="EmisorNumeroInterior" ColumnName="EmisorNumeroInterior" />
+          <ScalarProperty Name="EmisorColonia" ColumnName="EmisorColonia" />
+          <ScalarProperty Name="EmisorLocalidad" ColumnName="EmisorLocalidad" />
+          <ScalarProperty Name="EmisorReferenciaDomicilio" ColumnName="EmisorReferenciaDomicilio" />
+          <ScalarProperty Name="EmisorMunicipio" ColumnName="EmisorMunicipio" />
+          <ScalarProperty Name="EmisorEntidadFederativa" ColumnName="EmisorEntidadFederativa" />
+          <ScalarProperty Name="EmisorNombrePais" ColumnName="EmisorNombrePais" />
+          <ScalarProperty Name="EmisorCodigoPostal" ColumnName="EmisorCodigoPostal" />
+          <ScalarProperty Name="ExpedicionCalle" ColumnName="ExpedicionCalle" />
+          <ScalarProperty Name="ExpedicionNumeroExterior" ColumnName="ExpedicionNumeroExterior" />
+          <ScalarProperty Name="ExpedicionNumeroInterior" ColumnName="ExpedicionNumeroInterior" />
+          <ScalarProperty Name="ExpedicionColonia" ColumnName="ExpedicionColonia" />
+          <ScalarProperty Name="ExpedicionLocalidad" ColumnName="ExpedicionLocalidad" />
+          <ScalarProperty Name="ExpedicionReferenciaDomicilio" ColumnName="ExpedicionReferenciaDomicilio" />
+          <ScalarProperty Name="ExpedicionMunicipio" ColumnName="ExpedicionMunicipio" />
+          <ScalarProperty Name="ExpedicionEntidadFederativa" ColumnName="ExpedicionEntidadFederativa" />
+          <ScalarProperty Name="ExpedicionNombrePais" ColumnName="ExpedicionNombrePais" />
+          <ScalarProperty Name="ExpedicionCodigoPostal" ColumnName="ExpedicionCodigoPostal" />
+          <ScalarProperty Name="ReceptorCalle" ColumnName="ReceptorCalle" />
+          <ScalarProperty Name="ReceptorNumeroExterior" ColumnName="ReceptorNumeroExterior" />
+          <ScalarProperty Name="ReceptorNumeroInterior" ColumnName="ReceptorNumeroInterior" />
+          <ScalarProperty Name="ReceptorColonia" ColumnName="ReceptorColonia" />
+          <ScalarProperty Name="ReceptorLocalidad" ColumnName="ReceptorLocalidad" />
+          <ScalarProperty Name="ReceptorReferenciaDomicilio" ColumnName="ReceptorReferenciaDomicilio" />
+          <ScalarProperty Name="ReceptorMunicipio" ColumnName="ReceptorMunicipio" />
+          <ScalarProperty Name="ReceptorEntidadFederativa" ColumnName="ReceptorEntidadFederativa" />
+          <ScalarProperty Name="ReceptorNombrePais" ColumnName="ReceptorNombrePais" />
+          <ScalarProperty Name="ReceptorCodigoPostal" ColumnName="ReceptorCodigoPostal" />
+          <ScalarProperty Name="CFDSubTotal" ColumnName="CFDSubTotal" />
+          <ScalarProperty Name="CFDDescuentos" ColumnName="CFDDescuentos" />
+          <ScalarProperty Name="CFDTotal" ColumnName="CFDTotal" />
+          <ScalarProperty Name="CFDMotivoDescuentos" ColumnName="CFDMotivoDescuentos" />
+          <ScalarProperty Name="CFDTasaIva" ColumnName="CFDTasaIva" />
+          <ScalarProperty Name="CFDTasaRetencionIva" ColumnName="CFDTasaRetencionIva" />
+          <ScalarProperty Name="CFDTasaRetencionISR" ColumnName="CFDTasaRetencionISR" />
+          <ScalarProperty Name="EmisorCurp" ColumnName="EmisorCurp" />
+          <ScalarProperty Name="TFDVersion" ColumnName="TFDVersion" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="FechaTimbrado" ColumnName="FechaTimbrado" />
+          <ScalarProperty Name="NoCertificadoSAT" ColumnName="NoCertificadoSAT" />
+          <ScalarProperty Name="SelloSAT" ColumnName="SelloSAT" />
+          <ScalarProperty Name="ClaveMonedaFacturacion" ColumnName="ClaveMonedaFacturacion" />
+          <ScalarProperty Name="IdFacturaOriginal" ColumnName="IdFacturaOriginal" />
+          <ScalarProperty Name="EmisorRegimenFiscal" ColumnName="EmisorRegimenFiscal" />
+          <ScalarProperty Name="MotivoDescuento" ColumnName="MotivoDescuento" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+          <ScalarProperty Name="LugarExpedicion" ColumnName="LugarExpedicion" />
+          <ScalarProperty Name="NumCtaPago" ColumnName="NumCtaPago" />
+          <ScalarProperty Name="PACCertifico" ColumnName="PACCertifico" />
+          <ScalarProperty Name="FechaCancelacionSAT" ColumnName="FechaCancelacionSAT" />
+          <ScalarProperty Name="CFDPagoMetodoClaves" ColumnName="CFDPagoMetodoClaves" />
+          <ScalarProperty Name="ClaveCFDSATPagoForma" ColumnName="ClaveCFDSATPagoForma" />
+          <ScalarProperty Name="ClaveSATPagoForma" ColumnName="ClaveSATPagoForma" />
+          <ScalarProperty Name="ClaveCFDSATPagoMetodo" ColumnName="ClaveCFDSATPagoMetodo" />
+          <ScalarProperty Name="ClaveSATPagoMetodo" ColumnName="ClaveSATPagoMetodo" />
+          <ScalarProperty Name="ClaveCFDSATRegimenFiscal" ColumnName="ClaveCFDSATRegimenFiscal" />
+          <ScalarProperty Name="ClaveSATRegimenFiscal" ColumnName="ClaveSATRegimenFiscal" />
+          <ScalarProperty Name="ClaveCFDSATUso" ColumnName="ClaveCFDSATUso" />
+          <ScalarProperty Name="ClaveSATUso" ColumnName="ClaveSATUso" />
+          <ScalarProperty Name="ReceptorClavePais" ColumnName="ReceptorClavePais" />
+          <ScalarProperty Name="ConfirmacionPAC" ColumnName="ConfirmacionPAC" />
+          <ScalarProperty Name="ReceptorNumRegIdTrib" ColumnName="ReceptorNumRegIdTrib" />
+          <ScalarProperty Name="LeyendaTFD" ColumnName="LeyendaTFD" />
+          <ScalarProperty Name="IdEnProcesoDePago" ColumnName="IdEnProcesoDePago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="fnCLLAObtenerFacturaPedimentoAduana240" FunctionName="FXPERTModel.Store.fnCLLAObtenerFacturaPedimentoAduana240">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FXPERTModel.fnCLLAObtenerFacturaPedimentoAduana240_Result">
+          <ScalarProperty Name="Serie" ColumnName="Serie" />
+          <ScalarProperty Name="Folio" ColumnName="Folio" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="NumeroPedimento" ColumnName="NumeroPedimento" />
+          <ScalarProperty Name="ClaveCuenta" ColumnName="ClaveCuenta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
